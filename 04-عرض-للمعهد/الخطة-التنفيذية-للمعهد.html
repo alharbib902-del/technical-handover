@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الخطة التنفيذية — نظام إدارة المعهد التدريبي المتكامل</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary: #065F46;
+    --primary-light: #047857;
+    --primary-dark: #064E3B;
+    --accent: #D4A574;
+    --accent-dark: #B58853;
+    --gold: #C9A961;
+    --cream: #FAFAF7;
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --bg: #FFFFFF;
+    --border: #E5E7EB;
+    --success: #10B981;
+    --info: #0891B2;
+    --warning: #F59E0B;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cairo', system-ui, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ============ PAGE CONTAINER ============ */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    page-break-after: always;
+    min-height: 297mm;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page:last-child { page-break-after: avoid; }
+
+  /* ============ COVER PAGE ============ */
+  .cover {
+    min-height: 297mm;
+    background: linear-gradient(135deg, #064E3B 0%, #065F46 40%, #047857 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 50px;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,165,116,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212,165,116,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 2;
+    position: relative;
+  }
+
+  .cover-emblem {
+    width: 80px;
+    height: 80px;
+    background: rgba(212,165,116,0.15);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+  }
+
+  .cover-meta {
+    text-align: end;
+    font-size: 0.85rem;
+    opacity: 0.85;
+  }
+
+  .cover-meta div { margin-bottom: 4px; }
+
+  .cover-center {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+
+  .cover-pretitle {
+    font-size: 1.05rem;
+    opacity: 0.85;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .cover h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 25px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+
+  .cover-subtitle {
+    font-size: 1.4rem;
+    font-weight: 400;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+
+  .cover-badges {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .cover-badge {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(212,165,116,0.4);
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cover-bottom {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .cover-tagline {
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    opacity: 0.9;
+    margin-bottom: 15px;
+  }
+
+  .cover-recipient {
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+
+  /* ============ STANDARD PAGE ============ */
+  .content-page {
+    padding: 50px 50px 70px;
+    position: relative;
+    background: white;
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+    margin-bottom: 35px;
+    border-bottom: 3px solid var(--primary);
+    position: relative;
+  }
+
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+  }
+
+  .page-num {
+    background: var(--primary);
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .page-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  /* ============ SECTION HEADINGS ============ */
+  h2.section-h {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 12px;
+    line-height: 1.3;
+  }
+
+  h2.section-h .underline {
+    display: inline-block;
+    padding-bottom: 6px;
+    border-bottom: 4px solid var(--accent);
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    line-height: 1.6;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 30px 0 15px;
+  }
+
+  /* ============ PAIN POINTS ============ */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+  }
+
+  .pain-card {
+    background: #FEF2F2;
+    border-right: 4px solid #DC2626;
+    padding: 18px 20px;
+    border-radius: 8px;
+  }
+
+  .pain-card .icon {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  .pain-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #991B1B;
+    margin-bottom: 6px;
+  }
+
+  .pain-card p {
+    font-size: 0.9rem;
+    color: #7F1D1D;
+    line-height: 1.5;
+  }
+
+  /* ============ SOLUTION HIGHLIGHTS ============ */
+  .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+  }
+
+  .solution-card {
+    background: linear-gradient(180deg, #ECFDF5 0%, white 100%);
+    border: 1px solid var(--primary-light);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+  }
+
+  .solution-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+
+  .solution-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+
+  .solution-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ============ STATS BAR ============ */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: var(--primary);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 30px 0;
+    color: white;
+  }
+
+  .stat-cell {
+    padding: 22px 15px;
+    text-align: center;
+    border-left: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .stat-cell:last-child { border-left: none; }
+
+  .stat-num {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    margin-top: 6px;
+    opacity: 0.95;
+  }
+
+  /* ============ TIMELINE / MONTHS ============ */
+  .timeline-container {
+    margin: 30px 0;
+  }
+
+  .month-card {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    page-break-inside: avoid;
+    transition: all 0.2s;
+  }
+
+  .month-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: 22px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .month-header::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    width: 120px;
+    height: 120px;
+    background: rgba(212,165,116,0.15);
+    border-radius: 50%;
+  }
+
+  .month-info { z-index: 2; }
+
+  .month-num {
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0.9;
+    margin-bottom: 4px;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+  }
+
+  .month-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  .month-badge {
+    background: var(--accent);
+    color: var(--primary-dark);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    z-index: 2;
+  }
+
+  .month-body {
+    padding: 25px 28px;
+  }
+
+  .month-description {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+
+  .deliverables-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .deliverables-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to left, var(--border), transparent);
+  }
+
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 16px;
+  }
+
+  .deliverable {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 8px 0;
+  }
+
+  .deliverable .check {
+    color: var(--success);
+    font-weight: 900;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    line-height: 1.5;
+  }
+
+  .deliverable-text {
+    font-size: 0.92rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .deliverable-text strong {
+    color: var(--primary-dark);
+    font-weight: 700;
+  }
+
+  /* ============ VALUE PROPOSITION ============ */
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+  }
+
+  .value-card {
+    background: var(--cream);
+    padding: 22px;
+    border-radius: 12px;
+    border-right: 4px solid var(--accent);
+  }
+
+  .value-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: var(--accent);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 14px;
+    font-weight: 800;
+  }
+
+  .value-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+
+  .value-card p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ============ QUALITY ASSURANCE ============ */
+  .quality-list {
+    list-style: none;
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 25px 0;
+  }
+
+  .quality-item {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .quality-item:last-child { border-bottom: none; }
+
+  .quality-num {
+    background: var(--primary);
+    color: var(--accent);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+  }
+
+  .quality-content h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 3px;
+  }
+
+  .quality-content p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ============ CALL TO ACTION ============ */
+  .cta-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 45px 40px;
+    border-radius: 16px;
+    text-align: center;
+    margin: 30px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(212,165,116,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cta-section h3 {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    position: relative;
+  }
+
+  .cta-section p {
+    font-size: 1.05rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto 25px;
+    position: relative;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .cta-btn {
+    background: var(--accent);
+    color: var(--primary-dark);
+    padding: 14px 30px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .cta-btn.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    padding: 28px 40px;
+    background: var(--primary-dark);
+    color: white;
+    text-align: center;
+  }
+
+  .footer-emblem {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .footer p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin: 4px 0;
+  }
+
+  .footer .tagline {
+    font-family: 'Amiri', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--accent);
+  }
+
+  /* ============ DIVIDER ============ */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to left, transparent, var(--border), transparent);
+    margin: 35px 0;
+  }
+
+  /* ============ HIGHLIGHT BOX ============ */
+  .highlight-box {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    border-right: 5px solid var(--gold);
+    padding: 20px 25px;
+    border-radius: 10px;
+    margin: 25px 0;
+  }
+
+  .highlight-box .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #92400E;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .highlight-box h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #78350F;
+    margin-bottom: 6px;
+  }
+
+  .highlight-box p {
+    font-size: 0.95rem;
+    color: #78350F;
+    line-height: 1.6;
+  }
+
+  /* ============ MILESTONE TIMELINE VISUAL ============ */
+  .timeline-visual {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 35px 0;
+    position: relative;
+    padding: 0 10px;
+  }
+
+  .timeline-visual::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    left: 50px;
+    height: 3px;
+    background: linear-gradient(to left, var(--primary), var(--accent), var(--primary));
+    z-index: 1;
+  }
+
+  .timeline-dot {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    width: 22%;
+  }
+
+  .timeline-circle {
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    border: 4px solid var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.2rem;
+    margin: 0 auto 10px;
+  }
+
+  .timeline-dot-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.4;
+  }
+
+  /* ============ COMPARISON TABLE ============ */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin: 25px 0;
+  }
+
+  .compare-col {
+    padding: 25px 22px;
+  }
+
+  .compare-col.before {
+    background: #FEF2F2;
+  }
+
+  .compare-col.after {
+    background: #ECFDF5;
+  }
+
+  .compare-col h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+  }
+
+  .compare-col.before h4 {
+    color: #991B1B;
+    border-color: #FCA5A5;
+  }
+
+  .compare-col.after h4 {
+    color: var(--primary);
+    border-color: var(--primary-light);
+  }
+
+  .compare-list {
+    list-style: none;
+  }
+
+  .compare-list li {
+    padding: 7px 0;
+    font-size: 0.92rem;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .compare-list li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .compare-col.before .compare-list li {
+    color: #7F1D1D;
+  }
+
+  .compare-col.before .compare-list li::before {
+    background: #DC2626;
+  }
+
+  .compare-col.after .compare-list li {
+    color: var(--primary-dark);
+  }
+
+  .compare-col.after .compare-list li::before {
+    background: var(--success);
+  }
+
+  /* ============ PRINT STYLES ============ */
+  @media print {
+    body {
+      background: white;
+    }
+    .page {
+      box-shadow: none;
+      margin: 0;
+      width: 100%;
+      max-width: none;
+      page-break-after: always;
+      min-height: auto;
+    }
+    .month-card {
+      page-break-inside: avoid;
+    }
+    .cover {
+      min-height: 257mm;
+    }
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 2.5rem; }
+    .pain-grid, .solution-grid, .value-grid, .deliverables-grid, .compare-grid {
+      grid-template-columns: 1fr;
+    }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .timeline-visual { flex-wrap: wrap; gap: 20px; }
+    .timeline-visual::before { display: none; }
+    .timeline-dot { width: 45%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== PAGE 1: COVER ===================== -->
+<section class="page cover">
+  <div class="cover-top">
+    <div class="cover-emblem">🎓</div>
+    <div class="cover-meta">
+      <div>📅 2026-05-12</div>
+      <div>📄 خطة تنفيذية</div>
+      <div>🔢 الإصدار 1.0</div>
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-pretitle">عرض مقدّم لإدارة المعهد</div>
+    <h1>نظام إدارة<br>المعهد التدريبي المتكامل</h1>
+    <p class="cover-subtitle">
+      منصة موحّدة تربط الطالب والمدرب والإدارة والمالية وشؤون المتدربين<br>
+      في تجربة رقمية واحدة احترافية تليق بمعهدكم
+    </p>
+    <div class="cover-badges">
+      <div class="cover-badge">⏱ 4 شهور للتسليم الكامل</div>
+      <div class="cover-badge">🏛 معتمد TVTC</div>
+      <div class="cover-badge">🌐 عربي بالكامل</div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <p class="cover-tagline">"من الفوضى التشغيلية إلى الإدارة الذكية في 4 شهور فقط"</p>
+    <p class="cover-recipient">عرض خاص — إدارة المعهد التدريبي المحترمة</p>
+  </div>
+</section>
+
+<!-- ===================== PAGE 2: THE CHALLENGE ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">التحديات الحالية</h2>
+      <div class="page-num">02</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">ما الذي يستنزف وقت معهدكم اليوم؟</span></h2>
+    <p class="section-subtitle">
+      تواجه المعاهد التدريبية في المملكة تحديات متشابهة. عملنا مع إدارات معاهد كثيرة كشف لنا أن
+      <strong>80٪ من العبء اليومي</strong> يأتي من <strong>أنظمة مفكّكة وعمليات يدوية</strong>.
+    </p>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="icon">📱</div>
+        <h4>الواتساب يدير الطلبات</h4>
+        <p>طلبات الطلاب تضيع بين محادثات لا تنتهي، ولا يوجد سجل واضح لمن طلب ماذا ومتى.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">📊</div>
+        <h4>Excel يحفظ المالية</h4>
+        <p>متابعة الرسوم والأقساط في ملفات منفصلة على أجهزة الموظفين، عرضة للفقدان والأخطاء.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">📝</div>
+        <h4>الورق يصدر الخطابات</h4>
+        <p>كل خطاب تعريف أو إفادة يُكتب يدوياً، يُطبع، يُختم، يُسلَّم. ساعات يومياً ضائعة.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">⚠️</div>
+        <h4>لا ربط بين الأقسام</h4>
+        <p>المالية لا ترى الأكاديمي، شؤون المتدربين لا ترى المتأخرات، وكل قسم في عالمه.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">🔄</div>
+        <h4>صعوبة المتابعة بين الفروع</h4>
+        <p>كل فرع يدير نفسه بطريقة مختلفة، والإدارة العامة بلا رؤية موحّدة.</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">📋</div>
+        <h4>التقارير تستغرق أسابيع</h4>
+        <p>تجميع البيانات للتقارير الإدارية والوزارية يحتاج جهداً يدوياً مرهقاً.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="label">⚡ الواقع</div>
+      <h4>المعاهد التي رقمنت عملياتها وفّرت ما بين 40-60٪ من وقت موظفيها</h4>
+      <p>وهذا الوقت يُعاد استثماره في تطوير البرامج التدريبية، خدمة الطلاب، وزيادة الإيرادات.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 3: THE SOLUTION ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الحل المقترح</h2>
+      <div class="page-num">03</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">نظام واحد. ست بوابات. تجربة موحّدة.</span></h2>
+    <p class="section-subtitle">
+      نُقدّم لمعهدكم نظاماً إدارياً متكاملاً مصمّماً خصيصاً للمعاهد التدريبية السعودية، يربط
+      كل العمليات في منصة واحدة مع تجربة بصرية احترافية باللغة العربية.
+    </p>
+
+    <div class="solution-grid">
+      <div class="solution-card">
+        <div class="icon">🎓</div>
+        <h4>بوابة الطالب</h4>
+        <p>الملف الشخصي + الجدول + الحضور + الدرجات + الطلبات + الوضع المالي</p>
+      </div>
+      <div class="solution-card">
+        <div class="icon">👨‍🏫</div>
+        <h4>بوابة المدرب</h4>
+        <p>الجدول + الحضور + الواجبات + الدرجات + التحضير من الجوال</p>
+      </div>
+      <div class="solution-card">
+        <div class="icon">⚙️</div>
+        <h4>بوابة الإدارة</h4>
+        <p>الإشراف على الفروع + الصلاحيات + الاعتمادات + المؤشرات</p>
+      </div>
+      <div class="solution-card">
+        <div class="icon">💰</div>
+        <h4>بوابة المالية</h4>
+        <p>التحصيل + المتأخرات + الحجب الذكي + التقارير المالية</p>
+      </div>
+      <div class="solution-card">
+        <div class="icon">👥</div>
+        <h4>شؤون المتدربين</h4>
+        <p>متابعة الحالات + الطلبات + الخطابات + الاختبار الشامل</p>
+      </div>
+      <div class="solution-card">
+        <div class="icon">📋</div>
+        <h4>التسجيل والقبول</h4>
+        <p>إدارة عمليات التسجيل + القبول + البيانات + المرفقات</p>
+      </div>
+    </div>
+
+    <h3>كيف يتغيّر الواقع التشغيلي لمعهدكم؟</h3>
+
+    <div class="compare-grid">
+      <div class="compare-col before">
+        <h4>🔴 قبل النظام</h4>
+        <ul class="compare-list">
+          <li>طالب يطلب خطاباً عبر WhatsApp</li>
+          <li>الموظف يكتب الخطاب يدوياً في Word</li>
+          <li>الإدارة توقّع وتختم ورقياً</li>
+          <li>الطالب يستلم الخطاب بعد 3-5 أيام</li>
+          <li>لا أرشيف رقمي للخطاب</li>
+          <li>لا تحقق من صحة الخطاب لاحقاً</li>
+        </ul>
+      </div>
+      <div class="compare-col after">
+        <h4>🟢 بعد النظام</h4>
+        <ul class="compare-list">
+          <li>الطالب يطلب الخطاب من بوابته</li>
+          <li>النظام يفحص حالته تلقائياً</li>
+          <li>الخطاب يُولَّد PDF احترافي فوراً</li>
+          <li>الطالب يستلمه في دقائق</li>
+          <li>أرشيف رقمي دائم في ملف الطالب</li>
+          <li>QR Code للتحقق من أي جهة</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 4: TIMELINE OVERVIEW ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الجدول الزمني</h2>
+      <div class="page-num">04</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">خطة 4 شهور — تسليم تدريجي</span></h2>
+    <p class="section-subtitle">
+      نُسلّم النظام على <strong>4 مراحل شهرية</strong>، كل مرحلة تنتج <strong>نظاماً قابلاً للاستخدام الفعلي</strong>
+      ومُختبَراً قبل الانتقال للمرحلة التالية. هذا يضمن:
+    </p>
+
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-icon">⚡</div>
+        <h4>قيمة فورية</h4>
+        <p>تستفيدون من النظام منذ نهاية الشهر الأول، دون انتظار 4 شهور كاملة.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🛡</div>
+        <h4>مخاطرة منخفضة</h4>
+        <p>كل مرحلة مُختبَرة قبل الانتقال للتالية — لا مفاجآت في النهاية.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <h4>تكيّف تدريجي</h4>
+        <p>موظفوكم يتعلّمون النظام مرحلة بمرحلة، بدلاً من صدمة التغيير الكاملة.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💎</div>
+        <h4>ملاحظاتكم تُدمج</h4>
+        <p>بعد كل مرحلة، نأخذ ملاحظاتكم ونحسّن قبل المرحلة التالية.</p>
+      </div>
+    </div>
+
+    <div class="timeline-visual">
+      <div class="timeline-dot">
+        <div class="timeline-circle">1</div>
+        <div class="timeline-dot-title">الأساس<br>والاختبارات</div>
+      </div>
+      <div class="timeline-dot">
+        <div class="timeline-circle">2</div>
+        <div class="timeline-dot-title">الطلاب<br>والمالية</div>
+      </div>
+      <div class="timeline-dot">
+        <div class="timeline-circle">3</div>
+        <div class="timeline-dot-title">الإدارة<br>والأكاديمي</div>
+      </div>
+      <div class="timeline-dot">
+        <div class="timeline-circle">4</div>
+        <div class="timeline-dot-title">التكامل<br>والذكاء</div>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-cell">
+        <div class="stat-num">4</div>
+        <div class="stat-label">شهور للتسليم الكامل</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">60+</div>
+        <div class="stat-label">ميزة وظيفية</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">6</div>
+        <div class="stat-label">بوابات للمستخدمين</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">عربي ومتوافق PDPL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 5: MONTH 1 ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الشهر الأول — الأساس والاختبارات</h2>
+      <div class="page-num">05</div>
+    </div>
+
+    <div class="month-card">
+      <div class="month-header">
+        <div class="month-info">
+          <div class="month-num">الشهر الأول · الأسابيع 1-4</div>
+          <div class="month-title">الأساس والمنصة الأكاديمية</div>
+        </div>
+        <div class="month-badge">🎓 تأسيس وأكاديمي</div>
+      </div>
+      <div class="month-body">
+        <p class="month-description">
+          نبني <strong>القاعدة التقنية</strong> للنظام بأكملها، ثم نُسلّم <strong>منصة الاختبارات الإلكترونية</strong>
+          الكاملة مع بنك الأسئلة المركزي وشهادات معتمدة TVTC قابلة للتحقق عبر QR.
+          ينتهي الشهر بنظام اختبارات يعمل بكفاءة ويُغني عن أوراق الامتحانات.
+        </p>
+
+        <div class="deliverables-title">📦 ما يُسلَّم في نهاية هذا الشهر</div>
+        <div class="deliverables-grid">
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>نظام تسجيل دخول آمن</strong> لجميع المستخدمين بصلاحيات تفصيلية</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>دعم 4 فروع</strong> مع عزل تام للبيانات بينها</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>بنك أسئلة مركزي</strong> يدعم 14 نوع سؤال</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>استيراد مئات الأسئلة</strong> من Excel دفعة واحدة</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>اقتراح أسئلة ذكي</strong> يساعد المعلم في إثراء البنك</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>محرك توليد اختبارات</strong> تلقائي حسب المواصفات</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>كود اختبار ذكي</strong> يميّز الحضوري عن المنتسب</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>تصحيح آلي</strong> فوري للأسئلة الموضوعية</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>3 طبقات حماية</strong> للاختبارات لمنع الغش</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>نظام الدبلومات</strong> بتسلسل المواد والمعدل التراكمي</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>شهادات معتمدة TVTC</strong> برقم اعتماد رسمي</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>QR Code وصفحة تحقق عامة</strong> للشهادات</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>تطبيق ويب للتحضير</strong> يعمل على جوال المعلم</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>تقارير أكاديمية أساسية</strong> (متوسطات، نسب نجاح)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="label">🎯 القيمة الفورية</div>
+      <h4>بعد 4 أسابيع — تستلمون منصة اختبارات احترافية تليق بمعهد معتمد TVTC</h4>
+      <p>المعلمون يبدؤون فوراً ببناء بنك الأسئلة. الطلاب يؤدّون اختبارات إلكترونية. الشهادات تُصدر بـQR للتحقق الفوري.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 6: MONTH 2 ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الشهر الثاني — الطلاب والمالية</h2>
+      <div class="page-num">06</div>
+    </div>
+
+    <div class="month-card">
+      <div class="month-header">
+        <div class="month-info">
+          <div class="month-num">الشهر الثاني · الأسابيع 5-8</div>
+          <div class="month-title">إدارة الطلاب وحلّ مشكلة التحصيل</div>
+        </div>
+        <div class="month-badge">💰 المالية الذكية</div>
+      </div>
+      <div class="month-body">
+        <p class="month-description">
+          الشهر الأهم في المشروع. نُسلّم <strong>إدارة طلاب متكاملة</strong> ونربط النظام
+          ببرنامجكم المحاسبي عبر API، ثم نُفعّل <strong>محرك الحجب الذكي للخدمات</strong> الذي
+          سيُغيّر معادلة التحصيل في معهدكم جذرياً.
+        </p>
+
+        <div class="deliverables-title">📦 ما يُسلَّم في نهاية هذا الشهر</div>
+        <div class="deliverables-grid">
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>ملف طالب شامل</strong> يجمع البيانات الأكاديمية والمالية والإدارية</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>8 حالات للطالب</strong> (منتظم، متخرج، موقوف، إلخ) مع تاريخ كامل</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>نقل الطلاب بين الفروع</strong> مع حفظ التاريخ التفصيلي</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>حقول التوظيف الاختيارية</strong> (مفيدة لخطابات السلم الوظيفي)</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>ربط مع البرنامج المحاسبي</strong> عبر API احترافي</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>تزامن تلقائي للدفعات</strong> كل 15 دقيقة + فورياً عند الدفع</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>محرك الحجب الذكي</strong> يحجب الخدمات تلقائياً عند المتأخرات</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>قواعد حجب قابلة للتعديل</strong> من واجهة الإدارة (دون مبرمج)</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>فك الحجب الفوري</strong> من الإدارة مع توثيق إلزامي للسبب</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>لوحات مالية</strong> للإدارة تعرض التحصيل والمتأخرات لحظياً</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>تقرير المتأخرين</strong> بأسماء وأرقام دقيقة لحظة بلحظة</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>إشعارات تلقائية</strong> للطالب عند تأخر السداد قبل أيام</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>تقارير الفروع المالية</strong> منفصلة ومجمّعة</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>سجل تدقيق كامل</strong> لكل حجب وفك حجب</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="label">⭐ الأثر التشغيلي</div>
+      <h4>المعاهد المماثلة شهدت ارتفاع نسبة التحصيل بنسبة 25-40٪ في أول 3 أشهر</h4>
+      <p>لأن الطالب يصبح ملتزماً بدفع متأخراته للحصول على شهادة أو خطاب أو نتيجة اختبار — دون تدخل بشري متكرر.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 7: MONTH 3 ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الشهر الثالث — العمليات اليومية</h2>
+      <div class="page-num">07</div>
+    </div>
+
+    <div class="month-card">
+      <div class="month-header">
+        <div class="month-info">
+          <div class="month-num">الشهر الثالث · الأسابيع 9-12</div>
+          <div class="month-title">الإدارة والأكاديمي اليومي</div>
+        </div>
+        <div class="month-badge">📋 تشغيل يومي</div>
+      </div>
+      <div class="month-body">
+        <p class="month-description">
+          نُسلّم <strong>محرك الطلبات والخطابات</strong> الذي يُلغي العمل الورقي،
+          مع <strong>إدارة شاملة لشؤون المتدربين والتسجيل والقبول</strong>،
+          والـ<strong>عمليات الأكاديمية اليومية</strong> (جداول، حضور، واجبات، مكتبة موارد).
+          نهاية الشهر = معهد يدير عملياته اليومية رقمياً بالكامل.
+        </p>
+
+        <div class="deliverables-title">📦 ما يُسلَّم في نهاية هذا الشهر</div>
+        <div class="deliverables-grid">
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>محرك طلبات ذكي</strong> لـ14 نوع طلب (خطابات، انسحاب، إيقاف...)</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>مسارات تلقائية</strong> بين الأقسام لكل طلب</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>SLA لكل طلب</strong> مع تصعيد تلقائي للتأخر</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>مولّد خطابات PDF احترافي</strong> بأشكال عربية رسمية</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>12+ خطاب جاهز</strong> (تعريف، إفادة، تدريب، شهادة، سند...)</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>خطابات السلم الوظيفي</strong> خاصة بموظفي القطاع الحكومي</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>توقيع رقمي + QR</strong> لكل خطاب للتحقق من صحته</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>سيرة ذاتية تلقائية</strong> للطالب من بياناته بضغطة واحدة</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>نظام تذاكر داخلي</strong> لطلبات الموظفين (IT، إداري، صيانة)</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>بوابة شؤون المتدربين</strong> الكاملة + إدارة الشكاوى</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>تدفق الانسحاب</strong> الكامل (شؤون → مالية → إدارة)</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>بوابة التسجيل والقبول</strong> بـ7 مراحل (Lead → Student)</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>صفحة تسجيل عامة</strong> لاستقبال طلبات الانضمام أونلاين</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>إدارة الجداول</strong> الصباحية والمسائية ونهاية الأسبوع</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>الحضور المتقدم</strong> مع الإنذارات والحرمان التلقائي</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>الواجبات</strong> (رفع، توزيع، تسليم، تقييم)</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>الاختبار الشامل النهائي</strong> مع المؤهلين تلقائياً</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>التقويم الموحّد</strong> لكل المواعيد في شاشة واحدة</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>مكتبة موارد تعليمية</strong> لكل مادة (PDF/فيديو/روابط)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="label">🚀 التحوّل التشغيلي</div>
+      <h4>نهاية الشهر الثالث = معهدكم يعمل رقمياً 100٪</h4>
+      <p>لا ورق. لا WhatsApp. لا Excel. كل قسم يرى البيانات اللحظية. كل خطاب يُصدر في دقائق. الطالب يرى وضعه الكامل من بوابته.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 8: MONTH 4 ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الشهر الرابع — التكامل والذكاء</h2>
+      <div class="page-num">08</div>
+    </div>
+
+    <div class="month-card">
+      <div class="month-header">
+        <div class="month-info">
+          <div class="month-num">الشهر الرابع · الأسابيع 13-16</div>
+          <div class="month-title">الامتثال الحكومي والتميّز التنافسي</div>
+        </div>
+        <div class="month-badge">🏛 تكامل وامتثال</div>
+      </div>
+      <div class="month-body">
+        <p class="month-description">
+          الشهر الأخير: نُكمل <strong>تكامل النظام مع TVTC والوزارة</strong> لرفع نتائج وحضور
+          المتدربين رسمياً، ونُسلّم <strong>التقارير المتقدمة والـDashboards</strong>،
+          والـ<strong>تكاملات الذكية</strong> (WhatsApp، SMS، البريد، تسجيل الدخول بنفاذ).
+          ينتهي المشروع بنظام **متكامل، معتمد، وذكي**.
+        </p>
+
+        <div class="deliverables-title">📦 ما يُسلَّم في نهاية هذا الشهر</div>
+        <div class="deliverables-grid">
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>تكامل TVTC الكامل</strong> لتسجيل المتدربين</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>إرسال الدرجات للوزارة</strong> تلقائياً بعد الاعتماد</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>تقارير الحضور الدورية</strong> مرفوعة للوزارة</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>اعتماد رسمي للشهادات</strong> من نظام TVTC</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>لوحة الامتثال</strong> لمتابعة المزامنة مع الوزارة</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>لوحات Dashboards</strong> لكل دور (إدارة، فرع، مالية...)</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>20+ تقرير جاهز</strong> بتصدير Excel + PDF</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>تقارير حسب الفرع/الفترة/البرنامج</strong></span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>أرشيف رقمي شامل</strong> لكل معلم وكل طالب</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>نظام تقييم المعلمين</strong> من الطلاب (مجهول الهوية)</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>اكتشاف الطلاب المتعثرين</strong> مبكراً للتدخل</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>إرسال WhatsApp</strong> للإشعارات والفواتير</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>إرسال SMS</strong> للتنبيهات الحرجة</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>إرسال Email</strong> للخطابات الرسمية</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>مساعد ذكي للطلاب</strong> يجيب أسئلتهم 24/7</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>تسجيل دخول بنفاذ</strong> للطلاب بالهوية الرقمية</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>بوابة الخريجين</strong> لمتابعة المسار المهني</span></div>
+          <div class="deliverable"><span class="check">✓</span><span class="deliverable-text"><strong>الدورات التطويرية</strong> للخريجين كمصدر دخل إضافي</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="label">🏆 الإنجاز النهائي</div>
+      <h4>معهدكم يصبح نموذجاً رقمياً متكاملاً للمعاهد التدريبية في المملكة</h4>
+      <p>نظام يربط الطالب بالإدارة بالمالية بالوزارة. كل البيانات في مكان واحد. كل التقارير بضغطة. كل العمليات آلية. والامتثال الحكومي مضمون.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 9: QUALITY GUARANTEE ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">ضمانات الجودة</h2>
+      <div class="page-num">09</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">جودة لا قابلة للتنازل</span></h2>
+    <p class="section-subtitle">
+      نلتزم بـ<strong>10 معايير جودة</strong> لكل مرحلة تُسلَّم، ولا تُعتمد المرحلة قبل اجتيازها كلها.
+    </p>
+
+    <ul class="quality-list">
+      <li class="quality-item">
+        <div class="quality-num">1</div>
+        <div class="quality-content">
+          <h5>اختبارات شاملة قبل التسليم</h5>
+          <p>كل ميزة تُختبر آلياً ويدوياً قبل تسليم المرحلة. نسبة تغطية اختبارات ≥80٪.</p>
+        </div>
+      </li>
+      <li class="quality-item">
+        <div class="quality-num">2</div>
+        <div class="quality-content">
+          <h5>متوافق مع نظام حماية البيانات السعودي (PDPL)</h5>
+          <p>تشفير البيانات + سجل معالجة + حقوق الطالب (وصول، تصدير، محو) مكفولة.</p>
+        </div>
+      </li>
+      <li class="quality-item">
+        <div class="quality-num">3</div>
+        <div class="quality-content">
+          <h5>عربي بالكامل + RTL أصلي</h5>
+          <p>ليس "ترجمة" بل تصميم عربي من اليوم الأول. الخط، الاتجاه، التواريخ، الأرقام.</p>
+        </div>
+      </li>
+      <li class="quality-item">
+        <div class="quality-num">4</div>
+        <div class="quality-content">
+          <h5>أداء عالي</h5>
+          <p>تحميل الصفحة في أقل من ثانيتين، حتى مع 200 مستخدم متزامن.</p>
+        </div>
+      </li>
+      <li class="quality-item">
+        <div class="quality-num">5</div>
+        <div class="quality-content">
+          <h5>نسخ احتياطي يومي مشفّر</h5>
+          <p>نسخ تلقائية + اختبار استعادة ربع سنوي. استعادة كاملة خلال 4 ساعات.</p>
+        </div>
+      </li>
+      <li class="quality-item">
+        <div class="quality-num">6</div>
+        <div class="quality-content">
+          <h5>سجل تدقيق كامل</h5>
+          <p>كل تعديل حساس يُسجَّل: من، متى، ماذا، لماذا. لا فقدان للمساءلة.</p>
+        </div>
+      </li>
+      <li class="quality-item">
+        <div class="quality-num">7</div>
+        <div class="quality-content">
+          <h5>تدريب الموظفين قبل الإطلاق</h5>
+          <p>جلسات تدريبية لكل دور + فيديوهات شرح + دليل مرجعي.</p>
+        </div>
+      </li>
+      <li class="quality-item">
+        <div class="quality-num">8</div>
+        <div class="quality-content">
+          <h5>ملكية كاملة للبيانات</h5>
+          <p>بياناتكم لكم. تصدير كامل في أي وقت. لا حبس بيانات. لا اعتماد على طرف ثالث.</p>
+        </div>
+      </li>
+      <li class="quality-item">
+        <div class="quality-num">9</div>
+        <div class="quality-content">
+          <h5>قابلية التوسع المستقبلية</h5>
+          <p>النظام يستوعب إضافة فروع جديدة، برامج، خدمات بدون إعادة بناء.</p>
+        </div>
+      </li>
+      <li class="quality-item">
+        <div class="quality-num">10</div>
+        <div class="quality-content">
+          <h5>دعم فني متخصّص</h5>
+          <p>قنوات دعم واضحة، أوقات استجابة محددة، تحديثات دورية.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== PAGE 10: WHY US + CTA ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">لماذا هذه الخطة؟</h2>
+      <div class="page-num">10</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">ميزات تنافسية لا تجدونها في الأنظمة العامة</span></h2>
+
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-icon">🏛</div>
+        <h4>مُصمَّم لمعاهد TVTC السعودية</h4>
+        <p>ليس نظاماً عاماً مترجماً، بل مبني خصيصاً لبيئة المعاهد التدريبية السعودية المعتمدة من TVTC.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💼</div>
+        <h4>مُهيّأ للموظفين الحكوميين</h4>
+        <p>حقول السلم الوظيفي، خطابات للجهات الحكومية، جداول مرنة (صباحي + مسائي + ويكند).</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔗</div>
+        <h4>يتكامل مع برنامجكم المحاسبي</h4>
+        <p>لا نطلب منكم تغيير برنامج المحاسبة. نتكامل معه عبر API احترافي ونزامن البيانات تلقائياً.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">📈</div>
+        <h4>قابل للنمو معكم</h4>
+        <p>تبدؤون بـ4 فروع و1000 طالب، ويتوسّع لاحقاً لأي عدد بدون إعادة بناء.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌐</div>
+        <h4>يعمل على المتصفح والجوال</h4>
+        <p>لا حاجة لتطبيقات تثبيت. كل شيء عبر المتصفح مع PWA للمدربين على الجوال.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🎓</div>
+        <h4>شهادات قابلة للتحقق العالمي</h4>
+        <p>كل شهادة بـQR Code وصفحة تحقق عامة — أي جهة عمل أو جامعة تتحقق بثوانٍ.</p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h3>الخطوة التالية</h3>
+      <p>
+        إن وافقتم على هذه الخطة، نبدأ <strong>جلسة Discovery</strong> أسبوع 1 لتوحيد التفاصيل التشغيلية،
+        ثم ننطلق في تنفيذ الشهر الأول. أول تسليم في غضون 4 أسابيع.
+      </p>
+      <div class="cta-buttons">
+        <span class="cta-btn">✓ اعتماد الخطة والانطلاق</span>
+        <span class="cta-btn secondary">📞 جلسة نقاش تفصيلية</span>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top: 25px;">
+      <div class="label">🤝 وعدنا لكم</div>
+      <h4>تسليم تدريجي مع شفافية كاملة في كل خطوة</h4>
+      <p>تستلمون النظام مرحلة بمرحلة، تستخدمونه فعلياً، تُعطون ملاحظاتكم، نُحسّن، نُسلّم التالي. لا "صندوق أسود" ولا انتظار 4 شهور لرؤية النتيجة.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-emblem">🎓</div>
+    <p><strong>نظام إدارة المعهد التدريبي المتكامل</strong></p>
+    <p class="tagline">"التحوّل الرقمي الذي يستحقه معهدكم"</p>
+    <p style="margin-top: 12px; font-size: 0.78rem; opacity: 0.6;">
+      الإصدار 1.0 · 2026-05-12 · عرض خاص للمعهد المحترم
+    </p>
+  </div>
+</section>
+
+</body>
+</html>
