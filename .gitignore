@@ -1,8 +1,10 @@
 # Build/working scripts (not needed by developer)
 _compose.ps1
 _sanitize.ps1
+_sanitize-phases.ps1
 _replacements.json
 _template.html
+03-المراحل-التنفيذية/_sanitize-phases.ps1
 
 # OS files
 .DS_Store
