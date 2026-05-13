@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الخطة المالية والاستثمارية — نظام إدارة المعهد التدريبي</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary: #065F46;
+    --primary-light: #047857;
+    --primary-dark: #064E3B;
+    --accent: #D4A574;
+    --accent-dark: #B58853;
+    --gold: #C9A961;
+    --cream: #FAFAF7;
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --bg: #FFFFFF;
+    --border: #E5E7EB;
+    --success: #10B981;
+    --info: #0891B2;
+    --warning: #F59E0B;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cairo', system-ui, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ============ PAGE CONTAINER ============ */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    page-break-after: always;
+    min-height: 297mm;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page:last-child { page-break-after: avoid; }
+
+  /* ============ COVER PAGE ============ */
+  .cover {
+    min-height: 297mm;
+    background: linear-gradient(135deg, #064E3B 0%, #065F46 40%, #047857 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 50px;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,165,116,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212,165,116,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cover-top, .cover-bottom, .cover-center {
+    z-index: 2;
+    position: relative;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .cover-emblem {
+    width: 80px;
+    height: 80px;
+    background: rgba(212,165,116,0.15);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+  }
+
+  .cover-meta {
+    text-align: end;
+    font-size: 0.85rem;
+    opacity: 0.85;
+  }
+
+  .cover-meta div { margin-bottom: 4px; }
+
+  .cover-center { text-align: center; }
+
+  .cover-pretitle {
+    font-size: 1.05rem;
+    opacity: 0.85;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .cover h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 25px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+
+  .cover-subtitle {
+    font-size: 1.3rem;
+    font-weight: 400;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+
+  .cover-amount {
+    background: rgba(212,165,116,0.2);
+    border: 2px solid var(--accent);
+    padding: 30px 60px;
+    border-radius: 20px;
+    display: inline-block;
+    backdrop-filter: blur(10px);
+    margin-bottom: 30px;
+  }
+
+  .cover-amount .number {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  .cover-amount .currency {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 8px;
+    opacity: 0.95;
+  }
+
+  .cover-badges {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .cover-badge {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(212,165,116,0.4);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .cover-bottom {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .cover-tagline {
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    opacity: 0.9;
+    margin-bottom: 15px;
+  }
+
+  .cover-recipient {
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+
+  /* ============ STANDARD PAGE ============ */
+  .content-page {
+    padding: 50px 50px 70px;
+    position: relative;
+    background: white;
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+    margin-bottom: 35px;
+    border-bottom: 3px solid var(--primary);
+    position: relative;
+  }
+
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+  }
+
+  .page-num {
+    background: var(--primary);
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .page-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  h2.section-h {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 12px;
+    line-height: 1.3;
+  }
+
+  h2.section-h .underline {
+    display: inline-block;
+    padding-bottom: 6px;
+    border-bottom: 4px solid var(--accent);
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    line-height: 1.6;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 30px 0 15px;
+  }
+
+  /* ============ BIG NUMBER ============ */
+  .investment-summary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 30px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .investment-summary::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,165,116,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .investment-summary .label {
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    position: relative;
+  }
+
+  .investment-summary .big-number {
+    font-size: 6rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    position: relative;
+  }
+
+  .investment-summary .currency-big {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .investment-summary .description {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  /* ============ PRICING CARDS ============ */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin: 30px 0;
+  }
+
+  .price-card {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  .price-card.featured {
+    border-color: var(--accent);
+    box-shadow: 0 8px 25px rgba(212,165,116,0.2);
+  }
+
+  .price-card-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: 18px 22px;
+    text-align: center;
+    position: relative;
+  }
+
+  .price-card-header.alt {
+    background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
+    color: var(--primary-dark);
+  }
+
+  .price-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .price-card-subtitle {
+    font-size: 0.85rem;
+    opacity: 0.9;
+  }
+
+  .price-card-body {
+    padding: 22px;
+  }
+
+  .price-amount {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary);
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  .price-currency {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+  }
+
+  .price-features {
+    list-style: none;
+    padding: 0;
+  }
+
+  .price-features li {
+    padding: 7px 0;
+    font-size: 0.9rem;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .price-features li::before {
+    content: '✓';
+    color: var(--success);
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  /* ============ PAYMENT TIMELINE ============ */
+  .payment-timeline {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 30px;
+    margin: 30px 0;
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .timeline-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+
+  .timeline-total {
+    background: var(--primary);
+    color: var(--accent);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 1rem;
+  }
+
+  .month-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 110px;
+    gap: 15px;
+    align-items: center;
+    padding: 16px 12px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    background: white;
+    border: 1px solid var(--border);
+  }
+
+  .month-row:last-child { margin-bottom: 0; }
+
+  .month-label {
+    background: var(--primary);
+    color: white;
+    padding: 10px 8px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .month-label .num {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+  }
+
+  .month-label .word {
+    font-size: 0.7rem;
+    margin-top: 3px;
+  }
+
+  .payment-slot {
+    background: #ECFDF5;
+    border-right: 4px solid var(--success);
+    padding: 10px 14px;
+    border-radius: 8px;
+  }
+
+  .payment-slot.end {
+    background: #FEF3C7;
+    border-right-color: var(--gold);
+  }
+
+  .payment-slot .when {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  .payment-slot .amount {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+
+  .month-subtotal {
+    text-align: center;
+    background: var(--primary-dark);
+    color: var(--accent);
+    padding: 10px 8px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 1rem;
+  }
+
+  /* ============ INCLUDES BOX ============ */
+  .includes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 25px 0;
+  }
+
+  .include-card {
+    background: linear-gradient(135deg, #ECFDF5 0%, white 100%);
+    border: 1px solid var(--primary-light);
+    padding: 16px 18px;
+    border-radius: 10px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .include-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--primary);
+    color: var(--accent);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .include-content h5 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 3px;
+  }
+
+  .include-content p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ============ TABLE ============ */
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .pricing-table thead {
+    background: var(--primary);
+    color: white;
+  }
+
+  .pricing-table th {
+    padding: 14px 16px;
+    text-align: right;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-left: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .pricing-table th:last-child {
+    border-left: none;
+    text-align: center;
+  }
+
+  .pricing-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    font-size: 0.92rem;
+  }
+
+  .pricing-table td:last-child {
+    border-left: none;
+    text-align: center;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .pricing-table tbody tr:nth-child(even) {
+    background: #F9FAFB;
+  }
+
+  .pricing-table tbody tr:hover {
+    background: #ECFDF5;
+  }
+
+  .pricing-table tfoot {
+    background: var(--primary-dark);
+    color: var(--accent);
+    font-weight: 800;
+  }
+
+  .pricing-table tfoot td {
+    padding: 16px;
+    font-size: 1.1rem;
+    color: var(--accent);
+    border-left-color: rgba(255,255,255,0.15);
+  }
+
+  /* ============ HIGHLIGHT BOX ============ */
+  .highlight-box {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    border-right: 5px solid var(--gold);
+    padding: 20px 25px;
+    border-radius: 10px;
+    margin: 25px 0;
+  }
+
+  .highlight-box .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #92400E;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .highlight-box h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #78350F;
+    margin-bottom: 6px;
+  }
+
+  .highlight-box p {
+    font-size: 0.95rem;
+    color: #78350F;
+    line-height: 1.6;
+  }
+
+  /* ============ COMPARE BOX ============ */
+  .compare-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 25px 0;
+  }
+
+  .compare-side {
+    padding: 20px 22px;
+    border-radius: 12px;
+    border: 1px solid;
+  }
+
+  .compare-side.market {
+    background: #FEF2F2;
+    border-color: #FCA5A5;
+  }
+
+  .compare-side.ours {
+    background: #ECFDF5;
+    border-color: var(--primary-light);
+  }
+
+  .compare-side .compare-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .compare-side.market .compare-label { color: #991B1B; }
+  .compare-side.ours .compare-label { color: var(--primary); }
+
+  .compare-side .compare-price {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  .compare-side.market .compare-price {
+    color: #991B1B;
+    text-decoration: line-through;
+    text-decoration-color: #DC2626;
+  }
+
+  .compare-side.ours .compare-price {
+    color: var(--primary);
+  }
+
+  .compare-side .compare-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .compare-side.market .compare-desc { color: #7F1D1D; }
+  .compare-side.ours .compare-desc { color: var(--primary-dark); }
+
+  .compare-side .compare-list {
+    list-style: none;
+    font-size: 0.85rem;
+  }
+
+  .compare-side .compare-list li {
+    padding: 4px 0;
+    display: flex;
+    gap: 6px;
+  }
+
+  .compare-side.market .compare-list li::before {
+    content: '✗';
+    color: #DC2626;
+    font-weight: 800;
+  }
+
+  .compare-side.ours .compare-list li::before {
+    content: '✓';
+    color: var(--success);
+    font-weight: 800;
+  }
+
+  /* ============ TERMS BOX ============ */
+  .terms-list {
+    list-style: none;
+    padding: 0;
+    counter-reset: term-counter;
+  }
+
+  .terms-list li {
+    counter-increment: term-counter;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-right: 60px;
+  }
+
+  .terms-list li::before {
+    content: counter(term-counter);
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+
+  .terms-list li h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .terms-list li p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ============ SIGNATURE BOX ============ */
+  .signature-section {
+    background: var(--cream);
+    padding: 35px;
+    border-radius: 16px;
+    margin: 30px 0;
+    border: 2px solid var(--primary);
+  }
+
+  .signature-section h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: var(--primary);
+  }
+
+  .signatures-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 25px;
+  }
+
+  .signature-block {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    border: 1px dashed var(--border);
+  }
+
+  .signature-block .role {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+
+  .signature-block .lines {
+    margin-top: 15px;
+  }
+
+  .signature-block .line {
+    border-bottom: 1px solid var(--text-muted);
+    margin-bottom: 18px;
+    padding-bottom: 4px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    min-height: 25px;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    padding: 28px 40px;
+    background: var(--primary-dark);
+    color: white;
+    text-align: center;
+  }
+
+  .footer-emblem {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .footer p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin: 4px 0;
+  }
+
+  .footer .tagline {
+    font-family: 'Amiri', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--accent);
+  }
+
+  /* ============ STATS BAR ============ */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: var(--primary);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 25px 0;
+    color: white;
+  }
+
+  .stat-cell {
+    padding: 22px 12px;
+    text-align: center;
+    border-left: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .stat-cell:last-child { border-left: none; }
+
+  .stat-num {
+    font-size: 1.9rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    margin-top: 6px;
+    opacity: 0.95;
+  }
+
+  /* ============ PRINT STYLES ============ */
+  @media print {
+    body { background: white; }
+    .page {
+      box-shadow: none;
+      margin: 0;
+      width: 100%;
+      max-width: none;
+      page-break-after: always;
+      min-height: auto;
+    }
+    .price-card, .month-row, .include-card, .terms-list li, .signature-section {
+      page-break-inside: avoid;
+    }
+    .cover { min-height: 257mm; }
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 2.3rem; }
+    .investment-summary .big-number { font-size: 4rem; }
+    .pricing-grid, .includes-grid, .compare-box, .signatures-grid {
+      grid-template-columns: 1fr;
+    }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .month-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== PAGE 1: COVER ===================== -->
+<section class="page cover">
+  <div class="cover-top">
+    <div class="cover-emblem">💼</div>
+    <div class="cover-meta">
+      <div>📅 2026-05-12</div>
+      <div>📄 خطة مالية</div>
+      <div>🔢 الإصدار 1.0</div>
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-pretitle">عرض مالي خاص بإدارة المعهد</div>
+    <h1>الخطة المالية<br>والاستثمارية</h1>
+    <p class="cover-subtitle">
+      تسليم نظام إدارة معهد متكامل على 4 شهور<br>
+      بدفعات شهرية مرنة + تدريب + صيانة سنة كاملة
+    </p>
+
+    <div class="cover-amount">
+      <div class="number">40,000</div>
+      <div class="currency">ريال سعودي</div>
+    </div>
+
+    <div class="cover-badges">
+      <div class="cover-badge">💳 8 دفعات مرنة</div>
+      <div class="cover-badge">🎓 تدريب شامل</div>
+      <div class="cover-badge">🛠 صيانة سنة كاملة</div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <p class="cover-tagline">"استثمار رقمي مدروس بقيمة استراتيجية واضحة"</p>
+    <p class="cover-recipient">عرض خاص — إدارة المعهد التدريبي المحترمة</p>
+  </div>
+</section>
+
+<!-- ===================== PAGE 2: INVESTMENT OVERVIEW ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الاستثمار الإجمالي</h2>
+      <div class="page-num">02</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">قيمة شاملة. شفافية كاملة.</span></h2>
+    <p class="section-subtitle">
+      استثمار رقمي مدروس بقيمة <strong>40,000 ريال</strong> للنظام بأكمله،
+      موزّعة على 4 مراحل شهرية مع دفعات مرنة، يشمل التدريب لكل مرحلة وصيانة كاملة لسنة بعد التسليم.
+    </p>
+
+    <div class="investment-summary">
+      <div class="label">إجمالي الاستثمار</div>
+      <div class="big-number">40,000</div>
+      <div class="currency-big">ريال سعودي</div>
+      <p class="description">
+        لنظام متكامل + 4 شهور تطوير + تدريب شامل + صيانة سنة + ملكية كاملة للكود والبيانات
+      </p>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-cell">
+        <div class="stat-num">4</div>
+        <div class="stat-label">مراحل شهرية</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">8</div>
+        <div class="stat-label">دفعات مرنة</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">10K</div>
+        <div class="stat-label">ريال لكل مرحلة</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">12</div>
+        <div class="stat-label">شهر صيانة مجانية</div>
+      </div>
+    </div>
+
+    <h3>كيف توزّع الاستثمار؟</h3>
+
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>البند</th>
+          <th>التفاصيل</th>
+          <th>القيمة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>المرحلة 1 — الأساس والاختبارات</strong></td>
+          <td>تأسيس البنية + منصة الاختبارات + الشهادات</td>
+          <td>10,000</td>
+        </tr>
+        <tr>
+          <td><strong>المرحلة 2 — الطلاب والمالية</strong></td>
+          <td>إدارة الطلاب + الحجب المالي الذكي</td>
+          <td>10,000</td>
+        </tr>
+        <tr>
+          <td><strong>المرحلة 3 — العمليات اليومية</strong></td>
+          <td>الطلبات + الخطابات + التسجيل + الأكاديمي</td>
+          <td>10,000</td>
+        </tr>
+        <tr>
+          <td><strong>المرحلة 4 — التكامل والذكاء</strong></td>
+          <td>TVTC + التقارير + التواصل الذكي</td>
+          <td>10,000</td>
+        </tr>
+        <tr>
+          <td><strong>التدريب لكل مرحلة</strong></td>
+          <td>4 جلسات تدريبية لموظفي المعهد</td>
+          <td style="color: var(--success) !important;">مشمول ✓</td>
+        </tr>
+        <tr>
+          <td><strong>الصيانة لمدة سنة</strong></td>
+          <td>إصلاح الأعطال + تحديثات أمنية + دعم فني</td>
+          <td style="color: var(--success) !important;">مشمول ✓</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2" style="text-align: right;"><strong>الإجمالي النهائي</strong></td>
+          <td>40,000 ريال</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="highlight-box">
+      <div class="label">💎 ملاحظة مهمة</div>
+      <h4>لا توجد تكاليف خفية</h4>
+      <p>السعر النهائي شامل. لا رسوم إضافية للتدريب، التوثيق، الاختبار، النشر، أو الصيانة خلال السنة الأولى.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 3: PAYMENT SCHEDULE ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">جدول الدفعات</h2>
+      <div class="page-num">03</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">8 دفعات مرنة على 4 شهور</span></h2>
+    <p class="section-subtitle">
+      كل مرحلة (10,000 ريال) تُدفع على <strong>دفعتين متساويتين</strong>:
+      الأولى عند بداية المرحلة، والثانية عند تسليمها وقبولها. هذا يضمن
+      <strong>توافق الدفع مع التسليم</strong> ويُقلّل مخاطر الاستثمار عليكم.
+    </p>
+
+    <div class="payment-timeline">
+      <div class="timeline-header">
+        <div class="timeline-title">📅 الجدول الزمني للدفعات</div>
+        <div class="timeline-total">المجموع: 40,000 ريال</div>
+      </div>
+
+      <div class="month-row">
+        <div class="month-label">
+          <span class="num">1</span>
+          <span class="word">الشهر</span>
+        </div>
+        <div class="payment-slot">
+          <div class="when">🟢 الدفعة 1 — بداية المرحلة</div>
+          <div class="amount">5,000 ريال</div>
+        </div>
+        <div class="payment-slot end">
+          <div class="when">🟡 الدفعة 2 — عند التسليم</div>
+          <div class="amount">5,000 ريال</div>
+        </div>
+        <div class="month-subtotal">10,000</div>
+      </div>
+
+      <div class="month-row">
+        <div class="month-label">
+          <span class="num">2</span>
+          <span class="word">الشهر</span>
+        </div>
+        <div class="payment-slot">
+          <div class="when">🟢 الدفعة 3 — بداية المرحلة</div>
+          <div class="amount">5,000 ريال</div>
+        </div>
+        <div class="payment-slot end">
+          <div class="when">🟡 الدفعة 4 — عند التسليم</div>
+          <div class="amount">5,000 ريال</div>
+        </div>
+        <div class="month-subtotal">10,000</div>
+      </div>
+
+      <div class="month-row">
+        <div class="month-label">
+          <span class="num">3</span>
+          <span class="word">الشهر</span>
+        </div>
+        <div class="payment-slot">
+          <div class="when">🟢 الدفعة 5 — بداية المرحلة</div>
+          <div class="amount">5,000 ريال</div>
+        </div>
+        <div class="payment-slot end">
+          <div class="when">🟡 الدفعة 6 — عند التسليم</div>
+          <div class="amount">5,000 ريال</div>
+        </div>
+        <div class="month-subtotal">10,000</div>
+      </div>
+
+      <div class="month-row">
+        <div class="month-label">
+          <span class="num">4</span>
+          <span class="word">الشهر</span>
+        </div>
+        <div class="payment-slot">
+          <div class="when">🟢 الدفعة 7 — بداية المرحلة</div>
+          <div class="amount">5,000 ريال</div>
+        </div>
+        <div class="payment-slot end">
+          <div class="when">🟡 الدفعة 8 — عند التسليم النهائي</div>
+          <div class="amount">5,000 ريال</div>
+        </div>
+        <div class="month-subtotal">10,000</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="label">⚖️ التوازن بين الحقوق</div>
+      <h4>دفعة بداية المرحلة + دفعة الاعتماد = ضمان متبادل</h4>
+      <p>
+        <strong>دفعة البداية (5,000)</strong>: تضمن لنا الالتزام بالعمل في المرحلة.<br>
+        <strong>دفعة الاعتماد (5,000)</strong>: تضمن لكم استلام المرحلة كاملة ومُختبرة قبل الدفع النهائي.<br>
+        لا تدفع المرحلة التالية قبل قبول التسليمات الحالية.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 4: PHASE BREAKDOWN 1 + 2 ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">تفصيل مالي — المرحلتان 1 و 2</h2>
+      <div class="page-num">04</div>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Phase 1 -->
+      <div class="price-card">
+        <div class="price-card-header">
+          <div class="price-card-title">المرحلة 1</div>
+          <div class="price-card-subtitle">الشهر الأول — الأساس والاختبارات</div>
+        </div>
+        <div class="price-card-body">
+          <div class="price-amount">10,000</div>
+          <div class="price-currency">ريال سعودي</div>
+          <ul class="price-features">
+            <li>إعداد البنية التحتية الكاملة</li>
+            <li>منصة الاختبارات الإلكترونية</li>
+            <li>14 نوع سؤال + بنك أسئلة</li>
+            <li>شهادات معتمدة TVTC بـQR</li>
+            <li>تطبيق التحضير على الجوال</li>
+            <li>تدريب 2 ساعة للمدربين والإدارة</li>
+            <li>وثائق المستخدم لكل دور</li>
+          </ul>
+          <div style="background: var(--cream); padding: 14px; border-radius: 8px; margin-top: 16px; text-align: center;">
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">طريقة الدفع</div>
+            <div style="font-weight: 700; color: var(--primary);">5,000 بداية + 5,000 تسليم</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="price-card featured">
+        <div class="price-card-header alt">
+          <div class="price-card-title">المرحلة 2 ⭐</div>
+          <div class="price-card-subtitle">الشهر الثاني — الطلاب والمالية</div>
+        </div>
+        <div class="price-card-body">
+          <div class="price-amount">10,000</div>
+          <div class="price-currency">ريال سعودي</div>
+          <ul class="price-features">
+            <li>إدارة الطلاب الكاملة (8 حالات)</li>
+            <li>إدارة الفروع ونقل الطلاب</li>
+            <li>الربط مع البرنامج المحاسبي</li>
+            <li><strong>محرك الحجب الذكي</strong></li>
+            <li>لوحات المالية للإدارة</li>
+            <li>تقارير المتأخرات والتحصيل</li>
+            <li>تدريب 3 ساعات للمالية والإدارة</li>
+          </ul>
+          <div style="background: var(--cream); padding: 14px; border-radius: 8px; margin-top: 16px; text-align: center;">
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">طريقة الدفع</div>
+            <div style="font-weight: 700; color: var(--primary);">5,000 بداية + 5,000 تسليم</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="label">⭐ المرحلة 2 — الأكثر تأثيراً</div>
+      <h4>محرك الحجب الذكي وحده قد يُغيّر معادلة التحصيل في معهدكم</h4>
+      <p>المعاهد التي طبّقت هذا النموذج شهدت ارتفاع التحصيل بنسبة 25-40٪ في أول 3 شهور، أي عائد استثمار ضعف القيمة الكاملة للنظام في أقل من سنة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 5: PHASE BREAKDOWN 3 + 4 ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">تفصيل مالي — المرحلتان 3 و 4</h2>
+      <div class="page-num">05</div>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Phase 3 -->
+      <div class="price-card">
+        <div class="price-card-header">
+          <div class="price-card-title">المرحلة 3</div>
+          <div class="price-card-subtitle">الشهر الثالث — العمليات اليومية</div>
+        </div>
+        <div class="price-card-body">
+          <div class="price-amount">10,000</div>
+          <div class="price-currency">ريال سعودي</div>
+          <ul class="price-features">
+            <li>محرك الطلبات (14 نوع طلب)</li>
+            <li>مولّد الخطابات PDF (12+ خطاب)</li>
+            <li>خطابات السلم الوظيفي</li>
+            <li>السيرة الذاتية التلقائية</li>
+            <li>بوابة شؤون المتدربين</li>
+            <li>التسجيل والقبول CRM</li>
+            <li>الجداول + الحضور + الواجبات</li>
+            <li>الاختبار الشامل النهائي</li>
+            <li>التقويم الموحّد + مكتبة الموارد</li>
+            <li>تدريب 4 ساعات لشؤون المتدربين والتسجيل</li>
+          </ul>
+          <div style="background: var(--cream); padding: 14px; border-radius: 8px; margin-top: 16px; text-align: center;">
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">طريقة الدفع</div>
+            <div style="font-weight: 700; color: var(--primary);">5,000 بداية + 5,000 تسليم</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="price-card">
+        <div class="price-card-header">
+          <div class="price-card-title">المرحلة 4 🏆</div>
+          <div class="price-card-subtitle">الشهر الرابع — التكامل والذكاء</div>
+        </div>
+        <div class="price-card-body">
+          <div class="price-amount">10,000</div>
+          <div class="price-currency">ريال سعودي</div>
+          <ul class="price-features">
+            <li>تكامل TVTC والوزارة الكامل</li>
+            <li>إرسال الدرجات للوزارة آلياً</li>
+            <li>لوحة الامتثال الحكومي</li>
+            <li>20+ تقرير إداري ومالي</li>
+            <li>أرشيف المعلمين الكامل</li>
+            <li>تقييم الطلاب للمعلمين</li>
+            <li>اكتشاف الطلاب المتعثرين</li>
+            <li>إشعارات WhatsApp + SMS + Email</li>
+            <li>مساعد ذكي للطلاب 24/7</li>
+            <li>تسجيل دخول بنفاذ</li>
+            <li>تدريب 3 ساعات للإدارة + ورشة ختامية</li>
+          </ul>
+          <div style="background: var(--cream); padding: 14px; border-radius: 8px; margin-top: 16px; text-align: center;">
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">طريقة الدفع</div>
+            <div style="font-weight: 700; color: var(--primary);">5,000 بداية + 5,000 تسليم نهائي</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="label">🏆 المرحلة 4 — الإكمال الذهبي</div>
+      <h4>الامتثال الحكومي + الذكاء + التواصل الآلي</h4>
+      <p>هذه المرحلة تكفل اعتماد TVTC المستمر، وتُحوّل النظام إلى منصة ذكية تقلل عبء شؤون المتدربين بنسبة كبيرة عبر المساعد الذكي والإشعارات الآلية.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 6: WHAT'S INCLUDED ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">ما يشمله السعر</h2>
+      <div class="page-num">06</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">شامل بكل ما يلزم لنجاحكم</span></h2>
+    <p class="section-subtitle">
+      عند توقيع هذه الخطة، تستلمون <strong>منظومة كاملة</strong> دون رسوم خفية أو إضافات
+      مفاجئة. كل ما تحتاجه إدارة المعهد لتشغيل النظام مشمول في الـ 40,000 ريال.
+    </p>
+
+    <div class="includes-grid">
+      <div class="include-card">
+        <div class="include-icon">💻</div>
+        <div class="include-content">
+          <h5>التطوير الكامل</h5>
+          <p>تطوير 60+ ميزة وظيفية موزّعة على 4 مراحل</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🎓</div>
+        <div class="include-content">
+          <h5>التدريب لكل مرحلة</h5>
+          <p>2-4 ساعات تدريب لكل مرحلة بالحضور أو عن بُعد</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">📚</div>
+        <div class="include-content">
+          <h5>الوثائق والأدلة</h5>
+          <p>دليل المستخدم لكل دور + فيديوهات شرح</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🧪</div>
+        <div class="include-content">
+          <h5>الاختبار الشامل</h5>
+          <p>اختبارات آلية ويدوية قبل تسليم كل مرحلة</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🚀</div>
+        <div class="include-content">
+          <h5>النشر والإطلاق</h5>
+          <p>نشر النظام على بيئة إنتاجية + إعدادات الأمان</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🛠</div>
+        <div class="include-content">
+          <h5>صيانة سنة كاملة</h5>
+          <p>إصلاح الأعطال + تحديثات أمنية مجاناً 12 شهراً</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">📂</div>
+        <div class="include-content">
+          <h5>ملكية البيانات</h5>
+          <p>بياناتكم لكم. تصدير كامل في أي وقت دون قيود</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🤝</div>
+        <div class="include-content">
+          <h5>الدعم الفني</h5>
+          <p>قنوات دعم محددة مع زمن استجابة واضح</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🔐</div>
+        <div class="include-content">
+          <h5>توافق PDPL وTVTC</h5>
+          <p>تطبيق كل متطلبات الأنظمة السعودية</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🌐</div>
+        <div class="include-content">
+          <h5>عربي بالكامل RTL</h5>
+          <p>تصميم عربي أصلي ليس ترجمة</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>ما هو خارج النطاق (يُتفق عليه منفصلاً إن لزم)</h3>
+
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>البند</th>
+          <th>الملاحظة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>الاستضافة السنوية</strong></td>
+          <td>مزوّد الاستضافة يفوتر مباشرة (تكلفة تقديرية: 100-300 ريال/شهر)</td>
+        </tr>
+        <tr>
+          <td><strong>رسوم WhatsApp/SMS/Email</strong></td>
+          <td>حسب استخدامكم الفعلي عبر مزوّد الخدمة (نموذج Pay-as-you-go)</td>
+        </tr>
+        <tr>
+          <td><strong>تطوير ميزات جديدة بعد التسليم</strong></td>
+          <td>تُسعّر منفصلة حسب الحجم (طلب تغيير رسمي)</td>
+        </tr>
+        <tr>
+          <td><strong>تدريب إضافي خارج الـ12 ساعة</strong></td>
+          <td>500 ريال/ساعة تدريب إضافية إن طُلبت</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===================== PAGE 7: MAINTENANCE YEAR ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الصيانة السنوية المجانية</h2>
+      <div class="page-num">07</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">12 شهر صيانة مجانية بعد التسليم</span></h2>
+    <p class="section-subtitle">
+      بعد التسليم النهائي للنظام، تستمر علاقة الدعم لـ <strong>سنة كاملة مجاناً</strong> ضمن
+      الـ 40,000 ريال — دون أي رسوم إضافية، لضمان استقرار النظام واستمرار خدمتكم.
+    </p>
+
+    <div class="includes-grid">
+      <div class="include-card">
+        <div class="include-icon">🐛</div>
+        <div class="include-content">
+          <h5>إصلاح الأعطال (Bug Fixes)</h5>
+          <p>أي خطأ في النظام يُصلَح مجاناً خلال 24-72 ساعة حسب درجة الخطورة</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🔒</div>
+        <div class="include-content">
+          <h5>التحديثات الأمنية</h5>
+          <p>تطبيق آخر تحديثات الأمان للمكتبات والنظام</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">📞</div>
+        <div class="include-content">
+          <h5>الدعم الفني المباشر</h5>
+          <p>قنوات تواصل محددة (Email + WhatsApp + رقم دعم)</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">📊</div>
+        <div class="include-content">
+          <h5>مراقبة الأداء</h5>
+          <p>مراقبة دورية للنظام والاستجابة للمشاكل قبل تأثيرها على المستخدمين</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">💾</div>
+        <div class="include-content">
+          <h5>النسخ الاحتياطية</h5>
+          <p>مراجعة النسخ الاحتياطية اليومية والتأكد من سلامتها</p>
+        </div>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🔧</div>
+        <div class="include-content">
+          <h5>التعديلات الصغيرة</h5>
+          <p>تعديلات بسيطة لا تتجاوز ساعة عمل (تنسيق، حقول إضافية، إلخ)</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>مستويات الاستجابة</h3>
+
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>درجة المشكلة</th>
+          <th>الوصف</th>
+          <th>زمن الاستجابة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>🔴 حرجة</strong></td>
+          <td>النظام متوقف أو ميزة رئيسية معطّلة</td>
+          <td>خلال 4 ساعات</td>
+        </tr>
+        <tr>
+          <td><strong>🟠 عالية</strong></td>
+          <td>ميزة ثانوية معطّلة أو خطأ مزعج للمستخدمين</td>
+          <td>خلال 24 ساعة</td>
+        </tr>
+        <tr>
+          <td><strong>🟡 متوسطة</strong></td>
+          <td>خطأ في شاشة واحدة لا يعوق العمل</td>
+          <td>خلال 72 ساعة</td>
+        </tr>
+        <tr>
+          <td><strong>🟢 منخفضة</strong></td>
+          <td>تحسينات بصرية أو نصية</td>
+          <td>خلال أسبوع</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <div class="label">📅 بعد السنة الأولى</div>
+      <h4>عقد صيانة سنوي اختياري بقيمة 15-20٪ من قيمة المشروع</h4>
+      <p>أي حوالي 6,000-8,000 ريال سنوياً لتمديد الصيانة. إن لم ترغبوا في التمديد، يبقى النظام بحوزتكم بالكامل مع ملكية الكود الكاملة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 8: VALUE COMPARISON ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">قيمة الاستثمار</h2>
+      <div class="page-num">08</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">لماذا 40,000 ريال؟ قيمة استثنائية بمقاييس السوق</span></h2>
+    <p class="section-subtitle">
+      أنظمة إدارة المعاهد المماثلة في السوق السعودي تتراوح أسعارها بين <strong>150,000 و 500,000 ريال</strong>
+      للنظام الكامل. عرضنا يقدم نفس القيمة بكسر التكلفة بفضل المنهجية الحديثة في التطوير.
+    </p>
+
+    <div class="compare-box">
+      <div class="compare-side market">
+        <div class="compare-label">السوق التقليدي</div>
+        <div class="compare-price">150,000+</div>
+        <div class="compare-desc">ريال للأنظمة التقليدية المماثلة</div>
+        <ul class="compare-list">
+          <li>التدريب بسعر إضافي (500-1000/ساعة)</li>
+          <li>الصيانة السنوية 20-30K بعد التسليم</li>
+          <li>وقت التسليم 6-12 شهر</li>
+          <li>عقد طويل بدون مرونة</li>
+          <li>صعوبة في طلب التعديلات</li>
+          <li>دفع مقدم كبير (30-50٪)</li>
+        </ul>
+      </div>
+
+      <div class="compare-side ours">
+        <div class="compare-label">عرضنا لكم</div>
+        <div class="compare-price">40,000</div>
+        <div class="compare-desc">ريال شامل بدون مفاجآت</div>
+        <ul class="compare-list">
+          <li>التدريب مشمول مجاناً</li>
+          <li>صيانة سنة كاملة مجانية</li>
+          <li>تسليم في 4 شهور فقط</li>
+          <li>دفعات شهرية مرنة</li>
+          <li>تعديلات بسيطة مشمولة</li>
+          <li>دفع تدريجي 12.5٪ كل دفعة</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>عائد الاستثمار المتوقّع (ROI)</h3>
+
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>مصدر التوفير/الإيراد</th>
+          <th>التقدير السنوي</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>زيادة التحصيل المالي</strong> (بفضل محرك الحجب)</td>
+          <td>25-40٪ من المتأخرات</td>
+        </tr>
+        <tr>
+          <td><strong>توفير وقت الموظفين</strong> (أتمتة الطلبات والخطابات)</td>
+          <td>40-60٪ من وقت شؤون المتدربين</td>
+        </tr>
+        <tr>
+          <td><strong>تقليل الأخطاء البشرية</strong> (في الدرجات والإيصالات)</td>
+          <td>توفير ساعات أسبوعياً للإدارة</td>
+        </tr>
+        <tr>
+          <td><strong>تحسين تجربة الطالب</strong> (يقلل الانسحاب)</td>
+          <td>الحفاظ على إيرادات الطلاب المتعثرين</td>
+        </tr>
+        <tr>
+          <td><strong>دخل جديد من الخريجين</strong> (دورات تطويرية)</td>
+          <td>مصدر إيراد إضافي مستدام</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <div class="label">📈 خلاصة العائد</div>
+      <h4>الاستثمار يسترد قيمته الكاملة عادةً في 6-12 شهراً من التشغيل</h4>
+      <p>أي أن النظام يدفع تكلفته بنفسه خلال السنة الأولى، ويبدأ بتوليد قيمة صافية من السنة الثانية فأكثر.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 9: TERMS & CONDITIONS ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الشروط والأحكام</h2>
+      <div class="page-num">09</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">شروط واضحة وعادلة للطرفين</span></h2>
+    <p class="section-subtitle">
+      نلتزم بالشفافية الكاملة في كل بنود التعاقد. هذه الشروط تحمي حقوق المعهد والجهة المنفّذة معاً.
+    </p>
+
+    <ul class="terms-list">
+      <li>
+        <h5>الدفعات والاستحقاق</h5>
+        <p>دفعة بداية كل مرحلة (5,000 ريال) تُسدّد خلال 5 أيام عمل من بدء المرحلة. دفعة الاعتماد تُسدّد خلال 7 أيام من استلام التسليمات وقبولها.</p>
+      </li>
+      <li>
+        <h5>معايير قبول كل مرحلة</h5>
+        <p>تُعتمد المرحلة بعد تجاوز كل الاختبارات + تطبيق ملاحظات UAT + توقيع نموذج القبول من المعهد. مهلة قبول المرحلة 7 أيام عمل.</p>
+      </li>
+      <li>
+        <h5>التأخيرات والاعتراضات</h5>
+        <p>إن تأخر تسليم مرحلة عن موعدها (4 أسابيع)، يُمنح المعهد خصم 2٪ من دفعة الاعتماد لكل أسبوع تأخير لا يتجاوز 10٪.</p>
+      </li>
+      <li>
+        <h5>التعديلات وتغيير النطاق</h5>
+        <p>التعديلات البسيطة (≤ 4 ساعات عمل) مشمولة. التعديلات الكبيرة تُسعّر منفصلة بطلب تغيير رسمي قبل التنفيذ.</p>
+      </li>
+      <li>
+        <h5>ملكية الكود والبيانات</h5>
+        <p>ملكية الكود الكاملة تنتقل للمعهد بعد سداد المرحلة الرابعة. البيانات ملك المعهد منذ اليوم الأول مع حق التصدير في أي وقت.</p>
+      </li>
+      <li>
+        <h5>الصيانة السنوية المجانية</h5>
+        <p>تبدأ من تاريخ التسليم النهائي (نهاية الشهر الرابع) وتستمر 12 شهراً كاملاً تشمل إصلاح الأعطال والتحديثات الأمنية.</p>
+      </li>
+      <li>
+        <h5>السرية وحماية البيانات</h5>
+        <p>التزام كامل بسرية بيانات المعهد والطلاب وعدم استخدامها لأي غرض آخر، مع الامتثال لنظام حماية البيانات الشخصية (PDPL).</p>
+      </li>
+      <li>
+        <h5>الإنهاء المبكّر</h5>
+        <p>للمعهد الحق في إيقاف المشروع في نهاية أي مرحلة. لا توجد رسوم إنهاء. تُحفظ التسليمات المعتمدة للمعهد بشكل دائم.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== PAGE 10: FINAL SUMMARY + SIGNATURE ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الموافقة والتوقيع</h2>
+      <div class="page-num">10</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">جاهز للانطلاق؟</span></h2>
+    <p class="section-subtitle">
+      بتوقيع هذه الوثيقة، يلتزم الطرفان بالشروط والأحكام المذكورة، ويبدأ تنفيذ المرحلة الأولى
+      في غضون 5 أيام عمل من تاريخ التوقيع وسداد الدفعة الأولى.
+    </p>
+
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>الملخص النهائي</th>
+          <th>القيمة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>إجمالي قيمة المشروع</strong></td>
+          <td>40,000 ريال</td>
+        </tr>
+        <tr>
+          <td>عدد المراحل</td>
+          <td>4 مراحل شهرية</td>
+        </tr>
+        <tr>
+          <td>عدد الدفعات</td>
+          <td>8 دفعات متساوية (5,000 لكل دفعة)</td>
+        </tr>
+        <tr>
+          <td>التدريب لكل مرحلة</td>
+          <td style="color: var(--success) !important;">مشمول ✓</td>
+        </tr>
+        <tr>
+          <td>الصيانة السنوية</td>
+          <td style="color: var(--success) !important;">12 شهر مجاناً ✓</td>
+        </tr>
+        <tr>
+          <td>مدة التسليم</td>
+          <td>4 شهور</td>
+        </tr>
+        <tr>
+          <td>ملكية الكود والبيانات</td>
+          <td style="color: var(--success) !important;">للمعهد بالكامل ✓</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>القيمة النهائية بعد التوقيع</td>
+          <td>40,000 ريال شامل</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="signature-section">
+      <h3>توقيع الطرفين</h3>
+      <div class="signatures-grid">
+        <div class="signature-block">
+          <div class="role">الطرف الأول — إدارة المعهد</div>
+          <div class="lines">
+            <div class="line">الاسم: ____________________</div>
+            <div class="line">المسمى: ____________________</div>
+            <div class="line">التوقيع: ____________________</div>
+            <div class="line">التاريخ: ____________________</div>
+          </div>
+        </div>
+        <div class="signature-block">
+          <div class="role">الطرف الثاني — الجهة المنفّذة</div>
+          <div class="lines">
+            <div class="line">الاسم: ____________________</div>
+            <div class="line">المسمى: ____________________</div>
+            <div class="line">التوقيع: ____________________</div>
+            <div class="line">التاريخ: ____________________</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="label">🚀 الخطوة التالية بعد التوقيع</div>
+      <h4>جلسة Discovery لمدة 2-3 ساعات</h4>
+      <p>نلتقي مع إدارة المعهد لتوحيد التفاصيل التشغيلية (قواعد الحجب، الخطابات، الأدوار، إلخ)، ثم نبدأ العمل الفعلي للمرحلة الأولى. أول تسليم في غضون 4 أسابيع.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-emblem">💼</div>
+    <p><strong>الخطة المالية والاستثمارية</strong></p>
+    <p class="tagline">"استثمار مدروس في مستقبل معهدكم الرقمي"</p>
+    <p style="margin-top: 12px; font-size: 0.78rem; opacity: 0.6;">
+      الإصدار 1.0 · 2026-05-12 · عرض خاص للمعهد المحترم
+    </p>
+  </div>
+</section>
+
+</body>
+</html>
