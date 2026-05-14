@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عقد تطوير نظام إدارة المعهد التدريبي المتكامل (IIMS)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary: #065F46;
+    --primary-light: #047857;
+    --primary-dark: #064E3B;
+    --accent: #D4A574;
+    --accent-dark: #B58853;
+    --gold: #C9A961;
+    --cream: #FAFAF7;
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #DC2626;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-family: 'Cairo', system-ui, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.85;
+    font-size: 14px;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    page-break-after: always;
+    min-height: 297mm;
+    position: relative;
+  }
+  .page:last-child { page-break-after: avoid; }
+
+  /* ========== COVER ========== */
+  .cover {
+    min-height: 297mm;
+    background: linear-gradient(135deg, #064E3B 0%, #065F46 40%, #047857 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,165,116,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212,165,116,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-top, .cover-bottom, .cover-center {
+    z-index: 2; position: relative;
+  }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover-emblem {
+    width: 90px; height: 90px;
+    background: rgba(212,165,116,0.15);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.8rem;
+  }
+  .cover-meta { text-align: end; font-size: 0.85rem; opacity: 0.9; }
+  .cover-meta div { margin-bottom: 5px; }
+  .cover-center { text-align: center; }
+  .cover-pretitle {
+    font-family: 'Amiri', serif;
+    font-size: 1.3rem;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+  }
+  .cover h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.4;
+    margin-bottom: 22px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .cover-subtitle {
+    font-size: 1.3rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto 45px;
+    line-height: 1.7;
+  }
+  .cover-amount {
+    background: rgba(212,165,116,0.2);
+    border: 2px solid var(--accent);
+    padding: 28px 50px;
+    border-radius: 18px;
+    display: inline-block;
+    margin-bottom: 30px;
+  }
+  .cover-amount .number {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .cover-amount .currency {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 6px;
+    opacity: 0.95;
+  }
+  .cover-badges {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .cover-badge {
+    background: rgba(255,255,255,0.12);
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(212,165,116,0.4);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .cover-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .cover-tagline {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.9;
+    margin-bottom: 10px;
+  }
+  .cover-doc-id {
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+
+  /* ========== CONTENT ========== */
+  .content-page {
+    padding: 40px 50px 60px;
+    background: white;
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 14px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--primary);
+    position: relative;
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    width: 90px;
+    height: 3px;
+    background: var(--accent);
+  }
+  .page-num {
+    background: var(--primary);
+    color: white;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem;
+  }
+  .page-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  /* ========== CONTRACT STRUCTURE ========== */
+  .article {
+    margin-bottom: 28px;
+    page-break-inside: avoid;
+  }
+  .article-header {
+    background: var(--primary);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .article-number {
+    background: var(--accent);
+    color: var(--primary-dark);
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .article-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+  .article-body {
+    padding-right: 20px;
+  }
+  .clause {
+    margin-bottom: 14px;
+    line-height: 1.9;
+  }
+  .clause-num {
+    display: inline-block;
+    background: #F3F4F6;
+    color: var(--primary);
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-left: 8px;
+  }
+
+  /* Preamble */
+  .preamble {
+    background: var(--cream);
+    border-right: 5px solid var(--accent);
+    padding: 22px 26px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    line-height: 2;
+    font-size: 14.5px;
+  }
+
+  /* Parties Card */
+  .parties {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 28px 0;
+  }
+  .party-card {
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .party-label {
+    background: var(--primary);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .party-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+  .party-fields {
+    list-style: none;
+  }
+  .party-fields li {
+    padding: 6px 0;
+    font-size: 0.92rem;
+    color: var(--text);
+    border-bottom: 1px dashed #D1D5DB;
+  }
+  .party-fields li:last-child { border-bottom: none; }
+  .party-fields .label {
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-left: 6px;
+  }
+  .party-fields .field {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* Tables */
+  .legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .legal-table thead {
+    background: var(--primary);
+    color: white;
+  }
+  .legal-table th {
+    padding: 11px 14px;
+    text-align: right;
+    font-weight: 700;
+    font-size: 0.92rem;
+    border-left: 1px solid rgba(255,255,255,0.15);
+  }
+  .legal-table th:last-child { border-left: none; }
+  .legal-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    font-size: 0.92rem;
+  }
+  .legal-table td:last-child {
+    border-left: none;
+    font-weight: 700;
+    color: var(--primary);
+    text-align: center;
+  }
+  .legal-table tbody tr:nth-child(even) { background: #F9FAFB; }
+  .legal-table tfoot {
+    background: var(--primary-dark);
+    color: var(--accent);
+    font-weight: 800;
+  }
+  .legal-table tfoot td {
+    padding: 13px;
+    color: var(--accent);
+    font-size: 1.05rem;
+    border-left-color: rgba(255,255,255,0.15);
+  }
+
+  /* Lists */
+  .legal-list {
+    list-style: none;
+    margin: 12px 0;
+    padding-right: 8px;
+  }
+  .legal-list li {
+    position: relative;
+    padding: 6px 24px 6px 0;
+    line-height: 1.85;
+  }
+  .legal-list li::before {
+    content: '•';
+    color: var(--accent-dark);
+    font-weight: 900;
+    font-size: 1.3rem;
+    position: absolute;
+    right: 0;
+    top: 2px;
+  }
+
+  /* Highlight */
+  .highlight {
+    background: #FEF3C7;
+    border-right: 4px solid var(--gold);
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin: 16px 0;
+    font-size: 0.92rem;
+    color: #78350F;
+    line-height: 1.8;
+  }
+  .highlight strong {
+    color: #92400E;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+  }
+
+  /* Important */
+  .important {
+    background: #FEE2E2;
+    border-right: 4px solid var(--danger);
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin: 16px 0;
+    font-size: 0.92rem;
+    color: #7F1D1D;
+    line-height: 1.8;
+  }
+
+  /* Signature */
+  .signature-section {
+    background: var(--cream);
+    padding: 32px;
+    border-radius: 14px;
+    margin: 30px 0 20px;
+    border: 2px solid var(--primary);
+  }
+  .signature-section h3 {
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.3rem;
+    margin-bottom: 22px;
+  }
+  .signatures-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .signature-block {
+    background: white;
+    padding: 24px;
+    border-radius: 10px;
+    border: 1px dashed #9CA3AF;
+  }
+  .signature-block .role-label {
+    background: var(--accent);
+    color: var(--primary-dark);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+  .sig-field {
+    margin-bottom: 18px;
+  }
+  .sig-field .label {
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+    display: block;
+  }
+  .sig-field .line {
+    border-bottom: 1.5px solid #6B7280;
+    min-height: 26px;
+  }
+
+  /* Section Header */
+  .section-h {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
+  }
+
+  /* Print */
+  @media print {
+    @page { size: A4; margin: 0; }
+    html, body { width: 210mm; background: white; font-size: 11px; }
+    .page {
+      box-shadow: none;
+      width: 210mm !important;
+      max-width: 210mm !important;
+      min-height: 297mm !important;
+      page-break-after: always !important;
+    }
+    .page:last-child { page-break-after: avoid !important; }
+    .cover { height: 297mm !important; padding: 22mm 18mm !important; }
+    .content-page { padding: 16mm 16mm 14mm !important; }
+    .article { page-break-inside: avoid; margin-bottom: 18px; }
+    .signature-section { page-break-inside: avoid; }
+    .article-title { font-size: 1.05rem; }
+    .cover h1 { font-size: 2.4rem; }
+    .cover-amount .number { font-size: 3.5rem; }
+    .preamble { font-size: 11px; padding: 14px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====================== COVER ====================== -->
+<section class="page cover">
+  <div class="cover-top">
+    <div class="cover-emblem">⚖️</div>
+    <div class="cover-meta">
+      <div>📄 وثيقة قانونية رسمية</div>
+      <div>🔢 الإصدار 1.0</div>
+      <div>🗓 محرّر بتاريخ: ........................</div>
+      <div>📍 المملكة العربية السعودية</div>
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-pretitle">باسم الله الرحمن الرحيم</div>
+    <h1>عقد تطوير<br>نظام إدارة المعهد التدريبي المتكامل</h1>
+    <p class="cover-subtitle">
+      اتفاقية رسمية بين الطرفين لتنفيذ مشروع رقمي متكامل على 4 مراحل<br>
+      مع تسليم تدريجي + تدريب + صيانة سنة كاملة
+    </p>
+
+    <div class="cover-amount">
+      <div class="number">40,000</div>
+      <div class="currency">ريال سعودي — القيمة الإجمالية للعقد</div>
+    </div>
+
+    <div class="cover-badges">
+      <div class="cover-badge">⏱ 4 شهور للتسليم</div>
+      <div class="cover-badge">💳 8 دفعات مرنة</div>
+      <div class="cover-badge">🛠 صيانة سنة</div>
+      <div class="cover-badge">📚 تدريب مشمول</div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <p class="cover-tagline">"اتفاق واضح يحفظ حقوق الطرفين"</p>
+    <p class="cover-doc-id">رقم العقد: IIMS-........./...........</p>
+  </div>
+</section>
+
+<!-- ====================== PAGE 2: PREAMBLE + PARTIES ====================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">التمهيد والأطراف</h2>
+      <div class="page-num">02</div>
+    </div>
+
+    <h3 class="section-h">📜 التمهيد</h3>
+
+    <div class="preamble">
+      <p>
+        إنه في يوم ............... الموافق ......./......./......1447 هـ، الموافق ......./......./......2026 م،
+        تمَّ بعون الله وتوفيقه إبرام هذا العقد بين كل من:
+      </p>
+    </div>
+
+    <div class="parties">
+      <div class="party-card">
+        <span class="party-label">الطرف الأول</span>
+        <div class="party-title">المعهد التدريبي (العميل)</div>
+        <ul class="party-fields">
+          <li><span class="label">الاسم:</span> <span class="field">........................................</span></li>
+          <li><span class="label">السجل التجاري:</span> <span class="field">........................................</span></li>
+          <li><span class="label">الرقم الضريبي:</span> <span class="field">........................................</span></li>
+          <li><span class="label">العنوان:</span> <span class="field">........................................</span></li>
+          <li><span class="label">يمثله:</span> <span class="field">........................................</span></li>
+          <li><span class="label">الصفة:</span> <span class="field">........................................</span></li>
+          <li><span class="label">الجوال:</span> <span class="field">........................................</span></li>
+          <li><span class="label">البريد:</span> <span class="field">........................................</span></li>
+        </ul>
+      </div>
+
+      <div class="party-card">
+        <span class="party-label">الطرف الثاني</span>
+        <div class="party-title">الجهة المنفّذة (المطوّر)</div>
+        <ul class="party-fields">
+          <li><span class="label">الاسم:</span> <span class="field">........................................</span></li>
+          <li><span class="label">السجل التجاري:</span> <span class="field">........................................</span></li>
+          <li><span class="label">الرقم الضريبي:</span> <span class="field">........................................</span></li>
+          <li><span class="label">العنوان:</span> <span class="field">........................................</span></li>
+          <li><span class="label">يمثله:</span> <span class="field">........................................</span></li>
+          <li><span class="label">الصفة:</span> <span class="field">........................................</span></li>
+          <li><span class="label">الجوال:</span> <span class="field">........................................</span></li>
+          <li><span class="label">البريد:</span> <span class="field">........................................</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="preamble">
+      <p>
+        وحيث إن <strong>الطرف الأول</strong> يرغب في الحصول على نظام إدارة معهد تدريبي متكامل (IIMS) لأتمتة عملياته
+        الإدارية والمالية والأكاديمية، وحيث إن <strong>الطرف الثاني</strong> يمتلك الخبرة والكفاءة التقنية لتطوير وتنفيذ
+        مثل هذه الأنظمة، وبعد التفاوض والاتفاق بين الطرفين، اتفقا — وهما بكامل الأهلية الشرعية والقانونية —
+        على ما يلي:
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PAGE 3: ARTICLES 1-3 ====================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المواد 1-3: التمهيد والتعريفات والمحل</h2>
+      <div class="page-num">03</div>
+    </div>
+
+    <!-- Article 1 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">1</div>
+        <div class="article-title">التمهيد جزء من العقد</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">1.1</span>
+          يُعدّ التمهيد السابق جزءاً لا يتجزأ من هذا العقد، ومكمّلاً لأحكامه، ويُقرأ ويُفسَّر معه كوحدة واحدة.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 2 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">2</div>
+        <div class="article-title">التعريفات</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">يُقصد بالمصطلحات التالية أينما وردت في هذا العقد المعاني الموضّحة أمام كلٍّ منها:</p>
+        <ul class="legal-list">
+          <li><strong>النظام / IIMS:</strong> نظام إدارة المعهد التدريبي المتكامل المُطوَّر بموجب هذا العقد، شاملاً جميع موديولاته وميزاته المتفق عليها.</li>
+          <li><strong>المرحلة:</strong> جزء من المشروع يُسلَّم بشكل مستقل، ومدة كل مرحلة شهر تقريباً (4 أسابيع عمل).</li>
+          <li><strong>المخرَجات (Deliverables):</strong> الوثائق والميزات والشاشات والمكوّنات التي يلتزم الطرف الثاني بتسليمها بنهاية كل مرحلة.</li>
+          <li><strong>الاعتماد:</strong> الموافقة الرسمية الكتابية من الطرف الأول على المخرَجات المُسلَّمة بعد تجاوزها معايير القبول.</li>
+          <li><strong>معايير القبول (Acceptance Criteria):</strong> الشروط الواجب توفّرها لاعتماد المرحلة، وفق ما هو موضّح في الملحقات.</li>
+          <li><strong>الصيانة:</strong> فترة الـ12 شهراً التي تلي التسليم النهائي، يلتزم خلالها الطرف الثاني بإصلاح الأعطال وتحديثات الأمان مجاناً.</li>
+          <li><strong>ملكية الكود:</strong> حقوق الملكية الفكرية الكاملة للشيفرة البرمجية المُطوَّرة.</li>
+          <li><strong>ملكية البيانات:</strong> حقوق الملكية الكاملة للبيانات المُدخلة في النظام وتبقى دائماً للطرف الأول.</li>
+          <li><strong>نظام حماية البيانات (PDPL):</strong> نظام حماية البيانات الشخصية السعودي الصادر بالمرسوم الملكي.</li>
+          <li><strong>الجلسة التمهيدية (Discovery):</strong> اللقاء الأول بين الطرفين لتوحيد قواعد العمل قبل بدء التنفيذ.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Article 3 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">3</div>
+        <div class="article-title">محلّ العقد</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">3.1</span>
+          يلتزم الطرف الثاني بتطوير وتسليم نظام <strong>IIMS</strong> الكامل وفق المواصفات والمراحل المُحدَّدة في
+          هذا العقد وملحقاته، باستخدام أحدث التقنيات وأفضل الممارسات الهندسية.
+        </p>
+        <p class="clause">
+          <span class="clause-num">3.2</span>
+          يلتزم الطرف الأول بسداد القيمة المالية المتفق عليها وفق جدول الدفعات، وتوفير المعلومات اللازمة في وقتها.
+        </p>
+        <p class="clause">
+          <span class="clause-num">3.3</span>
+          يقرّ الطرفان بأن المخرَجات تشمل: الشيفرة البرمجية، التوثيق، التدريب، الاختبارات، النشر، والصيانة لمدة سنة كاملة.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PAGE 4: ARTICLE 4 - SCOPE ====================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المادة 4: نطاق العمل</h2>
+      <div class="page-num">04</div>
+    </div>
+
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">4</div>
+        <div class="article-title">نطاق العمل والمخرَجات</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">يُسلَّم النظام على <strong>أربع مراحل متتابعة</strong> كما يلي:</p>
+
+        <h4 style="color: var(--primary); margin: 18px 0 10px;">📦 المرحلة الأولى — الأساس والاختبارات (الشهر الأول)</h4>
+        <ul class="legal-list">
+          <li>إعداد البنية التحتية للنظام (Auth + RBAC + Audit Log + Multi-Branch).</li>
+          <li>دعم 4 فروع مع عزل تام للبيانات وصلاحيات تفصيلية.</li>
+          <li>بنك أسئلة مركزي يدعم 14 نوع سؤال + استيراد من Excel.</li>
+          <li>محرك توليد الاختبارات + كود اختبار ذكي (حضوري/منتسب).</li>
+          <li>التصحيح الآلي + 3 طبقات حماية الاختبار.</li>
+          <li>نظام الدبلومات + شهادات معتمدة TVTC + QR للتحقق.</li>
+          <li>تطبيق ويب للتحضير على الجوال (PWA).</li>
+        </ul>
+
+        <h4 style="color: var(--primary); margin: 18px 0 10px;">📦 المرحلة الثانية — الطلاب والمالية (الشهر الثاني)</h4>
+        <ul class="legal-list">
+          <li>ملف طالب شامل (أكاديمي + مالي + إداري) مع 8 حالات.</li>
+          <li>إدارة الفروع + نقل الطلاب + حقول التوظيف الاختيارية.</li>
+          <li>الربط مع البرنامج المحاسبي للمعهد عبر API.</li>
+          <li>محرك الحجب الذكي للخدمات + قواعد قابلة للتعديل.</li>
+          <li>فك الحجب الفوري من الإدارة مع توثيق إلزامي للسبب.</li>
+          <li>لوحات مالية للإدارة + تقارير المتأخرات.</li>
+        </ul>
+
+        <h4 style="color: var(--primary); margin: 18px 0 10px;">📦 المرحلة الثالثة — العمليات اليومية (الشهر الثالث)</h4>
+        <ul class="legal-list">
+          <li>محرك طلبات ذكي لـ14 نوع طلب + مسارات تلقائية + SLA.</li>
+          <li>مولّد خطابات PDF احترافي بـ12+ خطاب رسمي + خطابات السلم الوظيفي.</li>
+          <li>توقيع رقمي + QR لكل خطاب + سيرة ذاتية تلقائية للطالب.</li>
+          <li>بوابة شؤون المتدربين الكاملة + التسجيل والقبول (7 مراحل CRM).</li>
+          <li>إدارة الجداول (صباحي/مسائي/ويكند) + الحضور المتقدم + الواجبات.</li>
+          <li>الاختبار الشامل النهائي + التقويم الموحّد + مكتبة الموارد التعليمية.</li>
+        </ul>
+
+        <h4 style="color: var(--primary); margin: 18px 0 10px;">📦 المرحلة الرابعة — التكامل والذكاء (الشهر الرابع)</h4>
+        <ul class="legal-list">
+          <li>تكامل TVTC الكامل لتسجيل المتدربين وإرسال الدرجات والحضور.</li>
+          <li>اعتماد رسمي للشهادات من نظام TVTC + لوحة الامتثال الحكومي.</li>
+          <li>لوحات Dashboards لكل دور + 20+ تقرير جاهز قابل للتصدير.</li>
+          <li>تكامل WhatsApp Business API + SMS + Email للإشعارات.</li>
+          <li>مساعد ذكي للطلاب 24/7 + تسجيل دخول بنفاذ.</li>
+          <li>بوابة الخريجين + الدورات التطويرية المستمرة.</li>
+        </ul>
+
+        <div class="highlight">
+          <strong>📌 ما يخرج من نطاق هذا العقد:</strong>
+          - الاستضافة السنوية (يتعاقد عليها العميل مباشرة).<br>
+          - رسوم WhatsApp/SMS/Email حسب الاستخدام (Pay-as-you-go).<br>
+          - تطوير ميزات جديدة بعد التسليم (طلب تغيير منفصل).<br>
+          - أي تكاليف للأطراف الثالثة (مزوّدو الخدمات الخارجيون).
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PAGE 5: ARTICLE 5 - FINANCIAL ====================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المادة 5: القيمة المالية والدفعات</h2>
+      <div class="page-num">05</div>
+    </div>
+
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">5</div>
+        <div class="article-title">القيمة المالية وجدول الدفعات</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">5.1</span>
+          القيمة الإجمالية للعقد <strong>أربعون ألف ريال سعودي فقط (40,000 ر.س)</strong>،
+          شاملةً جميع الأعمال والخدمات الموضّحة في المادة 4، ولا تشمل ضريبة القيمة المضافة (إن استحقّت).
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">5.2</span>
+          تُوزَّع القيمة الإجمالية بالتساوي على المراحل الأربع (<strong>10,000 ريال لكل مرحلة</strong>)،
+          وتُسدَّد كل مرحلة على دفعتين متساويتين:
+        </p>
+
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>المرحلة</th>
+              <th>دفعة بداية المرحلة 🟢</th>
+              <th>دفعة اعتماد التسليم 🟡</th>
+              <th>المجموع</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>المرحلة الأولى</strong></td>
+              <td>5,000 ر.س</td>
+              <td>5,000 ر.س</td>
+              <td>10,000 ر.س</td>
+            </tr>
+            <tr>
+              <td><strong>المرحلة الثانية</strong></td>
+              <td>5,000 ر.س</td>
+              <td>5,000 ر.س</td>
+              <td>10,000 ر.س</td>
+            </tr>
+            <tr>
+              <td><strong>المرحلة الثالثة</strong></td>
+              <td>5,000 ر.س</td>
+              <td>5,000 ر.س</td>
+              <td>10,000 ر.س</td>
+            </tr>
+            <tr>
+              <td><strong>المرحلة الرابعة</strong></td>
+              <td>5,000 ر.س</td>
+              <td>5,000 ر.س</td>
+              <td>10,000 ر.س</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3" style="text-align: right;"><strong>الإجمالي النهائي</strong></td>
+              <td>40,000 ر.س</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <p class="clause">
+          <span class="clause-num">5.3</span>
+          تُسدَّد دفعة بداية كل مرحلة خلال <strong>5 أيام عمل</strong> من تاريخ إشعار الطرف الثاني ببدء المرحلة،
+          وتُسدَّد دفعة الاعتماد خلال <strong>7 أيام عمل</strong> من تاريخ توقيع الطرف الأول على نموذج قبول التسليمات.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">5.4</span>
+          تُحوَّل جميع الدفعات إلى الحساب البنكي الذي يحدّده الطرف الثاني كتابياً، ويُعدّ إشعار التحويل
+          (Bank Receipt) إثباتاً للسداد.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">5.5</span>
+          لا يحق للطرف الثاني المطالبة بأي مبالغ إضافية خارج القيمة المتفق عليها، ما لم يُوافق الطرف الأول كتابياً
+          على طلب تغيير رسمي (راجع المادة 11).
+        </p>
+
+        <div class="highlight">
+          <strong>⚖️ التوازن بين الحقوق:</strong>
+          دفعة البداية تضمن التزام الطرف الثاني بالعمل، ودفعة الاعتماد تضمن للطرف الأول استلام المرحلة كاملة
+          ومُختبَرة قبل الدفع. لا تُسدَّد دفعة المرحلة التالية قبل اعتماد المرحلة الحالية.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PAGE 6: ARTICLE 6 - TIMELINE ====================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المادة 6: الجدول الزمني</h2>
+      <div class="page-num">06</div>
+    </div>
+
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">6</div>
+        <div class="article-title">الجدول الزمني للتنفيذ</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">6.1</span>
+          تبدأ مدة العقد من تاريخ <strong>توقيعه ودفع الدفعة الأولى</strong>، وتمتدّ <strong>4 شهور كاملة</strong>
+          (~16 أسبوع عمل) للتسليم النهائي للنظام.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">6.2</span>
+          يبدأ الطرف الثاني العمل خلال <strong>5 أيام عمل</strong> كحد أقصى من تاريخ سداد الدفعة الأولى
+          واستلام بيانات الجلسة التمهيدية.
+        </p>
+
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>المرحلة</th>
+              <th>مدة التنفيذ</th>
+              <th>تاريخ التسليم المتوقّع</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>الجلسة التمهيدية (Discovery)</strong></td>
+              <td>أسبوع 1</td>
+              <td>........................</td>
+            </tr>
+            <tr>
+              <td><strong>المرحلة الأولى</strong></td>
+              <td>4 أسابيع</td>
+              <td>........................</td>
+            </tr>
+            <tr>
+              <td><strong>المرحلة الثانية</strong></td>
+              <td>4 أسابيع</td>
+              <td>........................</td>
+            </tr>
+            <tr>
+              <td><strong>المرحلة الثالثة</strong></td>
+              <td>4 أسابيع</td>
+              <td>........................</td>
+            </tr>
+            <tr>
+              <td><strong>المرحلة الرابعة + التسليم النهائي</strong></td>
+              <td>4 أسابيع</td>
+              <td>........................</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="clause">
+          <span class="clause-num">6.3</span>
+          يُسمح بـ<strong>مهلة سماح</strong> لا تتجاوز <strong>أسبوعاً واحداً</strong> لكل مرحلة لأسباب فنية أو
+          تشغيلية يقبلها الطرف الأول.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">6.4</span>
+          إن تأخّر تسليم أي مرحلة عن موعدها (بعد مهلة السماح)، يُخصم <strong>2٪</strong> من دفعة الاعتماد
+          عن كل أسبوع تأخير، بحدّ أقصى <strong>10٪</strong> من قيمة الدفعة.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">6.5</span>
+          لا يُحسب التأخير على الطرف الثاني إذا كان السبب عائداً للطرف الأول (تأخّر في الإجابة على الأسئلة،
+          عدم توفير بيانات أو وصول، إلخ)، ويُمدَّد الجدول الزمني تلقائياً بمقدار التأخير الناتج.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PAGE 7: ARTICLES 7-8 ====================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المواد 7-8: التزامات الطرفين</h2>
+      <div class="page-num">07</div>
+    </div>
+
+    <!-- Article 7 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">7</div>
+        <div class="article-title">التزامات الطرف الأول (المعهد)</div>
+      </div>
+      <div class="article-body">
+        <ul class="legal-list">
+          <li>سداد جميع الدفعات في مواعيدها المحدّدة وفق المادة 5.</li>
+          <li>توفير جميع البيانات والمعلومات اللازمة للطرف الثاني في الوقت المناسب.</li>
+          <li>تعيين <strong>4 نقاط اتصال رسمية</strong> (تقني، مالي، إداري، أكاديمي) للتواصل المستمر.</li>
+          <li>المشاركة الفعّالة في الجلسة التمهيدية واجتماعات المتابعة الأسبوعية.</li>
+          <li>تزويد الطرف الثاني بنماذج المعهد الرسمية (الخطابات، كشف الدرجات، الشهادات، إلخ).</li>
+          <li>توفير وثائق API للبرنامج المحاسبي + بيانات الوصول لبيئة الاختبار.</li>
+          <li>الاستجابة لطلبات الطرف الثاني (أسئلة، تأكيدات، اعتمادات) خلال <strong>3 أيام عمل</strong> كحد أقصى.</li>
+          <li>مراجعة المخرَجات في نهاية كل مرحلة وإصدار قرار الاعتماد أو الملاحظات خلال <strong>7 أيام عمل</strong>.</li>
+          <li>توفير بيئة الاستضافة (Server/Cloud) أو تفويض الطرف الثاني للتعاقد عليها نيابةً.</li>
+          <li>عدم تكليف أو إشراك جهة أخرى بنفس العمل أثناء سريان العقد.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Article 8 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">8</div>
+        <div class="article-title">التزامات الطرف الثاني (المطوّر)</div>
+      </div>
+      <div class="article-body">
+        <ul class="legal-list">
+          <li>تنفيذ النظام وفق المواصفات والجدول الزمني المُتّفق عليه.</li>
+          <li>تطبيق أفضل الممارسات الهندسية ومعايير الجودة الموثّقة.</li>
+          <li>الالتزام التام بنظام حماية البيانات الشخصية السعودي (PDPL).</li>
+          <li>تسليم النظام كاملاً قابلاً للاستخدام الفعلي بنهاية المرحلة الرابعة.</li>
+          <li>توفير <strong>تدريب موظفي المعهد</strong> لكل مرحلة (2-4 ساعات لكل مرحلة).</li>
+          <li>تسليم <strong>الوثائق والأدلة</strong> (دليل المستخدم، أدلة فنية، فيديوهات شرح).</li>
+          <li>اختبار جميع الميزات قبل التسليم (Unit + Integration + E2E + UAT).</li>
+          <li>توفير <strong>الصيانة المجانية لمدة 12 شهراً</strong> بعد التسليم النهائي.</li>
+          <li>الالتزام بالسرية التامة لبيانات المعهد ومنسوبيه (راجع المادة 10).</li>
+          <li>إصلاح الأعطال خلال المدد المحدّدة في اتفاقية مستوى الخدمة (SLA) داخل فترة الضمان.</li>
+          <li>توفير نسخ احتياطية يومية مشفّرة للنظام والبيانات.</li>
+          <li>تسليم <strong>الكود المصدري الكامل</strong> للطرف الأول بعد سداد الدفعة الأخيرة.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PAGE 8: ARTICLES 9-10 ====================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المواد 9-10: الملكية والسرية</h2>
+      <div class="page-num">08</div>
+    </div>
+
+    <!-- Article 9 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">9</div>
+        <div class="article-title">الملكية الفكرية وملكية البيانات</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">9.1</span>
+          تنتقل <strong>الملكية الفكرية الكاملة للشيفرة البرمجية</strong> المُطوَّرة بموجب هذا العقد إلى الطرف الأول
+          بمجرد سداد الدفعة الثامنة والأخيرة (التسليم النهائي).
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">9.2</span>
+          تبقى <strong>ملكية البيانات</strong> المُدخلة في النظام (بيانات الطلاب، الدفعات، الدرجات، إلخ)
+          <strong>دائماً</strong> للطرف الأول منذ اليوم الأول.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">9.3</span>
+          يحق للطرف الأول تصدير <strong>كامل قاعدة البيانات والشيفرة المصدرية</strong> بصيغ مفتوحة في أي وقت
+          خلال فترة العقد وبعدها.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">9.4</span>
+          يحتفظ الطرف الثاني بحقّه في استخدام <strong>المنهجيات والخبرات والمعرفة العامة</strong> المُكتسبة
+          خلال المشروع، دون استخدام البيانات أو الشيفرة الخاصة بالطرف الأول.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">9.5</span>
+          يحقّ للطرف الثاني عرض المشروع ضمن <strong>أعماله السابقة (Portfolio)</strong> بعد التسليم النهائي،
+          مع إخفاء أي بيانات سرّية وبموافقة الطرف الأول.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 10 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">10</div>
+        <div class="article-title">السرّية وحماية البيانات</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">10.1</span>
+          يلتزم كلا الطرفين بالحفاظ على <strong>السرّية التامة</strong> لجميع المعلومات والبيانات المتبادلة
+          أو المُكتسبة خلال تنفيذ العقد، وعدم إفشائها لأي طرف ثالث دون موافقة كتابية.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">10.2</span>
+          يلتزم الطرف الثاني بـ<strong>نظام حماية البيانات الشخصية السعودي (PDPL)</strong> بكامل أحكامه،
+          ويشمل ذلك:
+        </p>
+
+        <ul class="legal-list">
+          <li>تشفير البيانات الحساسة (At-Rest + In-Transit) بمعايير AES-256 وTLS 1.3.</li>
+          <li>عدم نقل البيانات خارج المملكة العربية السعودية دون موافقة مسبقة.</li>
+          <li>الالتزام بحقوق صاحب البيانات (الوصول، التصحيح، المحو، التصدير).</li>
+          <li>إشعار الطرف الأول بأي اختراق محتمل خلال <strong>72 ساعة</strong> من اكتشافه.</li>
+          <li>الاحتفاظ بسجل معالجة البيانات (Processing Register).</li>
+          <li>التزام جميع موظفي الطرف الثاني المُشاركين بـاتفاقية سرّية.</li>
+        </ul>
+
+        <p class="clause">
+          <span class="clause-num">10.3</span>
+          يستمر التزام السرّية ساري المفعول <strong>لمدة خمس سنوات</strong> بعد انتهاء العقد لأي سبب.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">10.4</span>
+          في حال إخلال أحد الطرفين بالتزامات السرّية، يحقّ للطرف المتضرّر المطالبة بالتعويض الكامل
+          عن جميع الأضرار المباشرة.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PAGE 9: ARTICLES 11-12 ====================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المواد 11-12: التغيير والضمان</h2>
+      <div class="page-num">09</div>
+    </div>
+
+    <!-- Article 11 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">11</div>
+        <div class="article-title">طلبات التغيير</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">11.1</span>
+          <strong>التعديلات البسيطة</strong> (التي لا تتجاوز 4 ساعات عمل) <strong>مشمولة مجاناً</strong>
+          ضمن قيمة العقد دون رسوم إضافية.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">11.2</span>
+          أي تعديلات أو ميزات جديدة تتجاوز نطاق المادة 4 تُعدّ <strong>طلب تغيير رسمي (Change Request)</strong>
+          يحتاج إلى:
+        </p>
+
+        <ul class="legal-list">
+          <li>تقديم طلب كتابي من الطرف الأول.</li>
+          <li>تقدير الجهد والمدة والتكلفة من الطرف الثاني خلال 5 أيام عمل.</li>
+          <li>موافقة كتابية من الطرف الأول قبل بدء التنفيذ.</li>
+          <li>عقد ملحق (Addendum) يُوثّق التغيير ويُلحق بهذا العقد.</li>
+        </ul>
+
+        <p class="clause">
+          <span class="clause-num">11.3</span>
+          تُحسب التعديلات الإضافية بسعر <strong>500 ريال لكل ساعة عمل</strong> (قابلة للتعديل بالاتفاق).
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">11.4</span>
+          لا يحق للطرف الأول طلب تعديلات تُغيّر <strong>أكثر من 30٪</strong> من نطاق العمل دون التفاوض
+          على عقد جديد.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 12 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">12</div>
+        <div class="article-title">الضمان والصيانة</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">12.1</span>
+          يضمن الطرف الثاني <strong>صيانة مجانية كاملة لمدة 12 شهراً (سنة كاملة)</strong> تبدأ من
+          تاريخ التسليم النهائي للمرحلة الرابعة.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">12.2</span>
+          تشمل الصيانة المجانية:
+        </p>
+
+        <ul class="legal-list">
+          <li>إصلاح أي عطل أو خلل (Bug) في النظام دون رسوم.</li>
+          <li>تحديثات الأمان الدورية للمكتبات والإطار البرمجي.</li>
+          <li>الدعم الفني عبر القنوات المُتّفق عليها (بريد + WhatsApp + اجتماعات دورية).</li>
+          <li>مراقبة أداء النظام والاستجابة الاستباقية للمشاكل.</li>
+          <li>التعديلات البسيطة التي لا تتجاوز ساعة عمل لكل طلب.</li>
+        </ul>
+
+        <p class="clause">
+          <span class="clause-num">12.3</span>
+          مستويات الاستجابة للأعطال خلال فترة الضمان:
+        </p>
+
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>درجة الخطورة</th>
+              <th>الوصف</th>
+              <th>زمن الاستجابة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>🔴 حرجة</td><td>النظام متوقّف أو ميزة رئيسية معطّلة</td><td>خلال 4 ساعات</td></tr>
+            <tr><td>🟠 عالية</td><td>ميزة ثانوية معطّلة أو خطأ يعوّق العمل</td><td>خلال 24 ساعة</td></tr>
+            <tr><td>🟡 متوسطة</td><td>خطأ لا يعوّق العمل بشكل كبير</td><td>خلال 72 ساعة</td></tr>
+            <tr><td>🟢 منخفضة</td><td>تحسينات بصرية أو نصية</td><td>خلال أسبوع</td></tr>
+          </tbody>
+        </table>
+
+        <p class="clause">
+          <span class="clause-num">12.4</span>
+          لا تشمل الصيانة المجانية: <strong>تطوير ميزات جديدة، تعديلات كبيرة، تكامل مع أنظمة جديدة،
+          أو الأخطاء الناتجة عن إساءة الاستخدام</strong> — تخضع هذه للمادة 11.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">12.5</span>
+          بعد انتهاء فترة الضمان المجانية، يحقّ للطرف الأول تجديد عقد الصيانة بقيمة سنوية تُحسب بنسبة
+          <strong>15-20٪</strong> من قيمة العقد الأصلي.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PAGE 10: ARTICLES 13-15 ====================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المواد 13-15: الإنهاء والقوة القاهرة والنزاعات</h2>
+      <div class="page-num">10</div>
+    </div>
+
+    <!-- Article 13 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">13</div>
+        <div class="article-title">إنهاء العقد</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">13.1</span>
+          يحقّ للطرف الأول <strong>إنهاء العقد في نهاية أي مرحلة</strong> دون رسوم إضافية، ودون أن يكون
+          ملزماً بسداد دفعات المراحل التي لم تبدأ.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">13.2</span>
+          عند الإنهاء المبكّر، يستلم الطرف الأول جميع المخرَجات المُعتمدة حتى تاريخ الإنهاء، وتنتقل ملكيتها
+          إليه بشكل دائم.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">13.3</span>
+          يحقّ للطرف الثاني إنهاء العقد إذا تأخّر الطرف الأول في سداد أي دفعة لأكثر من <strong>30 يوم عمل</strong>
+          من تاريخ استحقاقها، بعد إنذار كتابي.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">13.4</span>
+          يحقّ لأي من الطرفين إنهاء العقد فوراً في حال إخلال الطرف الآخر إخلالاً جوهرياً بالتزاماته،
+          ولم يقم بمعالجة الإخلال خلال <strong>15 يوماً</strong> من إنذاره كتابياً.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 14 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">14</div>
+        <div class="article-title">القوة القاهرة</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">14.1</span>
+          لا يُعدّ أي من الطرفين مُخلاً بالتزاماته إذا حال دون التنفيذ سبب من <strong>أسباب القوة القاهرة</strong>،
+          كالكوارث الطبيعية، الحروب، الأوبئة، قرارات حكومية مفاجئة، انقطاع البنية التحتية الكبير، أو أي ظرف خارج إرادة الطرفين.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">14.2</span>
+          يلتزم الطرف الذي تأثّر بالقوة القاهرة بـ:
+        </p>
+        <ul class="legal-list">
+          <li>إشعار الطرف الآخر فوراً (خلال 5 أيام عمل) كتابياً.</li>
+          <li>بذل قصارى جهده لتقليل آثار القوة القاهرة.</li>
+          <li>استئناف التنفيذ فور زوال السبب.</li>
+        </ul>
+
+        <p class="clause">
+          <span class="clause-num">14.3</span>
+          إذا استمرّت القوة القاهرة أكثر من <strong>60 يوماً</strong>، يحقّ لأي طرف إنهاء العقد دون تعويض.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 15 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">15</div>
+        <div class="article-title">النزاعات والاختصاص القضائي</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">15.1</span>
+          يلتزم الطرفان بتسوية أي نزاع ينشأ عن هذا العقد <strong>ودّياً</strong> عبر التفاوض المباشر خلال
+          <strong>30 يوماً</strong> من نشوء النزاع.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">15.2</span>
+          إذا تعذّرت التسوية الودّية، يُحال النزاع إلى <strong>المحاكم المختصّة في المملكة العربية السعودية</strong>،
+          ويُطبَّق <strong>النظام السعودي</strong> على هذا العقد وتفسيره وتنفيذه.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">15.3</span>
+          يجوز للطرفين الاتفاق على <strong>التحكيم</strong> وفق نظام التحكيم السعودي بدلاً من القضاء العادي،
+          وذلك بموجب اتفاقية تحكيم مستقلّة.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PAGE 11: ARTICLES 16-18 ====================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المواد 16-18: أحكام عامّة</h2>
+      <div class="page-num">11</div>
+    </div>
+
+    <!-- Article 16 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">16</div>
+        <div class="article-title">الإشعارات والمراسلات</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">16.1</span>
+          تُعتبر جميع الإشعارات والمراسلات بين الطرفين رسمية إذا أُرسلت بأحد الطرق التالية:
+        </p>
+        <ul class="legal-list">
+          <li>البريد الإلكتروني الرسمي للطرف الآخر (مع تأكيد الاستلام).</li>
+          <li>الخطاب الورقي المُسجَّل على العنوان المُحدَّد في صدر العقد.</li>
+          <li>التطبيقات الرسمية (WhatsApp Business) مع تأكيد الاستلام.</li>
+        </ul>
+
+        <p class="clause">
+          <span class="clause-num">16.2</span>
+          يلتزم كلا الطرفين بإشعار الآخر كتابياً بأي تغيير في بيانات الاتصال خلال <strong>3 أيام عمل</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 17 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">17</div>
+        <div class="article-title">الضريبة والرسوم</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">17.1</span>
+          القيمة المتفق عليها في المادة 5 <strong>لا تشمل ضريبة القيمة المضافة (VAT)</strong>،
+          وتُضاف إن استحقّت بنسبة 15٪ (أو حسب النسبة المعمول بها وقت السداد).
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">17.2</span>
+          يلتزم كلا الطرفين بسداد ما يخصّه من الضرائب والرسوم المترتّبة على هذا العقد وفق الأنظمة السعودية.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">17.3</span>
+          يلتزم الطرف الثاني بإصدار فواتير ضريبية معتمدة من هيئة الزكاة والضريبة والجمارك (ZATCA) عند الاقتضاء.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 18 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">18</div>
+        <div class="article-title">أحكام عامّة وختامية</div>
+      </div>
+      <div class="article-body">
+        <p class="clause">
+          <span class="clause-num">18.1</span>
+          يُعتبر هذا العقد <strong>ساري المفعول</strong> من تاريخ توقيع الطرفين عليه وسداد الدفعة الأولى.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">18.2</span>
+          إذا تبيّن أن أحد بنود هذا العقد <strong>باطل أو غير قابل للتنفيذ</strong>، فإن ذلك لا يؤثّر
+          على بقيّة بنود العقد التي تبقى ساريةً وقابلةً للتنفيذ.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">18.3</span>
+          أي <strong>تعديل أو إضافة</strong> على هذا العقد لا يكون ملزماً إلا إذا تمّ كتابياً وموقّعاً من الطرفين.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">18.4</span>
+          لا يحقّ لأي من الطرفين <strong>التنازل عن العقد</strong> أو حقوقه والتزاماته بموجبه إلى الغير
+          دون موافقة كتابية مسبقة من الطرف الآخر.
+        </p>
+
+        <p class="clause">
+          <span class="clause-num">18.5</span>
+          حُرّر هذا العقد من <strong>نسختين أصليّتين</strong>، تسلّم كل طرف نسخة للعمل بمقتضاها.
+        </p>
+
+        <div class="important">
+          <strong>⚠️ إقرار الطرفين:</strong>
+          أقرّ الطرفان بأنهما قرآ هذا العقد بكامله، وفهما جميع بنوده، ووافقا عليه بكامل الإرادة والأهلية،
+          وعلى ذلك يوقّعان أدناه.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PAGE 12: SIGNATURES ====================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">التوقيع والاعتماد</h2>
+      <div class="page-num">12</div>
+    </div>
+
+    <h3 class="section-h">✍️ توقيع الطرفين</h3>
+
+    <div class="signature-section">
+      <h3>والله خير الشاهدين</h3>
+
+      <div class="signatures-grid">
+        <div class="signature-block">
+          <div class="role-label">الطرف الأول — المعهد التدريبي</div>
+          <div class="sig-field">
+            <span class="label">الاسم الكامل:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">المسمى الوظيفي:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">رقم الهوية:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">التوقيع:</span>
+            <div class="line" style="min-height: 50px;"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">الختم الرسمي:</span>
+            <div class="line" style="min-height: 50px;"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">التاريخ:</span>
+            <div class="line"></div>
+          </div>
+        </div>
+
+        <div class="signature-block">
+          <div class="role-label">الطرف الثاني — الجهة المنفّذة</div>
+          <div class="sig-field">
+            <span class="label">الاسم الكامل:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">المسمى الوظيفي:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">رقم الهوية:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">التوقيع:</span>
+            <div class="line" style="min-height: 50px;"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">الختم الرسمي:</span>
+            <div class="line" style="min-height: 50px;"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">التاريخ:</span>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <strong>🎯 الخطوات بعد التوقيع:</strong>
+      1. سداد الدفعة الأولى (5,000 ريال) خلال 5 أيام عمل.<br>
+      2. عقد الجلسة التمهيدية (Discovery) خلال أسبوع.<br>
+      3. بدء تنفيذ المرحلة الأولى مباشرة بعد الجلسة.<br>
+      4. تسليم المرحلة الأولى في غضون 4 أسابيع.<br>
+      5. متابعة أسبوعية (30 دقيقة) لاستعراض التقدّم.
+    </div>
+
+    <p style="text-align: center; margin-top: 30px; font-size: 0.85rem; color: var(--text-muted); font-family: 'Amiri', serif; font-style: italic;">
+      "وأَوْفُوا بِالْعَهْدِ ۖ إِنَّ الْعَهْدَ كَانَ مَسْئُولًا" — الإسراء: 34
+    </p>
+  </div>
+</section>
+
+</body>
+</html>
