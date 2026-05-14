@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>العقد التقني — IIMS</title>
+<title>ملحق المراحل والمميزات — IIMS</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -60,20 +60,16 @@
   .cover::before {
     content: '';
     position: absolute;
-    top: -30%;
-    left: -20%;
-    width: 600px;
-    height: 600px;
+    top: -30%; left: -20%;
+    width: 600px; height: 600px;
     background: radial-gradient(circle, rgba(212,165,116,0.2) 0%, transparent 70%);
     border-radius: 50%;
   }
   .cover::after {
     content: '';
     position: absolute;
-    bottom: -25%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
+    bottom: -25%; right: -10%;
+    width: 500px; height: 500px;
     background: radial-gradient(circle, rgba(212,165,116,0.12) 0%, transparent 70%);
     border-radius: 50%;
   }
@@ -110,26 +106,30 @@
     margin: 0 auto 35px;
     line-height: 1.7;
   }
-  .cover-tech-stack {
-    background: rgba(212,165,116,0.15);
-    border: 2px solid var(--accent);
-    padding: 22px 32px;
-    border-radius: 18px;
-    display: inline-block;
-    margin-bottom: 25px;
+  .cover-phases-preview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 0 auto 30px;
+    max-width: 600px;
   }
-  .cover-tech-stack .label {
-    font-size: 0.9rem;
+  .cover-phase {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(212,165,116,0.4);
+    padding: 14px 18px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cover-phase .num {
     color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 10px;
+    font-weight: 900;
+    font-size: 1.3rem;
+    margin-bottom: 4px;
   }
-  .cover-tech-stack .stack {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.05rem;
+  .cover-phase .name {
     color: white;
+    font-size: 0.95rem;
     font-weight: 600;
-    line-height: 1.5;
   }
   .cover-badges {
     display: flex;
@@ -160,7 +160,7 @@
 
   /* CONTENT */
   .content-page {
-    padding: 38px 48px 50px;
+    padding: 36px 46px 50px;
     background: white;
   }
   .page-header {
@@ -168,7 +168,7 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 14px;
-    margin-bottom: 26px;
+    margin-bottom: 24px;
     border-bottom: 3px solid var(--primary);
     position: relative;
   }
@@ -196,228 +196,176 @@
   .preamble {
     background: var(--cream);
     border-right: 5px solid var(--accent);
-    padding: 20px 24px;
+    padding: 18px 22px;
     border-radius: 10px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     line-height: 1.95;
+    font-size: 14px;
   }
 
-  /* ARTICLE */
-  .article {
-    margin-bottom: 24px;
-    page-break-inside: avoid;
-  }
-  .article-header {
-    background: var(--primary);
+  /* PHASE BANNER */
+  .phase-banner {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     color: white;
-    padding: 12px 18px;
-    border-radius: 10px;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
+    padding: 20px 26px;
+    border-radius: 14px;
+    margin-bottom: 22px;
+    position: relative;
+    overflow: hidden;
   }
-  .article-number {
+  .phase-banner::before {
+    content: '';
+    position: absolute;
+    left: -30px; top: -30px;
+    width: 150px; height: 150px;
+    background: rgba(212,165,116,0.15);
+    border-radius: 50%;
+  }
+  .phase-banner-content { position: relative; z-index: 2; }
+  .phase-num-label {
     background: var(--accent);
     color: var(--primary-dark);
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 900;
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-  .article-title {
-    font-size: 1.15rem;
-    font-weight: 800;
-  }
-  .article-body p {
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: inline-block;
     margin-bottom: 10px;
-    line-height: 1.95;
   }
-  .article-body strong {
-    color: var(--primary-dark);
+  .phase-name {
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+  .phase-tagline {
+    font-size: 1rem;
+    opacity: 0.95;
+    line-height: 1.7;
   }
 
-  /* SECTION HEADER inside article */
-  h4.sub-h {
-    color: var(--primary);
-    font-size: 1rem;
+  /* DELIVERABLES */
+  .deliv-title {
+    font-size: 0.85rem;
     font-weight: 700;
-    margin: 14px 0 8px;
+    color: var(--primary);
+    margin: 18px 0 10px;
     padding-right: 12px;
     border-right: 3px solid var(--accent);
+    display: inline-block;
+    padding-left: 14px;
   }
-
-  /* TECH TABLE */
-  .tech-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 12px 0;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  .deliverables {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 18px;
+    margin: 10px 0;
   }
-  .tech-table thead {
-    background: var(--primary);
-    color: white;
+  .deliv {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 5px 0;
   }
-  .tech-table th, .tech-table td {
-    padding: 10px 12px;
-    text-align: right;
-    border: 1px solid var(--border);
-    font-size: 0.88rem;
-  }
-  .tech-table th {
-    font-weight: 700;
-    border-color: rgba(255,255,255,0.15);
-  }
-  .tech-table tbody tr:nth-child(even) { background: #F9FAFB; }
-  .tech-table td:first-child {
-    background: var(--cream);
-    font-weight: 700;
-    color: var(--primary);
-    width: 30%;
-  }
-  .tech-table code {
-    font-family: 'JetBrains Mono', monospace;
-    background: #FEF3C7;
-    color: #78350F;
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-  }
-
-  /* SLA TABLE */
-  .sla-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 12px 0;
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .sla-table thead {
-    background: var(--primary);
-    color: white;
-  }
-  .sla-table th, .sla-table td {
-    padding: 11px 14px;
-    text-align: center;
-    border: 1px solid var(--border);
-    font-size: 0.9rem;
-  }
-  .sla-table th {
-    border-color: rgba(255,255,255,0.15);
-  }
-  .sla-table tbody tr td:first-child {
-    background: var(--cream);
-    font-weight: 700;
-    text-align: right;
-  }
-  .severity-critical { color: var(--danger); font-weight: 800; }
-  .severity-high { color: var(--warning); font-weight: 800; }
-  .severity-medium { color: var(--info); font-weight: 700; }
-  .severity-low { color: var(--success); font-weight: 700; }
-
-  /* SIMPLE LIST */
-  .simple-list {
-    list-style: none;
-    margin: 8px 0;
-  }
-  .simple-list li {
-    position: relative;
-    padding: 6px 24px 6px 0;
-    line-height: 1.85;
-  }
-  .simple-list li::before {
-    content: '✓';
+  .deliv .check {
     color: var(--success);
     font-weight: 900;
     font-size: 1rem;
+    flex-shrink: 0;
+    line-height: 1.5;
+  }
+  .deliv-text {
+    font-size: 0.92rem;
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .deliv-text strong {
+    color: var(--primary-dark);
+    font-weight: 700;
+  }
+
+  /* BENEFITS BOX */
+  .benefits {
+    background: #FEF3C7;
+    border-right: 5px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin-top: 18px;
+  }
+  .benefits-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #92400E;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .benefits h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #78350F;
+    margin-bottom: 8px;
+  }
+  .benefits-list {
+    list-style: none;
+  }
+  .benefits-list li {
+    color: #78350F;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    padding: 3px 22px 3px 0;
+    position: relative;
+  }
+  .benefits-list li::before {
+    content: '⭐';
     position: absolute;
     right: 0;
-    top: 7px;
-  }
-  .simple-list li code {
-    font-family: 'JetBrains Mono', monospace;
-    background: #FEF3C7;
-    color: #78350F;
-    padding: 1px 6px;
-    border-radius: 4px;
+    top: 4px;
     font-size: 0.85rem;
   }
 
-  /* HIGHLIGHT */
-  .highlight-box {
-    background: #FEF3C7;
-    border-right: 5px solid var(--gold);
-    padding: 14px 18px;
-    border-radius: 10px;
-    margin: 14px 0;
-  }
-  .highlight-box strong {
-    color: #92400E;
-    display: block;
-    margin-bottom: 4px;
-    font-size: 0.95rem;
-  }
-  .highlight-box p {
-    color: #78350F;
-    line-height: 1.8;
-    font-size: 0.9rem;
+  /* SECTION HEADER */
+  .section-h {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
   }
 
-  /* INFO BOX */
-  .info-box {
-    background: #ECFDF5;
-    border-right: 5px solid var(--success);
-    padding: 14px 18px;
-    border-radius: 10px;
-    margin: 14px 0;
-  }
-  .info-box strong {
-    color: var(--primary-dark);
-    display: block;
-    margin-bottom: 4px;
-    font-size: 0.95rem;
-  }
-  .info-box p {
-    color: var(--primary-dark);
-    line-height: 1.8;
-    font-size: 0.9rem;
-  }
-
-  /* PHASE GRID */
-  .phase-grid {
+  /* QUALITY CARD */
+  .quality-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
     margin: 14px 0;
   }
-  .phase-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-right: 4px solid var(--accent);
-    border-radius: 10px;
-    padding: 14px 16px;
+  .quality-card {
+    background: linear-gradient(180deg, #ECFDF5 0%, white 100%);
+    border: 1px solid var(--primary-light);
+    border-radius: 12px;
+    padding: 16px 18px;
   }
-  .phase-card h5 {
+  .quality-card .icon {
+    background: var(--primary);
+    color: var(--accent);
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+  .quality-card h4 {
     color: var(--primary);
-    font-size: 0.98rem;
+    font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
-  .phase-card ul {
-    list-style: none;
-    font-size: 0.82rem;
+  .quality-card p {
+    color: var(--text);
+    font-size: 0.88rem;
     line-height: 1.7;
-  }
-  .phase-card li::before {
-    content: '◾';
-    color: var(--accent-dark);
-    margin-left: 6px;
   }
 
   /* SIGNATURE */
@@ -425,7 +373,7 @@
     background: var(--cream);
     padding: 22px;
     border-radius: 14px;
-    margin: 18px 0 14px;
+    margin: 16px 0 14px;
     border: 2px solid var(--primary);
   }
   .signature-section h3 {
@@ -468,46 +416,10 @@
     min-height: 26px;
   }
 
-  /* SECTION HEADER */
-  .section-h {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary);
-    margin: 0 0 12px;
-    padding-bottom: 8px;
-    border-bottom: 3px solid var(--accent);
-    display: inline-block;
-  }
-
-  /* CODE BLOCK */
-  pre {
-    background: #1F2937;
-    color: #F3F4F6;
-    padding: 14px 16px;
-    border-radius: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    direction: ltr;
-    text-align: left;
-    overflow-x: auto;
-    line-height: 1.6;
-    margin: 10px 0;
-  }
-  pre code {
-    background: transparent;
-    color: inherit;
-    padding: 0;
-  }
-
   /* PRINT */
   @media print {
     @page { size: A4; margin: 0; }
-    html, body {
-      width: 210mm;
-      background: white;
-      font-size: 10.5px;
-      line-height: 1.6;
-    }
+    html, body { width: 210mm; background: white; font-size: 11.5px; line-height: 1.7; }
     .page {
       box-shadow: none;
       width: 210mm !important;
@@ -520,52 +432,26 @@
     }
     .page:last-child { page-break-after: avoid !important; }
     .cover { height: 297mm !important; padding: 22mm 18mm !important; }
-    .cover h1 { font-size: 2.3rem; }
-    .cover-subtitle { font-size: 1rem; margin-bottom: 22px; }
-    .cover-tech-stack { padding: 14px 24px; margin-bottom: 18px; }
-    .cover-tech-stack .stack { font-size: 0.95rem; }
-    .cover-badges { gap: 8px; }
-    .cover-badge { padding: 6px 14px; font-size: 0.78rem; }
-
+    .cover h1 { font-size: 2.4rem; }
+    .cover-subtitle { font-size: 1rem; margin-bottom: 25px; }
+    .cover-phase .num { font-size: 1.2rem; }
+    .cover-phase .name { font-size: 0.88rem; }
     .content-page { padding: 14mm 14mm 12mm !important; height: 297mm; box-sizing: border-box; }
-    .page-header { margin-bottom: 16px; padding-bottom: 10px; }
-    .page-num { width: 28px; height: 28px; font-size: 0.78rem; }
-    .page-title { font-size: 1.05rem; }
-    .section-h { font-size: 1.25rem; margin-bottom: 8px; }
-    .preamble { padding: 12px 16px; margin-bottom: 14px; font-size: 10.5px; line-height: 1.7; }
-
-    .article { page-break-inside: avoid; margin-bottom: 12px; }
-    .article-header { padding: 8px 14px; margin-bottom: 10px; }
-    .article-number { width: 30px; height: 30px; font-size: 0.85rem; }
-    .article-title { font-size: 1rem; }
-    .article-body p { margin-bottom: 6px; line-height: 1.7; font-size: 10.5px; }
-
-    h4.sub-h { font-size: 0.92rem; margin: 10px 0 6px; }
-    .simple-list { margin: 6px 0; }
-    .simple-list li { padding: 3px 22px 3px 0; line-height: 1.65; font-size: 10px; }
-
-    .tech-table, .sla-table { margin: 8px 0; }
-    .tech-table th, .tech-table td,
-    .sla-table th, .sla-table td { padding: 6px 9px; font-size: 9.5px; }
-    .tech-table code { font-size: 9.5px; }
-
-    .phase-grid { gap: 10px; margin: 10px 0; }
-    .phase-card { padding: 10px 12px; }
-    .phase-card h5 { font-size: 0.92rem; margin-bottom: 5px; }
-    .phase-card ul { font-size: 9.5px; line-height: 1.55; }
-
-    .info-box, .highlight-box { padding: 9px 14px; margin: 10px 0; }
-    .info-box strong, .highlight-box strong { font-size: 0.92rem; margin-bottom: 3px; }
-    .info-box p, .highlight-box p { font-size: 10px; line-height: 1.65; }
-
-    .signature-section { padding: 14px; margin: 10px 0; page-break-inside: avoid; }
-    .signature-section h3 { font-size: 1rem; margin-bottom: 10px; }
-    .signatures-grid { gap: 14px; }
-    .signature-block { padding: 12px; }
-    .signature-block .role-label { padding: 4px 10px; font-size: 0.72rem; margin-bottom: 8px; }
-    .sig-field { margin-bottom: 8px; }
-    .sig-field .label { font-size: 0.78rem; margin-bottom: 2px; }
-    .sig-field .line { min-height: 20px; }
+    .phase-banner { padding: 14px 20px; margin-bottom: 14px; }
+    .phase-name { font-size: 1.35rem; }
+    .phase-tagline { font-size: 0.92rem; }
+    .deliverables { gap: 5px 14px; margin: 6px 0; }
+    .deliv { padding: 3px 0; }
+    .deliv-text { font-size: 0.85rem; line-height: 1.5; }
+    .benefits { padding: 12px 16px; margin-top: 14px; }
+    .benefits h4 { font-size: 1rem; }
+    .benefits-list li { font-size: 0.85rem; padding: 2px 20px 2px 0; }
+    .quality-grid { gap: 10px; margin: 10px 0; }
+    .quality-card { padding: 12px 14px; }
+    .quality-card .icon { width: 36px; height: 36px; font-size: 1.1rem; margin-bottom: 8px; }
+    .quality-card h4 { font-size: 0.92rem; }
+    .quality-card p { font-size: 0.82rem; line-height: 1.6; }
+    .signature-section { page-break-inside: avoid; padding: 14px; }
   }
 </style>
 </head>
@@ -574,10 +460,10 @@
 <!-- ====================== COVER ====================== -->
 <section class="page cover">
   <div class="cover-top">
-    <div class="cover-emblem">⚙️</div>
+    <div class="cover-emblem">📋</div>
     <div class="cover-meta">
-      <div>📄 العقد التقني</div>
-      <div>🔧 ملحق فني — IIMS</div>
+      <div>📄 ملحق المراحل والمميزات</div>
+      <div>🔢 الإصدار 1.0</div>
       <div>🗓 .........................</div>
       <div>📍 المملكة العربية السعودية</div>
     </div>
@@ -585,593 +471,379 @@
 
   <div class="cover-center">
     <div class="cover-pretitle">باسم الله الرحمن الرحيم</div>
-    <h1>العقد التقني<br>اتفاقية الخدمة الفنية</h1>
+    <h1>المراحل والمميزات</h1>
     <p class="cover-subtitle">
-      ملحق فني لعقد تطوير نظام IIMS — يحدّد المواصفات التقنية،<br>
-      معايير الجودة، الأداء، الأمان، ومستوى الخدمة (SLA)
+      ملحق فني لعقد تطوير نظام إدارة المعهد التدريبي<br>
+      يوضّح تفصيل كل مرحلة وما تُسلَّمه ومميزاتها للمعهد
     </p>
 
-    <div class="cover-tech-stack">
-      <div class="label">🛠 التكدس التقني المعتمد</div>
-      <div class="stack">Next.js 14 + TypeScript<br>Supabase (PostgreSQL)<br>TailwindCSS + shadcn/ui</div>
+    <div class="cover-phases-preview">
+      <div class="cover-phase">
+        <div class="num">1</div>
+        <div class="name">الأساس والاختبارات</div>
+      </div>
+      <div class="cover-phase">
+        <div class="num">2</div>
+        <div class="name">الطلاب والمالية</div>
+      </div>
+      <div class="cover-phase">
+        <div class="num">3</div>
+        <div class="name">العمليات اليومية</div>
+      </div>
+      <div class="cover-phase">
+        <div class="num">4</div>
+        <div class="name">التكامل والذكاء</div>
+      </div>
     </div>
 
     <div class="cover-badges">
-      <div class="cover-badge">🔒 PDPL</div>
-      <div class="cover-badge">🏛 TVTC Ready</div>
-      <div class="cover-badge">🌐 RTL Arabic</div>
-      <div class="cover-badge">⚡ Web + PWA</div>
+      <div class="cover-badge">⏱ 4 شهور</div>
+      <div class="cover-badge">🛠 صيانة سنة</div>
+      <div class="cover-badge">🏛 معتمد TVTC</div>
     </div>
   </div>
 
   <div class="cover-bottom">
-    <p class="cover-tagline">"التزام فنّي بمعايير عالمية، يحفظ جودة المنتج"</p>
+    <p class="cover-tagline">"كل مرحلة قيمة فورية لمعهدكم"</p>
   </div>
 </section>
 
-<!-- ====================== PAGE 2: PREAMBLE + ART 1 ====================== -->
+<!-- ====================== PAGE 2: PREAMBLE + OVERVIEW ====================== -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
-      <h2 class="page-title">التمهيد والمراجع</h2>
+      <h2 class="page-title">التمهيد ونظرة عامة</h2>
       <div class="page-num">02</div>
     </div>
 
     <h3 class="section-h">📜 التمهيد</h3>
     <div class="preamble">
       <p>
-        يُعدّ هذا <strong>العقد التقني</strong> ملحقاً فنّياً مكمّلاً ومتمّماً للعقد التجاري الموقّع بين الطرفين
-        بشأن تطوير نظام إدارة المعهد التدريبي المتكامل (IIMS)، ويُقرأ ويُفسَّر معه كوحدة واحدة.
+        يُعدّ هذا الملحق جزءاً مكمّلاً لعقد التطوير الموقّع بين الطرفين، ويُفصّل
+        <strong>المراحل الأربع</strong> التي سيُسلَّم النظام عبرها، مع توضيح
+        <strong>ما يحصل عليه المعهد</strong> في كل مرحلة، و<strong>المميزات التشغيلية</strong>
+        التي يُضيفها كل تسليم.
       </p>
       <p>
-        يهدف هذا العقد إلى توضيح <strong>المواصفات التقنية الدقيقة، معايير الجودة، الأداء، الأمان، والصيانة</strong>،
-        لضمان تسليم نظام يفي بأعلى المعايير المهنية.
+        المبدأ الجوهري: <strong>كل مرحلة تنتج نظاماً قابلاً للاستخدام الفعلي</strong> بنهاية الشهر،
+        لا يُنتظر اكتمال المشروع كاملاً للاستفادة.
       </p>
     </div>
 
-    <!-- Article 1 -->
-    <div class="article">
-      <div class="article-header">
-        <div class="article-number">1</div>
-        <div class="article-title">المراجع والالتزامات</div>
-      </div>
-      <div class="article-body">
-        <p>يستند هذا العقد التقني إلى:</p>
-        <ul class="simple-list">
-          <li><strong>العقد التجاري</strong> الموقّع بين الطرفين بقيمة 40,000 ريال سعودي.</li>
-          <li><strong>وثيقة الخطة التنفيذية</strong> المعتمدة (4 مراحل / 4 شهور).</li>
-          <li><strong>وثيقة التحليل التقني الشامل</strong> المُسلَّمة للمبرمج.</li>
-          <li><strong>نظام حماية البيانات الشخصية السعودي (PDPL)</strong>.</li>
-          <li><strong>متطلبات TVTC</strong> لاعتماد المعاهد التدريبية.</li>
-          <li><strong>معايير OWASP Top 10</strong> لأمن تطبيقات الويب.</li>
-          <li><strong>معايير WCAG 2.1 AA</strong> لإمكانية الوصول.</li>
-        </ul>
+    <h3 class="section-h">🗺️ نظرة عامة على المراحل</h3>
 
-        <div class="info-box">
-          <strong>📌 ملاحظة هامة</strong>
-          <p>في حال تعارض أي بند بين هذا العقد التقني والعقد التجاري، تسود أحكام العقد التجاري في الجوانب
-          المالية والقانونية، ويسود هذا العقد التقني في الجوانب الفنية والتشغيلية.</p>
-        </div>
+    <div class="quality-grid">
+      <div class="quality-card">
+        <div class="icon">1️⃣</div>
+        <h4>الشهر الأول — الأساس والاختبارات</h4>
+        <p>منصة الاختبارات الإلكترونية الكاملة + الشهادات المعتمدة + بنك الأسئلة.</p>
+      </div>
+      <div class="quality-card">
+        <div class="icon">2️⃣</div>
+        <h4>الشهر الثاني — الطلاب والمالية</h4>
+        <p>إدارة الطلاب + ربط البرنامج المحاسبي + محرك الحجب الذكي للخدمات.</p>
+      </div>
+      <div class="quality-card">
+        <div class="icon">3️⃣</div>
+        <h4>الشهر الثالث — العمليات اليومية</h4>
+        <p>الطلبات + الخطابات + شؤون المتدربين + الجداول والحضور والواجبات.</p>
+      </div>
+      <div class="quality-card">
+        <div class="icon">4️⃣</div>
+        <h4>الشهر الرابع — التكامل والذكاء</h4>
+        <p>تكامل TVTC + التقارير المتقدمة + الإشعارات الذكية + المساعد الافتراضي.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ====================== PAGE 3: ARTICLE 2 - TECH STACK ====================== -->
+<!-- ====================== PAGE 3: PHASE 1 ====================== -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
-      <h2 class="page-title">المادة 2: التكدس التقني</h2>
+      <h2 class="page-title">الشهر الأول — الأساس والاختبارات</h2>
       <div class="page-num">03</div>
     </div>
 
-    <div class="article">
-      <div class="article-header">
-        <div class="article-number">2</div>
-        <div class="article-title">التكدس التقني المعتمد</div>
-      </div>
-      <div class="article-body">
-        <p>يلتزم الطرف الثاني باستخدام التقنيات التالية حصراً، ولا يحقّ تغييرها دون موافقة كتابية:</p>
-
-        <h4 class="sub-h">🖥️ الواجهة الأمامية (Frontend)</h4>
-        <table class="tech-table">
-          <thead>
-            <tr><th>المكوّن</th><th>التقنية المعتمدة</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>الإطار البرمجي</td><td><code>Next.js 14</code> (App Router)</td></tr>
-            <tr><td>لغة البرمجة</td><td><code>TypeScript 5</code> (Strict mode)</td></tr>
-            <tr><td>التصميم</td><td><code>TailwindCSS 3</code> + <code>shadcn/ui</code></td></tr>
-            <tr><td>إدارة الحالة</td><td><code>Zustand</code> + <code>TanStack Query</code></td></tr>
-            <tr><td>النماذج والتحقق</td><td><code>React Hook Form</code> + <code>Zod</code></td></tr>
-            <tr><td>الخطوط</td><td>Cairo (عربي) + IBM Plex Sans Arabic</td></tr>
-            <tr><td>PWA</td><td><code>next-pwa</code> للتحضير الميداني</td></tr>
-          </tbody>
-        </table>
-
-        <h4 class="sub-h">🗄️ قاعدة البيانات والـ Backend</h4>
-        <table class="tech-table">
-          <thead>
-            <tr><th>المكوّن</th><th>التقنية المعتمدة</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>قاعدة البيانات</td><td><code>PostgreSQL 15+</code> (عبر Supabase)</td></tr>
-            <tr><td>المصادقة</td><td><code>Supabase Auth</code> + 2FA إلزامي للإدارة</td></tr>
-            <tr><td>التخزين</td><td><code>Supabase Storage</code> (مع تشفير)</td></tr>
-            <tr><td>الـ Realtime</td><td><code>Supabase Realtime</code> (للوحات الحية)</td></tr>
-            <tr><td>الـ Edge Functions</td><td><code>Supabase Edge Functions</code> (Deno)</td></tr>
-            <tr><td>الأمان</td><td><code>Row Level Security (RLS)</code> على كل الجداول</td></tr>
-          </tbody>
-        </table>
-
-        <h4 class="sub-h">🔧 أدوات إضافية</h4>
-        <table class="tech-table">
-          <thead>
-            <tr><th>الغرض</th><th>الأداة</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>توليد PDF</td><td><code>Puppeteer</code> (للخطابات العربية RTL)</td></tr>
-            <tr><td>Excel</td><td><code>ExcelJS</code> (استيراد/تصدير)</td></tr>
-            <tr><td>QR Code</td><td><code>qrcode</code> (npm)</td></tr>
-            <tr><td>State Machines</td><td><code>XState</code> (للـ Workflow Engine)</td></tr>
-            <tr><td>الاختبار</td><td><code>Vitest</code> + <code>Playwright</code></td></tr>
-            <tr><td>الاستضافة</td><td><code>Vercel</code> + <code>Supabase Cloud</code></td></tr>
-            <tr><td>الحماية الإضافية</td><td><code>Cloudflare</code> (CDN + WAF)</td></tr>
-          </tbody>
-        </table>
-
-        <div class="info-box">
-          <strong>🚀 الانتقال للاستضافة المحلية</strong>
-          <p>يُتفق على نقل النظام لاحقاً إلى استضافة سعودية (Self-Hosted Supabase على VPS سعودي)
-          لضمان الامتثال الكامل لـPDPL، وذلك في المرحلة الإنتاجية.</p>
+    <div class="phase-banner">
+      <div class="phase-banner-content">
+        <span class="phase-num-label">المرحلة 1 · الأسابيع 1-4</span>
+        <div class="phase-name">الأساس والمنصة الأكاديمية</div>
+        <div class="phase-tagline">
+          نبني الأرضية المتينة للنظام، ونُسلّم منصة اختبارات إلكترونية كاملة مع شهادات معتمدة TVTC.
         </div>
       </div>
+    </div>
+
+    <div class="deliv-title">📦 ما يُسلَّم في نهاية هذا الشهر</div>
+    <div class="deliverables">
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>نظام تسجيل دخول آمن</strong> لجميع المستخدمين بصلاحيات تفصيلية</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>دعم 4 فروع</strong> مع عزل تامّ للبيانات بين كل فرع</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>بنك أسئلة مركزي</strong> يدعم 14 نوع سؤال مختلف</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>استيراد مئات الأسئلة</strong> من Excel دفعة واحدة</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>اقتراح أسئلة ذكي</strong> يساعد المعلم في إثراء البنك</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>محرك توليد اختبارات</strong> تلقائي بمواصفات أو يدوي</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>كود اختبار ذكي</strong> يميّز الحضوري عن المنتسب</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>تصحيح آلي فوري</strong> لكل أنواع الأسئلة الموضوعية</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>3 طبقات حماية</strong> للاختبارات لمنع الغش</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>نظام الدبلومات</strong> بتسلسل المواد والمعدل التراكمي</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>شهادات معتمدة TVTC</strong> بأرقام اعتماد رسمية</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>QR وصفحة تحقق عامة</strong> للشهادات (يتحقق منها أي صاحب عمل)</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>تطبيق ويب للتحضير</strong> على جوال المدرب — يعمل بدون إنترنت</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>تقارير أكاديمية أساسية</strong> (متوسطات، نسب نجاح)</span></div>
+    </div>
+
+    <div class="benefits">
+      <div class="benefits-label">🎯 مميزات هذه المرحلة لمعهدكم</div>
+      <h4>منصة اختبارات احترافية تليق بمعهد معتمد TVTC</h4>
+      <ul class="benefits-list">
+        <li>المعلمون يبدؤون فوراً ببناء بنك الأسئلة الخاص بالمعهد.</li>
+        <li>الطلاب يؤدّون اختبارات إلكترونية بدلاً من الورق.</li>
+        <li>الشهادات تُصدر بـQR فوراً وتُتحقق منها أي جهة عمل في ثوانٍ.</li>
+        <li>توفير ساعات يومياً من العمل اليدوي للمدربين.</li>
+        <li>قاعدة أكاديمية متينة جاهزة لبقية المراحل.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ====================== PAGE 4: ARTICLE 3 - DELIVERABLES ====================== -->
+<!-- ====================== PAGE 4: PHASE 2 ====================== -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
-      <h2 class="page-title">المادة 3: المخرَجات التقنية</h2>
+      <h2 class="page-title">الشهر الثاني — الطلاب والمالية</h2>
       <div class="page-num">04</div>
     </div>
 
-    <div class="article">
-      <div class="article-header">
-        <div class="article-number">3</div>
-        <div class="article-title">المخرَجات الفنية لكل مرحلة</div>
-      </div>
-      <div class="article-body">
-        <p>يلتزم الطرف الثاني بتسليم المخرَجات الفنية لكل مرحلة، وفقاً لما يلي:</p>
-
-        <div class="phase-grid">
-          <div class="phase-card">
-            <h5>📦 المرحلة 1: الأساس والاختبارات</h5>
-            <ul>
-              <li>Schema قاعدة البيانات (≥30 جدول)</li>
-              <li>Auth + RBAC + RLS Policies</li>
-              <li>بنك أسئلة (14 نوع سؤال)</li>
-              <li>محرك الاختبارات + التصحيح الآلي</li>
-              <li>نظام الشهادات بـQR</li>
-              <li>PWA التحضير</li>
-              <li>اختبارات Unit ≥ 80% تغطية</li>
-            </ul>
-          </div>
-
-          <div class="phase-card">
-            <h5>📦 المرحلة 2: الطلاب والمالية</h5>
-            <ul>
-              <li>State Machine للطلاب (8 حالات)</li>
-              <li>Adapter للبرنامج المحاسبي</li>
-              <li>Service Blocking Engine</li>
-              <li>قواعد حجب قابلة للتعديل (Rules Engine)</li>
-              <li>لوحات مالية + تقارير</li>
-              <li>Audit Log كامل</li>
-            </ul>
-          </div>
-
-          <div class="phase-card">
-            <h5>📦 المرحلة 3: العمليات اليومية</h5>
-            <ul>
-              <li>Workflow Engine (XState)</li>
-              <li>14 نوع طلب × 7 حالات</li>
-              <li>Letters Generator (PDF عربي RTL)</li>
-              <li>12+ قالب خطاب رسمي</li>
-              <li>CRM التسجيل (7 مراحل)</li>
-              <li>الجداول + الحضور + الواجبات</li>
-              <li>الاختبار الشامل + المكتبة</li>
-            </ul>
-          </div>
-
-          <div class="phase-card">
-            <h5>📦 المرحلة 4: التكامل والذكاء</h5>
-            <ul>
-              <li>تكامل TVTC API الكامل</li>
-              <li>إرسال الدرجات والحضور للوزارة</li>
-              <li>Dashboards + 20+ تقرير</li>
-              <li>تكامل WhatsApp/SMS/Email</li>
-              <li>المساعد الذكي للطلاب</li>
-              <li>Nafath SSO + بوابة الخريجين</li>
-            </ul>
-          </div>
+    <div class="phase-banner">
+      <div class="phase-banner-content">
+        <span class="phase-num-label">المرحلة 2 · الأسابيع 5-8</span>
+        <div class="phase-name">الطلاب والمالية الذكية ⭐</div>
+        <div class="phase-tagline">
+          أهمّ مرحلة في المشروع — إدارة طلاب متكاملة + ربط محاسبي ذكي + محرك الحجب الذكي للخدمات.
         </div>
-
-        <h4 class="sub-h">📦 التسليمات النهائية</h4>
-        <ul class="simple-list">
-          <li><strong>الكود المصدري الكامل</strong> على GitHub (Private repo) مع كامل تاريخ الـcommits.</li>
-          <li><strong>قاعدة البيانات</strong> مع جميع الـMigrations والـSeed data.</li>
-          <li><strong>وثائق المطوّر</strong> (README، Architecture، API docs، Deployment guide).</li>
-          <li><strong>وثائق المستخدم</strong> لكل دور + فيديوهات شرح.</li>
-          <li><strong>سجل الاختبارات</strong> (Unit + Integration + E2E).</li>
-          <li><strong>تقرير الأمان</strong> (OWASP + PDPL Checklist).</li>
-        </ul>
       </div>
+    </div>
+
+    <div class="deliv-title">📦 ما يُسلَّم في نهاية هذا الشهر</div>
+    <div class="deliverables">
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>ملف طالب شامل</strong> يجمع البيانات الأكاديمية والمالية والإدارية</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>8 حالات للطالب</strong> (منتظم، متخرج، موقوف...) مع تاريخ كامل</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>نقل الطلاب بين الفروع</strong> مع حفظ التاريخ التفصيلي</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>حقول التوظيف الاختيارية</strong> (مفيدة لخطابات السلم الوظيفي)</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>ربط مع البرنامج المحاسبي للمعهد</strong> بشكل احترافي</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>تزامن تلقائي للدفعات</strong> كل 15 دقيقة + فورياً عند الدفع</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>محرك الحجب الذكي</strong> يحجب الخدمات تلقائياً عند المتأخرات</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>قواعد حجب قابلة للتعديل</strong> من واجهة الإدارة (دون أي تعقيد)</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>فك الحجب الفوري</strong> من الإدارة مع توثيق إلزامي للسبب</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>لوحات مالية</strong> للإدارة تعرض التحصيل والمتأخرات لحظياً</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>تقرير المتأخرين</strong> بأسماء وأرقام دقيقة لحظة بلحظة</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>إشعارات تلقائية</strong> للطالب عند تأخّر السداد قبل أيام</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>تقارير الفروع المالية</strong> منفصلة ومجمّعة</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>سجل تدقيق كامل</strong> لكل حجب وفك حجب</span></div>
+    </div>
+
+    <div class="benefits">
+      <div class="benefits-label">🎯 مميزات هذه المرحلة لمعهدكم</div>
+      <h4>المرحلة الأهم — تغيّر معادلة التحصيل في معهدكم</h4>
+      <ul class="benefits-list">
+        <li>المعاهد المماثلة شهدت <strong>ارتفاع نسبة التحصيل بـ25-40٪</strong> في 3 أشهر.</li>
+        <li>الطالب يلتزم بدفع متأخراته للحصول على شهادة أو خطاب — دون تدخل بشري.</li>
+        <li>الإدارة ترى التحصيل لحظة بلحظة من كل فرع.</li>
+        <li>لا حاجة لمتابعة يدوية مرهقة من موظفي المالية.</li>
+        <li>كل إجراء مالي أو إداري مُسجَّل ومحفوظ.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ====================== PAGE 5: ART 4 + 5 - QUALITY & PERFORMANCE ====================== -->
+<!-- ====================== PAGE 5: PHASE 3 ====================== -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
-      <h2 class="page-title">المواد 4-5: الجودة والأداء</h2>
+      <h2 class="page-title">الشهر الثالث — العمليات اليومية</h2>
       <div class="page-num">05</div>
     </div>
 
-    <!-- Article 4 -->
-    <div class="article">
-      <div class="article-header">
-        <div class="article-number">4</div>
-        <div class="article-title">معايير الجودة</div>
-      </div>
-      <div class="article-body">
-        <p>يلتزم الطرف الثاني بمعايير الجودة التالية في كل مرحلة:</p>
-
-        <h4 class="sub-h">🧪 الاختبارات</h4>
-        <ul class="simple-list">
-          <li>تغطية اختبارات الوحدة (Unit Tests) <strong>≥ 80٪</strong> للمنطق التجاري.</li>
-          <li>اختبارات تكامل (Integration Tests) لكل Server Action رئيسي.</li>
-          <li>اختبارات End-to-End (E2E) لـ <strong>7 سيناريوهات قبول</strong>.</li>
-          <li>اختبارات أمنية: <code>npm audit</code> + Snyk قبل كل تسليم.</li>
-        </ul>
-
-        <h4 class="sub-h">💎 جودة الكود</h4>
-        <ul class="simple-list">
-          <li>الالتزام بـ <code>TypeScript strict mode</code> + منع <code>any</code>.</li>
-          <li>تطبيق <code>ESLint</code> + <code>Prettier</code> على كل ملف.</li>
-          <li>اتباع <code>Conventional Commits</code> في رسائل الـGit.</li>
-          <li><strong>Code Reviews</strong> قبل الدمج لكل PR.</li>
-          <li>توثيق JSDoc لكل دالة عامة.</li>
-        </ul>
-
-        <h4 class="sub-h">🎨 معايير الواجهة</h4>
-        <ul class="simple-list">
-          <li>الالتزام بـ <code>WCAG 2.1 AA</code> (إمكانية الوصول).</li>
-          <li>دعم <strong>RTL عربي أصلي</strong> (Logical CSS Properties).</li>
-          <li>تجربة موحّدة على Desktop + Laptop + Tablet.</li>
-          <li>Lighthouse Score <strong>≥ 90</strong> لكل صفحة.</li>
-        </ul>
+    <div class="phase-banner">
+      <div class="phase-banner-content">
+        <span class="phase-num-label">المرحلة 3 · الأسابيع 9-12</span>
+        <div class="phase-name">العمليات اليومية الكاملة</div>
+        <div class="phase-tagline">
+          محرك الطلبات والخطابات يُلغي العمل الورقي + شؤون المتدربين + التسجيل + الأكاديمي اليومي.
+        </div>
       </div>
     </div>
 
-    <!-- Article 5 -->
-    <div class="article">
-      <div class="article-header">
-        <div class="article-number">5</div>
-        <div class="article-title">الأداء والسرعة</div>
-      </div>
-      <div class="article-body">
-        <p>يضمن الطرف الثاني الحد الأدنى التالي من الأداء:</p>
+    <div class="deliv-title">📦 ما يُسلَّم في نهاية هذا الشهر</div>
+    <div class="deliverables">
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>محرك طلبات ذكي</strong> لـ14 نوع طلب (خطابات، انسحاب، إيقاف...)</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>مسارات تلقائية</strong> بين الأقسام لكل طلب</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>SLA لكل طلب</strong> مع تصعيد تلقائي للتأخّر</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>مولّد خطابات احترافي</strong> بصيغة PDF عربية أصيلة</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>12+ خطاب جاهز</strong> (تعريف، إفادة، تدريب، شهادة، سند...)</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>خطابات السلم الوظيفي</strong> خاصة بالموظفين الحكوميين</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>توقيع رقمي + QR</strong> لكل خطاب للتحقق من صحته</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>سيرة ذاتية تلقائية</strong> للطالب من بياناته بضغطة واحدة</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>نظام تذاكر داخلي</strong> لطلبات الموظفين (إداري، صيانة، فنّي)</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>بوابة شؤون المتدربين</strong> الكاملة + إدارة الشكاوى</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>تدفق الانسحاب</strong> الكامل (شؤون → مالية → إدارة)</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>بوابة التسجيل والقبول</strong> بـ7 مراحل من الاهتمام للتسجيل</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>صفحة تسجيل عامة</strong> لاستقبال طلبات الانضمام أونلاين</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>إدارة الجداول</strong> الصباحية والمسائية ونهاية الأسبوع</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>الحضور المتقدم</strong> مع الإنذارات والحرمان التلقائي</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>الواجبات</strong> (رفع، توزيع، تسليم، تقييم)</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>الاختبار الشامل النهائي</strong> مع المؤهلين تلقائياً</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>التقويم الموحّد</strong> لكل المواعيد في شاشة واحدة</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>مكتبة موارد تعليمية</strong> لكل مادة (ملفات، فيديوهات، روابط)</span></div>
+    </div>
 
-        <table class="sla-table">
-          <thead>
-            <tr>
-              <th>المعيار</th>
-              <th>الحد المقبول</th>
-              <th>الحد المثالي</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>تحميل الصفحة الرئيسية</td><td>&lt; 2 ثانية</td><td>&lt; 1.5 ثانية</td></tr>
-            <tr><td>استجابة API (قراءة)</td><td>&lt; 500ms</td><td>&lt; 300ms</td></tr>
-            <tr><td>استجابة API (كتابة)</td><td>&lt; 1.5 ثانية</td><td>&lt; 1 ثانية</td></tr>
-            <tr><td>استعلامات قاعدة البيانات</td><td>&lt; 200ms</td><td>&lt; 100ms</td></tr>
-            <tr><td>توليد PDF (خطاب)</td><td>&lt; 5 ثوانٍ</td><td>&lt; 3 ثوانٍ</td></tr>
-            <tr><td>تصدير Excel (1,000 صف)</td><td>&lt; 8 ثوانٍ</td><td>&lt; 5 ثوانٍ</td></tr>
-            <tr><td>المستخدمون المتزامنون</td><td>200</td><td>300</td></tr>
-            <tr><td>وقت التشغيل (Uptime)</td><td>99.5٪ شهرياً</td><td>99.9٪ شهرياً</td></tr>
-          </tbody>
-        </table>
-
-        <div class="info-box">
-          <strong>📊 المراقبة المستمرة</strong>
-          <p>يُفعَّل <code>Sentry</code> لتتبع الأخطاء + <code>Vercel Analytics</code> لقياس الأداء،
-          ويُرسَل تقرير شهري للطرف الأول يوضّح المؤشرات الفعلية.</p>
-        </div>
-      </div>
+    <div class="benefits">
+      <div class="benefits-label">🎯 مميزات هذه المرحلة لمعهدكم</div>
+      <h4>معهدكم يعمل رقمياً 100٪ — لا ورق، لا واتساب، لا إكسل</h4>
+      <ul class="benefits-list">
+        <li>الطالب يطلب خطاباً ويستلمه في دقائق — بدلاً من 3-5 أيام.</li>
+        <li>كل قسم يرى البيانات اللحظية للأقسام الأخرى.</li>
+        <li>توفير 40-60٪ من وقت موظفي شؤون المتدربين.</li>
+        <li>الإدارة تتابع كل العمليات اليومية من شاشة واحدة.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ====================== PAGE 6: ART 6 - SECURITY ====================== -->
+<!-- ====================== PAGE 6: PHASE 4 ====================== -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
-      <h2 class="page-title">المادة 6: الأمان والامتثال</h2>
+      <h2 class="page-title">الشهر الرابع — التكامل والذكاء</h2>
       <div class="page-num">06</div>
     </div>
 
-    <div class="article">
-      <div class="article-header">
-        <div class="article-number">6</div>
-        <div class="article-title">الأمان والامتثال التنظيمي</div>
+    <div class="phase-banner">
+      <div class="phase-banner-content">
+        <span class="phase-num-label">المرحلة 4 · الأسابيع 13-16</span>
+        <div class="phase-name">الامتثال والتميّز التنافسي 🏆</div>
+        <div class="phase-tagline">
+          تكامل TVTC الكامل + التقارير المتقدمة + التواصل الذكي + المساعد الافتراضي.
+        </div>
       </div>
-      <div class="article-body">
-        <p>يلتزم الطرف الثاني بمعايير الأمان والامتثال التالية:</p>
+    </div>
 
-        <h4 class="sub-h">🔒 PDPL — نظام حماية البيانات الشخصية</h4>
-        <ul class="simple-list">
-          <li>تشفير البيانات في النقل <code>TLS 1.3</code> وفي التخزين <code>AES-256</code>.</li>
-          <li>حق الطالب في الوصول والتصحيح والمحو والتصدير لبياناته.</li>
-          <li>سجل معالجة البيانات (Processing Register) محدّث.</li>
-          <li>إشعار الطرف الأول بأي اختراق محتمل خلال <strong>72 ساعة</strong>.</li>
-          <li>الاحتفاظ بالبيانات داخل المملكة (في مرحلة الإنتاج النهائية).</li>
-        </ul>
+    <div class="deliv-title">📦 ما يُسلَّم في نهاية هذا الشهر</div>
+    <div class="deliverables">
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>تكامل TVTC الكامل</strong> لتسجيل المتدربين رسمياً</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>إرسال الدرجات للوزارة</strong> تلقائياً بعد الاعتماد</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>تقارير الحضور الدورية</strong> مرفوعة للوزارة</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>اعتماد رسمي للشهادات</strong> من نظام TVTC</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>لوحة الامتثال الحكومي</strong> لمتابعة المزامنة</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>لوحات مؤشرات</strong> لكل دور (إدارة، فرع، مالية...)</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>20+ تقرير جاهز</strong> بتصدير Excel + PDF</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>تقارير حسب الفرع/الفترة/البرنامج</strong></span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>أرشيف رقمي شامل</strong> لكل معلم وكل طالب</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>نظام تقييم المعلمين</strong> من الطلاب (مجهول الهوية)</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>اكتشاف الطلاب المتعثرين</strong> مبكراً للتدخّل</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>إرسال WhatsApp</strong> للإشعارات والفواتير</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>إرسال SMS</strong> للتنبيهات الحرجة</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>إرسال Email</strong> للخطابات الرسمية</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>مساعد ذكي للطلاب</strong> يجيب أسئلتهم 24/7</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>تسجيل دخول بنفاذ</strong> للطلاب بالهوية الرقمية</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>بوابة الخريجين</strong> لمتابعة المسار المهني</span></div>
+      <div class="deliv"><span class="check">✓</span><span class="deliv-text"><strong>الدورات التطويرية</strong> للخريجين كمصدر دخل إضافي</span></div>
+    </div>
 
-        <h4 class="sub-h">🛡️ الأمان التطبيقي (Application Security)</h4>
-        <ul class="simple-list">
-          <li>الحماية من ثغرات OWASP Top 10 (SQL Injection، XSS، CSRF، إلخ).</li>
-          <li><code>Row Level Security (RLS)</code> على كل جدول في قاعدة البيانات.</li>
-          <li>2FA إلزامي للأدوار: <strong>Super Admin، Admin، Finance، Branch Manager</strong>.</li>
-          <li>Lockout policy: <strong>5 محاولات فاشلة → قفل 15 دقيقة</strong>.</li>
-          <li>Rate Limiting على Endpoints الحساسة (تسجيل دخول، تصدير، بحث).</li>
-          <li>CAPTCHA (Cloudflare Turnstile) عند المحاولات المتكررة.</li>
-          <li>Security Headers كاملة (HSTS، CSP، X-Frame-Options).</li>
-        </ul>
-
-        <h4 class="sub-h">📋 Audit Log</h4>
-        <ul class="simple-list">
-          <li>تسجيل كل العمليات الحساسة (تغيير الحالات، فك الحجب، تعديل الدرجات).</li>
-          <li>السجل غير قابل للحذف لمدة <strong>سنتين</strong>.</li>
-          <li>واجهة للأدمن للبحث في السجل.</li>
-        </ul>
-
-        <h4 class="sub-h">💾 النسخ الاحتياطي والاستعادة</h4>
-        <table class="sla-table">
-          <thead>
-            <tr><th>النسخة</th><th>التكرار</th><th>الاحتفاظ</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>نسخة كاملة (Full)</td><td>يومياً 02:00</td><td>30 يوم</td></tr>
-            <tr><td>نسخة تزايدية</td><td>كل ساعة</td><td>7 أيام</td></tr>
-            <tr><td>نسخة أرشيف</td><td>شهرياً</td><td>سنة كاملة</td></tr>
-          </tbody>
-        </table>
-
-        <p style="margin-top: 8px;">
-          <strong>RTO</strong> (زمن الاستعادة): <strong>4 ساعات</strong> كحد أقصى. <br>
-          <strong>RPO</strong> (نقطة الاستعادة): <strong>1 ساعة</strong> كحد أقصى.
-        </p>
-
-        <h4 class="sub-h">🏛️ امتثال TVTC</h4>
-        <ul class="simple-list">
-          <li>تصميم الشهادات وفق معايير TVTC.</li>
-          <li>رمز اعتماد رسمي + QR للتحقق.</li>
-          <li>إرسال البيانات للوزارة عبر API بصيغة معتمدة.</li>
-        </ul>
-      </div>
+    <div class="benefits">
+      <div class="benefits-label">🎯 مميزات هذه المرحلة لمعهدكم</div>
+      <h4>معهدكم يصبح نموذجاً رقمياً متكاملاً في المملكة</h4>
+      <ul class="benefits-list">
+        <li>الامتثال الحكومي مضمون — رفع البيانات للوزارة تلقائياً.</li>
+        <li>قرارات الإدارة مبنية على تقارير حقيقية لحظية.</li>
+        <li>تواصل آلي مع الطلاب عبر القنوات المفضّلة (WhatsApp/SMS/Email).</li>
+        <li>المساعد الذكي يقلّل 60-70٪ من عبء استفسارات الطلاب.</li>
+        <li>الخريجون يبقون ضمن المنظومة — مصدر دخل مستدام.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ====================== PAGE 7: ART 7 - MAINTENANCE SLA ====================== -->
+<!-- ====================== PAGE 7: QUALITY + MAINTENANCE ====================== -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
-      <h2 class="page-title">المادة 7: الصيانة ومستوى الخدمة (SLA)</h2>
+      <h2 class="page-title">ضمانات الجودة والصيانة</h2>
       <div class="page-num">07</div>
     </div>
 
-    <div class="article">
-      <div class="article-header">
-        <div class="article-number">7</div>
-        <div class="article-title">الصيانة والدعم الفني</div>
+    <h3 class="section-h">🛡 ضمانات الجودة</h3>
+
+    <div class="quality-grid">
+      <div class="quality-card">
+        <div class="icon">🧪</div>
+        <h4>اختبارات شاملة قبل التسليم</h4>
+        <p>كل ميزة تُختبر يدوياً وآلياً قبل تسليم المرحلة، ولا تُعتمد دون اجتيازها.</p>
       </div>
-      <div class="article-body">
-        <p>
-          فترة الضمان والصيانة المجانية <strong>12 شهراً كاملاً</strong> تبدأ من تاريخ التسليم النهائي،
-          وتشمل المعايير التالية:
-        </p>
-
-        <h4 class="sub-h">⏱ تصنيف الأعطال ومستويات الاستجابة</h4>
-        <table class="sla-table">
-          <thead>
-            <tr>
-              <th>الدرجة</th>
-              <th>الوصف</th>
-              <th>زمن الاستجابة</th>
-              <th>زمن الحلّ</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="severity-critical">🔴 حرجة</td>
-              <td>النظام متوقّف / ميزة رئيسية معطّلة</td>
-              <td>1 ساعة</td>
-              <td>4 ساعات</td>
-            </tr>
-            <tr>
-              <td class="severity-high">🟠 عالية</td>
-              <td>ميزة ثانوية معطّلة / خطأ يعوّق العمل</td>
-              <td>4 ساعات</td>
-              <td>24 ساعة</td>
-            </tr>
-            <tr>
-              <td class="severity-medium">🟡 متوسطة</td>
-              <td>خطأ لا يعوّق العمل بشكل كبير</td>
-              <td>24 ساعة</td>
-              <td>72 ساعة</td>
-            </tr>
-            <tr>
-              <td class="severity-low">🟢 منخفضة</td>
-              <td>تحسينات بصرية أو نصية</td>
-              <td>3 أيام عمل</td>
-              <td>أسبوع</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h4 class="sub-h">📞 قنوات الدعم الفنّي</h4>
-        <ul class="simple-list">
-          <li><strong>البريد الإلكتروني:</strong> الاستفسارات والطلبات غير العاجلة.</li>
-          <li><strong>WhatsApp Business:</strong> العاجل والمستعجل.</li>
-          <li><strong>اجتماع شهري:</strong> 30 دقيقة لاستعراض الأداء.</li>
-          <li><strong>تقرير شهري:</strong> ملخّص الأداء + الإصلاحات + التحسينات.</li>
-        </ul>
-
-        <h4 class="sub-h">✅ ما تشمله الصيانة المجانية</h4>
-        <ul class="simple-list">
-          <li>إصلاح الأخطاء (Bugs) ومشاكل النظام.</li>
-          <li>تحديثات الأمان للمكتبات والإطار البرمجي.</li>
-          <li>مراقبة النظام والاستجابة الاستباقية للمشاكل.</li>
-          <li>التعديلات البسيطة التي لا تتجاوز ساعة عمل.</li>
-          <li>دعم استفسارات المستخدمين عبر القنوات المعتمدة.</li>
-        </ul>
-
-        <div class="highlight-box">
-          <strong>⚠️ ما لا تشمله الصيانة المجانية</strong>
-          <p>
-            تطوير ميزات جديدة، تعديلات كبيرة، تكامل مع أنظمة جديدة، الأخطاء الناتجة عن إساءة الاستخدام أو تعديل
-            الكود من قِبَل طرف آخر. تخضع هذه لإجراءات طلب التغيير (المادة 8).
-          </p>
-        </div>
+      <div class="quality-card">
+        <div class="icon">🔒</div>
+        <h4>متوافق مع نظام حماية البيانات السعودي</h4>
+        <p>تشفير البيانات + حماية الخصوصية + حقوق الطالب في الوصول والمحو.</p>
       </div>
+      <div class="quality-card">
+        <div class="icon">🌐</div>
+        <h4>عربي بالكامل من اليوم الأول</h4>
+        <p>ليس ترجمة، بل تصميم عربي أصيل بكل تفاصيله — خطوط واتجاه وتواريخ.</p>
+      </div>
+      <div class="quality-card">
+        <div class="icon">⚡</div>
+        <h4>أداء سريع وموثوق</h4>
+        <p>تحميل الصفحة في أقل من ثانيتين، حتى مع مئات المستخدمين المتزامنين.</p>
+      </div>
+      <div class="quality-card">
+        <div class="icon">💾</div>
+        <h4>نسخ احتياطي يومي مشفّر</h4>
+        <p>نسخ تلقائية + استعادة كاملة خلال 4 ساعات عند الحاجة.</p>
+      </div>
+      <div class="quality-card">
+        <div class="icon">📋</div>
+        <h4>سجل تدقيق كامل</h4>
+        <p>كل تعديل حساس مُسجَّل: من، متى، ماذا، لماذا — لا فقدان للمساءلة.</p>
+      </div>
+    </div>
+
+    <h3 class="section-h" style="margin-top: 16px;">🛠 الصيانة لمدة 12 شهراً</h3>
+
+    <div class="benefits" style="margin-top: 12px;">
+      <div class="benefits-label">📅 ما تشمله الصيانة المجانية</div>
+      <h4>سنة كاملة من الدعم والإصلاح دون أي رسوم إضافية</h4>
+      <ul class="benefits-list">
+        <li>إصلاح أي عطل أو خلل في النظام دون رسوم — استجابة من 4 ساعات إلى أسبوع حسب الخطورة.</li>
+        <li>تحديثات الأمان الدورية والمستمرة.</li>
+        <li>الدعم الفنّي المباشر عبر بريد إلكتروني وواتساب مع زمن استجابة محدّد.</li>
+        <li>مراقبة دورية للنظام والتدخّل الاستباقي قبل المشاكل.</li>
+        <li>مراجعة النسخ الاحتياطية اليومية والتأكد من سلامتها.</li>
+        <li>التعديلات البسيطة التي لا تتجاوز ساعة عمل لكل طلب.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ====================== PAGE 8: ART 8 + 9 - CHANGES & DOCS ====================== -->
+<!-- ====================== PAGE 8: SIGNATURES ====================== -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
-      <h2 class="page-title">المواد 8-9: التغيير والتوثيق</h2>
+      <h2 class="page-title">الموافقة والتوقيع</h2>
       <div class="page-num">08</div>
     </div>
 
-    <!-- Article 8 -->
-    <div class="article">
-      <div class="article-header">
-        <div class="article-number">8</div>
-        <div class="article-title">إدارة التغيير والإصدارات</div>
-      </div>
-      <div class="article-body">
-        <h4 class="sub-h">🌿 استراتيجية Git</h4>
-        <ul class="simple-list">
-          <li><code>main</code> — الإصدار الإنتاجي.</li>
-          <li><code>develop</code> — التطوير الجاري.</li>
-          <li><code>feature/*</code> — الميزات الجديدة.</li>
-          <li><code>hotfix/*</code> — الإصلاحات الحرجة.</li>
-          <li>الإصدارات بصيغة <code>Semantic Versioning</code> (مثال: v1.2.3).</li>
-        </ul>
+    <h3 class="section-h">✍️ إقرار الطرفين</h3>
 
-        <h4 class="sub-h">📝 طلبات التغيير (Change Requests)</h4>
-        <p>لأي ميزة جديدة أو تعديل خارج نطاق العقد الأصلي:</p>
-        <ul class="simple-list">
-          <li>تقديم طلب كتابي يصف التغيير المطلوب.</li>
-          <li>الطرف الثاني يُقدّم تقديراً للجهد والمدّة خلال <strong>5 أيام عمل</strong>.</li>
-          <li>الموافقة الكتابية من الطرف الأول قبل البدء.</li>
-          <li>توثيق التغيير في ملحق (Addendum) يُلحق بالعقد.</li>
-        </ul>
-
-        <h4 class="sub-h">🚀 النشر (Deployment)</h4>
-        <ul class="simple-list">
-          <li>نشر تلقائي عبر <code>GitHub Actions</code>.</li>
-          <li>بيئتان: <strong>Staging</strong> (للاختبار) + <strong>Production</strong> (للإنتاج).</li>
-          <li>كل دمج لـ<code>main</code> يحتاج موافقة + اجتياز جميع الاختبارات.</li>
-          <li>Rollback تلقائي عند فشل الاختبارات.</li>
-        </ul>
-      </div>
+    <div class="preamble">
+      <p>
+        بتوقيع الطرفين على هذا الملحق، يُقرّان بأنّهما اطّلعا على <strong>المراحل الأربع</strong> ومحتواها التفصيلي،
+        و<strong>المميزات التي تُضيفها كل مرحلة</strong> لمعهد رواد العطاء، ووافقا على تسليم النظام بهذا الترتيب.
+      </p>
     </div>
-
-    <!-- Article 9 -->
-    <div class="article">
-      <div class="article-header">
-        <div class="article-number">9</div>
-        <div class="article-title">التوثيق والتدريب</div>
-      </div>
-      <div class="article-body">
-        <h4 class="sub-h">📚 الوثائق المُسلَّمة</h4>
-        <ul class="simple-list">
-          <li><strong>README.md</strong> — دليل المطوّر للبدء السريع.</li>
-          <li><strong>Architecture Guide</strong> — توثيق المعمارية والتدفقات.</li>
-          <li><strong>API Documentation</strong> — توثيق الـ APIs الداخلية.</li>
-          <li><strong>Database Schema</strong> — مخطط قاعدة البيانات (ERD).</li>
-          <li><strong>Deployment Guide</strong> — دليل النشر والإعدادات.</li>
-          <li><strong>User Manuals</strong> — أدلة المستخدم لكل دور (PDF).</li>
-          <li><strong>Video Tutorials</strong> — فيديوهات شرح للميزات الرئيسية.</li>
-        </ul>
-
-        <h4 class="sub-h">🎓 التدريب</h4>
-        <table class="sla-table">
-          <thead>
-            <tr><th>المرحلة</th><th>مدة التدريب</th><th>المستفيدون</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>المرحلة 1</td><td>2 ساعة</td><td>المدربون + الإدارة</td></tr>
-            <tr><td>المرحلة 2</td><td>3 ساعات</td><td>المالية + الإدارة</td></tr>
-            <tr><td>المرحلة 3</td><td>4 ساعات</td><td>شؤون المتدربين + التسجيل</td></tr>
-            <tr><td>المرحلة 4</td><td>3 ساعات</td><td>الإدارة + ورشة ختامية</td></tr>
-          </tbody>
-        </table>
-
-        <p style="margin-top: 8px;">التدريب <strong>عن بُعد أو حضوري</strong> حسب اتفاق الطرفين، ويُسجَّل لإعادة المشاهدة.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====================== PAGE 9: ART 10 - ACCEPTANCE + SIGNATURES ====================== -->
-<section class="page">
-  <div class="content-page">
-    <div class="page-header">
-      <h2 class="page-title">المادة 10: القبول الفني والتوقيع</h2>
-      <div class="page-num">09</div>
-    </div>
-
-    <div class="article">
-      <div class="article-header">
-        <div class="article-number">10</div>
-        <div class="article-title">معايير القبول الفني</div>
-      </div>
-      <div class="article-body">
-        <p>تُعتمد كل مرحلة بعد تجاوزها معايير القبول التالية:</p>
-        <ul class="simple-list">
-          <li>جميع الميزات الموضّحة في المخرَجات الفنية مكتملة وتعمل.</li>
-          <li>جميع اختبارات Unit + Integration + E2E تمرّ بنجاح.</li>
-          <li>تغطية الاختبارات <strong>≥ 80٪</strong> للمنطق التجاري.</li>
-          <li>Lighthouse Performance ≥ 90، Accessibility ≥ 95.</li>
-          <li>لا توجد ثغرات أمنية <strong>حرجة أو عالية</strong> (Snyk + npm audit).</li>
-          <li>RLS Policies مُختبَرة لكل الأدوار.</li>
-          <li>Audit Log يعمل لكل العمليات الحساسة.</li>
-          <li>التوثيق المطلوب مكتمل ومُسلَّم.</li>
-          <li>التدريب مُنفَّذ بنجاح.</li>
-          <li>اجتياز <strong>UAT</strong> (User Acceptance Testing) من الطرف الأول.</li>
-        </ul>
-
-        <div class="info-box">
-          <strong>📋 نموذج اعتماد المرحلة</strong>
-          <p>يُوقّع الطرف الأول على نموذج اعتماد رسمي لكل مرحلة بعد التحقق من المعايير، ويُعدّ هذا
-          النموذج جزءاً من سجل المشروع. مهلة المراجعة <strong>7 أيام عمل</strong> من تاريخ التسليم.</p>
-        </div>
-      </div>
-    </div>
-
-    <h3 class="section-h" style="margin-top: 14px;">✍️ التوقيع</h3>
 
     <div class="signature-section">
-      <h3>إقرار الطرفين بمحتوى العقد التقني</h3>
+      <h3>والله خير الشاهدين</h3>
 
       <div class="signatures-grid">
         <div class="signature-block">
@@ -1185,7 +857,15 @@
             <div class="line"></div>
           </div>
           <div class="sig-field">
+            <span class="label">المسمى:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
             <span class="label">التوقيع:</span>
+            <div class="line" style="min-height: 50px;"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">الختم الرسمي:</span>
             <div class="line" style="min-height: 50px;"></div>
           </div>
           <div class="sig-field">
@@ -1199,6 +879,10 @@
           <div class="sig-field">
             <span class="label">الاسم:</span>
             <strong>باسم محمد حميد الحجري</strong>
+          </div>
+          <div class="sig-field">
+            <span class="label">رقم الهوية:</span>
+            <strong>1011965918</strong>
           </div>
           <div class="sig-field">
             <span class="label">وثيقة العمل الحر:</span>
@@ -1217,7 +901,7 @@
     </div>
 
     <p style="text-align: center; margin-top: 12px; font-size: 0.85rem; color: var(--text-muted);">
-      هذا العقد التقني ملحق رسمي للعقد التجاري — يُقرأ ويُفسَّر معه كوحدة واحدة.
+      هذا الملحق جزء من العقد الرئيسي — يُقرأ ويُفسَّر معه كوحدة واحدة.
     </p>
   </div>
 </section>
