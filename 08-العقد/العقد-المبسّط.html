@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اتفاقية تطوير نظام IIMS — عمل حر</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary: #065F46;
+    --primary-light: #047857;
+    --primary-dark: #064E3B;
+    --accent: #D4A574;
+    --accent-dark: #B58853;
+    --cream: #FAFAF7;
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+    --success: #10B981;
+    --gold: #C9A961;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body {
+    font-family: 'Cairo', system-ui, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.9;
+    font-size: 14.5px;
+  }
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    page-break-after: always;
+    min-height: 297mm;
+    position: relative;
+  }
+  .page:last-child { page-break-after: avoid; }
+
+  /* COVER */
+  .cover {
+    min-height: 297mm;
+    background: linear-gradient(135deg, #064E3B 0%, #065F46 40%, #047857 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 65px 55px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,165,116,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212,165,116,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-top, .cover-bottom, .cover-center { z-index: 2; position: relative; }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover-emblem {
+    width: 90px; height: 90px;
+    background: rgba(212,165,116,0.15);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.6rem;
+  }
+  .cover-meta { text-align: end; font-size: 0.88rem; opacity: 0.9; line-height: 1.7; }
+  .cover-center { text-align: center; }
+  .cover-pretitle {
+    font-family: 'Amiri', serif;
+    font-size: 1.25rem;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
+  .cover h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.4;
+    margin-bottom: 22px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .cover-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+  .cover-amount {
+    background: rgba(212,165,116,0.2);
+    border: 2px solid var(--accent);
+    padding: 28px 50px;
+    border-radius: 18px;
+    display: inline-block;
+    margin-bottom: 30px;
+  }
+  .cover-amount .number {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .cover-amount .currency {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 8px;
+    opacity: 0.95;
+  }
+  .cover-amount .no-tax {
+    font-size: 0.92rem;
+    margin-top: 12px;
+    background: rgba(255,255,255,0.15);
+    padding: 6px 16px;
+    border-radius: 999px;
+    display: inline-block;
+  }
+  .cover-badges {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .cover-badge {
+    background: rgba(255,255,255,0.12);
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(212,165,116,0.4);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .cover-bottom {
+    text-align: center;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .cover-tagline {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.9;
+    margin-bottom: 10px;
+  }
+
+  /* CONTENT PAGES */
+  .content-page {
+    padding: 40px 50px 55px;
+    background: white;
+  }
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 14px;
+    margin-bottom: 28px;
+    border-bottom: 3px solid var(--primary);
+    position: relative;
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    width: 90px;
+    height: 3px;
+    background: var(--accent);
+  }
+  .page-num {
+    background: var(--primary);
+    color: white;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem;
+  }
+  .page-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  /* PREAMBLE */
+  .preamble {
+    background: var(--cream);
+    border-right: 5px solid var(--accent);
+    padding: 22px 26px;
+    border-radius: 10px;
+    margin-bottom: 26px;
+    line-height: 2;
+    font-size: 14.5px;
+  }
+
+  /* PARTIES */
+  .parties {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 22px 0;
+  }
+  .party-card {
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .party-label {
+    background: var(--primary);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .party-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
+  }
+  .party-fields {
+    list-style: none;
+  }
+  .party-fields li {
+    padding: 7px 0;
+    font-size: 0.92rem;
+    border-bottom: 1px dashed #D1D5DB;
+  }
+  .party-fields li:last-child { border-bottom: none; }
+  .party-fields .label {
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-left: 6px;
+  }
+  .party-fields .field {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .party-fields .highlight-cert {
+    background: #FEF3C7;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-top: 4px;
+  }
+
+  /* ARTICLE */
+  .article {
+    margin-bottom: 24px;
+    page-break-inside: avoid;
+  }
+  .article-header {
+    background: var(--primary);
+    color: white;
+    padding: 13px 20px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .article-number {
+    background: var(--accent);
+    color: var(--primary-dark);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .article-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+  }
+  .article-body {
+    padding-right: 18px;
+  }
+  .article-body p {
+    margin-bottom: 12px;
+    line-height: 2;
+  }
+  .article-body strong {
+    color: var(--primary-dark);
+  }
+
+  /* PHASE LIST */
+  .phase-list {
+    list-style: none;
+    counter-reset: phase-counter;
+    margin: 14px 0;
+  }
+  .phase-list > li {
+    counter-increment: phase-counter;
+    background: white;
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 14px 18px 14px 18px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-right: 56px;
+  }
+  .phase-list > li::before {
+    content: counter(phase-counter);
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    width: 30px;
+    height: 30px;
+    background: var(--primary);
+    color: var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+    font-size: 0.9rem;
+  }
+  .phase-list > li > strong {
+    display: block;
+    color: var(--primary);
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .phase-list > li > .phase-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* PAYMENT TABLE */
+  .pay-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .pay-table thead {
+    background: var(--primary);
+    color: white;
+  }
+  .pay-table th, .pay-table td {
+    padding: 11px 14px;
+    text-align: center;
+    border: 1px solid var(--border);
+    font-size: 0.92rem;
+  }
+  .pay-table th {
+    border-color: rgba(255,255,255,0.15);
+    font-weight: 700;
+  }
+  .pay-table td:first-child {
+    background: var(--cream);
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .pay-table tbody tr:nth-child(even) { background: #F9FAFB; }
+  .pay-table tfoot {
+    background: var(--primary-dark);
+    color: var(--accent);
+    font-weight: 900;
+  }
+  .pay-table tfoot td {
+    color: var(--accent);
+    font-size: 1.05rem;
+    padding: 14px;
+  }
+
+  /* SIMPLE LIST */
+  .simple-list {
+    list-style: none;
+    margin: 10px 0;
+  }
+  .simple-list li {
+    position: relative;
+    padding: 7px 24px 7px 0;
+    line-height: 1.85;
+  }
+  .simple-list li::before {
+    content: '✓';
+    color: var(--success);
+    font-weight: 900;
+    font-size: 1.05rem;
+    position: absolute;
+    right: 0;
+    top: 7px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: #FEF3C7;
+    border-right: 5px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 18px 0;
+  }
+  .highlight-box strong {
+    color: #92400E;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.98rem;
+  }
+  .highlight-box p {
+    color: #78350F;
+    line-height: 1.85;
+    font-size: 0.92rem;
+  }
+
+  /* SIGNATURE */
+  .signature-section {
+    background: var(--cream);
+    padding: 30px;
+    border-radius: 14px;
+    margin: 26px 0 20px;
+    border: 2px solid var(--primary);
+  }
+  .signature-section h3 {
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.3rem;
+    margin-bottom: 22px;
+  }
+  .signatures-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .signature-block {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    border: 1px dashed #9CA3AF;
+  }
+  .signature-block .role-label {
+    background: var(--accent);
+    color: var(--primary-dark);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+  .sig-field {
+    margin-bottom: 16px;
+  }
+  .sig-field .label {
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+    display: block;
+  }
+  .sig-field .line {
+    border-bottom: 1.5px solid #6B7280;
+    min-height: 26px;
+  }
+
+  /* SECTION HEADER */
+  .section-h {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
+  }
+
+  /* PRINT */
+  @media print {
+    @page { size: A4; margin: 0; }
+    html, body { width: 210mm; background: white; font-size: 11.5px; }
+    .page {
+      box-shadow: none;
+      width: 210mm !important;
+      max-width: 210mm !important;
+      min-height: 297mm !important;
+      page-break-after: always !important;
+    }
+    .page:last-child { page-break-after: avoid !important; }
+    .cover { height: 297mm !important; padding: 22mm 18mm !important; }
+    .content-page { padding: 16mm 16mm 14mm !important; }
+    .article { page-break-inside: avoid; margin-bottom: 16px; }
+    .signature-section { page-break-inside: avoid; }
+    .cover h1 { font-size: 2.2rem; }
+    .cover-amount .number { font-size: 3.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== COVER ===================== -->
+<section class="page cover">
+  <div class="cover-top">
+    <div class="cover-emblem">🤝</div>
+    <div class="cover-meta">
+      <div>📄 اتفاقية تطوير</div>
+      <div>🆔 عمل حر معتمد</div>
+      <div>🗓 .........................</div>
+      <div>📍 المملكة العربية السعودية</div>
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-pretitle">باسم الله الرحمن الرحيم</div>
+    <h1>اتفاقية تطوير<br>نظام إدارة المعهد التدريبي</h1>
+    <p class="cover-subtitle">
+      اتفاقية مبسّطة لتطوير نظام IIMS متكامل<br>
+      على 4 مراحل + صيانة سنة كاملة
+    </p>
+
+    <div class="cover-amount">
+      <div class="number">40,000</div>
+      <div class="currency">ريال سعودي — القيمة الإجمالية</div>
+      <div class="no-tax">✓ عمل حر — بدون ضريبة قيمة مضافة</div>
+    </div>
+
+    <div class="cover-badges">
+      <div class="cover-badge">⏱ 4 شهور</div>
+      <div class="cover-badge">💳 8 دفعات</div>
+      <div class="cover-badge">🛠 سنة صيانة</div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <p class="cover-tagline">"اتفاق واضح يحفظ حقّ الطرفين بثقة"</p>
+  </div>
+</section>
+
+<!-- ===================== PAGE 2: PARTIES ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الأطراف والتمهيد</h2>
+      <div class="page-num">02</div>
+    </div>
+
+    <h3 class="section-h">📜 التمهيد</h3>
+
+    <div class="preamble">
+      <p>
+        إنه في يوم ............... الموافق ......./......./......1447 هـ، تمَّ بعون الله إبرام هذه الاتفاقية بين الطرفين
+        المُسمَّيين أدناه، لتطوير نظام إدارة معهد تدريبي متكامل (IIMS)، وذلك وفق ما تمَّ الاتفاق عليه من مراحل وقيمة
+        ومدد ومخرَجات.
+      </p>
+    </div>
+
+    <div class="parties">
+      <div class="party-card">
+        <span class="party-label">الطرف الأول — العميل</span>
+        <div class="party-title">المعهد التدريبي</div>
+        <ul class="party-fields">
+          <li><span class="label">اسم المعهد:</span> <span class="field">.............................</span></li>
+          <li><span class="label">السجل التجاري:</span> <span class="field">.............................</span></li>
+          <li><span class="label">العنوان:</span> <span class="field">.............................</span></li>
+          <li><span class="label">يمثله:</span> <span class="field">.............................</span></li>
+          <li><span class="label">رقم الهوية:</span> <span class="field">.............................</span></li>
+          <li><span class="label">الجوال:</span> <span class="field">.............................</span></li>
+          <li><span class="label">البريد:</span> <span class="field">.............................</span></li>
+        </ul>
+      </div>
+
+      <div class="party-card">
+        <span class="party-label">الطرف الثاني — المطوّر</span>
+        <div class="party-title">مطوّر عمل حر</div>
+        <ul class="party-fields">
+          <li><span class="label">الاسم الكامل:</span> <span class="field">.............................</span></li>
+          <li><span class="label">رقم الهوية:</span> <span class="field">.............................</span></li>
+          <li class="highlight-cert">
+            <span class="label">🆔 وثيقة العمل الحر رقم:</span>
+            <span class="field">.............................</span>
+          </li>
+          <li><span class="label">العنوان:</span> <span class="field">.............................</span></li>
+          <li><span class="label">الجوال:</span> <span class="field">.............................</span></li>
+          <li><span class="label">البريد:</span> <span class="field">.............................</span></li>
+          <li><span class="label">IBAN:</span> <span class="field">.............................</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>💼 ملاحظة العمل الحر</strong>
+      <p>الطرف الثاني يعمل بصفته الشخصية تحت <strong>وثيقة العمل الحر</strong> الصادرة من وزارة الموارد البشرية،
+      وهي معفاة من ضريبة القيمة المضافة وفقاً للأنظمة المعمول بها.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 3: ARTICLES 1-3 ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المواد 1-3: المشروع والمراحل والقيمة</h2>
+      <div class="page-num">03</div>
+    </div>
+
+    <!-- Article 1 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">1</div>
+        <div class="article-title">محلّ الاتفاقية</div>
+      </div>
+      <div class="article-body">
+        <p>
+          يلتزم الطرف الثاني بتطوير وتسليم <strong>نظام إدارة المعهد التدريبي المتكامل (IIMS)</strong>
+          للطرف الأول، شاملاً جميع الميزات والموديولات المُتّفق عليها في الخطة التنفيذية المرفقة.
+        </p>
+        <p>
+          النظام يُسلَّم على <strong>4 مراحل شهرية</strong>، ويشمل التدريب لكل مرحلة، وصيانة مجانية كاملة لمدة سنة بعد التسليم.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 2 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">2</div>
+        <div class="article-title">المراحل والمخرَجات</div>
+      </div>
+      <div class="article-body">
+        <p>يُنفَّذ المشروع على المراحل الأربع التالية:</p>
+        <ol class="phase-list">
+          <li>
+            <strong>الأساس والاختبارات</strong>
+            <span class="phase-desc">البنية التحتية + بنك الأسئلة + محرك الاختبارات + الشهادات بـQR + PWA التحضير.</span>
+          </li>
+          <li>
+            <strong>الطلاب والمالية</strong>
+            <span class="phase-desc">ملف الطالب الشامل + ربط البرنامج المحاسبي + محرك الحجب الذكي + لوحات المالية.</span>
+          </li>
+          <li>
+            <strong>العمليات اليومية</strong>
+            <span class="phase-desc">الطلبات + توليد الخطابات PDF + شؤون المتدربين + التسجيل + الجداول + الواجبات.</span>
+          </li>
+          <li>
+            <strong>التكامل والذكاء</strong>
+            <span class="phase-desc">ربط TVTC والوزارة + التقارير + WhatsApp/SMS/Email + المساعد الذكي + نفاذ.</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Article 3 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">3</div>
+        <div class="article-title">القيمة المالية والدفعات</div>
+      </div>
+      <div class="article-body">
+        <p>
+          القيمة الإجمالية لهذه الاتفاقية <strong>أربعون ألف ريال سعودي (40,000 ر.س)</strong> فقط لا غير،
+          <strong>غير خاضعة لضريبة القيمة المضافة</strong> لكون الطرف الثاني يعمل بوثيقة العمل الحر.
+        </p>
+        <p>تُسدَّد القيمة على 8 دفعات متساوية كل منها <strong>5,000 ريال</strong>، وفق الجدول التالي:</p>
+        <table class="pay-table">
+          <thead>
+            <tr>
+              <th>المرحلة</th>
+              <th>دفعة البداية 🟢</th>
+              <th>دفعة التسليم 🟡</th>
+              <th>المجموع</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>الأولى</td><td>5,000</td><td>5,000</td><td>10,000</td></tr>
+            <tr><td>الثانية</td><td>5,000</td><td>5,000</td><td>10,000</td></tr>
+            <tr><td>الثالثة</td><td>5,000</td><td>5,000</td><td>10,000</td></tr>
+            <tr><td>الرابعة</td><td>5,000</td><td>5,000</td><td>10,000</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="3" style="text-align:right;">الإجمالي</td><td>40,000 ر.س</td></tr>
+          </tfoot>
+        </table>
+        <p>
+          تُسدَّد دفعة البداية لكل مرحلة <strong>عند الإشعار ببدئها</strong>، وتُسدَّد دفعة التسليم
+          <strong>عند اعتماد المرحلة</strong> من الطرف الأول.
+        </p>
+        <p>تُحوَّل الدفعات إلى حساب الطرف الثاني (IBAN المُوضَّح أعلاه).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 4: ARTICLES 4-5 ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المواد 4-5: الجدول الزمني والتزامات الطرفين</h2>
+      <div class="page-num">04</div>
+    </div>
+
+    <!-- Article 4 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">4</div>
+        <div class="article-title">المدة والجدول الزمني</div>
+      </div>
+      <div class="article-body">
+        <p>
+          تبدأ مدة الاتفاقية من تاريخ <strong>التوقيع وسداد الدفعة الأولى</strong>، وتمتدّ <strong>4 شهور</strong>
+          (~16 أسبوع عمل) للتسليم الكامل.
+        </p>
+        <p>
+          مدة تنفيذ كل مرحلة <strong>4 أسابيع</strong>، مع مهلة سماح أسبوع واحد لأسباب فنية مقبولة.
+        </p>
+        <p>
+          إذا تأخّر تسليم أي مرحلة عن موعدها (بعد مهلة السماح) لأسباب من الطرف الثاني، يُخصم
+          <strong>2٪ من قيمة المرحلة</strong> عن كل أسبوع تأخير.
+        </p>
+        <p>
+          إذا كان التأخير من الطرف الأول (تأخر في الردود أو البيانات)، يُمدَّد الجدول الزمني تلقائياً.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 5 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">5</div>
+        <div class="article-title">التزامات الطرفين</div>
+      </div>
+      <div class="article-body">
+        <p><strong>الطرف الأول (المعهد) يلتزم بـ:</strong></p>
+        <ul class="simple-list">
+          <li>سداد الدفعات في مواعيدها المحدّدة.</li>
+          <li>توفير جميع البيانات والمعلومات اللازمة للتطوير في وقتها.</li>
+          <li>تعيين شخص مسؤول للتواصل والاعتمادات.</li>
+          <li>الردّ على الأسئلة خلال 3 أيام عمل كحد أقصى.</li>
+          <li>مراجعة كل مرحلة وإبلاغ الطرف الثاني بالقبول أو الملاحظات خلال 7 أيام.</li>
+        </ul>
+
+        <p style="margin-top: 14px;"><strong>الطرف الثاني (المطوّر) يلتزم بـ:</strong></p>
+        <ul class="simple-list">
+          <li>تنفيذ النظام وفق الجدول الزمني المتّفق عليه.</li>
+          <li>اتباع أفضل الممارسات الهندسية في التطوير.</li>
+          <li>تدريب موظفي المعهد لكل مرحلة (2-4 ساعات).</li>
+          <li>تسليم الوثائق والأدلة اللازمة لاستخدام النظام.</li>
+          <li>توفير صيانة مجانية كاملة لمدة 12 شهراً بعد التسليم.</li>
+          <li>الحفاظ على سرّية بيانات المعهد التامّة.</li>
+          <li>تسليم الكود المصدري الكامل بعد سداد الدفعة الأخيرة.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 5: ARTICLES 6-8 ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المواد 6-8: الملكية والضمان والإنهاء</h2>
+      <div class="page-num">05</div>
+    </div>
+
+    <!-- Article 6 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">6</div>
+        <div class="article-title">الملكية والسرّية</div>
+      </div>
+      <div class="article-body">
+        <p>
+          <strong>ملكية البيانات</strong> المُدخلة في النظام (بيانات الطلاب، الدفعات، الدرجات، إلخ) تبقى دائماً
+          ملكاً للطرف الأول منذ اليوم الأول، ويحقّ له تصديرها في أي وقت.
+        </p>
+        <p>
+          <strong>ملكية الكود</strong> تنتقل بالكامل للطرف الأول فور سداد الدفعة الأخيرة.
+        </p>
+        <p>
+          يلتزم الطرفان بـ<strong>السرّية التامة</strong> لجميع المعلومات المتبادلة، وعدم إفشائها لأي طرف ثالث
+          دون موافقة كتابية، ويستمر هذا الالتزام لمدة سنتين بعد انتهاء الاتفاقية.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 7 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">7</div>
+        <div class="article-title">الضمان والصيانة</div>
+      </div>
+      <div class="article-body">
+        <p>
+          يضمن الطرف الثاني <strong>صيانة مجانية كاملة لمدة 12 شهراً</strong> تبدأ من تاريخ التسليم النهائي،
+          وتشمل:
+        </p>
+        <ul class="simple-list">
+          <li>إصلاح أي عطل أو خلل (Bug) في النظام دون رسوم.</li>
+          <li>تحديثات الأمان الدورية.</li>
+          <li>الدعم الفني عبر القنوات المتّفق عليها (بريد + WhatsApp).</li>
+          <li>التعديلات البسيطة التي لا تتجاوز ساعة عمل.</li>
+        </ul>
+        <p>
+          أما تطوير ميزات جديدة أو تعديلات كبيرة بعد التسليم، فتُتفق عليها بسعر منفصل
+          (<strong>500 ريال للساعة</strong> تقريباً).
+        </p>
+        <p>
+          بعد انتهاء الـ12 شهر، يمكن تجديد الصيانة بقيمة سنوية تُحدَّد لاحقاً.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 8 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">8</div>
+        <div class="article-title">الإنهاء والنزاعات</div>
+      </div>
+      <div class="article-body">
+        <p>
+          يحقّ للطرف الأول <strong>إنهاء الاتفاقية في نهاية أي مرحلة</strong> دون رسوم إضافية، ويستلم
+          جميع المخرَجات المُعتمدة حتى تاريخ الإنهاء.
+        </p>
+        <p>
+          يحقّ للطرف الثاني <strong>إيقاف العمل</strong> إذا تأخّر سداد دفعة لأكثر من 15 يوماً، بعد إنذار كتابي.
+        </p>
+        <p>
+          في حال نشوء أي نزاع، يلتزم الطرفان بمحاولة <strong>الحلّ الودّي</strong> أولاً، وإن تعذّر،
+          يُحال النزاع إلى <strong>المحاكم المختصّة في المملكة العربية السعودية</strong>.
+        </p>
+        <p>
+          تخضع هذه الاتفاقية للأنظمة السعودية وتُفسَّر وفقاً لها.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 6: SIGNATURES ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">التوقيع والاعتماد</h2>
+      <div class="page-num">06</div>
+    </div>
+
+    <h3 class="section-h">✍️ توقيع الطرفين</h3>
+
+    <div class="signature-section">
+      <h3>والله خير الشاهدين</h3>
+
+      <div class="signatures-grid">
+        <div class="signature-block">
+          <div class="role-label">الطرف الأول — المعهد</div>
+          <div class="sig-field">
+            <span class="label">الاسم:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">المسمى:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">رقم الهوية:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">التوقيع:</span>
+            <div class="line" style="min-height: 50px;"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">الختم الرسمي:</span>
+            <div class="line" style="min-height: 50px;"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">التاريخ:</span>
+            <div class="line"></div>
+          </div>
+        </div>
+
+        <div class="signature-block">
+          <div class="role-label">الطرف الثاني — المطوّر (عمل حر)</div>
+          <div class="sig-field">
+            <span class="label">الاسم:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">رقم الهوية:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">وثيقة العمل الحر رقم:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">التوقيع:</span>
+            <div class="line" style="min-height: 50px;"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">البصمة:</span>
+            <div class="line" style="min-height: 50px;"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">التاريخ:</span>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>🚀 الخطوات بعد التوقيع:</strong>
+      <p>
+        1. سداد الدفعة الأولى (5,000 ريال) خلال 5 أيام.<br>
+        2. عقد جلسة تمهيدية (Discovery) لتوحيد التفاصيل.<br>
+        3. بدء تنفيذ المرحلة الأولى مباشرة بعد الجلسة.<br>
+        4. تسليم المرحلة الأولى في غضون 4 أسابيع.
+      </p>
+    </div>
+
+    <p style="text-align: center; margin-top: 28px; font-size: 0.9rem; color: var(--text-muted); font-family: 'Amiri', serif; font-style: italic;">
+      "وأَوْفُوا بِالْعَهْدِ ۖ إِنَّ الْعَهْدَ كَانَ مَسْئُولًا" — الإسراء: 34
+    </p>
+
+    <p style="text-align: center; margin-top: 16px; font-size: 0.85rem; color: var(--text-muted);">
+      حُرّرت هذه الاتفاقية من نسختين أصليّتين، تسلّم كل طرف نسخة للعمل بمقتضاها.
+    </p>
+  </div>
+</section>
+
+</body>
+</html>
