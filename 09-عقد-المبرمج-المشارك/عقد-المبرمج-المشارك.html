@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عقد العمل المشترك — تطوير IIMS</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary: #065F46;
+    --primary-light: #047857;
+    --primary-dark: #064E3B;
+    --accent: #D4A574;
+    --accent-dark: #B58853;
+    --cream: #FAFAF7;
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+    --success: #10B981;
+    --gold: #C9A961;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body {
+    font-family: 'Cairo', system-ui, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.9;
+    font-size: 14.5px;
+  }
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    page-break-after: always;
+    min-height: 297mm;
+    position: relative;
+  }
+  .page:last-child { page-break-after: avoid; }
+
+  /* COVER */
+  .cover {
+    min-height: 297mm;
+    background: linear-gradient(135deg, #064E3B 0%, #065F46 40%, #047857 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 65px 55px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -30%; left: -20%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,165,116,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -25%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(212,165,116,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-top, .cover-bottom, .cover-center { z-index: 2; position: relative; }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover-emblem {
+    width: 90px; height: 90px;
+    background: rgba(212,165,116,0.15);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+  }
+  .cover-meta { text-align: end; font-size: 0.88rem; opacity: 0.9; line-height: 1.7; }
+  .cover-center { text-align: center; }
+  .cover-pretitle {
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
+  .cover h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.4;
+    margin-bottom: 22px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .cover-subtitle {
+    font-size: 1.15rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto 38px;
+    line-height: 1.7;
+  }
+  .cover-amount {
+    background: rgba(212,165,116,0.2);
+    border: 2px solid var(--accent);
+    padding: 26px 48px;
+    border-radius: 18px;
+    display: inline-block;
+    margin-bottom: 30px;
+  }
+  .cover-amount .label {
+    font-size: 0.95rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .cover-amount .number {
+    font-size: 4.2rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .cover-amount .breakdown {
+    font-size: 1rem;
+    margin-top: 8px;
+    opacity: 0.95;
+  }
+  .cover-badges {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .cover-badge {
+    background: rgba(255,255,255,0.12);
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(212,165,116,0.4);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .cover-bottom {
+    text-align: center;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .cover-tagline {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.9;
+    margin-bottom: 10px;
+  }
+
+  /* CONTENT */
+  .content-page {
+    padding: 40px 50px 55px;
+    background: white;
+  }
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 14px;
+    margin-bottom: 26px;
+    border-bottom: 3px solid var(--primary);
+    position: relative;
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; right: 0;
+    width: 90px; height: 3px;
+    background: var(--accent);
+  }
+  .page-num {
+    background: var(--primary);
+    color: white;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem;
+  }
+  .page-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  /* PREAMBLE */
+  .preamble {
+    background: var(--cream);
+    border-right: 5px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: 10px;
+    margin-bottom: 22px;
+    line-height: 1.95;
+  }
+
+  /* PARTIES */
+  .parties {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 18px 0;
+  }
+  .party-card {
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .party-label {
+    background: var(--primary);
+    color: var(--accent);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.78rem;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .party-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+  .party-fields { list-style: none; }
+  .party-fields li {
+    padding: 6px 0;
+    font-size: 0.9rem;
+    border-bottom: 1px dashed #D1D5DB;
+  }
+  .party-fields li:last-child { border-bottom: none; }
+  .party-fields .label {
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-left: 6px;
+  }
+  .party-fields .field {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* ARTICLE */
+  .article {
+    margin-bottom: 22px;
+    page-break-inside: avoid;
+  }
+  .article-header {
+    background: var(--primary);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .article-number {
+    background: var(--accent);
+    color: var(--primary-dark);
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+  }
+  .article-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+  .article-body p {
+    margin-bottom: 10px;
+    line-height: 2;
+  }
+  .article-body strong { color: var(--primary-dark); }
+
+  /* MONTHLY TABLE */
+  .pay-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .pay-table thead {
+    background: var(--primary);
+    color: white;
+  }
+  .pay-table th, .pay-table td {
+    padding: 12px 14px;
+    text-align: center;
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+  }
+  .pay-table th {
+    font-weight: 700;
+    border-color: rgba(255,255,255,0.15);
+  }
+  .pay-table tbody tr:nth-child(even) { background: #F9FAFB; }
+  .pay-table tfoot {
+    background: var(--primary-dark);
+    color: var(--accent);
+  }
+  .pay-table tfoot td {
+    color: var(--accent);
+    font-weight: 900;
+    font-size: 1.05rem;
+    padding: 14px;
+  }
+
+  /* SIMPLE LIST */
+  .simple-list { list-style: none; margin: 8px 0; }
+  .simple-list li {
+    position: relative;
+    padding: 6px 24px 6px 0;
+    line-height: 1.85;
+  }
+  .simple-list li::before {
+    content: '✓';
+    color: var(--success);
+    font-weight: 900;
+    font-size: 1rem;
+    position: absolute;
+    right: 0; top: 6px;
+  }
+
+  /* HIGHLIGHT */
+  .highlight-box {
+    background: #FEF3C7;
+    border-right: 5px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 16px 0;
+  }
+  .highlight-box strong {
+    color: #92400E;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.98rem;
+  }
+  .highlight-box p {
+    color: #78350F;
+    line-height: 1.85;
+    font-size: 0.92rem;
+  }
+
+  /* INFO BOX */
+  .info-box {
+    background: #ECFDF5;
+    border-right: 5px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .info-box strong {
+    color: var(--primary-dark);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .info-box p {
+    color: var(--primary-dark);
+    line-height: 1.85;
+    font-size: 0.93rem;
+  }
+
+  /* MONTHS */
+  .months-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .month-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .month-card .num {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1;
+  }
+  .month-card .label {
+    color: var(--accent-dark);
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin: 6px 0;
+  }
+  .month-card .amount {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+  }
+
+  /* SIGNATURE */
+  .signature-section {
+    background: var(--cream);
+    padding: 22px;
+    border-radius: 14px;
+    margin: 18px 0 14px;
+    border: 2px solid var(--primary);
+  }
+  .signature-section h3 {
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+  }
+  .signatures-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .signature-block {
+    background: white;
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px dashed #9CA3AF;
+  }
+  .signature-block .role-label {
+    background: var(--accent);
+    color: var(--primary-dark);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.78rem;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .sig-field { margin-bottom: 10px; }
+  .sig-field .label {
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+    display: block;
+  }
+  .sig-field .line {
+    border-bottom: 1.5px solid #6B7280;
+    min-height: 26px;
+  }
+
+  /* SECTION HEADER */
+  .section-h {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 10px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
+  }
+
+  /* PRINT */
+  @media print {
+    @page { size: A4; margin: 0; }
+    html, body { width: 210mm; background: white; font-size: 11.5px; }
+    .page {
+      box-shadow: none;
+      width: 210mm !important;
+      max-width: 210mm !important;
+      min-height: 297mm !important;
+      page-break-after: always !important;
+    }
+    .page:last-child { page-break-after: avoid !important; }
+    .cover { height: 297mm !important; padding: 22mm 18mm !important; }
+    .content-page { padding: 16mm 16mm 14mm !important; }
+    .article { page-break-inside: avoid; margin-bottom: 16px; }
+    .signature-section { page-break-inside: avoid; }
+    .cover h1 { font-size: 2.2rem; }
+    .cover-amount .number { font-size: 3.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== COVER ===================== -->
+<section class="page cover">
+  <div class="cover-top">
+    <div class="cover-emblem">🤝</div>
+    <div class="cover-meta">
+      <div>📄 عقد عمل مشترك</div>
+      <div>👥 طرفان</div>
+      <div>🗓 .........................</div>
+      <div>📍 المملكة العربية السعودية</div>
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-pretitle">باسم الله الرحمن الرحيم</div>
+    <h1>عقد العمل المشترك<br>تطوير نظام IIMS</h1>
+    <p class="cover-subtitle">
+      اتفاقية مبسّطة للتعاون التقني بين مطوّرين<br>
+      على مدى 3 شهور للمساهمة في تطوير النظام
+    </p>
+
+    <div class="cover-amount">
+      <div class="label">القيمة الإجمالية</div>
+      <div class="number">13,500</div>
+      <div class="breakdown">ريال سعودي — بمعدّل <strong>4,500 ريال شهرياً</strong> × 3 شهور</div>
+    </div>
+
+    <div class="cover-badges">
+      <div class="cover-badge">⏱ 3 شهور</div>
+      <div class="cover-badge">💰 4,500 / شهر</div>
+      <div class="cover-badge">🤝 تعاون مرن</div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <p class="cover-tagline">"تعاون احترافي يحفظ حقّ كل طرف"</p>
+  </div>
+</section>
+
+<!-- ===================== PAGE 2: PARTIES ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الأطراف والتمهيد</h2>
+      <div class="page-num">02</div>
+    </div>
+
+    <h3 class="section-h">📜 التمهيد</h3>
+    <div class="preamble">
+      <p>
+        إنه في يوم ............... الموافق ......./......./......1447 هـ، تمَّ الاتفاق بين الطرفين
+        المُسمَّيين أدناه على التعاون في تطوير <strong>نظام إدارة المعهد التدريبي (IIMS)</strong> لصالح
+        الطرف الأول، وفق المهام والمدد والقيمة المُحدَّدة في هذا العقد.
+      </p>
+      <p>
+        يلتزم الطرف الثاني بالمساهمة الفنّية مع الطرف الأول لمدة <strong>3 شهور متتالية</strong>،
+        بقيمة <strong>4,500 ريال شهرياً</strong>، إجمالاً <strong>13,500 ريال سعودي</strong>.
+      </p>
+    </div>
+
+    <div class="parties">
+      <div class="party-card">
+        <span class="party-label">الطرف الأول — صاحب المشروع</span>
+        <div class="party-title">مدير المشروع</div>
+        <ul class="party-fields">
+          <li><span class="label">الاسم الكامل:</span> <strong>باسم محمد حميد الحجري</strong></li>
+          <li><span class="label">رقم الهوية:</span> <strong>1011965918</strong></li>
+          <li><span class="label">العنوان:</span> <span class="field">.............................</span></li>
+          <li><span class="label">الجوال:</span> <span class="field">.............................</span></li>
+          <li><span class="label">البريد:</span> <span class="field">.............................</span></li>
+          <li><span class="label">IBAN:</span> <span class="field">.............................</span></li>
+        </ul>
+      </div>
+
+      <div class="party-card">
+        <span class="party-label">الطرف الثاني — المبرمج المشارك</span>
+        <div class="party-title">مطوّر مشارك</div>
+        <ul class="party-fields">
+          <li><span class="label">الاسم الكامل:</span> <span class="field">.............................</span></li>
+          <li><span class="label">رقم الهوية:</span> <span class="field">.............................</span></li>
+          <li><span class="label">العنوان:</span> <span class="field">.............................</span></li>
+          <li><span class="label">الجوال:</span> <span class="field">.............................</span></li>
+          <li><span class="label">البريد:</span> <span class="field">.............................</span></li>
+          <li><span class="label">IBAN:</span> <span class="field">.............................</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>🤝 طبيعة الاتفاقية</strong>
+      <p>هذا العقد <strong>اتفاقية تعاون فنّي</strong> بين طرفين مستقلَّين، ولا يُعدّ علاقة عمل وظيفية،
+      ولا يُلزم أيّ طرف بمسؤولية تأمينية أو ضريبية تجاه الآخر.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 3: ARTICLES 1-3 ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المواد 1-3: محلّ العقد والمدّة والقيمة</h2>
+      <div class="page-num">03</div>
+    </div>
+
+    <!-- Article 1 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">1</div>
+        <div class="article-title">محلّ الاتفاقية ونطاق العمل</div>
+      </div>
+      <div class="article-body">
+        <p>
+          يلتزم <strong>الطرف الثاني</strong> بالمساهمة في تطوير نظام إدارة المعهد التدريبي (IIMS)
+          مع <strong>الطرف الأول</strong>، بصفته مطوّراً مشاركاً، عبر تنفيذ المهام التقنية المُسندَة إليه من
+          قِبَل الطرف الأول خلال فترة العقد.
+        </p>
+
+        <p><strong>تشمل المهام:</strong></p>
+        <ul class="simple-list">
+          <li>تطوير الميزات والشاشات المُسندَة إليه.</li>
+          <li>كتابة الكود وفق المعايير المُعتمدة في المشروع.</li>
+          <li>المشاركة في مراجعات الكود (Code Reviews).</li>
+          <li>إصلاح الأخطاء والمشاكل في الأجزاء التي يطوّرها.</li>
+          <li>التواصل اليومي مع الطرف الأول حول التقدّم.</li>
+          <li>الالتزام بالجداول الزمنية الأسبوعية المتّفق عليها.</li>
+        </ul>
+
+        <p>
+          يحقّ للطرف الأول <strong>تحديد الأولويات والمهام</strong> أسبوعياً، ولا يحقّ للطرف الثاني الاعتراض
+          إلا إذا كانت المهام خارج نطاق خبرته التقنية.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 2 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">2</div>
+        <div class="article-title">مدّة الاتفاقية</div>
+      </div>
+      <div class="article-body">
+        <p>
+          مدّة هذه الاتفاقية <strong>ثلاثة (3) شهور كاملة</strong>، تبدأ من تاريخ التوقيع وسداد الدفعة الأولى،
+          وتنتهي تلقائياً بنهاية الشهر الثالث، ما لم يتفق الطرفان على التمديد كتابياً.
+        </p>
+
+        <div class="months-grid">
+          <div class="month-card">
+            <div class="num">1</div>
+            <div class="label">الشهر الأول</div>
+            <div class="amount">4,500 ريال</div>
+          </div>
+          <div class="month-card">
+            <div class="num">2</div>
+            <div class="label">الشهر الثاني</div>
+            <div class="amount">4,500 ريال</div>
+          </div>
+          <div class="month-card">
+            <div class="num">3</div>
+            <div class="label">الشهر الثالث</div>
+            <div class="amount">4,500 ريال</div>
+          </div>
+        </div>
+
+        <p>
+          الالتزام الزمني المتوقّع من الطرف الثاني <strong>20-30 ساعة عمل أسبوعياً</strong>، يحدّدها الطرفان
+          بمرونة وفق المهام الأسبوعية.
+        </p>
+      </div>
+    </div>
+
+    <!-- Article 3 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">3</div>
+        <div class="article-title">القيمة المالية والدفعات</div>
+      </div>
+      <div class="article-body">
+        <p>
+          القيمة الإجمالية لهذه الاتفاقية <strong>ثلاثة عشر ألف وخمسمائة ريال سعودي (13,500 ر.س)</strong>،
+          تُسدَّد على <strong>3 دفعات شهرية متساوية</strong> بقيمة <strong>4,500 ريال</strong> لكل دفعة.
+        </p>
+
+        <table class="pay-table">
+          <thead>
+            <tr>
+              <th>الدفعة</th>
+              <th>التوقيت</th>
+              <th>القيمة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>الأولى</strong></td>
+              <td>نهاية الشهر الأول (بعد مراجعة المهام)</td>
+              <td>4,500 ر.س</td>
+            </tr>
+            <tr>
+              <td><strong>الثانية</strong></td>
+              <td>نهاية الشهر الثاني (بعد مراجعة المهام)</td>
+              <td>4,500 ر.س</td>
+            </tr>
+            <tr>
+              <td><strong>الثالثة</strong></td>
+              <td>نهاية الشهر الثالث (التسليم النهائي)</td>
+              <td>4,500 ر.س</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2" style="text-align: right;">الإجمالي</td>
+              <td>13,500 ر.س</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <p>
+          تُحوَّل الدفعة إلى حساب الطرف الثاني (IBAN) <strong>خلال 5 أيام عمل</strong> من نهاية كل شهر،
+          بشرط إنجاز المهام المتّفق عليها.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 4: ARTICLES 4-5 ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المواد 4-5: الالتزامات والملكية</h2>
+      <div class="page-num">04</div>
+    </div>
+
+    <!-- Article 4 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">4</div>
+        <div class="article-title">التزامات الطرفين</div>
+      </div>
+      <div class="article-body">
+        <p><strong>يلتزم الطرف الأول بـ:</strong></p>
+        <ul class="simple-list">
+          <li>سداد الدفعات الشهرية في مواعيدها المحدّدة.</li>
+          <li>توفير الوصول للأدوات والبيئات اللازمة للعمل.</li>
+          <li>تحديد المهام الأسبوعية بوضوح وفي وقت مناسب.</li>
+          <li>الردّ على استفسارات الطرف الثاني خلال 24 ساعة عمل.</li>
+          <li>مراجعة العمل بشكل دوري وإبداء الملاحظات.</li>
+          <li>عدم تكليف الطرف الثاني بمهام خارج نطاق المشروع.</li>
+        </ul>
+
+        <p style="margin-top: 14px;"><strong>يلتزم الطرف الثاني بـ:</strong></p>
+        <ul class="simple-list">
+          <li>إنجاز المهام المُسندَة في المواعيد المتّفق عليها.</li>
+          <li>الالتزام بمعايير الكود والمعمارية المُعتمدة.</li>
+          <li>عدم نقل أو نسخ أي جزء من المشروع لطرف ثالث.</li>
+          <li>الحفاظ على سرّية تامّة لكل ما يخصّ المشروع.</li>
+          <li>المشاركة في الاجتماعات الأسبوعية (30-60 دقيقة).</li>
+          <li>التوفّر للتواصل خلال ساعات العمل المتّفق عليها.</li>
+          <li>إعلام الطرف الأول مسبقاً بأي ظرف يؤثّر على العمل.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Article 5 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">5</div>
+        <div class="article-title">الملكية الفكرية والسرّية</div>
+      </div>
+      <div class="article-body">
+        <p>
+          <strong>الملكية الكاملة للكود والمخرَجات</strong> الناتجة عن هذا العقد تخصّ <strong>الطرف الأول</strong>
+          حصراً، بصفته صاحب المشروع والمتعاقد الأصلي مع المعهد.
+        </p>
+        <p>
+          لا يحقّ للطرف الثاني <strong>الاحتفاظ بنسخة من الكود</strong> أو استخدامه أو إعادة بيعه
+          أو نشره تحت أي ظرف.
+        </p>
+        <p>
+          يلتزم الطرف الثاني بـ<strong>السرّية التامة</strong> لكل المعلومات والبيانات والتصاميم والمواصفات
+          المتعلّقة بالمشروع، ويستمرّ هذا الالتزام <strong>لمدة 3 سنوات</strong> بعد انتهاء الاتفاقية.
+        </p>
+        <p>
+          لا يحقّ للطرف الثاني الإشارة إلى مشاركته في المشروع علناً (في معرض أعماله أو شبكات التواصل)
+          إلا بإذن كتابي من الطرف الأول.
+        </p>
+
+        <div class="highlight-box">
+          <strong>⚠️ شرط جزائي</strong>
+          <p>في حال خرق الطرف الثاني بنود السرّية أو نقل الكود لأي طرف ثالث، يُلزم بدفع
+          <strong>تعويض قدره 20,000 ريال سعودي</strong> للطرف الأول، دون الإخلال بحقّه في الرجوع للقضاء.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 5: ARTICLES 6-7 + SIGNATURE ===================== -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المواد 6-7: الإنهاء والتوقيع</h2>
+      <div class="page-num">05</div>
+    </div>
+
+    <!-- Article 6 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">6</div>
+        <div class="article-title">الإنهاء والإخلال</div>
+      </div>
+      <div class="article-body">
+        <p>
+          يحقّ للطرف الأول <strong>إنهاء الاتفاقية في نهاية أي شهر</strong> دون رسوم إضافية، ويُسدّد للطرف الثاني
+          مستحقّاته عن الشهر المُنجَز فقط.
+        </p>
+        <p>
+          يحقّ للطرف الثاني <strong>إيقاف العمل</strong> إذا تأخّر سداد دفعة لأكثر من 10 أيام من تاريخ الاستحقاق،
+          بعد إنذار كتابي للطرف الأول.
+        </p>
+        <p>
+          في حال <strong>تقصير الطرف الثاني</strong> في تنفيذ المهام أو الالتزامات، يحقّ للطرف الأول:
+        </p>
+        <ul class="simple-list">
+          <li>توجيه إنذار كتابي بالملاحظات والمطلوب تصحيحه.</li>
+          <li>خصم نسبة من الدفعة الشهرية بحسب نسبة الإنجاز (في حال عدم التصحيح).</li>
+          <li>إنهاء العقد فوراً في حال تكرّر الإخلال أكثر من مرّتين.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Article 7 -->
+    <div class="article">
+      <div class="article-header">
+        <div class="article-number">7</div>
+        <div class="article-title">النزاعات والقانون الحاكم</div>
+      </div>
+      <div class="article-body">
+        <p>
+          يلتزم الطرفان بـ<strong>الحلّ الودّي</strong> لأي نزاع قد ينشأ عن هذه الاتفاقية، وفي حال تعذّر،
+          يُحال النزاع إلى <strong>المحاكم المختصّة في المملكة العربية السعودية</strong>.
+        </p>
+        <p>
+          تخضع هذه الاتفاقية للأنظمة والقوانين السعودية المعمول بها، وتُفسَّر وفقاً لها.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="section-h" style="margin-top: 10px;">✍️ التوقيع</h3>
+
+    <div class="signature-section">
+      <h3>والله خير الشاهدين</h3>
+
+      <div class="signatures-grid">
+        <div class="signature-block">
+          <div class="role-label">الطرف الأول — مدير المشروع</div>
+          <div class="sig-field">
+            <span class="label">الاسم:</span>
+            <strong>باسم محمد حميد الحجري</strong>
+          </div>
+          <div class="sig-field">
+            <span class="label">رقم الهوية:</span>
+            <strong>1011965918</strong>
+          </div>
+          <div class="sig-field">
+            <span class="label">التوقيع:</span>
+            <div class="line" style="min-height: 45px;"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">التاريخ:</span>
+            <div class="line"></div>
+          </div>
+        </div>
+
+        <div class="signature-block">
+          <div class="role-label">الطرف الثاني — المبرمج المشارك</div>
+          <div class="sig-field">
+            <span class="label">الاسم:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">رقم الهوية:</span>
+            <div class="line"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">التوقيع:</span>
+            <div class="line" style="min-height: 45px;"></div>
+          </div>
+          <div class="sig-field">
+            <span class="label">التاريخ:</span>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align: center; margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">
+      حُرّرت هذه الاتفاقية من نسختين أصليّتين — لكلّ طرف نسخة للعمل بمقتضاها.
+    </p>
+  </div>
+</section>
+
+</body>
+</html>
