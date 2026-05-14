@@ -459,38 +459,45 @@
     top: 4px;
   }
 
-  /* PHASE 4 NOTE */
-  .phase4-note {
-    background: linear-gradient(135deg, #F3E8FF 0%, white 100%);
-    border: 2px dashed var(--purple);
-    padding: 16px 20px;
-    border-radius: 12px;
+  /* HR MODULE BOX */
+  .hr-module {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    border: 3px solid var(--accent);
+    border-radius: 14px;
+    padding: 18px 22px;
     margin: 16px 0;
   }
-  .phase4-note h4 {
-    color: #5B21B6;
-    font-size: 1.1rem;
+  .hr-module h4 {
+    color: #78350F;
+    font-size: 1.15rem;
     font-weight: 800;
     margin-bottom: 8px;
   }
-  .phase4-note p {
-    color: #4C1D95;
+  .hr-module p {
+    color: #78350F;
     font-size: 0.92rem;
     line-height: 1.75;
+    margin-bottom: 10px;
   }
-  .phase4-note .features {
-    margin-top: 10px;
+  .hr-module .features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 14px;
   }
-  .phase4-note .features span {
-    display: inline-block;
-    background: white;
-    color: #5B21B6;
-    padding: 4px 12px;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    margin: 3px;
-    border: 1px solid #C4B5FD;
+  .hr-module .features div {
+    color: #78350F;
+    font-size: 0.85rem;
+    padding: 3px 22px 3px 0;
+    position: relative;
+    line-height: 1.6;
+  }
+  .hr-module .features div::before {
+    content: '◆';
+    color: var(--accent-dark);
+    position: absolute;
+    right: 0;
+    top: 3px;
+    font-size: 0.85rem;
   }
 
   /* APPROVAL FLOW */
@@ -586,8 +593,8 @@
     <div class="cover-pretitle">باسم الله الرحمن الرحيم</div>
     <h1>تفاصيل المهام التقنية<br>للمبرمج المشارك</h1>
     <p class="cover-subtitle">
-      تفصيل المراحل الأربع موزّعةً على 3 شهور للمبرمج المشارك<br>
-      مع الأدوات المطلوبة وبروتوكول الاعتماد
+      المراحل الأربع كاملةً + نظام إدارة الموظفين<br>
+      موزّعة على 3 شهور (12 أسبوع) — تطبيق متكامل مع الطرف الأول
     </p>
 
     <div class="cover-tools">
@@ -678,7 +685,7 @@
       <ul>
         <li><strong>دعوة GitHub</strong> للمستودع الخاص بالمشروع (Private Repo).</li>
         <li><strong>دعوة Supabase</strong> كـ Developer على المشروع.</li>
-        <li><strong>إعدادات البيئة (.env)</strong> ترسل بقناة آمنة (1Password أو رسالة مشفّرة).</li>
+        <li><strong>إعدادات البيئة (.env)</strong> ترسل بقناة آمنة.</li>
         <li><strong>وصول لقناة التواصل</strong> (WhatsApp + قناة العمل).</li>
       </ul>
     </div>
@@ -722,20 +729,20 @@
   </div>
 </section>
 
-<!-- ============= PAGE 3: MONTH 1 — PHASE 1 ============= -->
+<!-- ============= PAGE 3: MONTH 1 ============= -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
-      <h2 class="page-title">الشهر الأول — المرحلة 1: الأساس والاختبارات</h2>
+      <h2 class="page-title">الشهر الأول — الأساس + الاختبارات + الطلاب</h2>
       <div class="page-num">03</div>
     </div>
 
     <div class="month-banner">
       <div class="month-banner-content">
         <span class="month-label">الشهر 1 · الأسابيع 1-4</span>
-        <div class="month-title">التأسيس + منصة الاختبارات</div>
+        <div class="month-title">المرحلة 1 + بداية المرحلة 2</div>
         <div class="month-tagline">
-          بناء البنية التحتية الكاملة + منصة الاختبارات الإلكترونية + الشهادات المعتمدة.
+          البنية التحتية + منصة الاختبارات الكاملة + بنك الأسئلة + بداية إدارة الطلاب.
         </div>
       </div>
     </div>
@@ -743,55 +750,35 @@
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">1</div>
-        <div class="week-title">الأسبوع 1 — التأسيس التقني</div>
+        <div class="week-title">الأسبوع 1 — التأسيس + المصادقة + الفروع</div>
       </div>
       <ul class="week-tasks">
-        <li>إنشاء مشروع <strong>Next.js 14</strong> مع TypeScript strict mode.</li>
+        <li>إنشاء <strong>Next.js 14</strong> + TypeScript strict + TailwindCSS + shadcn/ui (RTL).</li>
         <li>إعداد <strong>Supabase Project</strong> + الـ Migrations الأولية.</li>
-        <li>تكوين <strong>TailwindCSS + shadcn/ui</strong> مع دعم RTL.</li>
-        <li>تثبيت خطوط Cairo + Tajawal + IBM Plex Sans Arabic.</li>
-        <li>إعداد ESLint + Prettier + Husky pre-commit hooks.</li>
-        <li>تكوين <strong>GitHub Actions</strong> CI/CD أساسي.</li>
-        <li>نشر أولي على Vercel للتحقق.</li>
+        <li>خطوط Cairo + Tajawal + ESLint + Prettier + Husky.</li>
+        <li><strong>GitHub Actions CI/CD</strong> + النشر الأولي على Vercel.</li>
+        <li><strong>Supabase Auth</strong> + 2FA للأدوار الإدارية + Lockout policy.</li>
+        <li>جداول <code>branches</code> + <code>users</code> + <code>roles</code> + <code>permissions</code>.</li>
+        <li><strong>RLS</strong> لعزل الفروع الأربعة + Middleware حماية المسارات.</li>
+        <li><strong>Audit Log</strong> جدول + Triggers تلقائية.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">مشروع جاهز للتطوير + نشر يعمل على staging.</div>
+        <div class="text">مشروع جاهز + تسجيل دخول لكل دور + عزل فروع مُختبَر بـRLS + Audit Log.</div>
       </div>
     </div>
 
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">2</div>
-        <div class="week-title">الأسبوع 2 — المصادقة + الفروع + RBAC</div>
+        <div class="week-title">الأسبوع 2 — بنك الأسئلة (14 نوع)</div>
       </div>
       <ul class="week-tasks">
-        <li><strong>Supabase Auth</strong> + Email/Password + 2FA للأدوار الإدارية.</li>
-        <li>جداول <code>branches</code> + <code>users</code> + <code>roles</code> + <code>permissions</code>.</li>
-        <li><strong>Row Level Security (RLS)</strong> على كل الجداول.</li>
-        <li>عزل بيانات الفروع الـ4 على مستوى DB.</li>
-        <li>Lockout policy (5 محاولات → قفل 15 دقيقة).</li>
-        <li>Middleware للحماية على المسارات.</li>
-        <li><strong>Audit Log</strong> جدول + Triggers تلقائية.</li>
-      </ul>
-      <div class="deliverable-box">
-        <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">تسجيل دخول لكل دور يعمل + عزل فروع مُختبَر بـRLS + Audit Log.</div>
-      </div>
-    </div>
-
-    <div class="week-section">
-      <div class="week-header">
-        <div class="week-num">3</div>
-        <div class="week-title">الأسبوع 3 — بنك الأسئلة (14 نوع)</div>
-      </div>
-      <ul class="week-tasks">
-        <li>جدول <code>questions</code> + <code>question_options</code> + <code>question_categories</code>.</li>
-        <li>تنفيذ <strong>14 نوع سؤال</strong> (MCQ، صح/خطأ، فراغ، توصيل، سحب، Hotspot، ...).</li>
-        <li>واجهة إدخال الأسئلة لكل نوع.</li>
+        <li>جداول <code>questions</code> + <code>question_options</code> + <code>question_categories</code>.</li>
+        <li>تنفيذ <strong>14 نوع سؤال</strong> (MCQ، صح/خطأ، فراغ، توصيل، سحب، Hotspot...).</li>
+        <li>واجهة إدخال الأسئلة لكل نوع مع validation.</li>
         <li><strong>استيراد Excel</strong> مع validation + تقرير أخطاء.</li>
-        <li>تصنيف الأسئلة (مادة / موضوع / صعوبة / تاجات).</li>
-        <li>البحث والفلترة المتقدمة.</li>
+        <li>تصنيف الأسئلة (مادة / موضوع / صعوبة / تاجات) + البحث المتقدم.</li>
         <li><strong>اقتراح أسئلة AI</strong> مع موافقة المعلم.</li>
       </ul>
       <div class="deliverable-box">
@@ -802,41 +789,60 @@
 
     <div class="week-section">
       <div class="week-header">
-        <div class="week-num">4</div>
-        <div class="week-title">الأسبوع 4 — محرك الاختبارات + الشهادات + PWA</div>
+        <div class="week-num">3</div>
+        <div class="week-title">الأسبوع 3 — محرك الاختبارات + الشهادات + PWA</div>
       </div>
       <ul class="week-tasks">
         <li><strong>محرك توليد الاختبارات</strong> (تلقائي بمواصفات / يدوي).</li>
         <li>آلية كود الاختبار الذكية (Remote / Onsite).</li>
         <li><strong>التصحيح الآلي</strong> لكل أنواع الأسئلة + يدوي للمقالي.</li>
-        <li>3 طبقات حماية الاختبار (Fullscreen، تبديل التابات، النسخ/اللصق).</li>
+        <li>3 طبقات حماية (Fullscreen، تبديل التابات، النسخ/اللصق، بصمة المتصفح).</li>
         <li>نظام الدبلومات (تسلسل المواد + المعدل التراكمي).</li>
         <li>توليد الشهادات تلقائياً + QR + صفحة التحقق العامة.</li>
-        <li><strong>PWA للتحضير الميداني</strong> (يعمل Offline).</li>
-        <li>تقارير أكاديمية أساسية (Item Analysis).</li>
+        <li><strong>PWA للتحضير الميداني</strong> (يعمل Offline + يتزامن).</li>
+        <li>تقارير أكاديمية أساسية (Item Analysis + متوسطات).</li>
+      </ul>
+      <div class="deliverable-box">
+        <div class="label">📦 المسلَّم نهاية الأسبوع</div>
+        <div class="text">منصة اختبارات كاملة + شهادات بـQR + PWA يعمل على الجوال.</div>
+      </div>
+    </div>
+
+    <div class="week-section">
+      <div class="week-header">
+        <div class="week-num">4</div>
+        <div class="week-title">الأسبوع 4 — الطلاب + State Machine + الفروع</div>
+      </div>
+      <ul class="week-tasks">
+        <li>جدول <code>students</code> الكامل + بيانات شخصية + ولي أمر + توظيف اختياري.</li>
+        <li><strong>State Machine للطالب</strong> (8 حالات + history table).</li>
+        <li>نقل الطلاب بين الفروع + سجل تاريخي.</li>
+        <li>دور <strong>مدير الفرع</strong> + <strong>موظف التسجيل</strong>.</li>
+        <li>شاشة بطاقة الطالب الموحّدة (7 tabs).</li>
+        <li>صلاحيات تفصيلية لكل فرع.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الشهر</div>
-        <div class="text">منصة اختبارات إلكترونية كاملة + شهادات بـQR + PWA يعمل على الجوال.</div>
+        <div class="text">منصة اختبارات + إدارة طلاب كاملة + 8 حالات + نقل بين الفروع.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============= PAGE 4: MONTH 2 — PHASE 2 ============= -->
+<!-- ============= PAGE 4: MONTH 2 ============= -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
-      <h2 class="page-title">الشهر الثاني — المرحلة 2: الطلاب والمالية</h2>
+      <h2 class="page-title">الشهر الثاني — المالية + الحجب + الطلبات + الخطابات</h2>
       <div class="page-num">04</div>
     </div>
 
     <div class="month-banner">
       <div class="month-banner-content">
         <span class="month-label">الشهر 2 · الأسابيع 5-8</span>
-        <div class="month-title">الطلاب والمالية والحجب ⭐</div>
+        <div class="month-title">المرحلة 2 + المرحلة 3 ⭐</div>
         <div class="month-tagline">
-          أهم شهر — إدارة الطلاب الكاملة + ربط البرنامج المحاسبي + محرك الحجب الذكي.
+          التكامل المحاسبي + Service Blocking Engine + Workflow Engine + Letters Generator.
         </div>
       </div>
     </div>
@@ -844,34 +850,15 @@
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">5</div>
-        <div class="week-title">الأسبوع 5 — توسعة الطلاب والفروع</div>
-      </div>
-      <ul class="week-tasks">
-        <li>جدول <code>students</code> الكامل (شخصي + ولي أمر + توظيف اختياري).</li>
-        <li><strong>State Machine للطالب</strong> (8 حالات + history table).</li>
-        <li>نقل الطلاب بين الفروع + سجل تاريخي.</li>
-        <li>دور <strong>مدير الفرع</strong> + <strong>موظف التسجيل</strong>.</li>
-        <li>صلاحيات تفصيلية لكل فرع.</li>
-        <li>شاشة بطاقة الطالب الموحّدة (7 tabs).</li>
-      </ul>
-      <div class="deliverable-box">
-        <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">إدارة طلاب كاملة + 8 حالات + نقل بين الفروع.</div>
-      </div>
-    </div>
-
-    <div class="week-section">
-      <div class="week-header">
-        <div class="week-num">6</div>
-        <div class="week-title">الأسبوع 6 — التكامل مع البرنامج المحاسبي</div>
+        <div class="week-title">الأسبوع 5 — التكامل مع البرنامج المحاسبي</div>
       </div>
       <ul class="week-tasks">
         <li><strong>Adapter Pattern</strong> + <code>IAccountingService</code> interface.</li>
-        <li>تنفيذ Endpoints: <code>getStudentBalance</code> + <code>getPayments</code> + <code>getBranchRevenue</code>.</li>
+        <li>Endpoints: <code>getStudentBalance</code> + <code>getPayments</code> + <code>getBranchRevenue</code>.</li>
         <li>جدول <code>accounting_snapshot</code> في Postgres للأداء.</li>
         <li><strong>Pull periodic</strong> كل 15 دقيقة (Cron).</li>
-        <li><strong>Webhook receiver</strong> فوري للدفعات.</li>
-        <li><strong>Reconciliation Job</strong> يومي + تنبيهات.</li>
+        <li><strong>Webhook receiver</strong> فوري للدفعات + Verify signature.</li>
+        <li><strong>Reconciliation Job</strong> يومي + تنبيهات Data Drift.</li>
         <li>Circuit Breaker + Retry policy + Dead Letter Queue.</li>
         <li>Mock Adapter للتطوير المحلي.</li>
       </ul>
@@ -883,76 +870,38 @@
 
     <div class="week-section">
       <div class="week-header">
-        <div class="week-num">7</div>
-        <div class="week-title">الأسبوع 7 — Service Blocking Engine ⭐⭐</div>
+        <div class="week-num">6</div>
+        <div class="week-title">الأسبوع 6 — Service Blocking Engine ⭐⭐ + لوحات المالية</div>
       </div>
       <ul class="week-tasks">
         <li>محرك قواعد ديناميكي (Rules Engine) قابل للتعديل من DB.</li>
         <li><strong>مصفوفة الحجب</strong> (8 حالات × 10+ خدمات).</li>
-        <li>حجب تلقائي بناءً على بيانات المحاسبي (تأخير، أيام، نسبة).</li>
+        <li>حجب تلقائي بناءً على بيانات المحاسبي.</li>
         <li>واجهة الإدارة لتعديل القواعد دون كود.</li>
         <li><strong>فك الحجب اليدوي</strong> من الإدارة + توثيق إلزامي للسبب.</li>
-        <li>تكامل الحجب مع الخدمات (خطابات، اختبارات، نتائج).</li>
-        <li>Audit Log لكل حجب وفك حجب.</li>
+        <li>لوحة المالية الرئيسية (KPIs + Charts).</li>
+        <li>تقرير المتأخرين + تقارير الفروع المالية.</li>
+        <li>تصدير Excel + PDF + إشعارات استحقاق.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">محرك الحجب يعمل لحظياً + قواعد قابلة للتعديل.</div>
+        <div class="text">محرك الحجب يعمل لحظياً + لوحات المالية.</div>
       </div>
     </div>
 
     <div class="week-section">
       <div class="week-header">
-        <div class="week-num">8</div>
-        <div class="week-title">الأسبوع 8 — لوحات المالية + التقارير</div>
-      </div>
-      <ul class="week-tasks">
-        <li>لوحة المالية الرئيسية (KPIs + Charts).</li>
-        <li>تقرير المتأخرين بأسماء وأرقام لحظياً.</li>
-        <li>تقارير الفروع المالية (منفصلة + مجمّعة).</li>
-        <li>تصدير Excel + PDF.</li>
-        <li>إشعارات تلقائية للطلاب قبل الاستحقاق.</li>
-        <li>اختبارات Integration + E2E لكل التدفق.</li>
-      </ul>
-      <div class="deliverable-box">
-        <div class="label">📦 المسلَّم نهاية الشهر</div>
-        <div class="text">نظام مالي متكامل + محرك حجب يعمل + لوحات الإدارة.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============= PAGE 5: MONTH 3 — PHASE 3 ============= -->
-<section class="page">
-  <div class="content-page">
-    <div class="page-header">
-      <h2 class="page-title">الشهر الثالث — المرحلة 3: الطلبات والعمليات</h2>
-      <div class="page-num">05</div>
-    </div>
-
-    <div class="month-banner">
-      <div class="month-banner-content">
-        <span class="month-label">الشهر 3 · الأسابيع 9-12</span>
-        <div class="month-title">الطلبات + الخطابات + الأكاديمي اليومي</div>
-        <div class="month-tagline">
-          الشهر الأخير للمبرمج المشارك — توديع المشروع بنظام متكامل عملياً.
-        </div>
-      </div>
-    </div>
-
-    <div class="week-section">
-      <div class="week-header">
-        <div class="week-num">9</div>
-        <div class="week-title">الأسبوع 9 — Workflow Engine + الطلبات</div>
+        <div class="week-num">7</div>
+        <div class="week-title">الأسبوع 7 — Workflow Engine + 14 نوع طلب</div>
       </div>
       <ul class="week-tasks">
         <li><strong>XState</strong> للـ State Machine.</li>
-        <li>14 نوع طلب × 7 حالات (جديد، قيد المراجعة، محول، ...).</li>
+        <li>14 نوع طلب × 7 حالات (جديد، قيد المراجعة، محول...).</li>
         <li>Routing rules ديناميكية بين الأقسام.</li>
         <li><strong>SLA</strong> لكل نوع طلب + Escalation Cron.</li>
         <li>إشعارات داخل النظام عند تغيّر الحالة.</li>
         <li>جدول <code>requests</code> + <code>request_events</code>.</li>
-        <li>تكامل مع <strong>Service Blocking</strong> (الطلب يتحقق من الحجب).</li>
+        <li>تكامل الطلب مع <strong>Service Blocking</strong>.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
@@ -962,104 +911,160 @@
 
     <div class="week-section">
       <div class="week-header">
-        <div class="week-num">10</div>
-        <div class="week-title">الأسبوع 10 — Letters Generator (PDF عربي RTL)</div>
+        <div class="week-num">8</div>
+        <div class="week-title">الأسبوع 8 — Letters Generator (PDF عربي RTL)</div>
       </div>
       <ul class="week-tasks">
-        <li><strong>Puppeteer</strong> لتحويل HTML → PDF.</li>
-        <li>محرك القوالب (Handlebars/EJS).</li>
+        <li><strong>Puppeteer</strong> لتحويل HTML → PDF + محرك قوالب.</li>
         <li>HTML/CSS قوالب عربية RTL احترافية.</li>
         <li>12+ خطاب: تعريف، إفادة، تدريب، شهادة، سند، تعهد، إنذار.</li>
-        <li>خطابات السلم الوظيفي للموظفين الحكوميين.</li>
+        <li><strong>خطابات السلم الوظيفي</strong> للموظفين الحكوميين.</li>
+        <li>السيرة الذاتية التلقائية للطالب.</li>
         <li>توقيع رقمي (SHA-256 hash) + QR للتحقق.</li>
         <li>صفحة تحقق عامة <code>/letters/verify/{id}</code>.</li>
         <li>أرشفة تلقائية في ملف الطالب.</li>
       </ul>
       <div class="deliverable-box">
+        <div class="label">📦 المسلَّم نهاية الشهر</div>
+        <div class="text">المالية والحجب والطلبات والخطابات تعمل بشكل متكامل.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PAGE 5: MONTH 3 ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الشهر الثالث — الأكاديمي + TVTC + HR + الذكاء</h2>
+      <div class="page-num">05</div>
+    </div>
+
+    <div class="month-banner">
+      <div class="month-banner-content">
+        <span class="month-label">الشهر 3 · الأسابيع 9-12</span>
+        <div class="month-title">إنهاء المرحلة 3 + المرحلة 4 + HR 🏆</div>
+        <div class="month-tagline">
+          الأكاديمي اليومي + TVTC + التقارير + إدارة الموظفين + التواصل الذكي + Nafath.
+        </div>
+      </div>
+    </div>
+
+    <div class="week-section">
+      <div class="week-header">
+        <div class="week-num">9</div>
+        <div class="week-title">الأسبوع 9 — شؤون المتدربين + التسجيل + الجداول</div>
+      </div>
+      <ul class="week-tasks">
+        <li>بوابة شؤون المتدربين الكاملة + الشكاوى والاستفسارات.</li>
+        <li>تدفق الانسحاب (شؤون → مالية → إدارة).</li>
+        <li>الإيقاف المؤقت + استكمال الدراسة + المرفقات الناقصة.</li>
+        <li><strong>CRM التسجيل</strong> (7 مراحل: مهتم → مسجل).</li>
+        <li>صفحة تسجيل عامة + تحويل Lead إلى Student.</li>
+        <li>إدارة الجداول (مادة/مدرب/قاعة + فترات صباحي/مسائي/ويكند).</li>
+        <li>الحضور المتقدم + الإنذارات + الحرمان التلقائي.</li>
+      </ul>
+      <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">مولّد خطابات يُصدر 12+ خطاب احترافي + QR للتحقق.</div>
+        <div class="text">بوابة شؤون المتدربين + CRM + الجداول والحضور.</div>
+      </div>
+    </div>
+
+    <div class="week-section">
+      <div class="week-header">
+        <div class="week-num">10</div>
+        <div class="week-title">الأسبوع 10 — الواجبات + الاختبار الشامل + المكتبة</div>
+      </div>
+      <ul class="week-tasks">
+        <li><strong>الواجبات</strong> (رفع + توزيع + تسليم + تقييم).</li>
+        <li><strong>الاختبار الشامل النهائي</strong> + Eligibility Engine.</li>
+        <li>رفع نتائج الاختبار الشامل من Excel + كشوفات رسمية.</li>
+        <li><strong>التقويم الموحّد</strong> لكل المواعيد.</li>
+        <li><strong>مكتبة الموارد التعليمية</strong> لكل مادة (ملفات/فيديو/روابط).</li>
+        <li>أرشيف المعلم (KPIs + الإسهامات + التقييمات).</li>
+        <li>نظام تقييم الطلاب للمعلمين (مجهول الهوية).</li>
+      </ul>
+      <div class="deliverable-box">
+        <div class="label">📦 المسلَّم نهاية الأسبوع</div>
+        <div class="text">العمليات الأكاديمية اليومية مكتملة + الأرشفة الكاملة.</div>
       </div>
     </div>
 
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">11</div>
-        <div class="week-title">الأسبوع 11 — شؤون المتدربين + التسجيل CRM</div>
+        <div class="week-title">الأسبوع 11 — تكامل TVTC + إدارة الموظفين (HR) 👥</div>
       </div>
       <ul class="week-tasks">
-        <li>بوابة شؤون المتدربين الكاملة.</li>
-        <li>إدارة الشكاوى والاستفسارات.</li>
-        <li>تدفق الانسحاب (شؤون → مالية → إدارة).</li>
-        <li>الإيقاف المؤقت + استكمال الدراسة.</li>
-        <li>تتبع المرفقات الناقصة + إشعارات.</li>
-        <li><strong>CRM التسجيل</strong> (7 مراحل: مهتم → مسجل).</li>
-        <li>نموذج التسجيل + رفع المرفقات.</li>
-        <li>صفحة تسجيل عامة لاستقبال الطلبات أونلاين.</li>
-        <li>تحويل الـLead إلى Student الفعلي.</li>
+        <li><strong>تكامل TVTC الكامل</strong> + Adapter للوزارة (Mock + Real).</li>
+        <li>تسجيل المتدربين في TVTC + إرسال الدرجات تلقائياً.</li>
+        <li>تقارير الحضور الدورية للوزارة + الاعتماد الرسمي للشهادات.</li>
+        <li>لوحة الامتثال الحكومي.</li>
+        <li><strong>نظام إدارة الموظفين (HR) — كامل:</strong></li>
+        <li>&nbsp;&nbsp;◆ بصمة حضور الموظفين الإداريين + سجل الدوام.</li>
+        <li>&nbsp;&nbsp;◆ إدارة الإجازات (سنوية / مرضية / اضطرارية / عارضة).</li>
+        <li>&nbsp;&nbsp;◆ تقديم طلب إجازة + اعتماد المدير + رصيد الإجازات.</li>
+        <li>&nbsp;&nbsp;◆ الإذونات والاستئذان والانصراف المبكر.</li>
+        <li>&nbsp;&nbsp;◆ تقارير الدوام (تأخير، غياب، ساعات إضافية).</li>
+        <li>&nbsp;&nbsp;◆ الأرشيف الوظيفي (عقود، تقييمات، إنذارات).</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">بوابة شؤون المتدربين + CRM للتسجيل.</div>
+        <div class="text">TVTC مُكامَل + نظام HR كامل للموظفين.</div>
       </div>
     </div>
 
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">12</div>
-        <div class="week-title">الأسبوع 12 — الأكاديمي اليومي + التسليم النهائي</div>
+        <div class="week-title">الأسبوع 12 — التواصل الذكي + التقارير + التسليم النهائي 🏆</div>
       </div>
       <ul class="week-tasks">
-        <li>إدارة الجداول الدراسية (مادة/مدرب/قاعة/فترة).</li>
-        <li>دعم فترات صباحي + مسائي + ويكند.</li>
-        <li>الحضور المتقدم + الإنذارات + الحرمان التلقائي.</li>
-        <li>الواجبات (رفع + توزيع + تسليم + تقييم).</li>
-        <li><strong>الاختبار الشامل النهائي</strong> + Eligibility Engine.</li>
-        <li>التقويم الموحّد + مكتبة الموارد التعليمية.</li>
-        <li><strong>اختبارات قبول نهائية</strong> + إصلاح ما تبقى.</li>
-        <li><strong>تسليم نهائي</strong> + اعتماد Codex 100/100.</li>
+        <li>20+ تقرير جاهز + Dashboards لكل دور.</li>
+        <li>اكتشاف الطلاب المتعثرين مبكراً (Risk Detection).</li>
+        <li><strong>WhatsApp Business API</strong> + قوالب معتمدة.</li>
+        <li><strong>SMS Gateway</strong> (Unifonic) للتنبيهات الحرجة.</li>
+        <li><strong>Email Service</strong> (Resend) للخطابات الرسمية.</li>
+        <li><strong>المساعد الذكي للطلاب</strong> 24/7 (Claude API).</li>
+        <li><strong>Nafath SSO</strong> لتسجيل دخول الطلاب.</li>
+        <li>بوابة الخريجين + الدورات التطويرية.</li>
+        <li><strong>اختبارات قبول نهائية</strong> + <strong>Codex 100/100</strong> + التسليم.</li>
       </ul>
       <div class="deliverable-box">
-        <div class="label">📦 التسليم النهائي للمبرمج المشارك</div>
-        <div class="text">نظام عامل بنسبة 75-80٪ — جاهز لمرحلة 4 التي يكملها الطرف الأول وحده.</div>
+        <div class="label">📦 التسليم النهائي للمشروع</div>
+        <div class="text">المراحل الأربع + نظام HR + التكاملات الذكية = نظام IIMS كامل.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============= PAGE 6: PHASE 4 + FINAL NOTES ============= -->
+<!-- ============= PAGE 6: HR MODULE + FINAL NOTES ============= -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
-      <h2 class="page-title">الشهر الرابع (الطرف الأول وحده) + الملاحظات النهائية</h2>
+      <h2 class="page-title">نظام إدارة الموظفين + الملاحظات النهائية</h2>
       <div class="page-num">06</div>
     </div>
 
-    <h3 class="section-h">🎯 الشهر الرابع — للطرف الأول وحده</h3>
-    <p style="margin: 10px 0; font-size: 0.92rem;">
-      بعد انتهاء عقد المبرمج المشارك بنهاية الشهر الثالث، يُكمل الطرف الأول وحده المرحلة الرابعة
-      التي تشمل التكاملات الحكومية والتواصل الذكي.
-    </p>
+    <h3 class="section-h">👥 نظام إدارة الموظفين (HR Module) — تفاصيل</h3>
 
-    <div class="phase4-note">
-      <h4>🏛 المرحلة 4 — التكامل والذكاء (يكملها الطرف الأول)</h4>
+    <div class="hr-module">
+      <h4>🏢 موديول إضافي يُكمل المنظومة</h4>
       <p>
-        هذه المرحلة تشمل التكاملات الحكومية والذكية، ويتولّاها الطرف الأول مباشرة بعد تسليم المبرمج المشارك.
+        النظام الأساسي يدير الطلاب والمدربين. <strong>هذا الموديول يضيف إدارة الموظفين الإداريين</strong>
+        (المالية، التسجيل، شؤون المتدربين، الإدارة) — يُطوَّر في <strong>الأسبوع 11</strong>.
       </p>
       <div class="features">
-        <span>تكامل TVTC الكامل</span>
-        <span>إرسال الدرجات للوزارة</span>
-        <span>لوحة الامتثال</span>
-        <span>20+ تقرير + Dashboards</span>
-        <span>أرشيف المعلم</span>
-        <span>تقييم المعلمين</span>
-        <span>اكتشاف الطلاب المتعثرين</span>
-        <span>WhatsApp Business API</span>
-        <span>SMS Gateway</span>
-        <span>Email Service</span>
-        <span>المساعد الذكي للطلاب</span>
-        <span>Nafath SSO</span>
-        <span>بوابة الخريجين</span>
-        <span>الدورات التطويرية</span>
+        <div>بصمة الحضور للموظفين الإداريين</div>
+        <div>سجل الدوام اليومي</div>
+        <div>إدارة الإجازات (4 أنواع)</div>
+        <div>تقديم طلب إجازة + الاعتماد</div>
+        <div>رصيد الإجازات (متبقي/مستحق/مستهلك)</div>
+        <div>الإذونات والاستئذان</div>
+        <div>تقارير الدوام (تأخير/غياب/إضافي)</div>
+        <div>الأرشيف الوظيفي الكامل</div>
+        <div>عقود وتقييمات الموظفين</div>
+        <div>الإنذارات والشهادات التطويرية</div>
       </div>
     </div>
 
@@ -1076,16 +1081,16 @@
     <div class="important-box">
       <h4>2. تحديث الـAI Tool</h4>
       <p>
-        إذا صدر <strong>Claude Opus 5</strong> أو أي إصدار أحدث من Opus خلال فترة المشروع،
-        ينتقل المبرمج لاستخدامه فوراً بعد التأكد من جاهزيته.
+        إذا صدر <strong>Claude Opus 5</strong> أو أي إصدار أحدث خلال فترة المشروع،
+        ينتقل المبرمج لاستخدامه فوراً.
       </p>
     </div>
 
     <div class="important-box">
-      <h4>3. حسابات يُوفّرها الطرف الأول</h4>
+      <h4>3. التطبيق المتزامن مع الطرف الأول</h4>
       <p>
-        <strong>GitHub</strong> + <strong>Supabase</strong> + <strong>Vercel</strong> + إعدادات البيئة (.env)
-        تُسلَّم للمبرمج المشارك في اليوم الأول بقناة آمنة.
+        الطرفان يعملان <strong>بالتوازي طوال الـ3 شهور</strong>. التوزيع الأسبوعي للمهام
+        يتم في اجتماع بداية كل أسبوع، مع تقسيم واضح للمسؤوليات.
       </p>
     </div>
 
@@ -1109,8 +1114,8 @@
         بقراءة هذه الوثيقة، يُقرّ المبرمج المشارك بفهمه:
         <br>• <strong>أدوات العمل المعتمدة</strong> (Claude Opus + Codex).
         <br>• <strong>بروتوكول الاعتماد الصارم</strong> (Codex 100/100).
-        <br>• <strong>التفاصيل التقنية للمراحل الثلاث</strong> (12 أسبوع عمل).
-        <br>• <strong>أن المرحلة الرابعة خارج نطاق عمله</strong> ويُكملها الطرف الأول وحده.
+        <br>• <strong>المراحل الأربع + نظام HR</strong> موزّعة على 12 أسبوع.
+        <br>• <strong>التطبيق المتزامن مع الطرف الأول</strong> طوال الـ3 شهور.
       </p>
     </div>
 
