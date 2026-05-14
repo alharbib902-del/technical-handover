@@ -5,6 +5,7 @@ _sanitize-phases.ps1
 _replacements.json
 _template.html
 03-المراحل-التنفيذية/_sanitize-phases.ps1
+05-عرض-الاجتماع/build-pptx.js
 
 # OS files
 .DS_Store

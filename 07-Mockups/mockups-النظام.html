@@ -1,0 +1,3704 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IIMS — لوحات الشاشات (Mockups)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Cairo', 'system-ui', 'sans-serif'] },
+        colors: {
+          brand: { DEFAULT: '#065F46', dark: '#064E3B', light: '#047857', soft: '#D1FAE5' },
+          gold:  { DEFAULT: '#D4A574', dark: '#B58853', soft: '#FAEBD0' },
+          cream: '#FAFAF7',
+        }
+      }
+    }
+  };
+</script>
+<style>
+  :root{
+    --brand:#065F46; --brand-light:#047857; --brand-dark:#064E3B;
+    --gold:#D4A574; --gold-dark:#B58853;
+    --cream:#FAFAF7; --bg:#FFFFFF;
+    --text:#1F2937; --muted:#6B7280; --border:#E5E7EB;
+    --success:#10B981; --info:#0891B2; --warning:#F59E0B; --danger:#DC2626;
+  }
+  *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  html,body{ font-family:'Cairo',system-ui,sans-serif; background:var(--cream); color:var(--text); }
+
+  /* ======= APP HEADER ======= */
+  .app-shell{ min-height:100vh; }
+  .app-header{
+    background:linear-gradient(120deg,#064E3B 0%,#065F46 60%,#047857 100%);
+    color:white; padding:14px 28px; display:flex; justify-content:space-between; align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.08); position:sticky; top:0; z-index:50;
+  }
+  .brand-logo{
+    width:42px; height:42px; border-radius:12px;
+    background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);
+    display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.05rem; color:#3F2A12;
+    box-shadow:0 4px 10px rgba(0,0,0,.18);
+  }
+  .brand-title{ font-weight:900; letter-spacing:.5px; }
+  .brand-sub{ opacity:.8; font-size:.78rem; }
+
+  /* ======= TABS NAV ======= */
+  .tabs-bar{
+    background:white; border-bottom:1px solid var(--border);
+    padding:10px 18px; display:flex; gap:6px; overflow-x:auto; position:sticky; top:62px; z-index:40;
+    scrollbar-width:thin;
+  }
+  .tab-btn{
+    border:1px solid var(--border); background:#fff; color:#374151;
+    padding:7px 13px; border-radius:999px; white-space:nowrap; font-size:.82rem; font-weight:600;
+    cursor:pointer; transition:all .2s ease; display:flex; align-items:center; gap:5px;
+  }
+  .tab-btn:hover{ border-color:var(--brand-light); color:var(--brand); }
+  .tab-btn.active{
+    background:var(--brand); color:white; border-color:var(--brand);
+    box-shadow:0 4px 10px rgba(6,95,70,.25);
+  }
+  .tab-btn .num{
+    background:rgba(212,165,116,.25); color:var(--gold-dark);
+    padding:1px 6px; border-radius:6px; font-size:.7rem; font-weight:800;
+  }
+  .tab-btn.active .num{ background:rgba(255,255,255,.2); color:var(--gold); }
+
+  /* ======= MOCKUP CONTAINER ======= */
+  .mockup{ display:none; padding:24px; }
+  .mockup.active{ display:block; animation:fadein .25s ease; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+  .screen-frame{
+    background:white; border-radius:14px; box-shadow:0 4px 24px rgba(0,0,0,.06);
+    overflow:hidden; max-width:1280px; margin:0 auto;
+  }
+  .screen-title-bar{
+    background:linear-gradient(90deg,#FAFAF7 0%,#fff 100%);
+    border-bottom:1px solid var(--border); padding:10px 18px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .screen-tag{
+    display:inline-block; background:var(--gold-soft, #FAEBD0); color:var(--gold-dark);
+    padding:3px 10px; border-radius:6px; font-size:.72rem; font-weight:700;
+  }
+
+  /* ======= COMMON UI BLOCKS ======= */
+  .ip-sidebar{ background:#F9FAFB; border-inline-end:1px solid var(--border); padding:18px 14px; }
+  .ip-side-link{
+    display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:9px;
+    color:#4B5563; font-weight:600; font-size:.86rem; cursor:pointer; margin-bottom:3px;
+    transition:all .15s ease;
+  }
+  .ip-side-link:hover{ background:#fff; color:var(--brand); }
+  .ip-side-link.active{ background:var(--brand); color:white; box-shadow:0 4px 10px rgba(6,95,70,.2); }
+
+  .kpi-card{
+    background:white; border:1px solid var(--border); border-radius:12px; padding:16px; position:relative;
+    overflow:hidden;
+  }
+  .kpi-card::before{
+    content:''; position:absolute; inset-inline-start:0; top:0; bottom:0; width:4px; background:var(--brand);
+  }
+  .kpi-card.warn::before{ background:var(--warning); }
+  .kpi-card.danger::before{ background:var(--danger); }
+  .kpi-card.gold::before{ background:var(--gold); }
+  .kpi-card.info::before{ background:var(--info); }
+
+  .badge{ padding:3px 9px; border-radius:6px; font-size:.72rem; font-weight:700; display:inline-block; }
+  .badge-success{ background:#D1FAE5; color:#065F46; }
+  .badge-warning{ background:#FEF3C7; color:#92400E; }
+  .badge-danger{ background:#FEE2E2; color:#991B1B; }
+  .badge-info{ background:#CFFAFE; color:#155E75; }
+  .badge-neutral{ background:#F3F4F6; color:#374151; }
+  .badge-gold{ background:#FAEBD0; color:#7C5316; }
+  .badge-brand{ background:#D1FAE5; color:#065F46; }
+
+  .btn-primary{
+    background:var(--brand); color:white; padding:9px 18px; border-radius:9px; font-weight:700;
+    font-size:.88rem; transition:all .2s ease; border:none; cursor:pointer; display:inline-flex; align-items:center; gap:6px;
+  }
+  .btn-primary:hover{ background:var(--brand-light); transform:translateY(-1px); box-shadow:0 6px 14px rgba(6,95,70,.25); }
+  .btn-gold{
+    background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%); color:#3F2A12; padding:9px 18px;
+    border-radius:9px; font-weight:800; font-size:.88rem; border:none; cursor:pointer;
+  }
+  .btn-outline{
+    border:1.5px solid var(--brand); color:var(--brand); padding:8px 17px; border-radius:9px;
+    font-weight:700; font-size:.88rem; background:white; cursor:pointer;
+  }
+  .btn-ghost{
+    color:#4B5563; padding:8px 14px; border-radius:9px; font-weight:600; font-size:.85rem;
+    background:transparent; cursor:pointer; border:1px solid transparent;
+  }
+  .btn-ghost:hover{ background:#F3F4F6; }
+
+  .form-input{
+    width:100%; padding:10px 14px; border:1.5px solid var(--border); border-radius:9px; font-size:.9rem;
+    background:white; transition:all .15s; font-family:inherit;
+  }
+  .form-input:focus{ outline:none; border-color:var(--brand); box-shadow:0 0 0 3px rgba(6,95,70,.1); }
+  .form-label{ display:block; font-weight:700; font-size:.83rem; color:#374151; margin-bottom:6px; }
+
+  .data-table{ width:100%; border-collapse:collapse; font-size:.86rem; }
+  .data-table th{
+    background:#F9FAFB; color:#374151; padding:11px 14px; text-align:start; font-weight:700; font-size:.78rem;
+    border-bottom:1.5px solid var(--border); white-space:nowrap;
+  }
+  .data-table td{ padding:12px 14px; border-bottom:1px solid var(--border); }
+  .data-table tr:last-child td{ border-bottom:none; }
+  .data-table tr:hover td{ background:#FAFAF7; }
+
+  .avatar{
+    width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#065F46,#047857);
+    color:white; display:inline-flex; align-items:center; justify-content:center; font-weight:800; font-size:.85rem;
+  }
+  .avatar-gold{ background:linear-gradient(135deg,#D4A574,#B58853); color:#3F2A12; }
+
+  /* ======= CHARTS ======= */
+  .bar-chart{ display:flex; align-items:flex-end; gap:10px; height:160px; padding:8px 0; }
+  .bar{
+    flex:1; background:linear-gradient(180deg,var(--brand-light) 0%,var(--brand) 100%); border-radius:8px 8px 0 0;
+    position:relative; min-height:8px;
+  }
+  .bar-gold{ background:linear-gradient(180deg,var(--gold) 0%,var(--gold-dark) 100%); }
+  .bar-label{ font-size:.7rem; color:var(--muted); text-align:center; margin-top:6px; }
+
+  .donut{
+    width:140px; height:140px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .donut-inner{
+    width:80px; height:80px; background:white; border-radius:50%; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+  }
+
+  .progress-bar{ height:8px; background:#E5E7EB; border-radius:999px; overflow:hidden; }
+  .progress-fill{ height:100%; background:var(--brand); border-radius:999px; }
+  .progress-fill-gold{ background:var(--gold); }
+  .progress-fill-warn{ background:var(--warning); }
+  .progress-fill-danger{ background:var(--danger); }
+
+  /* ======= MOBILE PHONE FRAME (PWA) ======= */
+  .phone-frame{
+    width:380px; margin:0 auto; background:#111; border-radius:42px; padding:14px;
+    box-shadow:0 30px 60px rgba(0,0,0,.25);
+  }
+  .phone-screen{
+    background:white; border-radius:30px; overflow:hidden; min-height:760px; position:relative;
+  }
+  .phone-notch{
+    width:140px; height:24px; background:#111; border-radius:0 0 16px 16px; margin:0 auto;
+    position:relative; top:0;
+  }
+
+  /* ======= CERTIFICATE ======= */
+  .cert-frame{
+    background:linear-gradient(135deg,#FFFBEB 0%,#FAEBD0 100%);
+    border:6px double var(--gold); padding:40px; border-radius:18px; position:relative;
+  }
+  .cert-corner{
+    position:absolute; width:60px; height:60px; border:3px solid var(--brand);
+  }
+
+  /* ======= QR ======= */
+  .qr-pattern{
+    width:100%; aspect-ratio:1; background:
+      repeating-conic-gradient(#111 0% 25%, #fff 0% 50%) 0 0/16% 16%,
+      linear-gradient(#fff,#fff);
+    border:6px solid white; box-shadow:0 4px 12px rgba(0,0,0,.1);
+  }
+
+  /* ======= MODAL ======= */
+  .modal-backdrop{
+    background:rgba(0,0,0,.55); position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ======= UTIL ======= */
+  .ring-brand{ box-shadow:0 0 0 3px rgba(6,95,70,.12); }
+  .divider-y{ border-top:1px dashed var(--border); margin:14px 0; }
+
+  /* ======= PRINT STYLES ======= */
+  @media print{
+    @page{ size:A4 landscape; margin:10mm; }
+    body{ background:white; }
+    .tabs-bar, .app-header, .no-print{ display:none !important; }
+    .mockup{ display:block !important; page-break-after:always; padding:0; }
+    .mockup:last-child{ page-break-after:auto; }
+    .screen-frame{ box-shadow:none; border:1px solid var(--border); max-width:100%; }
+  }
+</style>
+</head>
+<body class="bg-cream">
+
+<!-- ============================================================ -->
+<!-- ===================== APP HEADER =========================== -->
+<!-- ============================================================ -->
+<header class="app-header no-print">
+  <div class="flex items-center gap-3">
+    <div class="brand-logo">IIMS</div>
+    <div>
+      <div class="brand-title text-lg">IIMS</div>
+      <div class="brand-sub">Integrated Institutional Management System — لوحة الـMockups</div>
+    </div>
+  </div>
+  <div class="flex items-center gap-3 text-sm">
+    <span class="opacity-80">عرض شامل لـ 15 شاشة</span>
+    <button onclick="window.print()" class="btn-gold text-xs">طباعة كاملة (PDF)</button>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- ===================== TABS NAVIGATION ====================== -->
+<!-- ============================================================ -->
+<nav class="tabs-bar no-print" id="tabsBar">
+  <button class="tab-btn active" data-tab="s1"><span class="num">1</span> الدخول</button>
+  <button class="tab-btn" data-tab="s2"><span class="num">2</span> لوحة الطالب</button>
+  <button class="tab-btn" data-tab="s3"><span class="num">3</span> أداء اختبار</button>
+  <button class="tab-btn" data-tab="s4"><span class="num">4</span> طلب خطاب</button>
+  <button class="tab-btn" data-tab="s5"><span class="num">5</span> لوحة المدرب</button>
+  <button class="tab-btn" data-tab="s6"><span class="num">6</span> تحضير (موبايل)</button>
+  <button class="tab-btn" data-tab="s7"><span class="num">7</span> لوحة المالية</button>
+  <button class="tab-btn" data-tab="s8"><span class="num">8</span> فك الحجب</button>
+  <button class="tab-btn" data-tab="s9"><span class="num">9</span> بطاقة الطالب</button>
+  <button class="tab-btn" data-tab="s10"><span class="num">10</span> لوحة الإدارة</button>
+  <button class="tab-btn" data-tab="s11"><span class="num">11</span> الصلاحيات</button>
+  <button class="tab-btn" data-tab="s12"><span class="num">12</span> إنشاء اختبار</button>
+  <button class="tab-btn" data-tab="s13"><span class="num">13</span> المكتبة</button>
+  <button class="tab-btn" data-tab="s14"><span class="num">14</span> الموظف (HR)</button>
+  <button class="tab-btn" data-tab="s15"><span class="num">15</span> تحقق الشهادة</button>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 01: LOGIN ===================== -->
+<!-- ============================================================ -->
+<section id="s1" class="mockup active">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 01 / 15</span>
+        <h2 class="font-bold text-gray-800">تسجيل الدخول إلى IIMS</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/login</code></div>
+    </div>
+
+    <div class="grid grid-cols-12 min-h-[640px]">
+      <!-- ===== Brand Side ===== -->
+      <div class="col-span-7 relative overflow-hidden text-white p-12" style="background:linear-gradient(135deg,#064E3B 0%,#065F46 50%,#047857 100%);">
+        <div style="position:absolute; top:-80px; left:-60px; width:380px; height:380px; background:radial-gradient(circle,rgba(212,165,116,.22) 0%, transparent 70%); border-radius:50%;"></div>
+        <div style="position:absolute; bottom:-100px; right:-80px; width:420px; height:420px; background:radial-gradient(circle,rgba(212,165,116,.13) 0%, transparent 70%); border-radius:50%;"></div>
+
+        <div class="relative z-10">
+          <div class="flex items-center gap-3 mb-12">
+            <div class="brand-logo" style="width:54px; height:54px; font-size:1.2rem;">IIMS</div>
+            <div>
+              <div class="font-black text-2xl">IIMS</div>
+              <div class="text-xs opacity-80">Integrated Institutional Management System</div>
+            </div>
+          </div>
+
+          <h1 class="text-4xl font-black leading-tight mb-4">نظام إدارة معهد تدريبي متكامل</h1>
+          <p class="text-lg opacity-90 mb-10 leading-relaxed max-w-md">
+            بوابة موحّدة للطلاب، المدربين، المالية، شؤون المتدربين والإدارة — مع منصة اختبارات متقدمة وتكامل محاسبي.
+          </p>
+
+          <div class="space-y-3 max-w-md">
+            <div class="flex items-center gap-3 bg-white/10 backdrop-blur p-3 rounded-xl border border-white/15">
+              <div class="w-9 h-9 rounded-lg bg-gold/30 flex items-center justify-center text-lg">🎓</div>
+              <div>
+                <div class="font-bold text-sm">منصة اختبارات بـ 14 نوع سؤال</div>
+                <div class="text-xs opacity-75">تصحيح آلي + مراقبة الجلسات + شهادات بـ QR</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 bg-white/10 backdrop-blur p-3 rounded-xl border border-white/15">
+              <div class="w-9 h-9 rounded-lg bg-gold/30 flex items-center justify-center text-lg">💼</div>
+              <div>
+                <div class="font-bold text-sm">تكامل محاسبي + Service Blocking</div>
+                <div class="text-xs opacity-75">قواعد حجب ذكية تنسحب على 6 خدمات</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 bg-white/10 backdrop-blur p-3 rounded-xl border border-white/15">
+              <div class="w-9 h-9 rounded-lg bg-gold/30 flex items-center justify-center text-lg">📋</div>
+              <div>
+                <div class="font-bold text-sm">Workflow Engine بـ 14 نوع طلب</div>
+                <div class="text-xs opacity-75">تتبع SLA + Escalation تلقائي</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Login Form ===== -->
+      <div class="col-span-5 p-12 flex flex-col justify-center">
+        <div class="max-w-sm w-full mx-auto">
+          <h2 class="text-2xl font-black text-gray-800 mb-2">أهلاً بعودتك</h2>
+          <p class="text-sm text-gray-500 mb-8">سجّل دخولك للوصول إلى لوحتك المخصصة.</p>
+
+          <!-- Role chips -->
+          <div class="mb-6">
+            <label class="form-label">اختر دورك</label>
+            <div class="grid grid-cols-3 gap-2">
+              <button class="text-xs py-2.5 rounded-lg border-2 border-brand bg-brand text-white font-bold">طالب</button>
+              <button class="text-xs py-2.5 rounded-lg border border-gray-300 hover:border-brand font-bold">مدرب</button>
+              <button class="text-xs py-2.5 rounded-lg border border-gray-300 hover:border-brand font-bold">إداري</button>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label">رقم الهوية / البريد</label>
+            <div class="relative">
+              <input type="text" class="form-input pe-10" value="1098765432" />
+              <span class="absolute end-3 top-1/2 -translate-y-1/2 text-gray-400">👤</span>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label">كلمة المرور</label>
+            <div class="relative">
+              <input type="password" class="form-input pe-10" value="••••••••••" />
+              <span class="absolute end-3 top-1/2 -translate-y-1/2 text-gray-400">🔒</span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mb-5 text-xs">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="rounded text-brand" checked> <span class="text-gray-700">تذكّرني</span>
+            </label>
+            <a href="#" class="text-brand font-bold hover:underline">نسيت كلمة المرور؟</a>
+          </div>
+
+          <button class="btn-primary w-full justify-center py-3 text-base mb-4">دخول آمن →</button>
+
+          <!-- 2FA notice -->
+          <div class="bg-gold-soft border border-gold/40 rounded-xl p-3 flex items-start gap-2 mb-4" style="background:#FAEBD0; border-color:rgba(212,165,116,.4);">
+            <span class="text-lg">🛡️</span>
+            <div class="text-xs text-gray-700">
+              <strong class="block">حماية إضافية</strong>
+              سيُرسل رمز تحقّق (2FA) إلى جوّالك المسجّل لمرة واحدة عند الدخول.
+            </div>
+          </div>
+
+          <div class="text-center text-xs text-gray-500 mt-6">
+            بالدخول فإنك توافق على
+            <a href="#" class="text-brand font-bold">شروط الاستخدام</a>
+            و
+            <a href="#" class="text-brand font-bold">سياسة الخصوصية</a>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-gray-200 flex items-center justify-between text-xs text-gray-500">
+            <span>الإصدار 1.4.2</span>
+            <span class="flex items-center gap-1"><span class="w-2 h-2 bg-green-500 rounded-full inline-block"></span> الخدمات: تعمل</span>
+            <a href="#" class="text-brand font-bold">دعم فني</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 02: STUDENT HOME ============== -->
+<!-- ============================================================ -->
+<section id="s2" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 02 / 15</span>
+        <h2 class="font-bold text-gray-800">لوحة الطالب الرئيسية</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/student/dashboard</code></div>
+    </div>
+
+    <div class="grid grid-cols-12 min-h-[700px]">
+      <!-- Sidebar -->
+      <aside class="col-span-2 ip-sidebar">
+        <div class="flex items-center gap-2 mb-5 pb-4 border-b border-gray-200">
+          <div class="avatar avatar-gold">م.أ</div>
+          <div>
+            <div class="font-bold text-sm">محمد الأحمد</div>
+            <div class="text-[10px] text-gray-500">ID: 102487</div>
+          </div>
+        </div>
+        <div class="ip-side-link active">🏠 الرئيسية</div>
+        <div class="ip-side-link">📚 موادي الدراسية</div>
+        <div class="ip-side-link">📝 الاختبارات <span class="badge badge-warning ms-auto">3</span></div>
+        <div class="ip-side-link">📋 الواجبات <span class="badge badge-info ms-auto">2</span></div>
+        <div class="ip-side-link">📊 درجاتي</div>
+        <div class="ip-side-link">📅 جدولي</div>
+        <div class="ip-side-link">📨 طلباتي</div>
+        <div class="ip-side-link">📜 خطاباتي</div>
+        <div class="ip-side-link">💰 المالية</div>
+        <div class="ip-side-link">📚 المكتبة</div>
+        <div class="ip-side-link">⚙️ الإعدادات</div>
+        <div class="mt-6 pt-4 border-t border-gray-200">
+          <div class="ip-side-link text-red-600 hover:bg-red-50">🚪 خروج</div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="col-span-10 p-6 bg-gray-50">
+        <!-- Top welcome -->
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h1 class="text-2xl font-black text-gray-800">صباح الخير، محمد 👋</h1>
+            <p class="text-sm text-gray-500">الفصل الثاني — الأسبوع 9 من 16 — BRANCH_A</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="btn-ghost relative">🔔 <span class="absolute -top-1 -end-1 bg-red-500 text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center">5</span></button>
+            <button class="btn-ghost">📨 رسائلي</button>
+            <button class="btn-primary text-xs">طلب جديد +</button>
+          </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-4 gap-4 mb-6">
+          <div class="kpi-card">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs text-gray-500 font-bold">الرصيد المالي</span>
+              <span class="text-xl">💰</span>
+            </div>
+            <div class="text-2xl font-black text-brand mb-1">2,500 ر.س</div>
+            <div class="text-[11px] text-gray-500">مستحق الدفع قبل 30 شعبان</div>
+          </div>
+          <div class="kpi-card gold">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs text-gray-500 font-bold">نسبة الحضور</span>
+              <span class="text-xl">📅</span>
+            </div>
+            <div class="text-2xl font-black mb-1" style="color:#B58853">87%</div>
+            <div class="progress-bar"><div class="progress-fill progress-fill-gold" style="width:87%"></div></div>
+          </div>
+          <div class="kpi-card info">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs text-gray-500 font-bold">المعدّل التراكمي</span>
+              <span class="text-xl">📊</span>
+            </div>
+            <div class="text-2xl font-black mb-1" style="color:#155E75">4.42 / 5</div>
+            <div class="text-[11px] text-gray-500">امتياز — المرتبة 12 من 184</div>
+          </div>
+          <div class="kpi-card warn">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs text-gray-500 font-bold">واجبات معلّقة</span>
+              <span class="text-xl">📋</span>
+            </div>
+            <div class="text-2xl font-black mb-1" style="color:#92400E">2</div>
+            <div class="text-[11px] text-red-600 font-bold">أقربها ينتهي خلال 18 ساعة</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-5">
+          <!-- Upcoming Exams -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5 col-span-2">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-gray-800">📝 اختباراتي القادمة</h3>
+              <a href="#" class="text-xs text-brand font-bold hover:underline">عرض الكل ←</a>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between p-3 bg-brand-soft/30 border border-brand/20 rounded-lg" style="background:#ECFDF5;border-color:rgba(6,95,70,.2);">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-brand text-white rounded-lg flex flex-col items-center justify-center text-xs font-bold">
+                    <span>غداً</span>
+                    <span class="text-[10px]">٩ ص</span>
+                  </div>
+                  <div>
+                    <div class="font-bold text-gray-800">اختبار رياضيات تطبيقية — الفصل 4</div>
+                    <div class="text-xs text-gray-500">60 دقيقة • 25 سؤالاً • قاعة B-204</div>
+                  </div>
+                </div>
+                <span class="badge badge-success">جاهز للدخول</span>
+              </div>
+              <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-gray-100 text-gray-700 rounded-lg flex flex-col items-center justify-center text-xs font-bold">
+                    <span>الأحد</span>
+                    <span class="text-[10px]">١١ ص</span>
+                  </div>
+                  <div>
+                    <div class="font-bold text-gray-800">اختبار قواعد اللغة — منتصف الفصل</div>
+                    <div class="text-xs text-gray-500">45 دقيقة • 20 سؤالاً • إلكتروني (عن بُعد)</div>
+                  </div>
+                </div>
+                <span class="badge badge-info">عن بُعد</span>
+              </div>
+              <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-gray-100 text-gray-700 rounded-lg flex flex-col items-center justify-center text-xs font-bold">
+                    <span>22/6</span>
+                    <span class="text-[10px]">٨ ص</span>
+                  </div>
+                  <div>
+                    <div class="font-bold text-gray-800">الاختبار الشامل النهائي</div>
+                    <div class="text-xs text-gray-500">120 دقيقة • 60 سؤالاً • قاعة الاختبارات الكبرى</div>
+                  </div>
+                </div>
+                <span class="badge badge-gold">شامل</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-gray-800">🔔 الإشعارات</h3>
+              <span class="badge badge-danger">5 جديدة</span>
+            </div>
+            <div class="space-y-3">
+              <div class="flex gap-2 pb-3 border-b border-gray-100">
+                <div class="w-2 h-2 bg-red-500 rounded-full mt-1.5 shrink-0"></div>
+                <div>
+                  <p class="text-xs text-gray-700 font-bold">واجب مادة الرياضيات</p>
+                  <p class="text-[11px] text-gray-500">ينتهي خلال 18 ساعة — لم تُسلّم بعد</p>
+                  <p class="text-[10px] text-gray-400 mt-1">منذ ساعتين</p>
+                </div>
+              </div>
+              <div class="flex gap-2 pb-3 border-b border-gray-100">
+                <div class="w-2 h-2 bg-gold rounded-full mt-1.5 shrink-0"></div>
+                <div>
+                  <p class="text-xs text-gray-700 font-bold">رصيد مالي مستحق</p>
+                  <p class="text-[11px] text-gray-500">2,500 ر.س مستحقة قبل 30 شعبان</p>
+                  <p class="text-[10px] text-gray-400 mt-1">أمس</p>
+                </div>
+              </div>
+              <div class="flex gap-2 pb-3 border-b border-gray-100">
+                <div class="w-2 h-2 bg-green-500 rounded-full mt-1.5 shrink-0"></div>
+                <div>
+                  <p class="text-xs text-gray-700 font-bold">طلبك رقم REQ-4821 معتمد</p>
+                  <p class="text-[11px] text-gray-500">جاهز للاستلام من شؤون المتدربين</p>
+                  <p class="text-[10px] text-gray-400 mt-1">قبل 3 أيام</p>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <div class="w-2 h-2 bg-blue-500 rounded-full mt-1.5 shrink-0"></div>
+                <div>
+                  <p class="text-xs text-gray-700 font-bold">درجة جديدة في "مهارات الاتصال"</p>
+                  <p class="text-[11px] text-gray-500">حصلت على 19 من 20</p>
+                  <p class="text-[10px] text-gray-400 mt-1">قبل أسبوع</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Assignments -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-gray-800">📋 الواجبات النشطة</h3>
+              <a href="#" class="text-xs text-brand font-bold">الكل ←</a>
+            </div>
+            <div class="space-y-3 text-xs">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-bold text-gray-800">بحث في الجبر الخطي</span>
+                  <span class="text-red-600 font-bold">18 ساعة</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill progress-fill-danger" style="width:90%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-bold text-gray-800">تقرير تطبيقي — الإدارة</span>
+                  <span class="text-orange-600 font-bold">3 أيام</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill progress-fill-warn" style="width:60%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-bold text-gray-800">عرض تقديمي جماعي</span>
+                  <span class="text-gray-600 font-bold">9 أيام</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width:35%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Schedule today -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5 col-span-2">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-gray-800">📅 جدول اليوم</h3>
+              <span class="text-xs text-gray-500">الثلاثاء — 23 شعبان 1447</span>
+            </div>
+            <div class="grid grid-cols-5 gap-2 text-xs">
+              <div class="p-3 bg-brand text-white rounded-lg">
+                <div class="font-bold mb-1">8:00 - 9:30</div>
+                <div class="opacity-90">رياضيات تطبيقية</div>
+                <div class="text-[10px] opacity-75 mt-1">د. خالد — B-204</div>
+              </div>
+              <div class="p-3 bg-gold/20 border border-gold/40 rounded-lg" style="background:#FAEBD0;border-color:rgba(212,165,116,.4);">
+                <div class="font-bold mb-1">9:45 - 11:15</div>
+                <div class="text-gray-700">قواعد اللغة</div>
+                <div class="text-[10px] text-gray-500 mt-1">د. عبدالله — A-101</div>
+              </div>
+              <div class="p-3 bg-gray-100 rounded-lg">
+                <div class="font-bold mb-1">11:30 - 1:00</div>
+                <div class="text-gray-700">مهارات الحاسب</div>
+                <div class="text-[10px] text-gray-500 mt-1">د. سارة — Lab-2</div>
+              </div>
+              <div class="p-3 bg-gray-100 rounded-lg">
+                <div class="font-bold mb-1">2:00 - 3:30</div>
+                <div class="text-gray-700">إدارة أعمال</div>
+                <div class="text-[10px] text-gray-500 mt-1">د. فهد — C-303</div>
+              </div>
+              <div class="p-3 bg-gray-50 border border-dashed border-gray-300 rounded-lg flex items-center justify-center text-gray-400">
+                نهاية اليوم
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent grades -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-gray-800">📊 آخر الدرجات</h3>
+              <a href="#" class="text-xs text-brand font-bold">عرض ←</a>
+            </div>
+            <div class="space-y-3 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-700">مهارات الاتصال</span>
+                <span class="font-black text-brand text-base">19/20</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-700">رياضيات — تكامل</span>
+                <span class="font-black text-brand text-base">17/20</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-700">حاسب — قواعد بيانات</span>
+                <span class="font-black text-orange-600 text-base">14/20</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-700">قواعد لغة</span>
+                <span class="font-black text-brand text-base">18/20</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 03: EXAM TAKING =============== -->
+<!-- ============================================================ -->
+<section id="s3" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 03 / 15</span>
+        <h2 class="font-bold text-gray-800">أداء اختبار — منصة الاختبارات</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/exam/EXM-2487/attempt</code></div>
+    </div>
+
+    <!-- Exam Header -->
+    <div class="bg-brand text-white px-6 py-3 flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <div class="brand-logo" style="width:36px; height:36px; font-size:.85rem;">IIMS</div>
+        <div>
+          <div class="font-bold text-sm">اختبار رياضيات تطبيقية — الفصل 4</div>
+          <div class="text-[11px] opacity-80">25 سؤال • مدة 60 دقيقة • محاولة 1 من 1</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="bg-white/15 px-4 py-2 rounded-lg flex items-center gap-2 backdrop-blur">
+          <span class="text-xl">⏱️</span>
+          <div>
+            <div class="text-[10px] opacity-80">الوقت المتبقي</div>
+            <div class="font-black text-xl tracking-wider">42:18</div>
+          </div>
+        </div>
+        <button class="bg-gold text-gray-900 px-4 py-2.5 rounded-lg font-bold text-xs">إنهاء وتسليم →</button>
+      </div>
+    </div>
+
+    <!-- Time progress -->
+    <div class="h-1.5 bg-white/30">
+      <div class="h-full bg-gold" style="width:30%"></div>
+    </div>
+
+    <div class="grid grid-cols-12 min-h-[640px]">
+      <!-- Question area -->
+      <div class="col-span-9 p-8 bg-white">
+        <!-- Question Header -->
+        <div class="flex items-center justify-between mb-5 pb-4 border-b border-gray-200">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-brand text-white rounded-full flex items-center justify-center font-black">8</div>
+            <div>
+              <div class="font-bold text-gray-800">السؤال 8 من 25</div>
+              <div class="text-xs text-gray-500">اختيار من متعدد — إجابة واحدة • 4 درجات</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="btn-ghost text-xs">🚩 وضع علامة للمراجعة</button>
+            <button class="btn-ghost text-xs">📌 احفظ هذا السؤال</button>
+          </div>
+        </div>
+
+        <!-- Question stem -->
+        <div class="mb-7">
+          <p class="text-lg leading-9 text-gray-800 mb-4">
+            إذا كان <span class="bg-gray-100 px-2 py-1 rounded font-mono">f(x) = 3x² + 2x − 5</span> ، فما قيمة مشتقة الدالة <span class="bg-gray-100 px-2 py-1 rounded font-mono">f′(x)</span> عند النقطة <span class="bg-gray-100 px-2 py-1 rounded font-mono">x = 2</span> ؟
+          </p>
+          <div class="bg-blue-50 border-s-4 border-blue-400 p-3 rounded-lg text-xs text-blue-900">
+            <strong>تلميح:</strong> طبّق قاعدة الاشتقاق العامة لكثيرات الحدود ثم عوّض بقيمة x.
+          </div>
+        </div>
+
+        <!-- Answers options -->
+        <div class="space-y-3">
+          <label class="block cursor-pointer">
+            <div class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-xl hover:border-brand hover:bg-brand-soft/30 transition-all" style="background:#fff;">
+              <input type="radio" name="q8" class="w-5 h-5 accent-emerald-700">
+              <span class="font-bold text-gray-600">أ.</span>
+              <span class="text-gray-800">12</span>
+            </div>
+          </label>
+          <label class="block cursor-pointer">
+            <div class="flex items-center gap-3 p-4 border-2 border-brand bg-brand-soft/30 rounded-xl" style="background:#ECFDF5; border-color:#065F46;">
+              <input type="radio" name="q8" class="w-5 h-5 accent-emerald-700" checked>
+              <span class="font-bold text-brand">ب.</span>
+              <span class="text-gray-800 font-bold">14</span>
+              <span class="ms-auto text-xs text-brand">✓ مختارة</span>
+            </div>
+          </label>
+          <label class="block cursor-pointer">
+            <div class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-xl hover:border-brand hover:bg-brand-soft/30 transition-all">
+              <input type="radio" name="q8" class="w-5 h-5 accent-emerald-700">
+              <span class="font-bold text-gray-600">ج.</span>
+              <span class="text-gray-800">16</span>
+            </div>
+          </label>
+          <label class="block cursor-pointer">
+            <div class="flex items-center gap-3 p-4 border-2 border-gray-200 rounded-xl hover:border-brand hover:bg-brand-soft/30 transition-all">
+              <input type="radio" name="q8" class="w-5 h-5 accent-emerald-700">
+              <span class="font-bold text-gray-600">د.</span>
+              <span class="text-gray-800">10</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="flex justify-between items-center mt-8 pt-6 border-t border-gray-200">
+          <button class="btn-outline">← السابق</button>
+          <div class="text-xs text-gray-500">
+            ✅ تم حفظ الإجابة تلقائياً • منذ 4 ثوانٍ
+          </div>
+          <button class="btn-primary">التالي →</button>
+        </div>
+      </div>
+
+      <!-- Sidebar: Question grid + status -->
+      <div class="col-span-3 bg-gray-50 border-s border-gray-200 p-5">
+        <h3 class="font-bold text-gray-800 mb-3 text-sm">🧭 لوحة الأسئلة</h3>
+
+        <!-- Legend -->
+        <div class="bg-white rounded-lg p-3 mb-4 text-[11px] space-y-1.5">
+          <div class="flex items-center gap-2"><div class="w-3 h-3 bg-brand rounded"></div> الحالي</div>
+          <div class="flex items-center gap-2"><div class="w-3 h-3 bg-green-500 rounded"></div> تم الإجابة</div>
+          <div class="flex items-center gap-2"><div class="w-3 h-3 bg-yellow-400 rounded"></div> للمراجعة</div>
+          <div class="flex items-center gap-2"><div class="w-3 h-3 bg-gray-200 rounded"></div> غير مُجاب</div>
+        </div>
+
+        <!-- Question grid -->
+        <div class="grid grid-cols-5 gap-2 mb-5">
+          <button class="w-9 h-9 bg-green-500 text-white rounded-lg font-bold text-xs">1</button>
+          <button class="w-9 h-9 bg-green-500 text-white rounded-lg font-bold text-xs">2</button>
+          <button class="w-9 h-9 bg-green-500 text-white rounded-lg font-bold text-xs">3</button>
+          <button class="w-9 h-9 bg-yellow-400 text-gray-900 rounded-lg font-bold text-xs">4</button>
+          <button class="w-9 h-9 bg-green-500 text-white rounded-lg font-bold text-xs">5</button>
+          <button class="w-9 h-9 bg-green-500 text-white rounded-lg font-bold text-xs">6</button>
+          <button class="w-9 h-9 bg-green-500 text-white rounded-lg font-bold text-xs">7</button>
+          <button class="w-9 h-9 bg-brand text-white rounded-lg font-bold text-xs ring-2 ring-gold">8</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">9</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">10</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">11</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">12</button>
+          <button class="w-9 h-9 bg-yellow-400 text-gray-900 rounded-lg font-bold text-xs">13</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">14</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">15</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">16</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">17</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">18</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">19</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">20</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">21</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">22</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">23</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">24</button>
+          <button class="w-9 h-9 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs">25</button>
+        </div>
+
+        <!-- Stats -->
+        <div class="bg-white rounded-lg p-3 text-xs space-y-2 mb-4">
+          <div class="flex justify-between"><span class="text-gray-600">مُجابة</span><span class="font-bold text-green-700">7 / 25</span></div>
+          <div class="flex justify-between"><span class="text-gray-600">للمراجعة</span><span class="font-bold text-yellow-600">2</span></div>
+          <div class="flex justify-between"><span class="text-gray-600">بقية الأسئلة</span><span class="font-bold text-gray-800">17</span></div>
+        </div>
+
+        <!-- Proctoring -->
+        <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs">
+          <div class="flex items-center gap-2 font-bold text-amber-900 mb-1">
+            <span>🔒</span> الحماية مفعّلة
+          </div>
+          <ul class="text-[10px] text-amber-800 space-y-1 ps-4 list-disc">
+            <li>مراقبة الكاميرا: نشط</li>
+            <li>منع التنقل بين النوافذ</li>
+            <li>الإجابات مخلّطة لكل طالب</li>
+            <li>تحذيرات الخروج: 0 / 3</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 04: LETTERS REQUEST =========== -->
+<!-- ============================================================ -->
+<section id="s4" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 04 / 15</span>
+        <h2 class="font-bold text-gray-800">طلب خطاب رسمي</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/student/letters/new</code></div>
+    </div>
+
+    <div class="grid grid-cols-12 min-h-[700px]">
+      <!-- Sidebar -->
+      <aside class="col-span-2 ip-sidebar">
+        <div class="flex items-center gap-2 mb-5 pb-4 border-b border-gray-200">
+          <div class="avatar avatar-gold">م.أ</div>
+          <div>
+            <div class="font-bold text-sm">محمد الأحمد</div>
+            <div class="text-[10px] text-gray-500">ID: 102487</div>
+          </div>
+        </div>
+        <div class="ip-side-link">🏠 الرئيسية</div>
+        <div class="ip-side-link">📚 موادي الدراسية</div>
+        <div class="ip-side-link">📝 الاختبارات</div>
+        <div class="ip-side-link">📋 الواجبات</div>
+        <div class="ip-side-link">📊 درجاتي</div>
+        <div class="ip-side-link">📅 جدولي</div>
+        <div class="ip-side-link">📨 طلباتي</div>
+        <div class="ip-side-link active">📜 خطاباتي</div>
+        <div class="ip-side-link">💰 المالية</div>
+      </aside>
+
+      <!-- Main -->
+      <div class="col-span-10 p-6 bg-gray-50">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h1 class="text-2xl font-black text-gray-800">📜 الخطابات الرسمية</h1>
+            <p class="text-sm text-gray-500">اطلب خطاباً معتمداً موقّعاً رقمياً بـ QR — يصلك جاهزاً للتحميل</p>
+          </div>
+          <button class="btn-gold">+ طلب خطاب جديد</button>
+        </div>
+
+        <!-- Status banner -->
+        <div class="bg-amber-50 border-s-4 border-amber-500 rounded-lg p-4 mb-5 flex items-center gap-3">
+          <span class="text-2xl">⚠️</span>
+          <div class="flex-1">
+            <div class="font-bold text-amber-900 mb-1">يوجد رصيد مالي مستحق</div>
+            <div class="text-xs text-amber-800">قد يُؤجَّل تنفيذ بعض أنواع الخطابات حتى السداد. يمكنك تقديم الطلب وسيُراجعه القسم المالي.</div>
+          </div>
+          <button class="btn-outline text-xs">عرض المالية ←</button>
+        </div>
+
+        <div class="grid grid-cols-3 gap-5">
+          <!-- Available Letters -->
+          <div class="col-span-1 bg-white rounded-xl border border-gray-200 p-5">
+            <h3 class="font-bold text-gray-800 mb-4 text-sm">الخطابات المتاحة</h3>
+            <div class="space-y-2">
+              <div class="p-3 border-2 border-brand bg-brand-soft/30 rounded-lg cursor-pointer" style="background:#ECFDF5;border-color:#065F46;">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-lg">📋</span>
+                  <span class="font-bold text-sm text-brand">خطاب تعريف بالراتب</span>
+                </div>
+                <div class="text-[11px] text-gray-600">SLA: 24 ساعة • مجاني</div>
+              </div>
+              <div class="p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-lg">🎓</span>
+                  <span class="font-bold text-sm">خطاب تعريف بالقيد</span>
+                </div>
+                <div class="text-[11px] text-gray-600">SLA: 24 ساعة • مجاني</div>
+              </div>
+              <div class="p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-lg">✈️</span>
+                  <span class="font-bold text-sm">خطاب موجّه للسفارة</span>
+                </div>
+                <div class="text-[11px] text-gray-600">SLA: 48 ساعة • 25 ر.س</div>
+              </div>
+              <div class="p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-lg">🏦</span>
+                  <span class="font-bold text-sm">خطاب لجهة حكومية</span>
+                </div>
+                <div class="text-[11px] text-gray-600">SLA: 48 ساعة • مجاني</div>
+              </div>
+              <div class="p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-lg">📊</span>
+                  <span class="font-bold text-sm">إفادة بالمعدّل والدرجات</span>
+                </div>
+                <div class="text-[11px] text-gray-600">SLA: 72 ساعة • 15 ر.س</div>
+              </div>
+              <div class="p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-lg">⏸️</span>
+                  <span class="font-bold text-sm">خطاب طي قيد</span>
+                </div>
+                <div class="text-[11px] text-gray-600">SLA: 72 ساعة • مجاني</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="col-span-2">
+            <div class="bg-white rounded-xl border border-gray-200 p-6">
+              <div class="flex items-center justify-between mb-5 pb-4 border-b border-gray-200">
+                <div>
+                  <h3 class="font-bold text-gray-800 text-base">نموذج طلب: خطاب تعريف بالراتب</h3>
+                  <p class="text-xs text-gray-500 mt-1">سيُولَّد PDF موقّعاً رقمياً ومُختوماً بـ QR للتحقق</p>
+                </div>
+                <span class="badge badge-success">جاهز للتقديم</span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 mb-5">
+                <div>
+                  <label class="form-label">الجهة الموجَّه لها</label>
+                  <input class="form-input" placeholder="مثلاً: البنك الأهلي السعودي" value="البنك الأهلي السعودي">
+                </div>
+                <div>
+                  <label class="form-label">اللغة</label>
+                  <select class="form-input">
+                    <option>عربي</option>
+                    <option>إنجليزي</option>
+                    <option>ثنائي اللغة</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="form-label">عدد النسخ</label>
+                  <input type="number" class="form-input" value="2" min="1" max="5">
+                </div>
+                <div>
+                  <label class="form-label">طريقة الاستلام</label>
+                  <select class="form-input">
+                    <option>تحميل من البوابة (PDF)</option>
+                    <option>استلام ورقي من المعهد</option>
+                    <option>إيميل مرفق</option>
+                  </select>
+                </div>
+                <div class="col-span-2">
+                  <label class="form-label">سبب الطلب / ملاحظات</label>
+                  <textarea class="form-input" rows="3" placeholder="اذكر سبب الطلب بإيجاز...">لإتمام إجراءات فتح حساب راتب لدى البنك الأهلي.</textarea>
+                </div>
+              </div>
+
+              <!-- Preview placeholder -->
+              <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-5 mb-5">
+                <div class="flex items-center justify-between mb-2">
+                  <h4 class="text-sm font-bold text-gray-700">📄 معاينة الخطاب (تلقائية)</h4>
+                  <button class="btn-ghost text-xs">معاينة كاملة ←</button>
+                </div>
+                <div class="bg-white border border-gray-200 rounded p-4 text-xs text-gray-700 leading-7" style="font-family:'Cairo';">
+                  <div class="text-center mb-3 pb-3 border-b border-gray-200">
+                    <div class="font-bold text-brand text-sm">IIMS — معهد التدريب</div>
+                    <div class="text-[10px] text-gray-500">رقم الخطاب: LTR-2025-04821</div>
+                  </div>
+                  <p>السلام عليكم ورحمة الله وبركاته،</p>
+                  <p class="mt-2">يُفيد المعهد بأن الطالب <strong>محمد عبدالله الأحمد</strong>، رقم القيد <strong>102487</strong>،
+                  مسجَّل لدينا في برنامج "إدارة الأعمال — الفصل الثاني 1447هـ"، ويتقاضى راتباً شهرياً قدره <strong>—</strong>.</p>
+                  <p class="mt-2">صدر هذا الخطاب بناءً على طلبه لتقديمه إلى البنك الأهلي السعودي.</p>
+                  <p class="mt-3 text-gray-500">والله ولي التوفيق،</p>
+                </div>
+              </div>
+
+              <!-- Status flow -->
+              <div class="mb-5">
+                <h4 class="text-sm font-bold text-gray-700 mb-3">مسار الطلب المتوقَّع</h4>
+                <div class="flex items-center gap-2 text-xs">
+                  <div class="flex-1 text-center">
+                    <div class="w-8 h-8 bg-brand text-white rounded-full mx-auto mb-1 flex items-center justify-center font-bold">1</div>
+                    <div class="font-bold">تقديم</div>
+                  </div>
+                  <div class="h-px bg-gray-300 flex-1"></div>
+                  <div class="flex-1 text-center opacity-60">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full mx-auto mb-1 flex items-center justify-center font-bold">2</div>
+                    <div>مراجعة مالية</div>
+                  </div>
+                  <div class="h-px bg-gray-300 flex-1"></div>
+                  <div class="flex-1 text-center opacity-60">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full mx-auto mb-1 flex items-center justify-center font-bold">3</div>
+                    <div>توقيع</div>
+                  </div>
+                  <div class="h-px bg-gray-300 flex-1"></div>
+                  <div class="flex-1 text-center opacity-60">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full mx-auto mb-1 flex items-center justify-center font-bold">4</div>
+                    <div>جاهز للتحميل</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+                <div class="text-xs text-gray-500">
+                  ⏱️ SLA المتوقّع: <strong class="text-brand">24 ساعة عمل</strong>
+                </div>
+                <div class="flex gap-2">
+                  <button class="btn-ghost">إلغاء</button>
+                  <button class="btn-outline">حفظ كمسوّدة</button>
+                  <button class="btn-primary">📨 تقديم الطلب</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- History -->
+            <div class="bg-white rounded-xl border border-gray-200 p-5 mt-5">
+              <h3 class="font-bold text-gray-800 mb-3 text-sm">📋 خطاباتي السابقة</h3>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>الرقم</th>
+                    <th>النوع</th>
+                    <th>الجهة</th>
+                    <th>التاريخ</th>
+                    <th>الحالة</th>
+                    <th>الإجراء</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-mono text-xs">LTR-3982</td>
+                    <td>تعريف بالقيد</td>
+                    <td>جامعة الملك سعود</td>
+                    <td>12 / 8 / 1447</td>
+                    <td><span class="badge badge-success">جاهز</span></td>
+                    <td><button class="text-brand font-bold text-xs">⬇️ تحميل</button></td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono text-xs">LTR-3754</td>
+                    <td>للسفارة الأمريكية</td>
+                    <td>السفارة الأمريكية</td>
+                    <td>3 / 7 / 1447</td>
+                    <td><span class="badge badge-success">جاهز</span></td>
+                    <td><button class="text-brand font-bold text-xs">⬇️ تحميل</button></td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono text-xs">LTR-3621</td>
+                    <td>إفادة بالدرجات</td>
+                    <td>جهة تدريب</td>
+                    <td>22 / 6 / 1447</td>
+                    <td><span class="badge badge-neutral">منتهية الصلاحية</span></td>
+                    <td><button class="text-gray-400 text-xs">—</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 05: TRAINER DASHBOARD ========= -->
+<!-- ============================================================ -->
+<section id="s5" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 05 / 15</span>
+        <h2 class="font-bold text-gray-800">لوحة المدرب</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/trainer/dashboard</code></div>
+    </div>
+
+    <div class="grid grid-cols-12 min-h-[700px]">
+      <aside class="col-span-2 ip-sidebar">
+        <div class="flex items-center gap-2 mb-5 pb-4 border-b border-gray-200">
+          <div class="avatar">د.خ</div>
+          <div>
+            <div class="font-bold text-sm">د. خالد الحربي</div>
+            <div class="text-[10px] text-gray-500">مدرب — رياضيات</div>
+          </div>
+        </div>
+        <div class="ip-side-link active">🏠 الرئيسية</div>
+        <div class="ip-side-link">📅 جدولي</div>
+        <div class="ip-side-link">👥 طلابي</div>
+        <div class="ip-side-link">✅ التحضير</div>
+        <div class="ip-side-link">📝 الاختبارات <span class="badge badge-warning ms-auto">2</span></div>
+        <div class="ip-side-link">✏️ تصحيح <span class="badge badge-danger ms-auto">23</span></div>
+        <div class="ip-side-link">📋 الواجبات</div>
+        <div class="ip-side-link">📊 درجات لاعتماد</div>
+        <div class="ip-side-link">🏆 بنك الأسئلة</div>
+        <div class="ip-side-link">📚 موادي</div>
+      </aside>
+
+      <div class="col-span-10 p-6 bg-gray-50">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h1 class="text-2xl font-black text-gray-800">مرحباً د. خالد 🌟</h1>
+            <p class="text-sm text-gray-500">لديك 4 محاضرات اليوم • 23 ورقة تنتظر التصحيح</p>
+          </div>
+          <div class="flex gap-2">
+            <button class="btn-outline text-xs">📊 تقاريري</button>
+            <button class="btn-primary text-xs">+ إنشاء اختبار</button>
+          </div>
+        </div>
+
+        <!-- KPIs -->
+        <div class="grid grid-cols-5 gap-4 mb-6">
+          <div class="kpi-card">
+            <div class="text-[11px] text-gray-500 font-bold mb-1">طلابي</div>
+            <div class="text-2xl font-black text-brand">147</div>
+            <div class="text-[10px] text-gray-500">في 5 مجموعات</div>
+          </div>
+          <div class="kpi-card gold">
+            <div class="text-[11px] text-gray-500 font-bold mb-1">محاضرات اليوم</div>
+            <div class="text-2xl font-black" style="color:#B58853">4</div>
+            <div class="text-[10px] text-gray-500">القادمة: 11:30 ص</div>
+          </div>
+          <div class="kpi-card danger">
+            <div class="text-[11px] text-gray-500 font-bold mb-1">للتصحيح</div>
+            <div class="text-2xl font-black text-red-700">23</div>
+            <div class="text-[10px] text-red-600 font-bold">7 منها تأخّرت &gt; 48 س</div>
+          </div>
+          <div class="kpi-card warn">
+            <div class="text-[11px] text-gray-500 font-bold mb-1">واجبات نشطة</div>
+            <div class="text-2xl font-black text-orange-700">8</div>
+            <div class="text-[10px] text-gray-500">3 ينتهي بعد غد</div>
+          </div>
+          <div class="kpi-card info">
+            <div class="text-[11px] text-gray-500 font-bold mb-1">متوسّط الفصل</div>
+            <div class="text-2xl font-black text-cyan-700">4.18 / 5</div>
+            <div class="text-[10px] text-green-700 font-bold">↑ ارتفع 0.3</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-5">
+          <!-- Today schedule -->
+          <div class="col-span-2 bg-white rounded-xl border border-gray-200 p-5">
+            <h3 class="font-bold text-gray-800 mb-4">📅 جدول اليوم</h3>
+            <div class="space-y-2">
+              <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg opacity-60">
+                <div class="font-bold text-gray-700 w-20 text-sm">8:00 ص</div>
+                <div class="flex-1">
+                  <div class="font-bold text-sm">رياضيات تطبيقية — المجموعة A1</div>
+                  <div class="text-xs text-gray-500">قاعة B-204 • 28 طالباً</div>
+                </div>
+                <span class="badge badge-neutral">منتهية</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-brand-soft/40 border border-brand/20 rounded-lg" style="background:#ECFDF5;border-color:rgba(6,95,70,.25);">
+                <div class="font-bold text-brand w-20 text-sm">11:30 ص</div>
+                <div class="flex-1">
+                  <div class="font-bold text-sm">رياضيات تطبيقية — المجموعة B2</div>
+                  <div class="text-xs text-gray-500">قاعة B-205 • 31 طالباً • التحضير لم يُسجَّل</div>
+                </div>
+                <button class="btn-primary text-xs">دخول التحضير ←</button>
+              </div>
+              <div class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg">
+                <div class="font-bold text-gray-700 w-20 text-sm">2:00 م</div>
+                <div class="flex-1">
+                  <div class="font-bold text-sm">إحصاء استنتاجي — المستوى الثاني</div>
+                  <div class="text-xs text-gray-500">قاعة C-310 • 24 طالباً</div>
+                </div>
+                <span class="badge badge-info">قادمة</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg">
+                <div class="font-bold text-gray-700 w-20 text-sm">4:00 م</div>
+                <div class="flex-1">
+                  <div class="font-bold text-sm">ساعات مكتبية — استشارات الطلاب</div>
+                  <div class="text-xs text-gray-500">المكتب 17 — مبنى الإدارة • مفتوحة</div>
+                </div>
+                <span class="badge badge-gold">مكتبية</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Urgent grading -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-gray-800">✏️ تصحيح عاجل</h3>
+              <span class="badge badge-danger">7 متأخرة</span>
+            </div>
+            <div class="space-y-3 text-xs">
+              <div class="flex items-start gap-2 pb-3 border-b border-gray-100">
+                <span class="text-base">📝</span>
+                <div class="flex-1">
+                  <div class="font-bold text-gray-800">اختبار قصير — الفصل 3</div>
+                  <div class="text-gray-500 text-[10px]">12 ورقة • منذ 72 س</div>
+                </div>
+                <button class="text-brand font-bold">ابدأ ←</button>
+              </div>
+              <div class="flex items-start gap-2 pb-3 border-b border-gray-100">
+                <span class="text-base">📋</span>
+                <div class="flex-1">
+                  <div class="font-bold text-gray-800">واجب — الجبر الخطي</div>
+                  <div class="text-gray-500 text-[10px]">8 تسليمات • منذ 48 س</div>
+                </div>
+                <button class="text-brand font-bold">ابدأ ←</button>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-base">📊</span>
+                <div class="flex-1">
+                  <div class="font-bold text-gray-800">مشاريع جماعية</div>
+                  <div class="text-gray-500 text-[10px]">3 مشاريع</div>
+                </div>
+                <button class="text-brand font-bold">ابدأ ←</button>
+              </div>
+            </div>
+            <button class="btn-outline w-full mt-4 text-xs">قائمة كل التصحيحات (23) ←</button>
+          </div>
+
+          <!-- Class performance -->
+          <div class="col-span-2 bg-white rounded-xl border border-gray-200 p-5">
+            <h3 class="font-bold text-gray-800 mb-4">📊 أداء فصول الأسبوع الماضي</h3>
+            <div class="bar-chart">
+              <div class="flex flex-col items-center flex-1">
+                <div class="bar" style="height:88%"></div>
+                <div class="bar-label">A1<br>4.4</div>
+              </div>
+              <div class="flex flex-col items-center flex-1">
+                <div class="bar" style="height:75%"></div>
+                <div class="bar-label">A2<br>3.8</div>
+              </div>
+              <div class="flex flex-col items-center flex-1">
+                <div class="bar bar-gold" style="height:92%"></div>
+                <div class="bar-label">B2<br>4.6</div>
+              </div>
+              <div class="flex flex-col items-center flex-1">
+                <div class="bar" style="height:68%"></div>
+                <div class="bar-label">C1<br>3.4</div>
+              </div>
+              <div class="flex flex-col items-center flex-1">
+                <div class="bar" style="height:80%"></div>
+                <div class="bar-label">C2<br>4.0</div>
+              </div>
+            </div>
+            <div class="mt-4 flex gap-4 text-xs text-gray-500">
+              <span class="flex items-center gap-1"><div class="w-3 h-3 bg-brand rounded"></div> متوسط</span>
+              <span class="flex items-center gap-1"><div class="w-3 h-3 bg-gold rounded"></div> أعلى مجموعة</span>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5">
+            <h3 class="font-bold text-gray-800 mb-4">🔔 إشعاراتي</h3>
+            <div class="space-y-3 text-xs">
+              <div class="flex gap-2 pb-3 border-b border-gray-100">
+                <span class="w-2 h-2 bg-red-500 rounded-full mt-1.5"></span>
+                <div>
+                  <p class="font-bold">طلب فك حرمان من سارة محمد</p>
+                  <p class="text-[10px] text-gray-500">يحتاج موافقتك — منذ 6 ساعات</p>
+                </div>
+              </div>
+              <div class="flex gap-2 pb-3 border-b border-gray-100">
+                <span class="w-2 h-2 bg-amber-500 rounded-full mt-1.5"></span>
+                <div>
+                  <p class="font-bold">3 طلاب اقتربوا من نسبة الحرمان (25%)</p>
+                  <p class="text-[10px] text-gray-500">المجموعة A2 — أمس</p>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <span class="w-2 h-2 bg-blue-500 rounded-full mt-1.5"></span>
+                <div>
+                  <p class="font-bold">اعتماد درجات اختبار منتصف الفصل</p>
+                  <p class="text-[10px] text-gray-500">يحتاج توقيعك الرقمي</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 06: PWA ATTENDANCE (MOBILE) === -->
+<!-- ============================================================ -->
+<section id="s6" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 06 / 15</span>
+        <h2 class="font-bold text-gray-800">PWA — تحضير الطلاب (موبايل المدرب)</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/pwa/attendance/CLASS-204</code></div>
+    </div>
+
+    <div class="bg-gradient-to-br from-gray-100 to-gray-200 p-8 min-h-[760px] flex items-center justify-center gap-10">
+      <!-- Phone Frame -->
+      <div class="phone-frame">
+        <div class="phone-screen relative">
+          <div class="phone-notch"></div>
+
+          <!-- App Header -->
+          <div class="px-4 py-3 bg-brand text-white">
+            <div class="flex items-center justify-between text-[10px] mb-1 opacity-80">
+              <span>9:45</span>
+              <span>📶 5G • 🔋 87%</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="text-white">←</button>
+              <div class="flex-1">
+                <div class="font-bold text-sm">تحضير المجموعة B2</div>
+                <div class="text-[10px] opacity-80">رياضيات تطبيقية • 11:30 ص</div>
+              </div>
+              <span class="text-lg">📡</span>
+            </div>
+          </div>
+
+          <!-- Date + branch -->
+          <div class="px-4 py-3 bg-cream border-b border-gray-200 flex justify-between items-center text-xs">
+            <div>
+              <div class="font-bold text-gray-800">الثلاثاء 23 شعبان 1447</div>
+              <div class="text-[10px] text-gray-500">قاعة B-205 • BRANCH_A</div>
+            </div>
+            <span class="badge badge-warning">لم يُحفظ</span>
+          </div>
+
+          <!-- Quick actions -->
+          <div class="grid grid-cols-3 gap-2 px-4 py-3 bg-white border-b border-gray-200">
+            <button class="bg-green-50 text-green-700 py-2 rounded-lg text-xs font-bold border border-green-200">✓ الكل حاضر</button>
+            <button class="bg-amber-50 text-amber-700 py-2 rounded-lg text-xs font-bold border border-amber-200">⏰ افتراضي متأخر</button>
+            <button class="bg-gray-50 text-gray-700 py-2 rounded-lg text-xs font-bold border border-gray-200">🔄 إعادة</button>
+          </div>
+
+          <!-- Stats bar -->
+          <div class="px-4 py-2 bg-white flex items-center justify-between text-xs border-b border-gray-200">
+            <div class="text-gray-600">المسجَّلون: <strong class="text-gray-900">31</strong></div>
+            <div class="flex gap-3 text-[10px]">
+              <span class="text-green-700 font-bold">✓ 24</span>
+              <span class="text-amber-700 font-bold">⏰ 3</span>
+              <span class="text-red-700 font-bold">✗ 2</span>
+              <span class="text-gray-500">— 2</span>
+            </div>
+          </div>
+
+          <!-- Students list -->
+          <div class="bg-gray-50 overflow-auto" style="max-height:440px;">
+            <!-- Student 1 -->
+            <div class="bg-white border-b border-gray-200 px-4 py-3 flex items-center gap-3">
+              <div class="avatar avatar-gold !w-10 !h-10 text-xs">أ.م</div>
+              <div class="flex-1 min-w-0">
+                <div class="font-bold text-xs truncate">أحمد محمد العتيبي</div>
+                <div class="text-[10px] text-gray-500">102481 • حضور: 92%</div>
+              </div>
+              <div class="flex gap-1">
+                <button class="w-9 h-9 bg-green-500 text-white rounded-lg text-base font-bold ring-2 ring-green-700">✓</button>
+                <button class="w-9 h-9 bg-gray-100 text-gray-500 rounded-lg text-sm">⏰</button>
+                <button class="w-9 h-9 bg-gray-100 text-gray-500 rounded-lg text-sm">✗</button>
+              </div>
+            </div>
+            <!-- Student 2 -->
+            <div class="bg-white border-b border-gray-200 px-4 py-3 flex items-center gap-3">
+              <div class="avatar !w-10 !h-10 text-xs">س.م</div>
+              <div class="flex-1 min-w-0">
+                <div class="font-bold text-xs truncate">سارة محمد الزهراني</div>
+                <div class="text-[10px] text-red-600 font-bold">102482 • حضور: 68% ⚠️</div>
+              </div>
+              <div class="flex gap-1">
+                <button class="w-9 h-9 bg-gray-100 text-gray-500 rounded-lg text-sm">✓</button>
+                <button class="w-9 h-9 bg-amber-500 text-white rounded-lg text-base font-bold ring-2 ring-amber-700">⏰</button>
+                <button class="w-9 h-9 bg-gray-100 text-gray-500 rounded-lg text-sm">✗</button>
+              </div>
+            </div>
+            <!-- Student 3 -->
+            <div class="bg-white border-b border-gray-200 px-4 py-3 flex items-center gap-3">
+              <div class="avatar avatar-gold !w-10 !h-10 text-xs">خ.ع</div>
+              <div class="flex-1 min-w-0">
+                <div class="font-bold text-xs truncate">خالد علي الشهري</div>
+                <div class="text-[10px] text-gray-500">102483 • حضور: 88%</div>
+              </div>
+              <div class="flex gap-1">
+                <button class="w-9 h-9 bg-green-500 text-white rounded-lg text-base font-bold ring-2 ring-green-700">✓</button>
+                <button class="w-9 h-9 bg-gray-100 text-gray-500 rounded-lg text-sm">⏰</button>
+                <button class="w-9 h-9 bg-gray-100 text-gray-500 rounded-lg text-sm">✗</button>
+              </div>
+            </div>
+            <!-- Student 4 -->
+            <div class="bg-white border-b border-gray-200 px-4 py-3 flex items-center gap-3">
+              <div class="avatar !w-10 !h-10 text-xs">ف.م</div>
+              <div class="flex-1 min-w-0">
+                <div class="font-bold text-xs truncate">فاطمة محسن البقمي</div>
+                <div class="text-[10px] text-gray-500">102484 • حضور: 95%</div>
+              </div>
+              <div class="flex gap-1">
+                <button class="w-9 h-9 bg-green-500 text-white rounded-lg text-base font-bold ring-2 ring-green-700">✓</button>
+                <button class="w-9 h-9 bg-gray-100 text-gray-500 rounded-lg text-sm">⏰</button>
+                <button class="w-9 h-9 bg-gray-100 text-gray-500 rounded-lg text-sm">✗</button>
+              </div>
+            </div>
+            <!-- Student 5 - Absent -->
+            <div class="bg-red-50 border-b border-gray-200 px-4 py-3 flex items-center gap-3">
+              <div class="avatar avatar-gold !w-10 !h-10 text-xs">ع.س</div>
+              <div class="flex-1 min-w-0">
+                <div class="font-bold text-xs truncate">عبدالله سالم الغامدي</div>
+                <div class="text-[10px] text-red-600 font-bold">102485 • حضور: 61% 🚫</div>
+              </div>
+              <div class="flex gap-1">
+                <button class="w-9 h-9 bg-gray-100 text-gray-500 rounded-lg text-sm">✓</button>
+                <button class="w-9 h-9 bg-gray-100 text-gray-500 rounded-lg text-sm">⏰</button>
+                <button class="w-9 h-9 bg-red-500 text-white rounded-lg text-base font-bold ring-2 ring-red-700">✗</button>
+              </div>
+            </div>
+            <!-- Student 6 -->
+            <div class="bg-white border-b border-gray-200 px-4 py-3 flex items-center gap-3">
+              <div class="avatar !w-10 !h-10 text-xs">ن.ع</div>
+              <div class="flex-1 min-w-0">
+                <div class="font-bold text-xs truncate">نورة عبدالعزيز السبيعي</div>
+                <div class="text-[10px] text-gray-500">102486 • حضور: 100%</div>
+              </div>
+              <div class="flex gap-1">
+                <button class="w-9 h-9 bg-green-500 text-white rounded-lg text-base font-bold ring-2 ring-green-700">✓</button>
+                <button class="w-9 h-9 bg-gray-100 text-gray-500 rounded-lg text-sm">⏰</button>
+                <button class="w-9 h-9 bg-gray-100 text-gray-500 rounded-lg text-sm">✗</button>
+              </div>
+            </div>
+            <!-- More students hint -->
+            <div class="bg-white px-4 py-4 text-center text-[10px] text-gray-400">
+              25 طالباً آخر — تابع التمرير ↓
+            </div>
+          </div>
+
+          <!-- Bottom save bar -->
+          <div class="absolute bottom-0 inset-x-0 bg-white border-t border-gray-200 p-3">
+            <button class="btn-primary w-full justify-center py-3 text-sm">💾 حفظ التحضير وإغلاق</button>
+            <div class="text-[10px] text-center text-gray-500 mt-1.5">
+              ✓ يعمل أوفلاين • سيُزامَن تلقائياً عند الاتصال
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Side annotations -->
+      <div class="space-y-3 max-w-xs">
+        <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+          <div class="text-xs font-bold text-brand mb-2">⚡ تحضير بنقرة واحدة</div>
+          <p class="text-xs text-gray-600">المدرب يحدد حضور 31 طالباً في أقل من دقيقة عبر أزرار كبيرة.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+          <div class="text-xs font-bold text-brand mb-2">📡 يعمل بدون إنترنت</div>
+          <p class="text-xs text-gray-600">PWA يخزّن البيانات محلياً ويُزامن لاحقاً تلقائياً.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+          <div class="text-xs font-bold text-brand mb-2">⚠️ تنبيهات ذكية</div>
+          <p class="text-xs text-gray-600">إبراز الطلاب الذين اقتربوا من نسبة الحرمان مباشرةً في القائمة.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+          <div class="text-xs font-bold text-brand mb-2">🚀 إجراءات سريعة</div>
+          <p class="text-xs text-gray-600">"الكل حاضر" / "افتراضي متأخر" تستثنى يدوياً ثم تُحفظ.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 07: FINANCE DASHBOARD ========= -->
+<!-- ============================================================ -->
+<section id="s7" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 07 / 15</span>
+        <h2 class="font-bold text-gray-800">لوحة المالية</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/finance/dashboard</code></div>
+    </div>
+
+    <div class="grid grid-cols-12 min-h-[760px]">
+      <aside class="col-span-2 ip-sidebar">
+        <div class="flex items-center gap-2 mb-5 pb-4 border-b border-gray-200">
+          <div class="avatar">أ.ع</div>
+          <div>
+            <div class="font-bold text-sm">أ. عبدالله العمري</div>
+            <div class="text-[10px] text-gray-500">المدير المالي</div>
+          </div>
+        </div>
+        <div class="ip-side-link active">📊 اللوحة الرئيسية</div>
+        <div class="ip-side-link">💰 المدفوعات اليوم</div>
+        <div class="ip-side-link">⚠️ المتأخرات <span class="badge badge-danger ms-auto">87</span></div>
+        <div class="ip-side-link">🚫 المحجوبون <span class="badge badge-warning ms-auto">23</span></div>
+        <div class="ip-side-link">📋 طلبات فك الحجب <span class="badge badge-info ms-auto">5</span></div>
+        <div class="ip-side-link">🎁 الإعفاءات والخصومات</div>
+        <div class="ip-side-link">📑 المسوّيات</div>
+        <div class="ip-side-link">📤 تصدير محاسبي</div>
+        <div class="ip-side-link">📈 التقارير المالية</div>
+        <div class="ip-side-link">⚙️ السياسات</div>
+      </aside>
+
+      <div class="col-span-10 p-6 bg-gray-50">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h1 class="text-2xl font-black text-gray-800">💰 لوحة المالية الموحّدة</h1>
+            <p class="text-sm text-gray-500">الفصل الثاني 1447 • تحديث: قبل 4 دقائق • <strong class="text-green-600">متّصل بالنظام المحاسبي</strong></p>
+          </div>
+          <div class="flex gap-2 items-center">
+            <select class="form-input !py-1.5 text-xs"><option>كل الفروع (4)</option><option>BRANCH_A</option><option>BRANCH_B</option><option>BRANCH_C</option><option>BRANCH_D</option></select>
+            <button class="btn-outline text-xs">📤 تصدير Excel</button>
+            <button class="btn-primary text-xs">🔄 مزامنة فورية</button>
+          </div>
+        </div>
+
+        <!-- KPI row 1 -->
+        <div class="grid grid-cols-4 gap-4 mb-4">
+          <div class="kpi-card">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs text-gray-500 font-bold">تحصيل اليوم</span>
+              <span class="text-lg">💵</span>
+            </div>
+            <div class="text-2xl font-black text-brand mb-1">187,450 ر.س</div>
+            <div class="text-[11px] text-green-700 font-bold">↑ 18% عن أمس • 47 عملية</div>
+          </div>
+          <div class="kpi-card danger">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs text-gray-500 font-bold">إجمالي المتأخرات</span>
+              <span class="text-lg">⚠️</span>
+            </div>
+            <div class="text-2xl font-black text-red-700 mb-1">1.42 م ر.س</div>
+            <div class="text-[11px] text-gray-500">87 طالباً • متوسط 16,300 ر.س</div>
+          </div>
+          <div class="kpi-card gold">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs text-gray-500 font-bold">إجمالي المسدّدون</span>
+              <span class="text-lg">✅</span>
+            </div>
+            <div class="text-2xl font-black mb-1" style="color:#B58853">913 / 1000</div>
+            <div class="text-[11px] text-gray-500">نسبة التحصيل 91.3%</div>
+          </div>
+          <div class="kpi-card info">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs text-gray-500 font-bold">المحجوبون حالياً</span>
+              <span class="text-lg">🚫</span>
+            </div>
+            <div class="text-2xl font-black text-cyan-700 mb-1">23</div>
+            <div class="text-[11px] text-red-600 font-bold">5 طلبات فك حجب معلّقة</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-12 gap-4">
+          <!-- Collections chart -->
+          <div class="col-span-8 bg-white rounded-xl border border-gray-200 p-5">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="font-bold text-gray-800">📊 التحصيل اليومي — آخر 14 يوم</h3>
+                <p class="text-xs text-gray-500">المتوسط اليومي: 142,800 ر.س</p>
+              </div>
+              <div class="flex gap-1 text-xs">
+                <button class="px-3 py-1.5 bg-brand text-white rounded-lg font-bold">14 يوم</button>
+                <button class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-lg">30 يوم</button>
+                <button class="px-3 py-1.5 bg-gray-100 text-gray-600 rounded-lg">الفصل</button>
+              </div>
+            </div>
+            <div class="bar-chart" style="height:200px;">
+              <div class="flex flex-col items-center flex-1"><div class="bar" style="height:50%"></div><div class="bar-label">10</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar" style="height:65%"></div><div class="bar-label">11</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar" style="height:55%"></div><div class="bar-label">12</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar" style="height:70%"></div><div class="bar-label">13</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar" style="height:60%"></div><div class="bar-label">14</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar bar-gold" style="height:88%"></div><div class="bar-label">15</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar" style="height:72%"></div><div class="bar-label">16</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar" style="height:80%"></div><div class="bar-label">17</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar" style="height:75%"></div><div class="bar-label">18</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar" style="height:62%"></div><div class="bar-label">19</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar" style="height:78%"></div><div class="bar-label">20</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar" style="height:85%"></div><div class="bar-label">21</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar" style="height:68%"></div><div class="bar-label">22</div></div>
+              <div class="flex flex-col items-center flex-1"><div class="bar bar-gold" style="height:95%"></div><div class="bar-label">اليوم</div></div>
+            </div>
+          </div>
+
+          <!-- Donut -->
+          <div class="col-span-4 bg-white rounded-xl border border-gray-200 p-5">
+            <h3 class="font-bold text-gray-800 mb-3">حالة الطلاب المالية</h3>
+            <div class="flex items-center justify-center mb-4">
+              <div class="donut" style="background:conic-gradient(#065F46 0% 65%,#D4A574 65% 85%,#F59E0B 85% 95%,#DC2626 95% 100%);">
+                <div class="donut-inner">
+                  <span class="text-xs text-gray-500">إجمالي</span>
+                  <span class="font-black text-lg">1000</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-xs space-y-2">
+              <div class="flex items-center justify-between"><span class="flex items-center gap-2"><div class="w-3 h-3 bg-brand rounded"></div> سدّدوا كاملاً</span> <strong>650 (65%)</strong></div>
+              <div class="flex items-center justify-between"><span class="flex items-center gap-2"><div class="w-3 h-3 bg-gold rounded"></div> أقساط حسب الخطة</span> <strong>200 (20%)</strong></div>
+              <div class="flex items-center justify-between"><span class="flex items-center gap-2"><div class="w-3 h-3 bg-amber-500 rounded"></div> متأخّرون</span> <strong>100 (10%)</strong></div>
+              <div class="flex items-center justify-between"><span class="flex items-center gap-2"><div class="w-3 h-3 bg-red-600 rounded"></div> محجوبون</span> <strong>50 (5%)</strong></div>
+            </div>
+          </div>
+
+          <!-- Branches -->
+          <div class="col-span-6 bg-white rounded-xl border border-gray-200 p-5">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="font-bold text-gray-800">🏢 الأداء حسب الفرع</h3>
+              <a href="#" class="text-xs text-brand font-bold">تفاصيل ←</a>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr><th>الفرع</th><th>الطلاب</th><th>محصّل</th><th>متأخّر</th><th>%</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>BRANCH_A</strong></td>
+                  <td>312</td>
+                  <td class="text-brand font-bold">487K</td>
+                  <td class="text-red-700">42K</td>
+                  <td><span class="badge badge-success">92%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>BRANCH_B</strong></td>
+                  <td>278</td>
+                  <td class="text-brand font-bold">412K</td>
+                  <td class="text-red-700">38K</td>
+                  <td><span class="badge badge-success">91%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>BRANCH_C</strong></td>
+                  <td>241</td>
+                  <td class="text-brand font-bold">298K</td>
+                  <td class="text-red-700">68K</td>
+                  <td><span class="badge badge-warning">81%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>BRANCH_D</strong></td>
+                  <td>169</td>
+                  <td class="text-brand font-bold">221K</td>
+                  <td class="text-red-700">19K</td>
+                  <td><span class="badge badge-success">92%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Top overdue -->
+          <div class="col-span-6 bg-white rounded-xl border border-gray-200 p-5">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="font-bold text-gray-800">⚠️ أعلى المتأخرات</h3>
+              <a href="#" class="text-xs text-brand font-bold">عرض الكل (87) ←</a>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr><th>الطالب</th><th>الفرع</th><th>المبلغ</th><th>متأخر</th><th></th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="flex items-center gap-2"><div class="avatar !w-7 !h-7 text-[10px]">س.ع</div> <span>سعد العتيبي</span></td>
+                  <td>A</td>
+                  <td class="font-bold text-red-700">28,400 ر.س</td>
+                  <td><span class="badge badge-danger">73 يوم</span></td>
+                  <td><button class="text-brand text-xs font-bold">عرض ←</button></td>
+                </tr>
+                <tr>
+                  <td class="flex items-center gap-2"><div class="avatar !w-7 !h-7 text-[10px]">ر.ش</div> <span>ريم الشهراني</span></td>
+                  <td>C</td>
+                  <td class="font-bold text-red-700">24,800 ر.س</td>
+                  <td><span class="badge badge-danger">61 يوم</span></td>
+                  <td><button class="text-brand text-xs font-bold">عرض ←</button></td>
+                </tr>
+                <tr>
+                  <td class="flex items-center gap-2"><div class="avatar avatar-gold !w-7 !h-7 text-[10px]">م.ز</div> <span>ماجد الزهراني</span></td>
+                  <td>A</td>
+                  <td class="font-bold text-red-700">22,150 ر.س</td>
+                  <td><span class="badge badge-warning">45 يوم</span></td>
+                  <td><button class="text-brand text-xs font-bold">عرض ←</button></td>
+                </tr>
+                <tr>
+                  <td class="flex items-center gap-2"><div class="avatar !w-7 !h-7 text-[10px]">ل.ق</div> <span>ليلى القحطاني</span></td>
+                  <td>B</td>
+                  <td class="font-bold text-red-700">19,750 ر.س</td>
+                  <td><span class="badge badge-warning">38 يوم</span></td>
+                  <td><button class="text-brand text-xs font-bold">عرض ←</button></td>
+                </tr>
+                <tr>
+                  <td class="flex items-center gap-2"><div class="avatar !w-7 !h-7 text-[10px]">ع.ح</div> <span>عمر الحربي</span></td>
+                  <td>D</td>
+                  <td class="font-bold text-red-700">17,200 ر.س</td>
+                  <td><span class="badge badge-warning">32 يوم</span></td>
+                  <td><button class="text-brand text-xs font-bold">عرض ←</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 08: UNBLOCK STUDENT =========== -->
+<!-- ============================================================ -->
+<section id="s8" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 08 / 15</span>
+        <h2 class="font-bold text-gray-800">إدارة الحجب — فك الحجب الموثَّق</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/finance/blocks</code></div>
+    </div>
+
+    <div class="grid grid-cols-12 min-h-[700px]">
+      <aside class="col-span-2 ip-sidebar">
+        <div class="flex items-center gap-2 mb-5 pb-4 border-b border-gray-200">
+          <div class="avatar">أ.ع</div>
+          <div>
+            <div class="font-bold text-sm">أ. عبدالله العمري</div>
+            <div class="text-[10px] text-gray-500">المدير المالي</div>
+          </div>
+        </div>
+        <div class="ip-side-link">📊 اللوحة الرئيسية</div>
+        <div class="ip-side-link">💰 المدفوعات اليوم</div>
+        <div class="ip-side-link">⚠️ المتأخرات</div>
+        <div class="ip-side-link active">🚫 المحجوبون</div>
+        <div class="ip-side-link">📋 طلبات فك الحجب</div>
+      </aside>
+
+      <div class="col-span-10 p-6 bg-gray-50">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h1 class="text-2xl font-black text-gray-800">🚫 الطلاب المحجوبون</h1>
+            <p class="text-sm text-gray-500">قائمة الطلاب الذين أُوقفت بعض خدماتهم لأسباب مالية أو إدارية — مع توثيق كامل لكل قرار</p>
+          </div>
+          <div class="flex gap-2">
+            <button class="btn-outline text-xs">📋 سياسة الحجب</button>
+            <button class="btn-primary text-xs">+ حجب يدوي</button>
+          </div>
+        </div>
+
+        <!-- Search & filters -->
+        <div class="bg-white rounded-xl border border-gray-200 p-4 mb-4">
+          <div class="flex items-center gap-3">
+            <input class="form-input flex-1" placeholder="🔎 ابحث برقم الهوية أو الاسم...">
+            <select class="form-input !w-auto"><option>كل الأسباب</option><option>متأخرات مالية</option><option>غياب</option><option>سلوكي</option></select>
+            <select class="form-input !w-auto"><option>كل الفروع</option><option>BRANCH_A</option><option>BRANCH_B</option></select>
+            <select class="form-input !w-auto"><option>كل الخدمات المحجوبة</option><option>الاختبارات</option><option>الشهادات</option><option>الخطابات</option></select>
+            <button class="btn-primary text-xs">تطبيق</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4">
+          <!-- List -->
+          <div class="col-span-2 bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <div class="bg-gray-50 border-b border-gray-200 px-5 py-3 flex justify-between items-center">
+              <div class="font-bold text-gray-800 text-sm">قائمة المحجوبين — 23 طالباً</div>
+              <div class="text-xs text-gray-500">المختار: <strong class="text-brand">سعد العتيبي</strong></div>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr><th></th><th>الطالب</th><th>سبب الحجب</th><th>الخدمات المحجوبة</th><th>منذ</th><th>الحالة</th></tr>
+              </thead>
+              <tbody>
+                <tr style="background:#FFFBEB;">
+                  <td><input type="radio" name="block" class="accent-emerald-700" checked></td>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <div class="avatar !w-8 !h-8 text-[11px]">س.ع</div>
+                      <div>
+                        <div class="font-bold text-xs">سعد محمد العتيبي</div>
+                        <div class="text-[10px] text-gray-500">ID: 102489 • BRANCH_A</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-danger">متأخرات: 28,400</span></td>
+                  <td class="text-[11px]">🎓📜📊💼</td>
+                  <td class="text-red-700 font-bold">73 يوم</td>
+                  <td><span class="badge badge-danger">محجوب كامل</span></td>
+                </tr>
+                <tr>
+                  <td><input type="radio" name="block" class="accent-emerald-700"></td>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <div class="avatar avatar-gold !w-8 !h-8 text-[11px]">ر.ش</div>
+                      <div>
+                        <div class="font-bold text-xs">ريم سعد الشهراني</div>
+                        <div class="text-[10px] text-gray-500">ID: 102491 • BRANCH_C</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-danger">متأخرات: 24,800</span></td>
+                  <td class="text-[11px]">🎓📜</td>
+                  <td class="text-red-700 font-bold">61 يوم</td>
+                  <td><span class="badge badge-warning">حجب جزئي</span></td>
+                </tr>
+                <tr>
+                  <td><input type="radio" name="block" class="accent-emerald-700"></td>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <div class="avatar !w-8 !h-8 text-[11px]">م.ز</div>
+                      <div>
+                        <div class="font-bold text-xs">ماجد فهد الزهراني</div>
+                        <div class="text-[10px] text-gray-500">ID: 102493 • BRANCH_A</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-warning">حضور: 23%</span></td>
+                  <td class="text-[11px]">🎓📊</td>
+                  <td class="text-amber-700 font-bold">11 يوم</td>
+                  <td><span class="badge badge-warning">حجب أكاديمي</span></td>
+                </tr>
+                <tr>
+                  <td><input type="radio" name="block" class="accent-emerald-700"></td>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <div class="avatar !w-8 !h-8 text-[11px]">ل.ق</div>
+                      <div>
+                        <div class="font-bold text-xs">ليلى عبدالعزيز القحطاني</div>
+                        <div class="text-[10px] text-gray-500">ID: 102497 • BRANCH_B</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-danger">متأخرات: 19,750</span></td>
+                  <td class="text-[11px]">📜📊</td>
+                  <td class="text-amber-700 font-bold">38 يوم</td>
+                  <td><span class="badge badge-warning">حجب جزئي</span></td>
+                </tr>
+                <tr>
+                  <td><input type="radio" name="block" class="accent-emerald-700"></td>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <div class="avatar avatar-gold !w-8 !h-8 text-[11px]">ع.ح</div>
+                      <div>
+                        <div class="font-bold text-xs">عمر سعيد الحربي</div>
+                        <div class="text-[10px] text-gray-500">ID: 102501 • BRANCH_D</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-danger">متأخرات: 17,200</span></td>
+                  <td class="text-[11px]">🎓📜📊</td>
+                  <td class="text-amber-700 font-bold">32 يوم</td>
+                  <td><span class="badge badge-danger">محجوب كامل</span></td>
+                </tr>
+                <tr>
+                  <td><input type="radio" name="block" class="accent-emerald-700"></td>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <div class="avatar !w-8 !h-8 text-[11px]">ن.م</div>
+                      <div>
+                        <div class="font-bold text-xs">نواف ماجد المالكي</div>
+                        <div class="text-[10px] text-gray-500">ID: 102508 • BRANCH_A</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-warning">أوراق ناقصة</span></td>
+                  <td class="text-[11px]">📜</td>
+                  <td class="text-gray-700 font-bold">7 يوم</td>
+                  <td><span class="badge badge-info">إداري</span></td>
+                </tr>
+                <tr>
+                  <td><input type="radio" name="block" class="accent-emerald-700"></td>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <div class="avatar !w-8 !h-8 text-[11px]">د.ع</div>
+                      <div>
+                        <div class="font-bold text-xs">داليا عبدالرحمن المطيري</div>
+                        <div class="text-[10px] text-gray-500">ID: 102514 • BRANCH_B</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-danger">متأخرات: 12,400</span></td>
+                  <td class="text-[11px]">📜📊</td>
+                  <td class="text-gray-700 font-bold">21 يوم</td>
+                  <td><span class="badge badge-warning">حجب جزئي</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="bg-gray-50 border-t border-gray-200 px-5 py-3 flex justify-between items-center text-xs text-gray-600">
+              <span>عرض 1-7 من 23 طالباً</span>
+              <div class="flex gap-1">
+                <button class="px-2.5 py-1 border border-gray-300 rounded">←</button>
+                <button class="px-2.5 py-1 bg-brand text-white rounded">1</button>
+                <button class="px-2.5 py-1 border border-gray-300 rounded">2</button>
+                <button class="px-2.5 py-1 border border-gray-300 rounded">3</button>
+                <button class="px-2.5 py-1 border border-gray-300 rounded">→</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unblock form -->
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <div class="bg-brand text-white px-5 py-3">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="font-bold text-sm">🔓 فك الحجب</div>
+                  <div class="text-[11px] opacity-80">يتطلّب موافقة المدير المالي</div>
+                </div>
+                <span class="badge" style="background:rgba(255,255,255,.2);color:white;">REQ-UNBL-2018</span>
+              </div>
+            </div>
+            <div class="p-5">
+              <!-- Selected student -->
+              <div class="bg-gray-50 rounded-lg p-3 mb-4">
+                <div class="text-[10px] text-gray-500 font-bold mb-1">الطالب المختار</div>
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="avatar !w-9 !h-9 text-xs">س.ع</div>
+                  <div>
+                    <div class="font-bold text-sm">سعد محمد العتيبي</div>
+                    <div class="text-[10px] text-gray-500">ID: 102489 • BRANCH_A</div>
+                  </div>
+                </div>
+                <div class="text-xs space-y-1 pt-2 border-t border-gray-200">
+                  <div class="flex justify-between"><span class="text-gray-500">متأخرات:</span><strong class="text-red-700">28,400 ر.س</strong></div>
+                  <div class="flex justify-between"><span class="text-gray-500">منذ:</span><strong class="text-red-700">73 يوم</strong></div>
+                  <div class="flex justify-between"><span class="text-gray-500">المحجوب:</span><strong>كل الخدمات (6)</strong></div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">نوع فك الحجب</label>
+                <select class="form-input text-sm">
+                  <option>فك مؤقّت — حتى تاريخ محدد</option>
+                  <option>فك كامل — بعد السداد الكلي</option>
+                  <option>فك جزئي لخدمة محددة</option>
+                  <option>اعتراض / استثناء إداري</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">الخدمات المراد فكّها</label>
+                <div class="space-y-1.5 text-xs">
+                  <label class="flex items-center gap-2"><input type="checkbox" checked class="accent-emerald-700"> 🎓 دخول الاختبارات</label>
+                  <label class="flex items-center gap-2"><input type="checkbox" checked class="accent-emerald-700"> 📜 طلبات الخطابات</label>
+                  <label class="flex items-center gap-2"><input type="checkbox" class="accent-emerald-700"> 📊 استخراج الدرجات</label>
+                  <label class="flex items-center gap-2"><input type="checkbox" class="accent-emerald-700"> 💼 طلب الشهادة النهائية</label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">صالح حتى</label>
+                <input type="date" class="form-input text-sm" value="2026-06-30">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">سبب فك الحجب (إلزامي)</label>
+                <textarea class="form-input text-sm" rows="3" placeholder="وثّق السبب بوضوح...">سدّد دفعة جزئية 8,000 ر.س + التزام موقّع بالسداد الباقي على 3 أقساط شهرية. مرفق الإقرار.</textarea>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">مرفقات داعمة</label>
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-3 text-center text-xs text-gray-500">
+                  📎 إقرار-السداد.pdf • 2 ملفات
+                </div>
+              </div>
+
+              <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-4 text-xs">
+                <div class="font-bold text-amber-900 mb-1">⚠️ إشعار</div>
+                <p class="text-amber-800 text-[11px]">سيُسجَّل القرار في سجل التدقيق ويُرسل تنبيه للطالب وللمدير الأكاديمي.</p>
+              </div>
+
+              <button class="btn-primary w-full justify-center mb-2">✅ اعتماد فك الحجب</button>
+              <button class="btn-ghost w-full">إلغاء</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 09: UNIFIED STUDENT CARD ====== -->
+<!-- ============================================================ -->
+<section id="s9" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 09 / 15</span>
+        <h2 class="font-bold text-gray-800">بطاقة الطالب الموحّدة (360°)</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/students/102487</code></div>
+    </div>
+
+    <!-- Top profile -->
+    <div class="p-6 border-b border-gray-200" style="background:linear-gradient(135deg,#064E3B 0%,#065F46 100%);color:white;">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-5">
+          <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center text-3xl font-black text-gray-900" style="background:linear-gradient(135deg,#D4A574,#B58853);">
+            م.أ
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs bg-white/15 px-2 py-0.5 rounded-md">ID: 102487</span>
+              <span class="badge badge-success">نشط</span>
+              <span class="badge badge-warning">رصيد مستحق</span>
+            </div>
+            <h1 class="text-3xl font-black mb-1">محمد عبدالله الأحمد</h1>
+            <p class="text-sm opacity-90">إدارة الأعمال • المستوى الثاني • BRANCH_A • سُجِّل في 12 محرم 1447</p>
+            <div class="flex gap-4 mt-3 text-xs">
+              <span>📞 0501234567</span>
+              <span>📧 mohamed.ahmad@iims.local</span>
+              <span>🏠 الرياض — حي النرجس</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <button class="btn-ghost !text-white !border-white/30 !border text-xs">📝 تعديل بياناته</button>
+          <button class="btn-gold text-xs">📨 إرسال رسالة</button>
+        </div>
+      </div>
+
+      <!-- Quick stats -->
+      <div class="grid grid-cols-5 gap-3 mt-6">
+        <div class="bg-white/10 backdrop-blur p-3 rounded-lg">
+          <div class="text-[10px] opacity-80">المعدّل التراكمي</div>
+          <div class="text-xl font-black">4.42</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur p-3 rounded-lg">
+          <div class="text-[10px] opacity-80">الحضور</div>
+          <div class="text-xl font-black">87%</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur p-3 rounded-lg">
+          <div class="text-[10px] opacity-80">رصيد مستحق</div>
+          <div class="text-xl font-black">2,500 ر.س</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur p-3 rounded-lg">
+          <div class="text-[10px] opacity-80">طلبات نشطة</div>
+          <div class="text-xl font-black">2</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur p-3 rounded-lg">
+          <div class="text-[10px] opacity-80">المرتبة</div>
+          <div class="text-xl font-black">12 / 184</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="border-b border-gray-200 bg-white px-6">
+      <div class="flex gap-1">
+        <button class="px-4 py-3 border-b-2 border-brand text-brand font-bold text-sm">👤 شخصي</button>
+        <button class="px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-800 font-bold text-sm">🎓 أكاديمي</button>
+        <button class="px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-800 font-bold text-sm">💰 مالي</button>
+        <button class="px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-800 font-bold text-sm">📨 طلبات (2)</button>
+        <button class="px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-800 font-bold text-sm">📞 شكاوى</button>
+        <button class="px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-800 font-bold text-sm">📎 مرفقات</button>
+        <button class="px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-800 font-bold text-sm">📜 تاريخ</button>
+      </div>
+    </div>
+
+    <!-- Tab content: Personal -->
+    <div class="p-6 bg-gray-50 grid grid-cols-3 gap-5 min-h-[480px]">
+      <div class="col-span-2">
+        <!-- Personal info -->
+        <div class="bg-white rounded-xl border border-gray-200 p-5 mb-4">
+          <h3 class="font-bold text-gray-800 mb-4">المعلومات الشخصية</h3>
+          <div class="grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
+            <div>
+              <div class="text-[11px] text-gray-500">الاسم الرباعي</div>
+              <div class="font-bold">محمد عبدالله سعد الأحمد</div>
+            </div>
+            <div>
+              <div class="text-[11px] text-gray-500">الجنسية</div>
+              <div class="font-bold">سعودي</div>
+            </div>
+            <div>
+              <div class="text-[11px] text-gray-500">رقم الهوية</div>
+              <div class="font-bold font-mono">1098765432</div>
+            </div>
+            <div>
+              <div class="text-[11px] text-gray-500">تاريخ الميلاد</div>
+              <div class="font-bold">15 / 6 / 1422هـ — (2001/2/10)</div>
+            </div>
+            <div>
+              <div class="text-[11px] text-gray-500">الجنس</div>
+              <div class="font-bold">ذكر</div>
+            </div>
+            <div>
+              <div class="text-[11px] text-gray-500">الحالة الاجتماعية</div>
+              <div class="font-bold">أعزب</div>
+            </div>
+            <div>
+              <div class="text-[11px] text-gray-500">الجوال</div>
+              <div class="font-bold font-mono" dir="ltr">+966 50 123 4567</div>
+            </div>
+            <div>
+              <div class="text-[11px] text-gray-500">البريد الإلكتروني</div>
+              <div class="font-bold">mohamed.ahmad@iims.local</div>
+            </div>
+            <div class="col-span-2">
+              <div class="text-[11px] text-gray-500">العنوان</div>
+              <div class="font-bold">الرياض — حي النرجس — شارع الأمير سلطان — مبنى 24</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Emergency contact -->
+        <div class="bg-white rounded-xl border border-gray-200 p-5">
+          <h3 class="font-bold text-gray-800 mb-4">جهة الاتصال للطوارئ</h3>
+          <div class="grid grid-cols-3 gap-4 text-sm">
+            <div>
+              <div class="text-[11px] text-gray-500">الاسم</div>
+              <div class="font-bold">عبدالله سعد الأحمد</div>
+            </div>
+            <div>
+              <div class="text-[11px] text-gray-500">صلة القرابة</div>
+              <div class="font-bold">والد</div>
+            </div>
+            <div>
+              <div class="text-[11px] text-gray-500">الجوال</div>
+              <div class="font-bold font-mono" dir="ltr">+966 55 555 1234</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right panel: Quick actions + recent activity -->
+      <div>
+        <div class="bg-white rounded-xl border border-gray-200 p-5 mb-4">
+          <h3 class="font-bold text-gray-800 mb-3 text-sm">⚡ إجراءات سريعة</h3>
+          <div class="space-y-2">
+            <button class="btn-outline w-full justify-center text-xs">📜 إصدار خطاب نيابةً عنه</button>
+            <button class="btn-outline w-full justify-center text-xs">📊 طباعة كشف الدرجات</button>
+            <button class="btn-outline w-full justify-center text-xs">💰 خطة دفع جديدة</button>
+            <button class="btn-outline w-full justify-center text-xs">📨 فتح تذكرة دعم</button>
+            <button class="text-xs w-full justify-center text-red-600 border border-red-200 px-4 py-2 rounded-lg font-bold hover:bg-red-50">⏸️ طي قيد</button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border border-gray-200 p-5">
+          <h3 class="font-bold text-gray-800 mb-3 text-sm">📜 آخر الأنشطة</h3>
+          <div class="space-y-3 text-xs">
+            <div class="flex gap-2 pb-2 border-b border-gray-100">
+              <span class="text-base">📝</span>
+              <div>
+                <p class="font-bold text-gray-800">دخل اختبار قواعد اللغة</p>
+                <p class="text-[10px] text-gray-500">منذ 6 ساعات • النتيجة: 18/20</p>
+              </div>
+            </div>
+            <div class="flex gap-2 pb-2 border-b border-gray-100">
+              <span class="text-base">💳</span>
+              <div>
+                <p class="font-bold text-gray-800">سدّد دفعة 3,000 ر.س</p>
+                <p class="text-[10px] text-gray-500">أمس • فرع BRANCH_A</p>
+              </div>
+            </div>
+            <div class="flex gap-2 pb-2 border-b border-gray-100">
+              <span class="text-base">📜</span>
+              <div>
+                <p class="font-bold text-gray-800">قدّم طلب خطاب راتب</p>
+                <p class="text-[10px] text-gray-500">قبل 3 أيام • قيد المراجعة</p>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <span class="text-base">✅</span>
+              <div>
+                <p class="font-bold text-gray-800">حضر محاضرة الإحصاء</p>
+                <p class="text-[10px] text-gray-500">قبل 4 أيام</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 10: ADMIN DASHBOARD =========== -->
+<!-- ============================================================ -->
+<section id="s10" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 10 / 15</span>
+        <h2 class="font-bold text-gray-800">لوحة الإدارة العامة</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/admin/dashboard</code></div>
+    </div>
+
+    <div class="grid grid-cols-12 min-h-[760px]">
+      <aside class="col-span-2 ip-sidebar">
+        <div class="flex items-center gap-2 mb-5 pb-4 border-b border-gray-200">
+          <div class="avatar">م.م</div>
+          <div>
+            <div class="font-bold text-sm">م. مازن المنصور</div>
+            <div class="text-[10px] text-gray-500">المدير العام</div>
+          </div>
+        </div>
+        <div class="ip-side-link active">📊 اللوحة العامة</div>
+        <div class="ip-side-link">🏢 الفروع (4)</div>
+        <div class="ip-side-link">👥 المستخدمون</div>
+        <div class="ip-side-link">🔐 الصلاحيات</div>
+        <div class="ip-side-link">🎓 الأكاديمي</div>
+        <div class="ip-side-link">💰 المالية</div>
+        <div class="ip-side-link">📋 الطلبات الإدارية</div>
+        <div class="ip-side-link">📞 الشكاوى</div>
+        <div class="ip-side-link">📈 التقارير</div>
+        <div class="ip-side-link">🔔 التنبيهات <span class="badge badge-danger ms-auto">12</span></div>
+        <div class="ip-side-link">⚙️ إعدادات النظام</div>
+      </aside>
+
+      <div class="col-span-10 p-6 bg-gray-50">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h1 class="text-2xl font-black text-gray-800">📊 لوحة الإدارة العامة</h1>
+            <p class="text-sm text-gray-500">نظرة شاملة على المعهد — الفصل الثاني 1447هـ • تحديث لحظي</p>
+          </div>
+          <div class="flex gap-2">
+            <select class="form-input !py-1.5 text-xs"><option>هذا الفصل</option><option>الشهر</option><option>الأسبوع</option></select>
+            <button class="btn-outline text-xs">📤 تقرير شامل</button>
+            <button class="btn-primary text-xs">📞 جلسة قيادة</button>
+          </div>
+        </div>
+
+        <!-- Top KPI row -->
+        <div class="grid grid-cols-6 gap-3 mb-5">
+          <div class="kpi-card">
+            <div class="text-[10px] text-gray-500 font-bold">إجمالي الطلاب</div>
+            <div class="text-xl font-black text-brand">1,000</div>
+            <div class="text-[10px] text-green-700 font-bold">↑ 12 جديد</div>
+          </div>
+          <div class="kpi-card gold">
+            <div class="text-[10px] text-gray-500 font-bold">المدربون النشطون</div>
+            <div class="text-xl font-black" style="color:#B58853">62</div>
+            <div class="text-[10px] text-gray-500">في 4 فروع</div>
+          </div>
+          <div class="kpi-card info">
+            <div class="text-[10px] text-gray-500 font-bold">معدّل الحضور</div>
+            <div class="text-xl font-black text-cyan-700">87%</div>
+            <div class="text-[10px] text-green-700 font-bold">↑ 3%</div>
+          </div>
+          <div class="kpi-card">
+            <div class="text-[10px] text-gray-500 font-bold">التحصيل المالي</div>
+            <div class="text-xl font-black text-brand">91.3%</div>
+            <div class="text-[10px] text-gray-500">1.42م متأخر</div>
+          </div>
+          <div class="kpi-card warn">
+            <div class="text-[10px] text-gray-500 font-bold">SLA الطلبات</div>
+            <div class="text-xl font-black text-orange-600">84%</div>
+            <div class="text-[10px] text-red-600 font-bold">↓ -2%</div>
+          </div>
+          <div class="kpi-card danger">
+            <div class="text-[10px] text-gray-500 font-bold">شكاوى مفتوحة</div>
+            <div class="text-xl font-black text-red-700">7</div>
+            <div class="text-[10px] text-red-600 font-bold">2 حرجة</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-12 gap-4">
+          <!-- Enrollment trend -->
+          <div class="col-span-8 bg-white rounded-xl border border-gray-200 p-5">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <h3 class="font-bold text-gray-800">📈 تطور التسجيل والتخرج — آخر 6 فصول</h3>
+                <div class="text-xs text-gray-500">مقارنة بين الطلاب المسجلين والمتخرجين</div>
+              </div>
+              <div class="flex gap-3 text-xs">
+                <span class="flex items-center gap-1"><div class="w-3 h-3 bg-brand rounded"></div> مسجَّلون</span>
+                <span class="flex items-center gap-1"><div class="w-3 h-3 bg-gold rounded"></div> متخرّجون</span>
+              </div>
+            </div>
+            <div class="bar-chart" style="height:220px; gap:24px;">
+              <div class="flex-1 flex items-end gap-1">
+                <div class="bar" style="height:62%; flex:1;"></div>
+                <div class="bar bar-gold" style="height:55%; flex:1;"></div>
+              </div>
+              <div class="flex-1 flex items-end gap-1">
+                <div class="bar" style="height:70%; flex:1;"></div>
+                <div class="bar bar-gold" style="height:58%; flex:1;"></div>
+              </div>
+              <div class="flex-1 flex items-end gap-1">
+                <div class="bar" style="height:75%; flex:1;"></div>
+                <div class="bar bar-gold" style="height:67%; flex:1;"></div>
+              </div>
+              <div class="flex-1 flex items-end gap-1">
+                <div class="bar" style="height:82%; flex:1;"></div>
+                <div class="bar bar-gold" style="height:74%; flex:1;"></div>
+              </div>
+              <div class="flex-1 flex items-end gap-1">
+                <div class="bar" style="height:88%; flex:1;"></div>
+                <div class="bar bar-gold" style="height:80%; flex:1;"></div>
+              </div>
+              <div class="flex-1 flex items-end gap-1">
+                <div class="bar" style="height:96%; flex:1;"></div>
+                <div class="bar bar-gold" style="height:84%; flex:1;"></div>
+              </div>
+            </div>
+            <div class="grid grid-cols-6 text-center text-[11px] text-gray-500 mt-2">
+              <span>F1-1445</span><span>F2-1445</span><span>F1-1446</span><span>F2-1446</span><span>F1-1447</span><span>F2-1447</span>
+            </div>
+          </div>
+
+          <!-- Branches health -->
+          <div class="col-span-4 bg-white rounded-xl border border-gray-200 p-5">
+            <h3 class="font-bold text-gray-800 mb-4">🏢 حالة الفروع الأربعة</h3>
+            <div class="space-y-3">
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="font-bold">BRANCH_A — الرياض</span>
+                  <span class="text-brand font-bold">94 / 100</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width:94%"></div></div>
+                <div class="text-[10px] text-gray-500 mt-1">312 طالب • 22 مدرب</div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="font-bold">BRANCH_B — جدة</span>
+                  <span class="text-brand font-bold">88 / 100</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
+                <div class="text-[10px] text-gray-500 mt-1">278 طالب • 18 مدرب</div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="font-bold">BRANCH_C — الدمام</span>
+                  <span class="text-orange-600 font-bold">76 / 100</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill progress-fill-warn" style="width:76%"></div></div>
+                <div class="text-[10px] text-orange-600 mt-1">241 طالب • مشاكل في التحصيل</div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="font-bold">BRANCH_D — أبها</span>
+                  <span class="text-brand font-bold">91 / 100</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width:91%"></div></div>
+                <div class="text-[10px] text-gray-500 mt-1">169 طالب • 11 مدرب</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alerts -->
+          <div class="col-span-5 bg-white rounded-xl border border-gray-200 p-5">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-gray-800">🚨 التنبيهات الحرجة</h3>
+              <span class="badge badge-danger">12</span>
+            </div>
+            <div class="space-y-3 text-xs">
+              <div class="flex items-start gap-3 p-3 bg-red-50 border-s-4 border-red-500 rounded-lg">
+                <span class="text-base">🔴</span>
+                <div>
+                  <p class="font-bold text-red-900">23 طلب فاق SLA المسموح</p>
+                  <p class="text-red-700 text-[10px]">7 طلبات خطابات معلّقة &gt; 72 س — تحتاج تصعيداً</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 p-3 bg-amber-50 border-s-4 border-amber-500 rounded-lg">
+                <span class="text-base">🟠</span>
+                <div>
+                  <p class="font-bold text-amber-900">87 طالباً تحت مستوى الحضور</p>
+                  <p class="text-amber-700 text-[10px]">من بينهم 12 وصلوا 25% — يقتربون من الحرمان</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 p-3 bg-amber-50 border-s-4 border-amber-500 rounded-lg">
+                <span class="text-base">🟠</span>
+                <div>
+                  <p class="font-bold text-amber-900">فرع BRANCH_C — تحصيل 81%</p>
+                  <p class="text-amber-700 text-[10px]">انخفض 6% هذا الشهر — يستدعي مراجعة</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 p-3 bg-blue-50 border-s-4 border-blue-500 rounded-lg">
+                <span class="text-base">🔵</span>
+                <div>
+                  <p class="font-bold text-blue-900">5 طلبات اعتماد درجات تنتظرك</p>
+                  <p class="text-blue-700 text-[10px]">من 3 مدربين — مدة المراجعة 48 س</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity -->
+          <div class="col-span-7 bg-white rounded-xl border border-gray-200 p-5">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-gray-800">📜 سجل النشاط — اليوم</h3>
+              <a href="#" class="text-xs text-brand font-bold">السجل الكامل ←</a>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr><th>الوقت</th><th>المستخدم</th><th>الإجراء</th><th>الكيان</th><th>الحالة</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-[10px] text-gray-500 font-mono">10:42</td>
+                  <td>أ. عبدالله العمري</td>
+                  <td>فك الحجب</td>
+                  <td>الطالب 102489</td>
+                  <td><span class="badge badge-success">معتمد</span></td>
+                </tr>
+                <tr>
+                  <td class="text-[10px] text-gray-500 font-mono">10:38</td>
+                  <td>د. خالد الحربي</td>
+                  <td>اعتماد درجات</td>
+                  <td>EXAM-9821 (24 طالب)</td>
+                  <td><span class="badge badge-success">معتمد</span></td>
+                </tr>
+                <tr>
+                  <td class="text-[10px] text-gray-500 font-mono">10:21</td>
+                  <td>ن. سارة الزهراني</td>
+                  <td>إصدار خطاب</td>
+                  <td>LTR-2025-04821</td>
+                  <td><span class="badge badge-success">صادر</span></td>
+                </tr>
+                <tr>
+                  <td class="text-[10px] text-gray-500 font-mono">9:54</td>
+                  <td>المنصة (تلقائي)</td>
+                  <td>إنشاء حساب</td>
+                  <td>طالب جديد 103201</td>
+                  <td><span class="badge badge-info">من CRM</span></td>
+                </tr>
+                <tr>
+                  <td class="text-[10px] text-gray-500 font-mono">9:31</td>
+                  <td>م. مازن المنصور</td>
+                  <td>تعديل صلاحية</td>
+                  <td>دور "مالي مساعد"</td>
+                  <td><span class="badge badge-warning">حساس</span></td>
+                </tr>
+                <tr>
+                  <td class="text-[10px] text-gray-500 font-mono">9:18</td>
+                  <td>أ. فهد الشهراني</td>
+                  <td>تسجيل دفعة</td>
+                  <td>3,000 ر.س — 102487</td>
+                  <td><span class="badge badge-success">صرف</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 11: PERMISSIONS MATRIX ======== -->
+<!-- ============================================================ -->
+<section id="s11" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 11 / 15</span>
+        <h2 class="font-bold text-gray-800">إدارة الصلاحيات — RBAC Matrix</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/admin/permissions</code></div>
+    </div>
+
+    <div class="p-6 bg-gray-50 min-h-[720px]">
+      <!-- Top toolbar -->
+      <div class="flex items-center justify-between mb-5">
+        <div>
+          <h1 class="text-2xl font-black text-gray-800">🔐 الأدوار والصلاحيات</h1>
+          <p class="text-sm text-gray-500">7 أدوار رئيسية × 12 موديول × 4 صلاحيات لكل مورد (CRUD)</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="btn-outline text-xs">📋 تصدير المصفوفة</button>
+          <button class="btn-outline text-xs">🔄 استعادة الافتراضي</button>
+          <button class="btn-primary text-xs">+ دور جديد</button>
+        </div>
+      </div>
+
+      <!-- Search & filters -->
+      <div class="bg-white rounded-xl border border-gray-200 p-4 mb-5 flex gap-3">
+        <input class="form-input flex-1" placeholder="🔎 ابحث عن دور أو موديول...">
+        <select class="form-input !w-auto"><option>كل الأدوار</option></select>
+        <select class="form-input !w-auto"><option>كل الموديولات</option></select>
+        <button class="btn-ghost text-xs">⚙️ إعدادات العرض</button>
+      </div>
+
+      <!-- Matrix -->
+      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="bg-brand text-white px-5 py-3 flex items-center justify-between">
+          <div class="font-bold text-sm">مصفوفة الصلاحيات الكاملة</div>
+          <div class="text-xs opacity-90">آخر تعديل: م. مازن المنصور — قبل 12 دقيقة</div>
+        </div>
+        <div class="overflow-auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th class="sticky start-0 bg-gray-50 z-10 min-w-[200px]">المورد / الدور</th>
+                <th class="text-center">المدير العام</th>
+                <th class="text-center">مدير فرع</th>
+                <th class="text-center">المالي</th>
+                <th class="text-center">شؤون متدربين</th>
+                <th class="text-center">المدرب</th>
+                <th class="text-center">الطالب</th>
+                <th class="text-center">موظف HR</th>
+              </tr>
+            </thead>
+            <tbody class="text-xs">
+              <tr>
+                <td class="sticky start-0 bg-white font-bold">🎓 الطلاب (Students)</td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-info">R</span></td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-info">R+</span></td>
+                <td class="text-center"><span class="badge badge-info">R*</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+              </tr>
+              <tr>
+                <td class="sticky start-0 bg-white font-bold">📝 الاختبارات</td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-info">R</span></td>
+                <td class="text-center"><span class="badge badge-info">R</span></td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-warning">attempt</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+              </tr>
+              <tr>
+                <td class="sticky start-0 bg-white font-bold">📊 الدرجات (Grades)</td>
+                <td class="text-center"><span class="badge badge-info">R+approve</span></td>
+                <td class="text-center"><span class="badge badge-info">R+approve</span></td>
+                <td class="text-center"><span class="badge badge-info">R</span></td>
+                <td class="text-center"><span class="badge badge-info">R</span></td>
+                <td class="text-center"><span class="badge badge-warning">CRU (دروسه)</span></td>
+                <td class="text-center"><span class="badge badge-info">R (نفسه)</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+              </tr>
+              <tr>
+                <td class="sticky start-0 bg-white font-bold">💰 المالية</td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-info">R</span></td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-info">R</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-info">R (نفسه)</span></td>
+                <td class="text-center"><span class="badge badge-info">R (راتبه)</span></td>
+              </tr>
+              <tr>
+                <td class="sticky start-0 bg-white font-bold">🚫 فك الحجب</td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-warning">propose</span></td>
+                <td class="text-center"><span class="badge badge-warning">CRU+approve</span></td>
+                <td class="text-center"><span class="badge badge-warning">propose</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+              </tr>
+              <tr>
+                <td class="sticky start-0 bg-white font-bold">📜 الخطابات</td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-info">R</span></td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-warning">request</span></td>
+                <td class="text-center"><span class="badge badge-warning">request</span></td>
+              </tr>
+              <tr>
+                <td class="sticky start-0 bg-white font-bold">📋 الطلبات (Workflow)</td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-warning">CR+approve مالي</span></td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-warning">approve أكاديمي</span></td>
+                <td class="text-center"><span class="badge badge-warning">create</span></td>
+                <td class="text-center"><span class="badge badge-warning">create+approve</span></td>
+              </tr>
+              <tr>
+                <td class="sticky start-0 bg-white font-bold">🎯 الحضور</td>
+                <td class="text-center"><span class="badge badge-info">R</span></td>
+                <td class="text-center"><span class="badge badge-info">R</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-info">R</span></td>
+                <td class="text-center"><span class="badge badge-success">CRUD (دروسه)</span></td>
+                <td class="text-center"><span class="badge badge-info">R (نفسه)</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+              </tr>
+              <tr>
+                <td class="sticky start-0 bg-white font-bold">🏆 بنك الأسئلة</td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-warning">CRU (مادته)</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+              </tr>
+              <tr>
+                <td class="sticky start-0 bg-white font-bold">🔐 الصلاحيات</td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-info">R</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+              </tr>
+              <tr>
+                <td class="sticky start-0 bg-white font-bold">📈 التقارير</td>
+                <td class="text-center"><span class="badge badge-success">All</span></td>
+                <td class="text-center"><span class="badge badge-warning">Branch only</span></td>
+                <td class="text-center"><span class="badge badge-warning">Financial</span></td>
+                <td class="text-center"><span class="badge badge-warning">Student affairs</span></td>
+                <td class="text-center"><span class="badge badge-warning">Own classes</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-warning">HR only</span></td>
+              </tr>
+              <tr>
+                <td class="sticky start-0 bg-white font-bold">⚙️ إعدادات النظام</td>
+                <td class="text-center"><span class="badge badge-success">CRUD</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+                <td class="text-center"><span class="badge badge-neutral">—</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Legend & info -->
+      <div class="grid grid-cols-3 gap-4 mt-5">
+        <div class="bg-white rounded-xl border border-gray-200 p-4">
+          <h4 class="font-bold text-sm text-gray-800 mb-3">📖 مفاتيح الصلاحيات</h4>
+          <div class="space-y-2 text-xs">
+            <div><span class="badge badge-success">CRUD</span> صلاحية كاملة (إنشاء/قراءة/تعديل/حذف)</div>
+            <div><span class="badge badge-info">R</span> قراءة فقط</div>
+            <div><span class="badge badge-info">R+</span> قراءة + إجراءات محدودة</div>
+            <div><span class="badge badge-warning">propose</span> اقتراح يحتاج اعتماد</div>
+            <div><span class="badge badge-warning">approve</span> اعتماد لقرارات الآخرين</div>
+            <div><span class="badge badge-neutral">—</span> لا صلاحية</div>
+            <div class="text-[10px] text-gray-500 mt-2">* = محدودة بالنطاق (نفسه، فرعه، مادته)</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-200 p-4 col-span-2">
+          <h4 class="font-bold text-sm text-gray-800 mb-3">📊 ملخّص النظام</h4>
+          <div class="grid grid-cols-4 gap-3 text-xs">
+            <div class="text-center p-3 bg-gray-50 rounded-lg">
+              <div class="text-2xl font-black text-brand">7</div>
+              <div class="text-gray-500">دور رئيسي</div>
+            </div>
+            <div class="text-center p-3 bg-gray-50 rounded-lg">
+              <div class="text-2xl font-black text-brand">12</div>
+              <div class="text-gray-500">موديول / مورد</div>
+            </div>
+            <div class="text-center p-3 bg-gray-50 rounded-lg">
+              <div class="text-2xl font-black text-brand">187</div>
+              <div class="text-gray-500">صلاحية فعّالة</div>
+            </div>
+            <div class="text-center p-3 bg-gray-50 rounded-lg">
+              <div class="text-2xl font-black text-brand">62</div>
+              <div class="text-gray-500">مستخدم نشط</div>
+            </div>
+          </div>
+          <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900">
+            <strong>ملاحظة:</strong> أي تغيير على هذه المصفوفة يُحفظ في سجل التدقيق + يتطلّب توقيع المدير العام الإلكتروني.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 12: EXAM BUILDER ============== -->
+<!-- ============================================================ -->
+<section id="s12" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 12 / 15</span>
+        <h2 class="font-bold text-gray-800">إنشاء اختبار — مولّد تلقائي</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/admin/exams/builder</code></div>
+    </div>
+
+    <div class="grid grid-cols-12 min-h-[760px]">
+      <!-- Form -->
+      <div class="col-span-5 p-6 bg-white border-e border-gray-200 overflow-auto">
+        <div class="mb-5">
+          <h1 class="text-xl font-black text-gray-800 mb-1">⚙️ مولّد الاختبارات الذكي</h1>
+          <p class="text-xs text-gray-500">عرّف معايير الاختبار، وسيقوم النظام بسحب أسئلة من البنك تلقائياً</p>
+        </div>
+
+        <!-- Step 1: Basic info -->
+        <div class="mb-5">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-7 h-7 bg-brand text-white rounded-full flex items-center justify-center text-xs font-bold">1</div>
+            <h3 class="font-bold text-gray-800">المعلومات الأساسية</h3>
+          </div>
+          <div class="space-y-3">
+            <div>
+              <label class="form-label">عنوان الاختبار</label>
+              <input class="form-input" value="اختبار رياضيات تطبيقية — منتصف الفصل">
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="form-label">المادة</label>
+                <select class="form-input">
+                  <option>رياضيات تطبيقية</option>
+                  <option>قواعد اللغة</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label">الفصل / المستوى</label>
+                <select class="form-input"><option>الفصل الثاني — المستوى الثاني</option></select>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-3">
+              <div>
+                <label class="form-label">نوع الاختبار</label>
+                <select class="form-input"><option>قصير (Quiz)</option><option>منتصف فصل</option><option>نهائي</option></select>
+              </div>
+              <div>
+                <label class="form-label">الوضع</label>
+                <select class="form-input"><option>إلكتروني</option><option>ورقي</option><option>هجين</option></select>
+              </div>
+              <div>
+                <label class="form-label">المدة (د)</label>
+                <input type="number" class="form-input" value="60">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Composition -->
+        <div class="mb-5">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-7 h-7 bg-brand text-white rounded-full flex items-center justify-center text-xs font-bold">2</div>
+            <h3 class="font-bold text-gray-800">تكوين الأسئلة (التوليد التلقائي)</h3>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-4 space-y-3">
+            <div>
+              <label class="form-label">إجمالي عدد الأسئلة: <strong class="text-brand">25</strong></label>
+              <input type="range" min="5" max="50" value="25" class="w-full accent-emerald-700">
+            </div>
+
+            <div>
+              <div class="text-xs font-bold text-gray-700 mb-2">التوزيع حسب الصعوبة</div>
+              <div class="grid grid-cols-3 gap-2 text-xs">
+                <div class="bg-white p-2 rounded-lg text-center">
+                  <div class="text-[10px] text-green-700 font-bold">سهلة</div>
+                  <input class="form-input !p-1 !text-center" value="40%">
+                </div>
+                <div class="bg-white p-2 rounded-lg text-center">
+                  <div class="text-[10px] text-amber-700 font-bold">متوسطة</div>
+                  <input class="form-input !p-1 !text-center" value="45%">
+                </div>
+                <div class="bg-white p-2 rounded-lg text-center">
+                  <div class="text-[10px] text-red-700 font-bold">صعبة</div>
+                  <input class="form-input !p-1 !text-center" value="15%">
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="text-xs font-bold text-gray-700 mb-2">التوزيع حسب نوع السؤال</div>
+              <div class="space-y-1.5 text-xs">
+                <label class="flex items-center justify-between p-2 bg-white rounded">
+                  <span><input type="checkbox" checked class="me-2 accent-emerald-700"> اختيار من متعدد (إجابة واحدة)</span>
+                  <input class="w-14 border border-gray-300 rounded px-2 py-1 text-center" value="15">
+                </label>
+                <label class="flex items-center justify-between p-2 bg-white rounded">
+                  <span><input type="checkbox" checked class="me-2 accent-emerald-700"> اختيار من متعدد (متعدد)</span>
+                  <input class="w-14 border border-gray-300 rounded px-2 py-1 text-center" value="5">
+                </label>
+                <label class="flex items-center justify-between p-2 bg-white rounded">
+                  <span><input type="checkbox" checked class="me-2 accent-emerald-700"> صح / خطأ</span>
+                  <input class="w-14 border border-gray-300 rounded px-2 py-1 text-center" value="3">
+                </label>
+                <label class="flex items-center justify-between p-2 bg-white rounded">
+                  <span><input type="checkbox" checked class="me-2 accent-emerald-700"> ملء فراغ</span>
+                  <input class="w-14 border border-gray-300 rounded px-2 py-1 text-center" value="2">
+                </label>
+                <label class="flex items-center justify-between p-2 bg-white rounded opacity-60">
+                  <span><input type="checkbox" class="me-2 accent-emerald-700"> سؤال مقالي (تصحيح يدوي)</span>
+                  <input class="w-14 border border-gray-300 rounded px-2 py-1 text-center" value="0" disabled>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label class="form-label">المواضيع المُغطّاة</label>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="badge badge-brand">✓ الجبر الخطي</span>
+                <span class="badge badge-brand">✓ المشتقات</span>
+                <span class="badge badge-brand">✓ التكامل</span>
+                <span class="badge badge-neutral">+ المصفوفات</span>
+                <span class="badge badge-neutral">+ المتسلسلات</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Settings -->
+        <div class="mb-5">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-7 h-7 bg-brand text-white rounded-full flex items-center justify-center text-xs font-bold">3</div>
+            <h3 class="font-bold text-gray-800">الإعدادات المتقدمة</h3>
+          </div>
+          <div class="space-y-2 text-xs">
+            <label class="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer">
+              <div>
+                <div class="font-bold">🔀 خلط الأسئلة لكل طالب</div>
+                <div class="text-[10px] text-gray-500">منع نسخ الإجابات بين الطلاب</div>
+              </div>
+              <input type="checkbox" checked class="accent-emerald-700 w-5 h-5">
+            </label>
+            <label class="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer">
+              <div>
+                <div class="font-bold">🔀 خلط الإجابات داخل كل سؤال</div>
+                <div class="text-[10px] text-gray-500">ترتيب مختلف للخيارات لكل طالب</div>
+              </div>
+              <input type="checkbox" checked class="accent-emerald-700 w-5 h-5">
+            </label>
+            <label class="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer">
+              <div>
+                <div class="font-bold">📸 مراقبة الكاميرا (Proctoring)</div>
+                <div class="text-[10px] text-gray-500">مطلوب للاختبارات الإلكترونية عن بُعد</div>
+              </div>
+              <input type="checkbox" checked class="accent-emerald-700 w-5 h-5">
+            </label>
+            <label class="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer">
+              <div>
+                <div class="font-bold">⏰ إغلاق تلقائي عند انتهاء الوقت</div>
+                <div class="text-[10px] text-gray-500">تسليم تلقائي مع الإجابات الحالية</div>
+              </div>
+              <input type="checkbox" checked class="accent-emerald-700 w-5 h-5">
+            </label>
+            <label class="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer">
+              <div>
+                <div class="font-bold">📊 إظهار النتيجة فور التسليم</div>
+                <div class="text-[10px] text-gray-500">للأسئلة المُصحَّحة آلياً</div>
+              </div>
+              <input type="checkbox" class="accent-emerald-700 w-5 h-5">
+            </label>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-gray-200 flex gap-2">
+          <button class="btn-ghost flex-1">حفظ مسوّدة</button>
+          <button class="btn-gold flex-1">🎲 توليد الأسئلة</button>
+        </div>
+      </div>
+
+      <!-- Preview -->
+      <div class="col-span-7 p-6 bg-gray-50 overflow-auto">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h2 class="text-lg font-black text-gray-800">📋 معاينة الاختبار</h2>
+            <p class="text-xs text-gray-500">25 سؤالاً • 60 دقيقة • 100 نقطة • المُولِّد سحب من بنك يضم 1,247 سؤالاً</p>
+          </div>
+          <div class="flex gap-2">
+            <button class="btn-ghost text-xs">🔄 توليد جديد</button>
+            <button class="btn-outline text-xs">↻ استبدال سؤال</button>
+            <button class="btn-primary text-xs">✅ اعتماد ونشر</button>
+          </div>
+        </div>
+
+        <!-- Stats summary -->
+        <div class="grid grid-cols-4 gap-3 mb-5">
+          <div class="bg-white rounded-lg border border-gray-200 p-3 text-center">
+            <div class="text-2xl font-black text-brand">25</div>
+            <div class="text-[10px] text-gray-500">سؤال</div>
+          </div>
+          <div class="bg-white rounded-lg border border-gray-200 p-3 text-center">
+            <div class="text-2xl font-black" style="color:#10B981">10</div>
+            <div class="text-[10px] text-gray-500">سهل</div>
+          </div>
+          <div class="bg-white rounded-lg border border-gray-200 p-3 text-center">
+            <div class="text-2xl font-black" style="color:#F59E0B">11</div>
+            <div class="text-[10px] text-gray-500">متوسط</div>
+          </div>
+          <div class="bg-white rounded-lg border border-gray-200 p-3 text-center">
+            <div class="text-2xl font-black" style="color:#DC2626">4</div>
+            <div class="text-[10px] text-gray-500">صعب</div>
+          </div>
+        </div>
+
+        <!-- Questions preview -->
+        <div class="space-y-3">
+          <div class="bg-white rounded-xl border border-gray-200 p-4">
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 bg-brand text-white rounded-lg flex items-center justify-center font-bold text-sm shrink-0">1</div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="badge badge-info">MCQ-single</span>
+                  <span class="badge" style="background:#D1FAE5;color:#065F46;">سهل</span>
+                  <span class="text-[10px] text-gray-500">3 نقاط</span>
+                </div>
+                <p class="text-sm text-gray-800 mb-2">ما ناتج الاشتقاق <code class="bg-gray-100 px-2 rounded">d/dx(x³ + 2x)</code> ؟</p>
+                <div class="grid grid-cols-4 gap-2 text-xs text-gray-700">
+                  <div class="p-2 bg-gray-50 rounded">أ) 3x² + 2</div>
+                  <div class="p-2 bg-brand-soft rounded" style="background:#D1FAE5;"><strong>ب) 3x² + 2 ✓</strong></div>
+                  <div class="p-2 bg-gray-50 rounded">ج) 2x² + 1</div>
+                  <div class="p-2 bg-gray-50 rounded">د) x² + 2</div>
+                </div>
+              </div>
+              <button class="text-gray-400 hover:text-red-600 text-lg">↻</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 p-4">
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 bg-brand text-white rounded-lg flex items-center justify-center font-bold text-sm shrink-0">2</div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="badge badge-info">True/False</span>
+                  <span class="badge" style="background:#D1FAE5;color:#065F46;">سهل</span>
+                  <span class="text-[10px] text-gray-500">2 نقطة</span>
+                </div>
+                <p class="text-sm text-gray-800 mb-2">قاعدة "السلسلة" تستخدم لاشتقاق الدوال المركّبة.</p>
+                <div class="flex gap-2 text-xs">
+                  <span class="px-3 py-1 bg-brand-soft rounded" style="background:#D1FAE5;"><strong>صح ✓</strong></span>
+                  <span class="px-3 py-1 bg-gray-50 rounded">خطأ</span>
+                </div>
+              </div>
+              <button class="text-gray-400 hover:text-red-600 text-lg">↻</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 p-4">
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 bg-brand text-white rounded-lg flex items-center justify-center font-bold text-sm shrink-0">3</div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="badge badge-info">MCQ-single</span>
+                  <span class="badge" style="background:#FEF3C7;color:#92400E;">متوسط</span>
+                  <span class="text-[10px] text-gray-500">4 نقاط</span>
+                </div>
+                <p class="text-sm text-gray-800 mb-2">إذا كان f(x) = sin(x²)، فإن f′(x) = ؟</p>
+                <div class="grid grid-cols-2 gap-2 text-xs text-gray-700">
+                  <div class="p-2 bg-gray-50 rounded">أ) cos(x²)</div>
+                  <div class="p-2 bg-brand-soft rounded" style="background:#D1FAE5;"><strong>ب) 2x·cos(x²) ✓</strong></div>
+                  <div class="p-2 bg-gray-50 rounded">ج) 2x·sin(x²)</div>
+                  <div class="p-2 bg-gray-50 rounded">د) 2·cos(x)</div>
+                </div>
+              </div>
+              <button class="text-gray-400 hover:text-red-600 text-lg">↻</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 p-4">
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 bg-brand text-white rounded-lg flex items-center justify-center font-bold text-sm shrink-0">4</div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="badge badge-info">Fill-Blank</span>
+                  <span class="badge" style="background:#FEF3C7;color:#92400E;">متوسط</span>
+                  <span class="text-[10px] text-gray-500">5 نقاط</span>
+                </div>
+                <p class="text-sm text-gray-800">قاعدة الضرب في الاشتقاق تنص: (uv)′ = <span class="px-3 py-0.5 bg-gray-100 border-b-2 border-gray-400 rounded">______</span> · v + u · <span class="px-3 py-0.5 bg-gray-100 border-b-2 border-gray-400 rounded">______</span></p>
+                <div class="text-[10px] text-gray-500 mt-1">الإجابة المقبولة: u′ ، v′ (يتم تطبيع التشكيل وتنوع الكتابة)</div>
+              </div>
+              <button class="text-gray-400 hover:text-red-600 text-lg">↻</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 p-4">
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 bg-brand text-white rounded-lg flex items-center justify-center font-bold text-sm shrink-0">5</div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="badge badge-info">MCQ-multi</span>
+                  <span class="badge" style="background:#FEE2E2;color:#991B1B;">صعب</span>
+                  <span class="text-[10px] text-gray-500">6 نقاط</span>
+                </div>
+                <p class="text-sm text-gray-800 mb-2">أي من الدوال التالية قابلة للاشتقاق عند x=0 ؟ (إجابات متعددة)</p>
+                <div class="grid grid-cols-2 gap-2 text-xs text-gray-700">
+                  <div class="p-2 bg-brand-soft rounded" style="background:#D1FAE5;"><strong>أ) f(x) = x² ✓</strong></div>
+                  <div class="p-2 bg-brand-soft rounded" style="background:#D1FAE5;"><strong>ب) f(x) = sin(x) ✓</strong></div>
+                  <div class="p-2 bg-gray-50 rounded">ج) f(x) = |x|</div>
+                  <div class="p-2 bg-brand-soft rounded" style="background:#D1FAE5;"><strong>د) f(x) = eˣ ✓</strong></div>
+                </div>
+              </div>
+              <button class="text-gray-400 hover:text-red-600 text-lg">↻</button>
+            </div>
+          </div>
+
+          <div class="text-center py-3 text-xs text-gray-500">⋯ يتبع 20 سؤالاً آخر ⋯</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 13: LIBRARY =================== -->
+<!-- ============================================================ -->
+<section id="s13" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 13 / 15</span>
+        <h2 class="font-bold text-gray-800">المكتبة التعليمية</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/library</code></div>
+    </div>
+
+    <div class="grid grid-cols-12 min-h-[720px]">
+      <!-- Subjects sidebar -->
+      <aside class="col-span-3 ip-sidebar">
+        <div class="mb-4">
+          <input class="form-input !py-2 text-xs" placeholder="🔎 ابحث في كل المواد...">
+        </div>
+
+        <div class="mb-3">
+          <div class="text-[11px] font-bold text-gray-500 uppercase mb-2 ms-2">المواد الدراسية</div>
+          <div class="ip-side-link active">📐 رياضيات تطبيقية <span class="badge badge-brand ms-auto">142</span></div>
+          <div class="ip-side-link">📝 قواعد اللغة <span class="badge badge-neutral ms-auto">87</span></div>
+          <div class="ip-side-link">💻 مهارات الحاسب <span class="badge badge-neutral ms-auto">112</span></div>
+          <div class="ip-side-link">💼 إدارة الأعمال <span class="badge badge-neutral ms-auto">96</span></div>
+          <div class="ip-side-link">📊 إحصاء <span class="badge badge-neutral ms-auto">54</span></div>
+          <div class="ip-side-link">🗣️ مهارات اتصال <span class="badge badge-neutral ms-auto">38</span></div>
+          <div class="ip-side-link">🧮 محاسبة أساسية <span class="badge badge-neutral ms-auto">71</span></div>
+        </div>
+
+        <div class="mb-3">
+          <div class="text-[11px] font-bold text-gray-500 uppercase mb-2 ms-2">نوع الملف</div>
+          <label class="flex items-center gap-2 text-xs py-1.5 px-2"><input type="checkbox" checked class="accent-emerald-700"> 📄 PDF (89)</label>
+          <label class="flex items-center gap-2 text-xs py-1.5 px-2"><input type="checkbox" checked class="accent-emerald-700"> 🎥 فيديو (32)</label>
+          <label class="flex items-center gap-2 text-xs py-1.5 px-2"><input type="checkbox" checked class="accent-emerald-700"> 📊 عرض تقديمي (15)</label>
+          <label class="flex items-center gap-2 text-xs py-1.5 px-2"><input type="checkbox" class="accent-emerald-700"> 🎧 صوتي (6)</label>
+        </div>
+
+        <div>
+          <div class="text-[11px] font-bold text-gray-500 uppercase mb-2 ms-2">المستوى</div>
+          <label class="flex items-center gap-2 text-xs py-1.5 px-2"><input type="checkbox" checked class="accent-emerald-700"> أساسي</label>
+          <label class="flex items-center gap-2 text-xs py-1.5 px-2"><input type="checkbox" checked class="accent-emerald-700"> متوسط</label>
+          <label class="flex items-center gap-2 text-xs py-1.5 px-2"><input type="checkbox" class="accent-emerald-700"> متقدم</label>
+        </div>
+      </aside>
+
+      <div class="col-span-9 p-6 bg-gray-50">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h1 class="text-2xl font-black text-gray-800">📚 رياضيات تطبيقية</h1>
+            <p class="text-sm text-gray-500">142 مورداً تعليمياً • تحديث: قبل 3 أيام</p>
+          </div>
+          <div class="flex gap-2">
+            <div class="flex border border-gray-300 rounded-lg overflow-hidden">
+              <button class="px-3 py-1.5 bg-brand text-white text-xs">⊞ شبكة</button>
+              <button class="px-3 py-1.5 bg-white text-xs text-gray-600">☰ قائمة</button>
+            </div>
+            <select class="form-input !py-1.5 text-xs"><option>الأحدث</option><option>الأكثر تحميلاً</option></select>
+            <button class="btn-gold text-xs">⬆️ رفع مورد جديد</button>
+          </div>
+        </div>
+
+        <!-- Featured/Pinned -->
+        <div class="bg-white rounded-xl border border-gold/30 p-4 mb-5 flex items-center gap-4" style="border-color:rgba(212,165,116,.4); background:linear-gradient(135deg,#fff 0%,#FAEBD0 100%);">
+          <div class="w-16 h-20 bg-brand text-white rounded-lg flex items-center justify-center text-2xl shrink-0">📕</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="badge badge-gold">📌 مثبّت</span>
+              <span class="badge badge-success">جديد</span>
+            </div>
+            <h3 class="font-bold text-gray-800 text-base mb-1">دليل الطالب الكامل — الفصل الثاني 1447</h3>
+            <p class="text-xs text-gray-600">يحتوي على جميع المنهج النظري + تمارين محلولة + ملخصات</p>
+            <div class="text-[10px] text-gray-500 mt-1">د. خالد الحربي • PDF • 12.4 MB • 142 صفحة • 487 تحميل</div>
+          </div>
+          <button class="btn-primary text-xs">⬇️ تحميل</button>
+        </div>
+
+        <!-- Resources grid -->
+        <div class="grid grid-cols-4 gap-4">
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <div class="h-28 flex items-center justify-center text-5xl" style="background:linear-gradient(135deg,#FEE2E2 0%,#FECACA 100%);">📄</div>
+            <div class="p-3">
+              <div class="flex items-center gap-1 mb-2">
+                <span class="badge badge-danger" style="font-size:.65rem;">PDF</span>
+                <span class="badge badge-neutral" style="font-size:.65rem;">أساسي</span>
+              </div>
+              <div class="font-bold text-sm text-gray-800 mb-1 truncate">المشتقات — الفصل 3</div>
+              <div class="text-[10px] text-gray-500 truncate">د. خالد الحربي</div>
+              <div class="flex justify-between items-center mt-2 text-[10px] text-gray-500">
+                <span>3.2 MB</span>
+                <span>⬇️ 234</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <div class="h-28 flex items-center justify-center text-5xl" style="background:linear-gradient(135deg,#DBEAFE 0%,#BFDBFE 100%);">🎥</div>
+            <div class="p-3">
+              <div class="flex items-center gap-1 mb-2">
+                <span class="badge badge-info" style="font-size:.65rem;">فيديو</span>
+                <span class="badge" style="background:#FEF3C7;color:#92400E;font-size:.65rem;">متوسط</span>
+              </div>
+              <div class="font-bold text-sm text-gray-800 mb-1 truncate">شرح قاعدة السلسلة</div>
+              <div class="text-[10px] text-gray-500 truncate">د. خالد الحربي • 14:32</div>
+              <div class="flex justify-between items-center mt-2 text-[10px] text-gray-500">
+                <span>87 MB</span>
+                <span>👁️ 412</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <div class="h-28 flex items-center justify-center text-5xl" style="background:linear-gradient(135deg,#FED7AA 0%,#FDBA74 100%);">📊</div>
+            <div class="p-3">
+              <div class="flex items-center gap-1 mb-2">
+                <span class="badge badge-warning" style="font-size:.65rem;">PPT</span>
+                <span class="badge badge-neutral" style="font-size:.65rem;">أساسي</span>
+              </div>
+              <div class="font-bold text-sm text-gray-800 mb-1 truncate">عرض تقديمي — الجبر</div>
+              <div class="text-[10px] text-gray-500 truncate">د. سارة الزهراني</div>
+              <div class="flex justify-between items-center mt-2 text-[10px] text-gray-500">
+                <span>8.7 MB</span>
+                <span>⬇️ 156</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <div class="h-28 flex items-center justify-center text-5xl" style="background:linear-gradient(135deg,#FEE2E2 0%,#FECACA 100%);">📄</div>
+            <div class="p-3">
+              <div class="flex items-center gap-1 mb-2">
+                <span class="badge badge-danger" style="font-size:.65rem;">PDF</span>
+                <span class="badge" style="background:#FEE2E2;color:#991B1B;font-size:.65rem;">متقدم</span>
+              </div>
+              <div class="font-bold text-sm text-gray-800 mb-1 truncate">تمارين التكامل — حلول</div>
+              <div class="text-[10px] text-gray-500 truncate">د. خالد الحربي</div>
+              <div class="flex justify-between items-center mt-2 text-[10px] text-gray-500">
+                <span>5.4 MB</span>
+                <span>⬇️ 318</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <div class="h-28 flex items-center justify-center text-5xl" style="background:linear-gradient(135deg,#DBEAFE 0%,#BFDBFE 100%);">🎥</div>
+            <div class="p-3">
+              <div class="flex items-center gap-1 mb-2">
+                <span class="badge badge-info" style="font-size:.65rem;">فيديو</span>
+                <span class="badge" style="background:#FEF3C7;color:#92400E;font-size:.65rem;">متوسط</span>
+              </div>
+              <div class="font-bold text-sm text-gray-800 mb-1 truncate">حلّ نماذج اختبارات سابقة</div>
+              <div class="text-[10px] text-gray-500 truncate">د. خالد الحربي • 28:15</div>
+              <div class="flex justify-between items-center mt-2 text-[10px] text-gray-500">
+                <span>156 MB</span>
+                <span>👁️ 562</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <div class="h-28 flex items-center justify-center text-5xl" style="background:linear-gradient(135deg,#FEE2E2 0%,#FECACA 100%);">📄</div>
+            <div class="p-3">
+              <div class="flex items-center gap-1 mb-2">
+                <span class="badge badge-danger" style="font-size:.65rem;">PDF</span>
+                <span class="badge badge-neutral" style="font-size:.65rem;">أساسي</span>
+              </div>
+              <div class="font-bold text-sm text-gray-800 mb-1 truncate">ملخّص الجبر الخطي</div>
+              <div class="text-[10px] text-gray-500 truncate">د. سارة الزهراني</div>
+              <div class="flex justify-between items-center mt-2 text-[10px] text-gray-500">
+                <span>1.8 MB</span>
+                <span>⬇️ 421</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <div class="h-28 flex items-center justify-center text-5xl" style="background:linear-gradient(135deg,#FED7AA 0%,#FDBA74 100%);">📊</div>
+            <div class="p-3">
+              <div class="flex items-center gap-1 mb-2">
+                <span class="badge badge-warning" style="font-size:.65rem;">PPT</span>
+                <span class="badge" style="background:#FEF3C7;color:#92400E;font-size:.65rem;">متوسط</span>
+              </div>
+              <div class="font-bold text-sm text-gray-800 mb-1 truncate">مقدمة في التفاضل</div>
+              <div class="text-[10px] text-gray-500 truncate">د. خالد الحربي</div>
+              <div class="flex justify-between items-center mt-2 text-[10px] text-gray-500">
+                <span>12.1 MB</span>
+                <span>⬇️ 198</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <div class="h-28 flex items-center justify-center text-5xl" style="background:linear-gradient(135deg,#DCFCE7 0%,#BBF7D0 100%);">📋</div>
+            <div class="p-3">
+              <div class="flex items-center gap-1 mb-2">
+                <span class="badge badge-success" style="font-size:.65rem;">واجب</span>
+                <span class="badge badge-neutral" style="font-size:.65rem;">أساسي</span>
+              </div>
+              <div class="font-bold text-sm text-gray-800 mb-1 truncate">ورقة تمارين — الفصل 2</div>
+              <div class="text-[10px] text-gray-500 truncate">د. خالد الحربي • 25 سؤال</div>
+              <div class="flex justify-between items-center mt-2 text-[10px] text-gray-500">
+                <span>منهج</span>
+                <span>⬇️ 287</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-between items-center mt-6 text-xs">
+          <span class="text-gray-500">عرض 1-8 من 142 مورداً</span>
+          <div class="flex gap-1">
+            <button class="px-3 py-1.5 border border-gray-300 rounded">←</button>
+            <button class="px-3 py-1.5 bg-brand text-white rounded">1</button>
+            <button class="px-3 py-1.5 border border-gray-300 rounded">2</button>
+            <button class="px-3 py-1.5 border border-gray-300 rounded">3</button>
+            <button class="px-3 py-1.5 border border-gray-300 rounded">...</button>
+            <button class="px-3 py-1.5 border border-gray-300 rounded">18</button>
+            <button class="px-3 py-1.5 border border-gray-300 rounded">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 14: HR EMPLOYEE =============== -->
+<!-- ============================================================ -->
+<section id="s14" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 14 / 15</span>
+        <h2 class="font-bold text-gray-800">بوابة الموظف (HR Self-Service)</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/employee/leaves</code></div>
+    </div>
+
+    <div class="grid grid-cols-12 min-h-[720px]">
+      <aside class="col-span-2 ip-sidebar">
+        <div class="flex items-center gap-2 mb-5 pb-4 border-b border-gray-200">
+          <div class="avatar">ن.ا</div>
+          <div>
+            <div class="font-bold text-sm">أ. نواف الإبراهيم</div>
+            <div class="text-[10px] text-gray-500">منسق أكاديمي</div>
+          </div>
+        </div>
+        <div class="ip-side-link">🏠 الرئيسية</div>
+        <div class="ip-side-link active">🏖️ الإجازات</div>
+        <div class="ip-side-link">⏱️ سجل الدوام</div>
+        <div class="ip-side-link">💵 راتبي</div>
+        <div class="ip-side-link">📄 وثائقي</div>
+        <div class="ip-side-link">📋 طلباتي <span class="badge badge-info ms-auto">3</span></div>
+        <div class="ip-side-link">🎓 تدريبي</div>
+        <div class="ip-side-link">⚙️ بياناتي</div>
+      </aside>
+
+      <div class="col-span-10 p-6 bg-gray-50">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h1 class="text-2xl font-black text-gray-800">🏖️ إجازاتي</h1>
+            <p class="text-sm text-gray-500">السنة المالية 1447هـ • الموظف #EMP-247 • قسم الشؤون الأكاديمية — BRANCH_A</p>
+          </div>
+          <button class="btn-gold">+ طلب إجازة جديد</button>
+        </div>
+
+        <!-- Leave balances -->
+        <div class="grid grid-cols-4 gap-4 mb-5">
+          <div class="kpi-card">
+            <div class="text-[11px] text-gray-500 font-bold mb-1">رصيد إجازة سنوية</div>
+            <div class="text-2xl font-black text-brand mb-1">21 / 30 <span class="text-sm text-gray-400 font-bold">يوم</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+            <div class="text-[10px] text-gray-500 mt-1">استُخدِم 9 أيام • تنتهي 30 ذو الحجة</div>
+          </div>
+          <div class="kpi-card gold">
+            <div class="text-[11px] text-gray-500 font-bold mb-1">إجازة مرضية</div>
+            <div class="text-2xl font-black mb-1" style="color:#B58853">28 / 30 <span class="text-sm text-gray-400 font-bold">يوم</span></div>
+            <div class="progress-bar"><div class="progress-fill progress-fill-gold" style="width:93%"></div></div>
+            <div class="text-[10px] text-gray-500 mt-1">يومان مستخدمان</div>
+          </div>
+          <div class="kpi-card info">
+            <div class="text-[11px] text-gray-500 font-bold mb-1">إجازة طارئة</div>
+            <div class="text-2xl font-black mb-1" style="color:#155E75">5 / 5 <span class="text-sm text-gray-400 font-bold">يوم</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:100%; background:#0891B2;"></div></div>
+            <div class="text-[10px] text-gray-500 mt-1">لم تُستخدم</div>
+          </div>
+          <div class="kpi-card warn">
+            <div class="text-[11px] text-gray-500 font-bold mb-1">طلبات معلّقة</div>
+            <div class="text-2xl font-black text-orange-600 mb-1">2</div>
+            <div class="text-[10px] text-orange-600 font-bold">واحد بانتظار موافقة المدير</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-5">
+          <!-- Request form -->
+          <div class="col-span-1 bg-white rounded-xl border border-gray-200 p-5">
+            <h3 class="font-bold text-gray-800 mb-1">📝 طلب إجازة جديد</h3>
+            <p class="text-xs text-gray-500 mb-4">سيُوجّه الطلب تلقائياً إلى مديرك المباشر</p>
+
+            <div class="mb-3">
+              <label class="form-label">نوع الإجازة</label>
+              <select class="form-input">
+                <option>سنوية</option>
+                <option>مرضية</option>
+                <option>طارئة</option>
+                <option>زواج</option>
+                <option>وضع (للسيدات)</option>
+                <option>بدون راتب</option>
+              </select>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 mb-3">
+              <div>
+                <label class="form-label">من</label>
+                <input type="date" class="form-input text-sm" value="2026-06-01">
+              </div>
+              <div>
+                <label class="form-label">إلى</label>
+                <input type="date" class="form-input text-sm" value="2026-06-07">
+              </div>
+            </div>
+
+            <div class="bg-brand-soft border border-brand/20 rounded-lg p-3 mb-3 text-xs" style="background:#ECFDF5;border-color:rgba(6,95,70,.25);">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-gray-700">المدة المحسوبة:</span>
+                <strong class="text-brand text-base">7 أيام</strong>
+              </div>
+              <div class="text-[11px] text-gray-600">5 أيام عمل + يومان عطلة (الجمعة والسبت)</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">الوصيف عنك</label>
+              <select class="form-input">
+                <option>أ. سعد الغامدي — المنسق الثاني</option>
+                <option>د. خالد الحربي — مدرب رياضيات</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">سبب الإجازة (اختياري)</label>
+              <textarea class="form-input" rows="2" placeholder="عمرة...">عمرة مع العائلة</textarea>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">مرفقات</label>
+              <div class="border-2 border-dashed border-gray-300 rounded-lg p-3 text-center text-xs text-gray-500">
+                📎 اسحب الملفات هنا أو انقر للاختيار
+              </div>
+            </div>
+
+            <button class="btn-primary w-full justify-center">📨 تقديم الطلب</button>
+            <button class="btn-ghost w-full mt-2 text-xs">حفظ كمسوّدة</button>
+          </div>
+
+          <!-- History -->
+          <div class="col-span-2">
+            <div class="bg-white rounded-xl border border-gray-200 p-5 mb-4">
+              <h3 class="font-bold text-gray-800 mb-3">📋 طلبات الإجازات</h3>
+              <table class="data-table">
+                <thead>
+                  <tr><th>الرقم</th><th>النوع</th><th>المدة</th><th>الفترة</th><th>تاريخ التقديم</th><th>الحالة</th><th></th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-mono text-xs">LV-4821</td>
+                    <td>سنوية</td>
+                    <td>7 أيام</td>
+                    <td class="text-xs">1-7 / 6 / 1447</td>
+                    <td class="text-xs">23 / 5 / 1447</td>
+                    <td><span class="badge badge-warning">قيد الموافقة</span></td>
+                    <td><button class="text-brand text-xs font-bold">↻ سحب</button></td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono text-xs">LV-4754</td>
+                    <td>طارئة</td>
+                    <td>يوم واحد</td>
+                    <td class="text-xs">12 / 4 / 1447</td>
+                    <td class="text-xs">11 / 4 / 1447</td>
+                    <td><span class="badge badge-success">معتمدة</span></td>
+                    <td><button class="text-brand text-xs font-bold">عرض ←</button></td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono text-xs">LV-4621</td>
+                    <td>مرضية</td>
+                    <td>يومان</td>
+                    <td class="text-xs">3-4 / 3 / 1447</td>
+                    <td class="text-xs">3 / 3 / 1447</td>
+                    <td><span class="badge badge-success">معتمدة</span></td>
+                    <td><button class="text-brand text-xs font-bold">عرض ←</button></td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono text-xs">LV-4488</td>
+                    <td>سنوية</td>
+                    <td>5 أيام</td>
+                    <td class="text-xs">15-19 / 1 / 1447</td>
+                    <td class="text-xs">8 / 1 / 1447</td>
+                    <td><span class="badge badge-success">معتمدة</span></td>
+                    <td><button class="text-brand text-xs font-bold">عرض ←</button></td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono text-xs">LV-4321</td>
+                    <td>سنوية</td>
+                    <td>3 أيام</td>
+                    <td class="text-xs">23-25 / 11 / 1446</td>
+                    <td class="text-xs">17 / 11 / 1446</td>
+                    <td><span class="badge badge-danger">مرفوضة</span></td>
+                    <td><button class="text-brand text-xs font-bold">السبب ←</button></td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono text-xs">LV-4187</td>
+                    <td>سنوية</td>
+                    <td>4 أيام</td>
+                    <td class="text-xs">5-8 / 9 / 1446</td>
+                    <td class="text-xs">22 / 8 / 1446</td>
+                    <td><span class="badge badge-neutral">منتهية</span></td>
+                    <td><button class="text-gray-400 text-xs">—</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Approval flow -->
+            <div class="bg-white rounded-xl border border-gray-200 p-5">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-bold text-gray-800">📊 مسار آخر طلب نشط — LV-4821</h3>
+                <span class="badge badge-warning">قيد المعالجة</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="flex-1 text-center">
+                  <div class="w-10 h-10 bg-brand text-white rounded-full mx-auto mb-1 flex items-center justify-center text-base">✓</div>
+                  <div class="font-bold text-xs">تقديم الطلب</div>
+                  <div class="text-[10px] text-gray-500">أمس 14:32</div>
+                </div>
+                <div class="h-px bg-brand flex-1"></div>
+                <div class="flex-1 text-center">
+                  <div class="w-10 h-10 bg-brand text-white rounded-full mx-auto mb-1 flex items-center justify-center text-base">✓</div>
+                  <div class="font-bold text-xs">مديرك المباشر</div>
+                  <div class="text-[10px] text-gray-500">اليوم 9:18</div>
+                </div>
+                <div class="h-px bg-gold flex-1"></div>
+                <div class="flex-1 text-center">
+                  <div class="w-10 h-10 bg-gold text-gray-900 rounded-full mx-auto mb-1 flex items-center justify-center text-base ring-4 ring-gold/20 animate-pulse">⏳</div>
+                  <div class="font-bold text-xs">مدير الفرع</div>
+                  <div class="text-[10px] text-gray-500">قيد المراجعة</div>
+                </div>
+                <div class="h-px bg-gray-300 flex-1"></div>
+                <div class="flex-1 text-center opacity-50">
+                  <div class="w-10 h-10 bg-gray-200 text-gray-600 rounded-full mx-auto mb-1 flex items-center justify-center text-base">📋</div>
+                  <div class="font-bold text-xs">شؤون الموظفين</div>
+                  <div class="text-[10px] text-gray-500">—</div>
+                </div>
+                <div class="h-px bg-gray-300 flex-1"></div>
+                <div class="flex-1 text-center opacity-50">
+                  <div class="w-10 h-10 bg-gray-200 text-gray-600 rounded-full mx-auto mb-1 flex items-center justify-center text-base">✅</div>
+                  <div class="font-bold text-xs">إشعار وتنفيذ</div>
+                  <div class="text-[10px] text-gray-500">—</div>
+                </div>
+              </div>
+              <div class="mt-4 text-xs text-gray-500 text-center">
+                ⏱️ SLA المتبقّي: <strong class="text-brand">36 ساعة</strong> • متوسط الاعتماد عادةً: 24 ساعة
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ===================== SCREEN 15: CERTIFICATE VERIFY ======== -->
+<!-- ============================================================ -->
+<section id="s15" class="mockup">
+  <div class="screen-frame">
+    <div class="screen-title-bar">
+      <div class="flex items-center gap-3">
+        <span class="screen-tag">شاشة 15 / 15</span>
+        <h2 class="font-bold text-gray-800">صفحة التحقق العامة من شهادة</h2>
+      </div>
+      <div class="text-xs text-gray-500">المسار: <code dir="ltr">/verify/CERT-2026-04821</code></div>
+    </div>
+
+    <!-- Public minimal header -->
+    <div class="px-8 py-4 border-b border-gray-200 flex items-center justify-between" style="background:#FAFAF7;">
+      <div class="flex items-center gap-3">
+        <div class="brand-logo">IIMS</div>
+        <div>
+          <div class="font-bold text-brand">IIMS</div>
+          <div class="text-[10px] text-gray-500">صفحة التحقق الرسمية من الشهادات</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 text-xs">
+        <span class="text-gray-500">🌐 عربي / English</span>
+        <a href="#" class="text-brand font-bold">عن المعهد</a>
+      </div>
+    </div>
+
+    <div class="p-8 grid grid-cols-12 gap-6 min-h-[640px]" style="background:linear-gradient(135deg,#FAFAF7 0%,#FFFBEB 100%);">
+      <!-- Verification badge (sidebar) -->
+      <div class="col-span-4 space-y-4">
+        <!-- Status banner -->
+        <div class="bg-white rounded-2xl border-2 border-green-300 p-6 text-center shadow-lg">
+          <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+            <span class="text-4xl">✓</span>
+          </div>
+          <div class="font-black text-green-700 text-xl mb-1">شهادة موثَّقة</div>
+          <p class="text-xs text-gray-600 mb-3">تم التحقّق من صحّة هذه الشهادة عبر سجل IIMS الرسمي</p>
+          <div class="flex items-center justify-center gap-2 text-xs">
+            <span class="badge badge-success">سارية</span>
+            <span class="badge badge-brand">معتمدة رقمياً</span>
+          </div>
+        </div>
+
+        <!-- QR -->
+        <div class="bg-white rounded-2xl border border-gray-200 p-5">
+          <h4 class="font-bold text-sm text-gray-800 mb-3 text-center">رمز التحقق</h4>
+          <div class="w-44 h-44 mx-auto qr-pattern rounded-lg"></div>
+          <p class="text-[11px] text-gray-500 text-center mt-3">
+            امسح هذا الرمز للوصول المباشر إلى صفحة التحقق
+          </p>
+          <div class="bg-gray-50 rounded-lg p-2 text-center mt-2 text-[11px] font-mono text-gray-700" dir="ltr">
+            verify.iims.local/CERT-2026-04821
+          </div>
+        </div>
+
+        <!-- Verification meta -->
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 text-xs space-y-2">
+          <h4 class="font-bold text-gray-800 mb-2">معلومات التحقق</h4>
+          <div class="flex justify-between"><span class="text-gray-500">رقم الشهادة:</span><strong class="font-mono">CERT-2026-04821</strong></div>
+          <div class="flex justify-between"><span class="text-gray-500">تاريخ الإصدار:</span><strong>23 / 11 / 1446 هـ</strong></div>
+          <div class="flex justify-between"><span class="text-gray-500">صالحة حتى:</span><strong>غير محدودة</strong></div>
+          <div class="flex justify-between"><span class="text-gray-500">آخر تحقّق:</span><strong>الآن</strong></div>
+          <div class="flex justify-between"><span class="text-gray-500">عدد مرات التحقّق:</span><strong>23</strong></div>
+          <div class="pt-2 mt-2 border-t border-gray-200 flex justify-between items-center">
+            <span class="text-gray-500">التوقيع الرقمي:</span>
+            <span class="badge badge-success">🔐 صحيح</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate display -->
+      <div class="col-span-8">
+        <div class="cert-frame relative">
+          <!-- Corners -->
+          <div class="cert-corner" style="top:-3px; right:-3px; border-bottom:none; border-left:none;"></div>
+          <div class="cert-corner" style="top:-3px; left:-3px; border-bottom:none; border-right:none;"></div>
+          <div class="cert-corner" style="bottom:-3px; right:-3px; border-top:none; border-left:none;"></div>
+          <div class="cert-corner" style="bottom:-3px; left:-3px; border-top:none; border-right:none;"></div>
+
+          <!-- Header -->
+          <div class="text-center mb-6">
+            <div class="inline-block mb-3">
+              <div class="brand-logo" style="width:70px; height:70px; font-size:1.6rem; margin:0 auto;">IIMS</div>
+            </div>
+            <div class="text-sm font-bold text-brand mb-1">IIMS</div>
+            <div class="text-[11px] text-gray-600">Integrated Institutional Management System</div>
+            <div class="w-32 h-px bg-gold mx-auto my-4"></div>
+          </div>
+
+          <!-- Title -->
+          <div class="text-center mb-6">
+            <h2 class="text-3xl font-black text-brand mb-2">شهادة إتمام دورة</h2>
+            <p class="text-sm text-gray-600">Certificate of Course Completion</p>
+          </div>
+
+          <!-- Body -->
+          <div class="text-center mb-6 px-8">
+            <p class="text-gray-700 mb-3 text-sm">يشهد المعهد بأن:</p>
+            <h3 class="text-2xl font-black text-gray-900 mb-1" style="font-family:'Cairo';">محمد عبدالله سعد الأحمد</h3>
+            <p class="text-xs text-gray-500 mb-5">رقم الهوية: 1098765432</p>
+
+            <p class="text-sm text-gray-700 leading-relaxed">
+              قد أتمَّ بنجاح متطلبات <strong>دبلوم إدارة الأعمال</strong>،
+              المُكوَّن من 6 فصول دراسية وما يعادل <strong>1,440 ساعة تدريبية</strong>،
+              بمعدل تراكمي <strong class="text-brand">4.42 من 5.00 (امتياز)</strong>،
+              وذلك خلال الفترة من <strong>محرم 1446 هـ</strong> إلى <strong>ذو القعدة 1446 هـ</strong>.
+            </p>
+          </div>
+
+          <!-- Achievement -->
+          <div class="bg-white/60 rounded-xl p-4 mx-6 mb-6 flex items-center justify-around text-center text-xs border border-gold/30" style="border-color:rgba(212,165,116,.4);">
+            <div>
+              <div class="text-[10px] text-gray-500 mb-1">المستوى</div>
+              <div class="font-bold text-brand">دبلوم متقدم</div>
+            </div>
+            <div class="w-px h-10 bg-gold/30"></div>
+            <div>
+              <div class="text-[10px] text-gray-500 mb-1">عدد المواد</div>
+              <div class="font-bold text-brand">24 مادة</div>
+            </div>
+            <div class="w-px h-10 bg-gold/30"></div>
+            <div>
+              <div class="text-[10px] text-gray-500 mb-1">التقدير</div>
+              <div class="font-bold text-brand">امتياز مع مرتبة الشرف</div>
+            </div>
+            <div class="w-px h-10 bg-gold/30"></div>
+            <div>
+              <div class="text-[10px] text-gray-500 mb-1">الفرع</div>
+              <div class="font-bold text-brand">BRANCH_A</div>
+            </div>
+          </div>
+
+          <!-- Signatures -->
+          <div class="grid grid-cols-3 gap-6 px-8 mt-8">
+            <div class="text-center">
+              <div class="h-12 mb-2 flex items-end justify-center">
+                <span class="font-bold text-brand text-2xl" style="font-family:'Amiri',serif;">د.أحمد.م</span>
+              </div>
+              <div class="border-t border-gray-400 pt-2 text-xs">
+                <div class="font-bold">د. أحمد المنصور</div>
+                <div class="text-[10px] text-gray-500">مدير المعهد</div>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="h-12 mb-2 flex items-end justify-center">
+                <span class="font-bold text-brand text-2xl" style="font-family:'Amiri',serif;">د.س.ع</span>
+              </div>
+              <div class="border-t border-gray-400 pt-2 text-xs">
+                <div class="font-bold">د. سعيد العتيبي</div>
+                <div class="text-[10px] text-gray-500">عميد الشؤون الأكاديمية</div>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="h-12 mb-2 flex items-end justify-center">
+                <div class="w-20 h-12 border-2 border-gold rounded-full flex items-center justify-center text-[10px] text-gold-dark font-bold" style="border-color:#B58853;color:#B58853;">
+                  ختم<br>IIMS<br>2026
+                </div>
+              </div>
+              <div class="border-t border-gray-400 pt-2 text-xs">
+                <div class="font-bold">الختم الرسمي</div>
+                <div class="text-[10px] text-gray-500">معهد التدريب</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer line -->
+          <div class="text-center mt-6 pt-4 border-t border-gold/30 text-[10px] text-gray-500" style="border-color:rgba(212,165,116,.3);">
+            <span class="font-mono">CERT-2026-04821</span> • صادرة في 23 ذو القعدة 1446 هـ • للتحقق امسح رمز QR أو زر <span class="text-brand font-bold">verify.iims.local</span>
+          </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="flex justify-center gap-3 mt-5">
+          <button class="btn-outline">🖨️ طباعة</button>
+          <button class="btn-outline">⬇️ تحميل PDF</button>
+          <button class="btn-outline">📤 مشاركة الرابط</button>
+          <button class="btn-primary">📧 الإبلاغ عن مخالفة</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-gray-200 px-8 py-4 text-xs text-gray-500 flex justify-between items-center bg-white">
+      <div>
+        © IIMS — جميع الحقوق محفوظة • صفحة التحقق العامة
+      </div>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-brand">سياسة الخصوصية</a>
+        <a href="#" class="hover:text-brand">الشروط والأحكام</a>
+        <a href="#" class="hover:text-brand">اتصل بنا</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tab-btn');
+    const mockups = document.querySelectorAll('.mockup');
+    tabs.forEach(t => t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      mockups.forEach(m => m.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById(t.dataset.tab).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }));
+  });
+</script>
+
+</body>
+</html>

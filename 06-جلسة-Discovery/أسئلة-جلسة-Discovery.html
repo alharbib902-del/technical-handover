@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أسئلة جلسة Discovery — IIMS</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary: #065F46;
+    --primary-light: #047857;
+    --primary-dark: #064E3B;
+    --accent: #D4A574;
+    --accent-dark: #B58853;
+    --gold: #C9A961;
+    --cream: #FAFAF7;
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #DC2626;
+    --info: #0891B2;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-family: 'Cairo', system-ui, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    page-break-after: always;
+    min-height: 297mm;
+    position: relative;
+  }
+  .page:last-child { page-break-after: avoid; }
+
+  /* COVER */
+  .cover {
+    min-height: 297mm;
+    background: linear-gradient(135deg, #064E3B 0%, #065F46 40%, #047857 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,165,116,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-top, .cover-bottom, .cover-center { z-index: 2; position: relative; }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+
+  .cover-emblem {
+    width: 80px; height: 80px;
+    background: rgba(212,165,116,0.15);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+  }
+  .cover-meta { text-align: end; font-size: 0.85rem; opacity: 0.85; }
+  .cover-meta div { margin-bottom: 4px; }
+  .cover-center { text-align: center; }
+  .cover-pretitle {
+    font-size: 1.05rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .cover h1 {
+    font-size: 3.2rem;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 25px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .cover-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto 40px;
+  }
+  .cover-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  .cover-stat {
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(212,165,116,0.3);
+    min-width: 140px;
+  }
+  .cover-stat .num {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .cover-stat .label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-top: 6px;
+  }
+  .cover-bottom { text-align: center; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); }
+  .cover-tagline {
+    font-family: 'Amiri', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    opacity: 0.9;
+    margin-bottom: 12px;
+  }
+  .cover-recipient { font-size: 0.9rem; opacity: 0.8; }
+
+  /* CONTENT */
+  .content-page {
+    padding: 40px 45px 55px;
+    background: white;
+  }
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    margin-bottom: 25px;
+    border-bottom: 3px solid var(--primary);
+    position: relative;
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+  }
+  .page-num {
+    background: var(--primary);
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .page-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  h2.section-h {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  h2.section-h .underline {
+    display: inline-block;
+    padding-bottom: 6px;
+    border-bottom: 4px solid var(--accent);
+  }
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 22px 0 12px;
+    padding-right: 14px;
+    border-right: 4px solid var(--accent);
+  }
+
+  /* QUESTION CARDS */
+  .question {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .question.priority-critical {
+    border-right: 5px solid var(--danger);
+  }
+  .question.priority-high {
+    border-right: 5px solid var(--warning);
+  }
+  .question.priority-medium {
+    border-right: 5px solid var(--info);
+  }
+  .question.priority-low {
+    border-right: 5px solid var(--success);
+  }
+
+  .q-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 16px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+  }
+  .q-id {
+    background: var(--primary);
+    color: var(--accent);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.78rem;
+  }
+  .q-priority {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .q-priority.critical { background: #FEE2E2; color: #991B1B; }
+  .q-priority.high { background: #FEF3C7; color: #92400E; }
+  .q-priority.medium { background: #DBEAFE; color: #1E40AF; }
+  .q-priority.low { background: #D1FAE5; color: #065F46; }
+
+  .q-body {
+    padding: 14px 16px;
+  }
+  .q-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  .q-context {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background: #F9FAFB;
+    border-radius: 6px;
+    border-right: 3px solid var(--accent);
+  }
+  .q-context .label {
+    font-weight: 700;
+    color: var(--primary-dark);
+  }
+  .q-answer {
+    margin-top: 10px;
+    padding: 10px;
+    background: #FFFBEB;
+    border: 1px dashed var(--gold);
+    border-radius: 6px;
+    min-height: 50px;
+  }
+  .q-answer-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #92400E;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .q-answer-lines {
+    border-bottom: 1px solid #D1D5DB;
+    min-height: 22px;
+    margin-bottom: 6px;
+  }
+
+  /* LEGEND */
+  .legend {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+  }
+  .legend-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
+  }
+  .legend-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: var(--cream);
+  }
+  .legend-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .legend-text {
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--primary);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 25px 0;
+    color: white;
+  }
+  .stat-cell {
+    padding: 18px 12px;
+    text-align: center;
+    border-left: 1px solid rgba(255,255,255,0.15);
+  }
+  .stat-cell:last-child { border-left: none; }
+  .stat-num {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    margin-top: 6px;
+    opacity: 0.95;
+  }
+
+  /* AGENDA */
+  .agenda-list {
+    list-style: none;
+    counter-reset: agenda-counter;
+  }
+  .agenda-list li {
+    counter-increment: agenda-counter;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px 14px 16px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-right: 60px;
+  }
+  .agenda-list li::before {
+    content: counter(agenda-counter);
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    width: 32px;
+    height: 32px;
+    background: var(--primary);
+    color: var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+  }
+  .agenda-list li h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+  .agenda-list li p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* HIGHLIGHT */
+  .highlight {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    border-right: 5px solid var(--gold);
+    padding: 18px 22px;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+  .highlight .label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #92400E;
+    margin-bottom: 6px;
+  }
+  .highlight h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #78350F;
+    margin-bottom: 4px;
+  }
+  .highlight p {
+    font-size: 0.92rem;
+    color: #78350F;
+  }
+
+  /* CHECKLIST */
+  .checklist {
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    padding: 22px;
+    margin: 20px 0;
+  }
+  .checklist-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .checkbox {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .checklist-content h5 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 3px;
+  }
+  .checklist-content p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 24px 40px;
+    background: var(--primary-dark);
+    color: white;
+    text-align: center;
+  }
+  .footer p { font-size: 0.85rem; opacity: 0.85; margin: 4px 0; }
+  .footer .tagline {
+    font-family: 'Amiri', serif;
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* PRINT */
+  @media print {
+    @page { size: A4; margin: 0; }
+    html, body { width: 210mm; background: white; font-size: 11px; }
+    .page {
+      box-shadow: none;
+      width: 210mm !important;
+      max-width: 210mm !important;
+      min-height: 297mm !important;
+      max-height: 297mm !important;
+      overflow: hidden !important;
+      page-break-after: always !important;
+      page-break-inside: avoid !important;
+    }
+    .page:last-child { page-break-after: avoid !important; }
+    .cover { height: 297mm !important; padding: 22mm 18mm !important; }
+    .cover h1 { font-size: 2.2rem; }
+    .content-page { padding: 14mm 14mm 12mm !important; }
+    .question { margin-bottom: 7px; page-break-inside: avoid; }
+    .q-header { padding: 7px 12px; }
+    .q-body { padding: 9px 12px; }
+    .q-text { font-size: 0.84rem; }
+    .q-context { font-size: 0.74rem; padding: 5px 9px; margin-bottom: 7px; }
+    .q-answer { min-height: 40px; padding: 7px; }
+    .stats-bar { margin: 14px 0; }
+    .stat-num { font-size: 1.4rem; }
+    .stat-label { font-size: 0.68rem; }
+    h2.section-h { font-size: 1.4rem; }
+    h3 { font-size: 1rem; margin: 14px 0 8px; }
+    .footer { padding: 16px 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============= PAGE 1: COVER ============= -->
+<section class="page cover">
+  <div class="cover-top">
+    <div class="cover-emblem">🎯</div>
+    <div class="cover-meta">
+      <div>📅 جلسة Discovery</div>
+      <div>📄 الإصدار 1.0</div>
+      <div>🔢 2026-05-14</div>
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-pretitle">قبل انطلاق المشروع</div>
+    <h1>أسئلة جلسة<br>Discovery الأولى</h1>
+    <p class="cover-subtitle">
+      مجموعة منظّمة من <strong>48 سؤالاً جوهرياً</strong> لتوحيد رؤية المشروع<br>
+      وضمان انطلاقة دقيقة دون عوائق تشغيلية
+    </p>
+
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <div class="num">48</div>
+        <div class="label">سؤال شامل</div>
+      </div>
+      <div class="cover-stat">
+        <div class="num">6</div>
+        <div class="label">محاور رئيسية</div>
+      </div>
+      <div class="cover-stat">
+        <div class="num">2-3</div>
+        <div class="label">ساعات للجلسة</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <p class="cover-tagline">"كل سؤال يُجاب اليوم = مشكلة لا تظهر غداً"</p>
+    <p class="cover-recipient">إدارة المعهد المحترمة + فريق التنفيذ</p>
+  </div>
+</section>
+
+<!-- ============= PAGE 2: AGENDA & LEGEND ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">أجندة الجلسة وتفصيلها</h2>
+      <div class="page-num">02</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">كيف تسير جلسة Discovery؟</span></h2>
+    <p class="section-subtitle">
+      جلسة موحّدة بين <strong>إدارة المعهد</strong> و<strong>فريق التنفيذ</strong> لمراجعة الأسئلة الجوهرية،
+      تحويل الإجابات إلى قرارات موثّقة، وتجهيز كل ما يلزم للانطلاق في الأسبوع التالي.
+    </p>
+
+    <h3>📋 أجندة الجلسة (2-3 ساعات)</h3>
+    <ol class="agenda-list">
+      <li>
+        <h5>المقدمة وتقديم الفريق (15 دقيقة)</h5>
+        <p>التعريف بأعضاء الفريقين، استعراض الخطة، والاتفاق على آلية العمل اللاحق.</p>
+      </li>
+      <li>
+        <h5>قواعد العمل (45 دقيقة)</h5>
+        <p>مصفوفة الحجب، عتبات الحرمان، اعتماد الدرجات، شروط الاختبار الشامل، الاسترداد، الانسحاب.</p>
+      </li>
+      <li>
+        <h5>التكاملات التقنية (30 دقيقة)</h5>
+        <p>البرنامج المحاسبي، API الوزارة (TVTC)، النطاق، البريد، الجوال الموحّد.</p>
+      </li>
+      <li>
+        <h5>معلومات المؤسسة (20 دقيقة)</h5>
+        <p>الموظفون، البرامج التدريبية، الرسوم، الخصومات، اعتمادات المعهد.</p>
+      </li>
+      <li>
+        <h5>التشغيل والتدريب (20 دقيقة)</h5>
+        <p>أوقات الإطلاق، التدريب، الدعم بعد التسليم، إدارة IT الداخلية.</p>
+      </li>
+      <li>
+        <h5>الإغلاق وتحديد الخطوات التالية (15 دقيقة)</h5>
+        <p>اتفاق على دفعة البداية، تحديد نقاط الاتصال، الجدولة، نموذج الموافقة.</p>
+      </li>
+    </ol>
+
+    <h3>🎨 دلالات الألوان</h3>
+    <div class="legend">
+      <div class="legend-grid">
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--danger);"></div>
+          <div class="legend-text">🔴 عاجل — يوقف البدء بدون إجابة</div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--warning);"></div>
+          <div class="legend-text">🟠 مهم — يؤثر على الجودة والوقت</div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--info);"></div>
+          <div class="legend-text">🔵 ضروري — لاكتمال التصميم</div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--success);"></div>
+          <div class="legend-text">🟢 مفيد — تحسينات إضافية</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-cell">
+        <div class="stat-num">13</div>
+        <div class="stat-label">🔴 عاجل</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">17</div>
+        <div class="stat-label">🟠 مهم</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">11</div>
+        <div class="stat-label">🔵 ضروري</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">7</div>
+        <div class="stat-label">🟢 مفيد</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PAGE 3: BUSINESS RULES ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المحور 1: قواعد العمل</h2>
+      <div class="page-num">03</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">سياسات تشغيلية حاسمة</span></h2>
+    <p class="section-subtitle">
+      هذه الأسئلة <strong>تُحدد قلب النظام</strong>. أي تغيير لاحق فيها يعني إعادة بناء أجزاء كاملة.
+    </p>
+
+    <div class="question priority-critical">
+      <div class="q-header">
+        <span class="q-id">Q1</span>
+        <span class="q-priority critical">🔴 عاجل</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">مصفوفة الحجب: أي خدمة تُحجب لكل حالة طالب؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> أساس Service Blocking Engine. مثلاً: إن متأخر > 30 يوم → حجب: الخطابات / الشهادات / دخول الاختبار.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-critical">
+      <div class="q-header">
+        <span class="q-id">Q2</span>
+        <span class="q-priority critical">🔴 عاجل</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">عتبات الحرمان بالغياب: ما النسبة؟ كم إنذاراً قبل الحرمان؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> منطق الحرمان التلقائي. مثال شائع: إنذار 1 عند 5%، إنذار 2 عند 10%، حرمان عند 25%.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q3</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">SLA لكل نوع طلب (14 نوع): كم يوم/ساعة للمعالجة؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> Workflow Engine يصعّد الطلبات المتأخرة تلقائياً. مثلاً: خطاب تعريف = 24 ساعة، خصم = 5 أيام.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q4</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">مستويات اعتماد الدرجات: من يعتمد؟ هل Override للإدارة؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> Grade Approval Workflow. هل المشرف يعتمد ثم المدير؟ أو مستوى واحد فقط؟</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q5</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">شروط الاختبار الشامل النهائي: متى يُعقد؟ نسبة الحضور الدنيا؟ هل يُعاد؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> Eligibility Engine. مثال: نهاية الفصل، حضور ≥ 75%، سداد كامل.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PAGE 4: BUSINESS RULES (cont) ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">قواعد العمل — تابع</h2>
+      <div class="page-num">04</div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q6</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">سياسة استرداد الرسوم عند الانسحاب: ما جدول الاسترداد؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> منطق الانسحاب المالي. مثال: 100% أول أسبوع، 50% أول شهر، 0% بعد شهر.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q7</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">سياسة إعادة الاختبار: العدد المسموح؟ الرسوم؟ الفترة بين المحاولات؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> آلية إدارة المحاولات. مثال: محاولة ثانية بعد أسبوع برسوم 100 ريال.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q8</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">معايير التأهل لكل خطاب: من يُصدِر ماذا؟ هل بعضها تلقائي؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> Letters Generator. مثلاً: خطاب التعريف يصدره أي موظف، خطاب الانسحاب من الإدارة فقط.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-low">
+      <div class="q-header">
+        <span class="q-id">Q9</span>
+        <span class="q-priority low">🟢 مفيد</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">حقوق نقل الطالب بين الفروع: من يوافق؟ ما المتطلبات؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> منطق التحويل بين الفروع.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-low">
+      <div class="q-header">
+        <span class="q-id">Q10</span>
+        <span class="q-priority low">🟢 مفيد</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">سياسة الإيقاف الإداري: من يوقف؟ مدة الإيقاف؟ آلية رفعه؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> إدارة حالات الطلاب الاستثنائية.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q11</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">قواعد الخصومات والإعفاءات: أنواعها، نسبها، شروطها؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> نظام الخصومات. مثال: خصم 10% للموظفين الحكوميين، 50% للأخوة.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PAGE 5: TECHNICAL ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المحور 2: التكاملات التقنية</h2>
+      <div class="page-num">05</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">جوهر الربط مع الأنظمة الخارجية</span></h2>
+    <p class="section-subtitle">
+      الإجابة عن هذه الأسئلة <strong>تُحدّد مسار التطوير</strong> منذ المرحلة الثانية وحتى الرابعة.
+    </p>
+
+    <div class="question priority-critical">
+      <div class="q-header">
+        <span class="q-id">Q12</span>
+        <span class="q-priority critical">🔴 عاجل</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">ما اسم البرنامج المحاسبي المستخدم حالياً؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> طبقة التكامل المحاسبي. الاسم يحدد قدرات الـAPI ونوع التكامل.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-critical">
+      <div class="q-header">
+        <span class="q-id">Q13</span>
+        <span class="q-priority critical">🔴 عاجل</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل البرنامج المحاسبي يوفّر API REST موثّق؟ هل توجد بيئة Sandbox؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> بدون وثائق API، لا يمكن البدء بالمرحلة 2. Sandbox ضرورية للاختبار.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-critical">
+      <div class="q-header">
+        <span class="q-id">Q14</span>
+        <span class="q-priority critical">🔴 عاجل</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">حدود API المحاسبي: Rate Limits، Pagination، آلية المصادقة؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> تصميم استراتيجية المزامنة (كل 15 دقيقة، Pagination، إلخ).</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q15</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل البرنامج المحاسبي يدعم Webhooks للأحداث (مثل دفعة جديدة)؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> Real-time sync vs Polling. Webhooks توفر استجابة فورية لعمليات الحجب.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-critical">
+      <div class="q-header">
+        <span class="q-id">Q16</span>
+        <span class="q-priority critical">🔴 عاجل</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">ما اسم نظام/منصة الوزارة التي يُربط معها لرفع النتائج والحضور؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> TVTC مباشرة؟ منصة دروب؟ نظام مخصص؟ يحدد طبيعة المرحلة 4.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-critical">
+      <div class="q-header">
+        <span class="q-id">Q17</span>
+        <span class="q-priority critical">🔴 عاجل</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل API الوزارة موثّق؟ Sandbox متاح؟ آلية المصادقة؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> بدون التوثيق، يُبنى Mock Adapter فقط حتى الوصول للحقيقي.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PAGE 6: TECHNICAL (cont) ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">التكاملات التقنية — تابع</h2>
+      <div class="page-num">06</div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q18</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">متى وأي بيانات تُرسل للوزارة؟ (يومياً، أسبوعياً، عند الاعتماد فقط؟)</div>
+        <div class="q-context"><span class="label">الأثر:</span> منطق المزامنة مع TVTC. كل بند له جدول زمني مختلف.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q19</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">سلم درجات TVTC الموحّد: هل يختلف عن السلم الداخلي للمعهد؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> Mapping layer بين الدرجات المحلية والدرجات التي تذهب للوزارة.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q20</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل المعهد يستخدم نطاقاً (Domain) خاصاً؟ ما هو؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> اسم النظام النهائي + شهادات SSL + بريد رسمي.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-low">
+      <div class="q-header">
+        <span class="q-id">Q21</span>
+        <span class="q-priority low">🟢 مفيد</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل يوجد بريد رسمي للمعهد للإشعارات؟ (no-reply@..., support@...)</div>
+        <div class="q-context"><span class="label">الأثر:</span> إعداد SMTP والبريد الصادر.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-low">
+      <div class="q-header">
+        <span class="q-id">Q22</span>
+        <span class="q-priority low">🟢 مفيد</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل يوجد رقم جوال موحّد للمعهد للـSMS وWhatsApp Business؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> إعداد المرحلة 4 (التكاملات).</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-low">
+      <div class="q-header">
+        <span class="q-id">Q23</span>
+        <span class="q-priority low">🟢 مفيد</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل لدى المعهد شعار (Logo) جاهز بصيغة SVG/PNG عالية الدقة؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> الهوية البصرية + الشهادات + الخطابات. أرسلوه قبل المرحلة 1.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q24</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">أين تُستضاف بيانات المعهد؟ (PDPL يفرض السعودية)</div>
+        <div class="q-context"><span class="label">الأثر:</span> السنة الأولى Supabase Cloud (فرانكفورت)، الإنتاج Self-Hosted KSA.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PAGE 7: ORG INFO ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المحور 3: معلومات المؤسسة</h2>
+      <div class="page-num">07</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">حجم المعهد ومكوّناته</span></h2>
+    <p class="section-subtitle">
+      هذه الأرقام تُحدد <strong>سعة النظام، التدريب، والتسعير الدقيق</strong>.
+    </p>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q25</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">عدد الموظفين الحاليين لكل دور؟ (إدارة، مالية، شؤون متدربين، تسجيل، مدربين)</div>
+        <div class="q-context"><span class="label">الأثر:</span> تصميم RBAC + التدريب لكل مجموعة + رخص الدخول.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q26</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">عدد البرامج/الدبلومات المقدمة + هياكل الرسوم لكل برنامج؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> Seed data للنظام + التخطيط للمواد والشعب.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q27</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">عدد الطلاب الفعلي لكل فرع؟ وعدد الجدد المتوقع كل فصل؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> سعة النظام + التخطيط للأداء.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q28</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل المعهد معتمد من TVTC؟ هل لديه اعتمادات أخرى (مثل MQF)؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> صيغة الشهادات + الامتثال الحكومي.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q29</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل يوجد نظام موجود حالياً (Excel/ERP)؟ هل نحتاج Data Migration؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> خطة الانتقال للنظام الجديد. يحتاج جهداً منفصلاً إن وُجد.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q30</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">حجم البيانات الحالية: عدد الطلاب التاريخي، الدفعات السابقة، الاختبارات؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> تقدير حجم Migration + استراتيجية الأرشيف.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PAGE 8: TEMPLATES & FORMATS ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المحور 4: النماذج والقوالب</h2>
+      <div class="page-num">08</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">قوالب المعهد الرسمية</span></h2>
+    <p class="section-subtitle">
+      نحتاج نماذج المعهد الفعلية لاستنساخها بدقة في النظام (شعار + ترويسة + توقيعات).
+    </p>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q31</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">نموذج كشف الدرجات الرسمي للمعهد — يُرجى تزويدنا بنسخة PDF/Word</div>
+        <div class="q-context"><span class="label">الأثر:</span> استنساخ القالب في النظام.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة / المرفقات:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q32</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">نموذج تقرير الحضور والغياب الرسمي</div>
+        <div class="q-context"><span class="label">الأثر:</span> استنساخ التقرير في وحدة الحضور.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة / المرفقات:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q33</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">نموذج خطاب التعريف، الإفادة، التدريب، التعهد، الإنذار — كل النماذج المستخدمة حالياً</div>
+        <div class="q-context"><span class="label">الأثر:</span> 12+ قالب خطاب رسمي في Letters Generator.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة / المرفقات:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q34</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">نموذج الشهادة (مع مكان شعار TVTC إن متوفّر)</div>
+        <div class="q-context"><span class="label">الأثر:</span> قالب الشهادة بـQR + الاعتماد الرسمي.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة / المرفقات:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q35</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">نموذج السند المالي / الإيصال الذي يُسلَّم للطالب</div>
+        <div class="q-context"><span class="label">الأثر:</span> توليد PDF رسمي للإيصالات.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة / المرفقات:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q36</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">من يحق له التوقيع الرسمي على الخطابات (مدير المعهد، شؤون المتدربين، الخ)؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> توقيعات المعتمدين على الخطابات الصادرة.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PAGE 9: SCHEDULES & OPERATIONS ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المحور 5: التشغيل والجداول</h2>
+      <div class="page-num">09</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">تفاصيل العمليات اليومية</span></h2>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q37</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">ما توقيت الفترات (صباحي + مسائي + ويكند) بالساعات تحديداً؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> إعداد الجداول الدراسية. مثال: صباحي 8 ص - 12 ظ، مسائي 5 م - 10 م.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q38</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">عدد القاعات في كل فرع + الطاقة الاستيعابية لكل قاعة؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> منع تعارض الجداول + تحذيرات الإشغال.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q39</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">عدد المدربين الحاليين + إمكانية تدريس فترات متعددة؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> تخصيص المدربين للحصص + الاستفادة منهم.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q40</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">دوام الموظفين الإداريين: ساعات الدوام الرسمي؟ الإجازات السنوية المعتمدة؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> نظام إدارة الموظفين (HR Add-on) — رصيد الإجازات وتقارير الدوام.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-low">
+      <div class="q-header">
+        <span class="q-id">Q41</span>
+        <span class="q-priority low">🟢 مفيد</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل توجد إجازات/أعياد رسمية محددة (إجازات سعودية، فصول دراسية)؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> التقويم العام + حساب أيام العمل.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PAGE 10: SUPPORT & DELIVERY ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المحور 6: التسليم والدعم</h2>
+      <div class="page-num">10</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">الإطلاق وما بعده</span></h2>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q42</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">متى موعد الإطلاق المستهدف؟ هل هناك حدث (بداية فصل دراسي)؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> تخطيط المراحل الزمنية + UAT.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q43</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل يحتاج المعهد تدريب موظفيه؟ كم يوم لكل دور؟ في الموقع أم عن بُعد؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> تخطيط التدريب لكل مرحلة. مشمول مجاناً في العرض.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q44</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">من سيدير الـIT الداخلي للمعهد؟ هل لديه خبرة بالأنظمة الحديثة؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> Knowledge Transfer + استمرارية الدعم بعد التسليم.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-high">
+      <div class="q-header">
+        <span class="q-id">Q45</span>
+        <span class="q-priority high">🟠 مهم</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">مدة عقد الدعم الإجمالية؟ مستوى الدعم (8x5 أم 24x7)؟ قنوات التواصل؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> الصيانة السنوية (12 شهر مجاناً) + تمديدها لاحقاً.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q46</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">من نقطة الاتصال الأساسية في المعهد لكل أمر؟ (تقني، مالي، إداري، أكاديمي)</div>
+        <div class="q-context"><span class="label">الأثر:</span> Escalation matrix + تسريع القرارات.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-low">
+      <div class="q-header">
+        <span class="q-id">Q47</span>
+        <span class="q-priority low">🟢 مفيد</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل يوجد تفضيل في وقت الاجتماعات الأسبوعية للمتابعة؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> جدولة اجتماعات أسبوعية ثابتة.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question priority-medium">
+      <div class="q-header">
+        <span class="q-id">Q48</span>
+        <span class="q-priority medium">🔵 ضروري</span>
+      </div>
+      <div class="q-body">
+        <div class="q-text">هل توجد متطلبات قانونية أو تعاقدية إضافية يجب مراعاتها؟</div>
+        <div class="q-context"><span class="label">الأثر:</span> العقد الرسمي + بنود السرية والملكية الفكرية.</div>
+        <div class="q-answer">
+          <span class="q-answer-label">الإجابة:</span>
+          <div class="q-answer-lines"></div>
+          <div class="q-answer-lines"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PAGE 11: CHECKLIST + NEXT STEPS ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">قائمة المخرجات والخطوات القادمة</h2>
+      <div class="page-num">11</div>
+    </div>
+
+    <h2 class="section-h"><span class="underline">ما يخرج من الجلسة؟</span></h2>
+    <p class="section-subtitle">
+      بنهاية الجلسة، يجب توفّر هذه العناصر للانطلاق في الأسبوع التالي.
+    </p>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div class="checklist-content">
+          <h5>وثيقة الإجابات الموقّعة</h5>
+          <p>هذه الوثيقة نفسها مع الإجابات الكاملة وتوقيع من المعهد.</p>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div class="checklist-content">
+          <h5>الملفات والنماذج الرسمية للمعهد</h5>
+          <p>كشف الدرجات، تقرير الحضور، الخطابات، الشهادة (Q31-Q34).</p>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div class="checklist-content">
+          <h5>وثائق API البرنامج المحاسبي</h5>
+          <p>دليل المطوّر + Sandbox credentials (Q12-Q15).</p>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div class="checklist-content">
+          <h5>وثائق API الوزارة (TVTC)</h5>
+          <p>دليل التكامل + Sandbox (Q16-Q19).</p>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div class="checklist-content">
+          <h5>شعار المعهد بصيغ متعددة</h5>
+          <p>SVG + PNG عالي الدقة + PDF (Q23).</p>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div class="checklist-content">
+          <h5>قائمة جهات الاتصال الرسمية</h5>
+          <p>4 نقاط اتصال على الأقل (تقني، مالي، إداري، أكاديمي) (Q46).</p>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div class="checklist-content">
+          <h5>توقيع العقد الرسمي + دفعة البداية</h5>
+          <p>الدفعة الأولى 5,000 ريال + توقيع وثيقة المشروع.</p>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox"></div>
+        <div class="checklist-content">
+          <h5>جدولة اجتماع الانطلاق (Kickoff)</h5>
+          <p>تحديد تاريخ بداية المرحلة الأولى رسمياً.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="label">🚀 الخطوات بعد الجلسة</div>
+      <h4>الأسبوع 1 = استلام المرحلة الأولى</h4>
+      <p>
+        بعد توقيع العقد ودفعة البداية، يبدأ التطوير الفعلي للمرحلة الأولى (الأساس).
+        نلتقي أسبوعياً (30 دقيقة) لمراجعة التقدم، ونُسلّم المرحلة الأولى نهاية الشهر الأول.
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>🎯 <strong>أسئلة جلسة Discovery — IIMS</strong></p>
+    <p class="tagline">"كل سؤال يُجاب اليوم = مشكلة لا تظهر غداً"</p>
+    <p style="margin-top: 10px; font-size: 0.75rem; opacity: 0.6;">
+      الإصدار 1.0 · جلسة Discovery الأولى
+    </p>
+  </div>
+</section>
+
+</body>
+</html>
