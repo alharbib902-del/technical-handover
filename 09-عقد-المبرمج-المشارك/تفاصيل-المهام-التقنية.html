@@ -35,6 +35,16 @@
     line-height: 1.8;
     font-size: 14px;
   }
+  code, .mono {
+    font-family: 'JetBrains Mono', 'Cairo', monospace;
+    background: #F3F4F6;
+    color: var(--primary-dark);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    direction: ltr;
+    display: inline-block;
+  }
   .page {
     max-width: 900px;
     margin: 0 auto;
@@ -269,6 +279,28 @@
     right: 0;
     top: 5px;
   }
+
+  /* STACK TABLE */
+  .stack-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.86rem;
+  }
+  .stack-table th {
+    background: var(--primary);
+    color: var(--accent);
+    padding: 8px 10px;
+    text-align: right;
+    font-weight: 700;
+  }
+  .stack-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .stack-table tr:nth-child(even) { background: #FAFAF7; }
+  .stack-table .col-pkg { color: var(--primary-dark); font-weight: 600; }
 
   /* PROTOCOL STEPS */
   .protocol {
@@ -555,6 +587,53 @@
     color: #991B1B;
   }
 
+  /* CODE SNIPPET */
+  .snippet {
+    background: #0F172A;
+    color: #E2E8F0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    line-height: 1.65;
+    direction: ltr;
+    text-align: left;
+    margin: 8px 0;
+    overflow-x: auto;
+    border-right: 4px solid var(--accent);
+  }
+  .snippet .kw { color: #F472B6; }
+  .snippet .cls { color: #FBBF24; }
+  .snippet .str { color: #86EFAC; }
+  .snippet .cm { color: #64748B; font-style: italic; }
+  .snippet .fn { color: #93C5FD; }
+
+  /* BUDGET BOX */
+  .budget-box {
+    background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+    border: 2px dashed var(--primary);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    text-align: center;
+  }
+  .budget-box .label {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.92rem;
+    margin-bottom: 4px;
+  }
+  .budget-box .amount {
+    color: var(--primary-dark);
+    font-size: 1.45rem;
+    font-weight: 900;
+  }
+  .budget-box .breakdown {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin-top: 4px;
+  }
+
   /* PRINT */
   @media print {
     @page { size: A4; margin: 0; }
@@ -571,6 +650,7 @@
     .content-page { padding: 14mm 14mm 12mm !important; }
     .week-section { page-break-inside: avoid; margin-bottom: 10px; }
     .month-banner { page-break-inside: avoid; }
+    .snippet { page-break-inside: avoid; }
     .cover h1 { font-size: 2.1rem; }
   }
 </style>
@@ -594,7 +674,7 @@
     <h1>تفاصيل المهام التقنية<br>للمبرمج المشارك</h1>
     <p class="cover-subtitle">
       المراحل الأربع كاملةً + نظام إدارة الموظفين<br>
-      موزّعة على 3 شهور (12 أسبوع) — تطبيق متكامل مع الطرف الأول
+      موزّعة على 3 شهور (12 أسبوع) — Laravel 11 + Filament 3 + Livewire 3 + PostgreSQL
     </p>
 
     <div class="cover-tools">
@@ -614,9 +694,9 @@
         <div class="role">إدارة الكود (حساب يُوفَّر)</div>
       </div>
       <div class="cover-tool">
-        <div class="icon">⚡</div>
-        <div class="name">Supabase</div>
-        <div class="role">قاعدة البيانات (حساب يُوفَّر)</div>
+        <div class="icon">🐘</div>
+        <div class="name">PostgreSQL 15</div>
+        <div class="role">قاعدة البيانات على VPS سعودي</div>
       </div>
     </div>
   </div>
@@ -665,17 +745,19 @@
           <h4>GitHub</h4>
         </div>
         <div class="desc">
-          الحساب يُوفَّره الطرف الأول. كل الكود يُرفع على المستودع المخصّص للمشروع.
+          الحساب يُوفَّره الطرف الأول. كل الكود يُرفع على المستودع المخصّص للمشروع
+          بصيغة <strong>Conventional Commits</strong>.
         </div>
       </div>
 
       <div class="tool-card">
         <div class="header">
-          <div class="icon">⚡</div>
-          <h4>Supabase</h4>
+          <div class="icon">🐘</div>
+          <h4>PostgreSQL 15 + Redis</h4>
         </div>
         <div class="desc">
-          الحساب يُوفَّره الطرف الأول. قاعدة البيانات الرئيسية للمشروع.
+          PostgreSQL 15 (قاعدة البيانات الرئيسية) + Redis (Cache + Queues + Sessions)
+          على <strong>VPS سعودي (Hostinger KSA)</strong>.
         </div>
       </div>
     </div>
@@ -684,8 +766,8 @@
       <h4>🔐 الحسابات التي يستلمها المبرمج المشارك</h4>
       <ul>
         <li><strong>دعوة GitHub</strong> للمستودع الخاص بالمشروع (Private Repo).</li>
-        <li><strong>دعوة Supabase</strong> كـ Developer على المشروع.</li>
-        <li><strong>إعدادات البيئة (.env)</strong> ترسل بقناة آمنة.</li>
+        <li><strong>وصول SSH للـVPS</strong> (Staging Server) — مفتاح RSA يُسلَّم بقناة آمنة.</li>
+        <li><strong>إعدادات البيئة (.env)</strong> ترسل بقناة آمنة (1Password / Bitwarden).</li>
         <li><strong>وصول لقناة التواصل</strong> (WhatsApp + قناة العمل).</li>
       </ul>
     </div>
@@ -695,12 +777,12 @@
     <div class="protocol">
       <h4>⚠️ لا يبدأ العمل في أي مرحلة إلا بعد اجتياز هذا البروتوكول</h4>
       <ol>
-        <li>المبرمج المشارك يُحضّر <strong>خطة المرحلة</strong> (المهام + التصميم + الـSchema).</li>
+        <li>المبرمج المشارك يُحضّر <strong>خطة المرحلة</strong> (المهام + Migrations + Resources Filament).</li>
         <li>يعرض الخطة على <strong>Codex</strong> للمراجعة والتقييم.</li>
         <li>Codex يُقيّم الخطة على <strong>100 درجة</strong> ويعطي ملاحظات.</li>
         <li>إذا التقييم <strong>أقل من 100/100</strong>، يجب التعديل وإعادة العرض.</li>
         <li>عند الوصول لـ<strong>100/100</strong>، يُؤذَن بالبدء.</li>
-        <li>أثناء التطوير: Codex يراجع الكود يومياً (Daily Review).</li>
+        <li>أثناء التطوير: Codex يراجع الكود يومياً (Daily Review عبر Pull Requests).</li>
         <li>عند الانتهاء: Codex يُقيّم النتيجة قبل تسليمها للطرف الأول.</li>
       </ol>
     </div>
@@ -726,15 +808,82 @@
         </div>
       </div>
     </div>
+
+    <div class="budget-box">
+      <div class="label">💰 الميزانية الإجمالية للمبرمج المشارك</div>
+      <div class="amount">13,500 ريال سعودي</div>
+      <div class="breakdown">4,500 ريال × 3 شهور — تُصرف نهاية كل شهر بعد اعتماد Codex</div>
+    </div>
   </div>
 </section>
 
-<!-- ============= PAGE 3: MONTH 1 ============= -->
+<!-- ============= PAGE 3: STACK OVERVIEW ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المنظومة التقنية — Laravel Stack الكامل</h2>
+      <div class="page-num">03</div>
+    </div>
+
+    <h3 class="section-h">🧱 الحزمة التقنية المعتمدة</h3>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th style="width: 30%;">الطبقة</th>
+          <th style="width: 35%;">التقنية</th>
+          <th>الدور</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>اللغة</td><td class="col-pkg">PHP 8.3</td><td>typed properties + readonly + enums</td></tr>
+        <tr><td>الإطار الأساسي</td><td class="col-pkg">Laravel 11</td><td>التوجيه + Service Container + Eloquent</td></tr>
+        <tr><td>لوحة الإدارة</td><td class="col-pkg">Filament 3</td><td>Resources + Forms + Tables + Widgets</td></tr>
+        <tr><td>التفاعلية</td><td class="col-pkg">Livewire 3</td><td>SPA-like بدون JS منفصل</td></tr>
+        <tr><td>الواجهة</td><td class="col-pkg">Blade + Tailwind CSS</td><td>RTL + Cairo (يأتي مع Filament)</td></tr>
+        <tr><td>قاعدة البيانات</td><td class="col-pkg">PostgreSQL 15</td><td>+ pgvector للـAI Embeddings</td></tr>
+        <tr><td>ORM</td><td class="col-pkg">Eloquent</td><td>Models + Policies + Observers</td></tr>
+        <tr><td>المصادقة</td><td class="col-pkg">Laravel Auth + Sanctum</td><td>+ 2FA عبر Filament Breezy</td></tr>
+        <tr><td>الصلاحيات</td><td class="col-pkg">Spatie Permission + Filament Shield</td><td>RBAC كامل لكل Resource</td></tr>
+        <tr><td>State Machines</td><td class="col-pkg">Spatie Laravel Model States</td><td>حالات الطلاب والطلبات</td></tr>
+        <tr><td>التخزين</td><td class="col-pkg">Spatie Media Library</td><td>المرفقات + Conversions</td></tr>
+        <tr><td>الطوابير</td><td class="col-pkg">Laravel Horizon + Redis</td><td>Jobs + Failed Queue Dashboard</td></tr>
+        <tr><td>المؤقتات</td><td class="col-pkg">Laravel Scheduler</td><td>cron مركزي عبر <code>schedule:run</code></td></tr>
+        <tr><td>الـRealtime</td><td class="col-pkg">Laravel Reverb</td><td>WebSockets محلي على VPS</td></tr>
+        <tr><td>توليد PDF</td><td class="col-pkg">Spatie Browsershot</td><td>Headless Chrome → PDF عربي RTL</td></tr>
+        <tr><td>QR Codes</td><td class="col-pkg">Bacon QR Code + Endroid</td><td>للشهادات والخطابات</td></tr>
+        <tr><td>الاختبارات</td><td class="col-pkg">Pest + PHPUnit + Dusk</td><td>Unit + Feature + Browser</td></tr>
+        <tr><td>الجودة</td><td class="col-pkg">Laravel Pint + Larastan + Rector</td><td>تنسيق + Static Analysis</td></tr>
+        <tr><td>الاستضافة</td><td class="col-pkg">VPS سعودي (Hostinger KSA)</td><td>Ubuntu 22.04 + Nginx + PHP-FPM</td></tr>
+        <tr><td>النشر</td><td class="col-pkg">GitHub Actions + Deployer</td><td>Zero-downtime deployment</td></tr>
+      </tbody>
+    </table>
+
+    <div class="snippet">
+<span class="cm">// composer.json — الحزم الأساسية المثبَّتة من اليوم الأول</span>
+<span class="str">"require"</span>: {
+  <span class="str">"php"</span>: <span class="str">"^8.3"</span>,
+  <span class="str">"laravel/framework"</span>: <span class="str">"^11.0"</span>,
+  <span class="str">"filament/filament"</span>: <span class="str">"^3.2"</span>,
+  <span class="str">"livewire/livewire"</span>: <span class="str">"^3.5"</span>,
+  <span class="str">"spatie/laravel-permission"</span>: <span class="str">"^6.0"</span>,
+  <span class="str">"spatie/laravel-model-states"</span>: <span class="str">"^2.7"</span>,
+  <span class="str">"spatie/laravel-medialibrary"</span>: <span class="str">"^11.0"</span>,
+  <span class="str">"spatie/browsershot"</span>: <span class="str">"^4.0"</span>,
+  <span class="str">"laravel/horizon"</span>: <span class="str">"^5.24"</span>,
+  <span class="str">"laravel/reverb"</span>: <span class="str">"^1.0"</span>,
+  <span class="str">"bezhansalleh/filament-shield"</span>: <span class="str">"^3.2"</span>,
+  <span class="str">"pgvector/pgvector"</span>: <span class="str">"^0.1"</span>
+}</div>
+  </div>
+</section>
+
+<!-- ============= PAGE 4: MONTH 1 ============= -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
       <h2 class="page-title">الشهر الأول — الأساس + الاختبارات + الطلاب</h2>
-      <div class="page-num">03</div>
+      <div class="page-num">04</div>
     </div>
 
     <div class="month-banner">
@@ -750,91 +899,99 @@
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">1</div>
-        <div class="week-title">الأسبوع 1 — التأسيس + المصادقة + الفروع</div>
+        <div class="week-title">الأسبوع 1 — التأسيس + Filament + المصادقة + الفروع</div>
       </div>
       <ul class="week-tasks">
-        <li>إنشاء <strong>Next.js 14</strong> + TypeScript strict + TailwindCSS + shadcn/ui (RTL).</li>
-        <li>إعداد <strong>Supabase Project</strong> + الـ Migrations الأولية.</li>
-        <li>خطوط Cairo + Tajawal + ESLint + Prettier + Husky.</li>
-        <li><strong>GitHub Actions CI/CD</strong> + النشر الأولي على Vercel.</li>
-        <li><strong>Supabase Auth</strong> + 2FA للأدوار الإدارية + Lockout policy.</li>
-        <li>جداول <code>branches</code> + <code>users</code> + <code>roles</code> + <code>permissions</code>.</li>
-        <li><strong>RLS</strong> لعزل الفروع الأربعة + Middleware حماية المسارات.</li>
-        <li><strong>Audit Log</strong> جدول + Triggers تلقائية.</li>
+        <li>إنشاء مشروع <strong>Laravel 11</strong> + تثبيت <code>filament/filament:^3.2</code> + <code>livewire/livewire:^3.5</code>.</li>
+        <li>إعداد <strong>PostgreSQL 15</strong> + <strong>Redis</strong> على الـVPS + Migrations الأولية.</li>
+        <li>تثبيت خطوط Cairo + RTL Plugin لـTailwind + <strong>Filament Theme</strong> (Emerald + Gold).</li>
+        <li><strong>GitHub Actions CI</strong>: Pint + Larastan + Pest + النشر التلقائي عبر Deployer.</li>
+        <li><strong>Laravel Auth</strong> + <strong>Filament Breezy</strong> (2FA) + Lockout عبر <code>RateLimiter</code>.</li>
+        <li>تثبيت <code>spatie/laravel-permission</code> + <code>filament-shield</code> — توليد Policies تلقائياً.</li>
+        <li>Migrations: <code>branches</code> + <code>users</code> + <code>roles</code> + <code>permissions</code> + <code>model_has_roles</code>.</li>
+        <li><strong>Filament Tenancy</strong> لعزل الفروع الأربعة + Global Scopes + Laravel Policies.</li>
+        <li><strong>Activity Log</strong> عبر <code>spatie/laravel-activitylog</code> + Eloquent Observers.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">مشروع جاهز + تسجيل دخول لكل دور + عزل فروع مُختبَر بـRLS + Audit Log.</div>
+        <div class="text">مشروع Laravel جاهز + Filament Panel + تسجيل دخول + عزل فروع مُختبَر بـPolicies + Activity Log.</div>
       </div>
     </div>
 
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">2</div>
-        <div class="week-title">الأسبوع 2 — بنك الأسئلة (14 نوع)</div>
+        <div class="week-title">الأسبوع 2 — بنك الأسئلة (14 نوع) — Filament Resources</div>
       </div>
       <ul class="week-tasks">
-        <li>جداول <code>questions</code> + <code>question_options</code> + <code>question_categories</code>.</li>
-        <li>تنفيذ <strong>14 نوع سؤال</strong> (MCQ، صح/خطأ، فراغ، توصيل، سحب، Hotspot...).</li>
-        <li>واجهة إدخال الأسئلة لكل نوع مع validation.</li>
-        <li><strong>استيراد Excel</strong> مع validation + تقرير أخطاء.</li>
-        <li>تصنيف الأسئلة (مادة / موضوع / صعوبة / تاجات) + البحث المتقدم.</li>
-        <li><strong>اقتراح أسئلة AI</strong> مع موافقة المعلم.</li>
+        <li>Models: <code>Question</code>, <code>QuestionOption</code>, <code>QuestionCategory</code> + <strong>Polymorphic relations</strong>.</li>
+        <li>تنفيذ <strong>14 نوع سؤال</strong> عبر <strong>STI / Single Table Inheritance</strong> + <code>type</code> enum.</li>
+        <li><strong>QuestionResource</strong> في Filament مع Form بديناميكي حسب النوع (Builder/Repeater).</li>
+        <li><strong>استيراد Excel</strong> عبر <code>maatwebsite/excel</code> + Filament Import Action + تقرير أخطاء.</li>
+        <li>تصنيف الأسئلة (مادة / موضوع / صعوبة / تاجات) + Filters + Global Search.</li>
+        <li><strong>اقتراح أسئلة AI</strong> عبر <code>Http::withToken()</code> → Claude API + Filament Action للموافقة.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">بنك أسئلة كامل + معلم يضيف 50 سؤال + يستورد 100 من Excel.</div>
+        <div class="text">بنك أسئلة كامل عبر Filament + معلم يضيف 50 سؤال + استيراد 100 من Excel.</div>
       </div>
     </div>
 
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">3</div>
-        <div class="week-title">الأسبوع 3 — محرك الاختبارات + الشهادات + PWA</div>
+        <div class="week-title">الأسبوع 3 — محرك الاختبارات + الشهادات (Browsershot) + PWA</div>
       </div>
       <ul class="week-tasks">
-        <li><strong>محرك توليد الاختبارات</strong> (تلقائي بمواصفات / يدوي).</li>
-        <li>آلية كود الاختبار الذكية (Remote / Onsite).</li>
-        <li><strong>التصحيح الآلي</strong> لكل أنواع الأسئلة + يدوي للمقالي.</li>
-        <li>3 طبقات حماية (Fullscreen، تبديل التابات، النسخ/اللصق، بصمة المتصفح).</li>
-        <li>نظام الدبلومات (تسلسل المواد + المعدل التراكمي).</li>
-        <li>توليد الشهادات تلقائياً + QR + صفحة التحقق العامة.</li>
-        <li><strong>PWA للتحضير الميداني</strong> (يعمل Offline + يتزامن).</li>
-        <li>تقارير أكاديمية أساسية (Item Analysis + متوسطات).</li>
+        <li><strong>محرك توليد الاختبارات</strong> — Service Class + Filament Wizard (تلقائي بمواصفات / يدوي).</li>
+        <li>آلية كود الاختبار الذكية (Remote / Onsite) عبر <code>Str::uuid()</code> + Eloquent Scope.</li>
+        <li><strong>التصحيح الآلي</strong> عبر <code>QuestionScorer</code> Service لكل نوع + يدوي للمقالي.</li>
+        <li>3 طبقات حماية في Livewire Exam Component (Fullscreen، تبديل التابات، النسخ/اللصق، بصمة المتصفح).</li>
+        <li>نظام الدبلومات (تسلسل المواد + المعدل التراكمي) — <code>Diploma</code> + <code>DiplomaSubject</code>.</li>
+        <li>توليد الشهادات عبر <strong>Spatie Browsershot</strong> (Blade → HTML → PDF) + <strong>Bacon QR</strong> + صفحة تحقق <code>/verify/{ulid}</code>.</li>
+        <li><strong>PWA للتحضير الميداني</strong> عبر <code>silviolleite/laravelpwa</code> + Service Worker + Offline Sync.</li>
+        <li>تقارير أكاديمية أساسية (Item Analysis + متوسطات) — Filament Widgets + Charts.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">منصة اختبارات كاملة + شهادات بـQR + PWA يعمل على الجوال.</div>
+        <div class="text">منصة اختبارات كاملة + شهادات PDF بـQR + PWA يعمل على الجوال.</div>
       </div>
     </div>
 
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">4</div>
-        <div class="week-title">الأسبوع 4 — الطلاب + State Machine + الفروع</div>
+        <div class="week-title">الأسبوع 4 — الطلاب + Spatie ModelStates + إدارة الفروع</div>
       </div>
       <ul class="week-tasks">
-        <li>جدول <code>students</code> الكامل + بيانات شخصية + ولي أمر + توظيف اختياري.</li>
-        <li><strong>State Machine للطالب</strong> (8 حالات + history table).</li>
-        <li>نقل الطلاب بين الفروع + سجل تاريخي.</li>
-        <li>دور <strong>مدير الفرع</strong> + <strong>موظف التسجيل</strong>.</li>
-        <li>شاشة بطاقة الطالب الموحّدة (7 tabs).</li>
-        <li>صلاحيات تفصيلية لكل فرع.</li>
+        <li>Migration و Model <code>Student</code> الكامل + بيانات شخصية + ولي أمر + توظيف اختياري.</li>
+        <li><strong>State Machine للطالب</strong> عبر <code>spatie/laravel-model-states</code> (8 حالات + StateHistory).</li>
+        <li>نقل الطلاب بين الفروع — Action عبر Filament Bulk Action + Eloquent Event.</li>
+        <li>دور <strong>مدير الفرع</strong> + <strong>موظف التسجيل</strong> عبر Spatie Permission.</li>
+        <li>شاشة بطاقة الطالب الموحّدة (7 tabs) عبر <strong>Filament Infolist + Tabs</strong>.</li>
+        <li>صلاحيات تفصيلية لكل فرع عبر <strong>Filament Tenancy</strong> + Policies.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الشهر</div>
-        <div class="text">منصة اختبارات + إدارة طلاب كاملة + 8 حالات + نقل بين الفروع.</div>
+        <div class="text">منصة اختبارات + إدارة طلاب كاملة + 8 حالات (ModelStates) + نقل بين الفروع.</div>
       </div>
     </div>
+
+    <div class="snippet">
+<span class="cm">// مثال State Machine للطالب — Spatie ModelStates</span>
+<span class="kw">class</span> <span class="cls">Active</span> <span class="kw">extends</span> <span class="cls">StudentState</span> {
+  <span class="kw">public function</span> <span class="fn">color</span>(): <span class="cls">string</span> { <span class="kw">return</span> <span class="str">'success'</span>; }
+  <span class="kw">public static function</span> <span class="fn">name</span>(): <span class="cls">string</span> { <span class="kw">return</span> <span class="str">'نشط'</span>; }
+}</div>
   </div>
 </section>
 
-<!-- ============= PAGE 4: MONTH 2 ============= -->
+<!-- ============= PAGE 5: MONTH 2 ============= -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
       <h2 class="page-title">الشهر الثاني — المالية + الحجب + الطلبات + الخطابات</h2>
-      <div class="page-num">04</div>
+      <div class="page-num">05</div>
     </div>
 
     <div class="month-banner">
@@ -850,21 +1007,21 @@
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">5</div>
-        <div class="week-title">الأسبوع 5 — التكامل مع البرنامج المحاسبي</div>
+        <div class="week-title">الأسبوع 5 — التكامل مع البرنامج المحاسبي الخارجي</div>
       </div>
       <ul class="week-tasks">
-        <li><strong>Adapter Pattern</strong> + <code>IAccountingService</code> interface.</li>
-        <li>Endpoints: <code>getStudentBalance</code> + <code>getPayments</code> + <code>getBranchRevenue</code>.</li>
-        <li>جدول <code>accounting_snapshot</code> في Postgres للأداء.</li>
-        <li><strong>Pull periodic</strong> كل 15 دقيقة (Cron).</li>
-        <li><strong>Webhook receiver</strong> فوري للدفعات + Verify signature.</li>
-        <li><strong>Reconciliation Job</strong> يومي + تنبيهات Data Drift.</li>
-        <li>Circuit Breaker + Retry policy + Dead Letter Queue.</li>
-        <li>Mock Adapter للتطوير المحلي.</li>
+        <li><strong>Adapter Pattern</strong> + <code>AccountingService</code> interface + Service Container Binding.</li>
+        <li>Methods: <code>getStudentBalance()</code>, <code>getPayments()</code>, <code>getBranchRevenue()</code> عبر <strong>Laravel HTTP Client</strong>.</li>
+        <li>جدول <code>accounting_snapshot</code> + Eloquent Model + Indexes للأداء.</li>
+        <li><strong>Pull periodic</strong> كل 15 دقيقة عبر <strong>Laravel Scheduler</strong>: <code>$schedule->job(SyncBalancesJob::class)</code>.</li>
+        <li><strong>Webhook receiver</strong> فوري للدفعات + <code>VerifyWebhookSignature</code> Middleware.</li>
+        <li><strong>Reconciliation Job</strong> يومي عبر Horizon + تنبيهات Data Drift عبر Notification.</li>
+        <li>Circuit Breaker + Retry policy عبر <code>->retry(3, 100)</code> + Failed Job Dashboard.</li>
+        <li>Mock Adapter في <code>app/Services/Accounting/Fake</code> للتطوير المحلي + <code>Http::fake()</code> للاختبارات.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">طبقة تكامل مكتملة + بيانات مالية حية في النظام.</div>
+        <div class="text">طبقة تكامل مكتملة (Adapter + Queue Jobs) + بيانات مالية حية في النظام.</div>
       </div>
     </div>
 
@@ -874,18 +1031,18 @@
         <div class="week-title">الأسبوع 6 — Service Blocking Engine ⭐⭐ + لوحات المالية</div>
       </div>
       <ul class="week-tasks">
-        <li>محرك قواعد ديناميكي (Rules Engine) قابل للتعديل من DB.</li>
-        <li><strong>مصفوفة الحجب</strong> (8 حالات × 10+ خدمات).</li>
-        <li>حجب تلقائي بناءً على بيانات المحاسبي.</li>
-        <li>واجهة الإدارة لتعديل القواعد دون كود.</li>
-        <li><strong>فك الحجب اليدوي</strong> من الإدارة + توثيق إلزامي للسبب.</li>
-        <li>لوحة المالية الرئيسية (KPIs + Charts).</li>
-        <li>تقرير المتأخرين + تقارير الفروع المالية.</li>
-        <li>تصدير Excel + PDF + إشعارات استحقاق.</li>
+        <li>محرك قواعد ديناميكي (Rules Engine) — جدول <code>blocking_rules</code> + <code>BlockingRule</code> Model.</li>
+        <li><strong>مصفوفة الحجب</strong> (8 حالات × 10+ خدمات) عبر Pivot + Filament Repeater.</li>
+        <li>حجب تلقائي عبر <strong>Eloquent Observer</strong> + <code>Middleware</code> + Laravel Policies.</li>
+        <li>واجهة الإدارة لتعديل القواعد دون كود — Filament Resource كامل.</li>
+        <li><strong>فك الحجب اليدوي</strong> من الإدارة + Filament Action + توثيق إلزامي للسبب (Activity Log).</li>
+        <li>لوحة المالية الرئيسية — <strong>Filament Dashboard</strong> + StatsOverviewWidget + ChartWidget.</li>
+        <li>تقرير المتأخرين + تقارير الفروع المالية عبر Filament Tables + Filters.</li>
+        <li>تصدير Excel عبر <code>maatwebsite/excel</code> + PDF عبر Browsershot + إشعارات استحقاق عبر <strong>Laravel Notifications</strong>.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">محرك الحجب يعمل لحظياً + لوحات المالية.</div>
+        <div class="text">محرك الحجب يعمل لحظياً (Observer + Middleware) + لوحات المالية في Filament.</div>
       </div>
     </div>
 
@@ -895,49 +1052,49 @@
         <div class="week-title">الأسبوع 7 — Workflow Engine + 14 نوع طلب</div>
       </div>
       <ul class="week-tasks">
-        <li><strong>XState</strong> للـ State Machine.</li>
-        <li>14 نوع طلب × 7 حالات (جديد، قيد المراجعة، محول...).</li>
-        <li>Routing rules ديناميكية بين الأقسام.</li>
-        <li><strong>SLA</strong> لكل نوع طلب + Escalation Cron.</li>
-        <li>إشعارات داخل النظام عند تغيّر الحالة.</li>
-        <li>جدول <code>requests</code> + <code>request_events</code>.</li>
-        <li>تكامل الطلب مع <strong>Service Blocking</strong>.</li>
+        <li><strong>Spatie Laravel Model States</strong> للـ State Machine — <code>RequestState</code> abstract + 7 states.</li>
+        <li>14 نوع طلب × 7 حالات (جديد، قيد المراجعة، محول...) — <code>RequestType</code> Enum + Polymorphic.</li>
+        <li>Routing rules ديناميكية بين الأقسام عبر جدول <code>routing_rules</code> + Service.</li>
+        <li><strong>SLA</strong> لكل نوع طلب + Escalation عبر Laravel Scheduler + Queue Jobs.</li>
+        <li>إشعارات داخل النظام عند تغيّر الحالة عبر <strong>Filament Notifications</strong> + Database Channel.</li>
+        <li>Migrations: <code>requests</code> + <code>request_events</code> + <code>request_state_history</code>.</li>
+        <li>تكامل الطلب مع <strong>Service Blocking</strong> عبر Listeners + Events.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">Workflow Engine كامل + 14 نوع طلب + مسارات بين الأقسام.</div>
+        <div class="text">Workflow Engine كامل (ModelStates) + 14 نوع طلب + مسارات بين الأقسام.</div>
       </div>
     </div>
 
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">8</div>
-        <div class="week-title">الأسبوع 8 — Letters Generator (PDF عربي RTL)</div>
+        <div class="week-title">الأسبوع 8 — Letters Generator (Browsershot + PDF عربي RTL)</div>
       </div>
       <ul class="week-tasks">
-        <li><strong>Puppeteer</strong> لتحويل HTML → PDF + محرك قوالب.</li>
-        <li>HTML/CSS قوالب عربية RTL احترافية.</li>
-        <li>12+ خطاب: تعريف، إفادة، تدريب، شهادة، سند، تعهد، إنذار.</li>
+        <li><strong>Spatie Browsershot</strong> لتحويل Blade → HTML → PDF + <code>LetterTemplate</code> Model.</li>
+        <li>Blade Templates عربية RTL احترافية في <code>resources/views/letters/</code>.</li>
+        <li>12+ خطاب: تعريف، إفادة، تدريب، شهادة، سند، تعهد، إنذار — <code>LetterType</code> Enum.</li>
         <li><strong>خطابات السلم الوظيفي</strong> للموظفين الحكوميين.</li>
-        <li>السيرة الذاتية التلقائية للطالب.</li>
-        <li>توقيع رقمي (SHA-256 hash) + QR للتحقق.</li>
-        <li>صفحة تحقق عامة <code>/letters/verify/{id}</code>.</li>
-        <li>أرشفة تلقائية في ملف الطالب.</li>
+        <li>السيرة الذاتية التلقائية للطالب عبر Service + Blade Template.</li>
+        <li>توقيع رقمي عبر <code>hash('sha256', $payload)</code> + Bacon QR + جدول <code>letter_signatures</code>.</li>
+        <li>صفحة تحقق عامة <code>Route::get('/letters/verify/{ulid}')</code> + Livewire Component.</li>
+        <li>أرشفة تلقائية في ملف الطالب عبر <strong>Spatie Media Library</strong>.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الشهر</div>
-        <div class="text">المالية والحجب والطلبات والخطابات تعمل بشكل متكامل.</div>
+        <div class="text">المالية والحجب والطلبات والخطابات تعمل بشكل متكامل عبر Filament + Livewire.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============= PAGE 5: MONTH 3 ============= -->
+<!-- ============= PAGE 6: MONTH 3 ============= -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
       <h2 class="page-title">الشهر الثالث — الأكاديمي + TVTC + HR + الذكاء</h2>
-      <div class="page-num">05</div>
+      <div class="page-num">06</div>
     </div>
 
     <div class="month-banner">
@@ -953,98 +1110,115 @@
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">9</div>
-        <div class="week-title">الأسبوع 9 — شؤون المتدربين + التسجيل + الجداول</div>
+        <div class="week-title">الأسبوع 9 — شؤون المتدربين + CRM + الجداول + TVTC Adapter</div>
       </div>
       <ul class="week-tasks">
-        <li>بوابة شؤون المتدربين الكاملة + الشكاوى والاستفسارات.</li>
-        <li>تدفق الانسحاب (شؤون → مالية → إدارة).</li>
-        <li>الإيقاف المؤقت + استكمال الدراسة + المرفقات الناقصة.</li>
-        <li><strong>CRM التسجيل</strong> (7 مراحل: مهتم → مسجل).</li>
-        <li>صفحة تسجيل عامة + تحويل Lead إلى Student.</li>
-        <li>إدارة الجداول (مادة/مدرب/قاعة + فترات صباحي/مسائي/ويكند).</li>
-        <li>الحضور المتقدم + الإنذارات + الحرمان التلقائي.</li>
+        <li>بوابة شؤون المتدربين الكاملة + الشكاوى والاستفسارات — Filament Resources + Livewire Form.</li>
+        <li>تدفق الانسحاب (شؤون → مالية → إدارة) عبر <strong>ModelStates Transitions</strong>.</li>
+        <li>الإيقاف المؤقت + استكمال الدراسة + المرفقات الناقصة — Notifications + Jobs.</li>
+        <li><strong>CRM التسجيل</strong> (7 مراحل: مهتم → مسجل) — Kanban Board في Filament + Livewire.</li>
+        <li>صفحة تسجيل عامة (Public Form) + تحويل Lead → Student عبر Action.</li>
+        <li>إدارة الجداول (مادة/مدرب/قاعة + فترات صباحي/مسائي/ويكند) — Resources + Validation Rules.</li>
+        <li>الحضور المتقدم + الإنذارات + الحرمان التلقائي عبر <strong>Eloquent Observer + Scheduled Jobs</strong>.</li>
+        <li><strong>TVTC Adapter</strong> (المرحلة الأولى) — Laravel HTTP + XML signing عبر <code>robrichards/xmlseclibs</code>.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">بوابة شؤون المتدربين + CRM + الجداول والحضور.</div>
+        <div class="text">بوابة شؤون المتدربين + CRM Kanban + الجداول والحضور + TVTC Adapter جاهز.</div>
       </div>
     </div>
 
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">10</div>
-        <div class="week-title">الأسبوع 10 — الواجبات + الاختبار الشامل + المكتبة</div>
+        <div class="week-title">الأسبوع 10 — HR كامل + نظام البصمة 👥</div>
       </div>
       <ul class="week-tasks">
-        <li><strong>الواجبات</strong> (رفع + توزيع + تسليم + تقييم).</li>
-        <li><strong>الاختبار الشامل النهائي</strong> + Eligibility Engine.</li>
-        <li>رفع نتائج الاختبار الشامل من Excel + كشوفات رسمية.</li>
-        <li><strong>التقويم الموحّد</strong> لكل المواعيد.</li>
-        <li><strong>مكتبة الموارد التعليمية</strong> لكل مادة (ملفات/فيديو/روابط).</li>
-        <li>أرشيف المعلم (KPIs + الإسهامات + التقييمات).</li>
-        <li>نظام تقييم الطلاب للمعلمين (مجهول الهوية).</li>
+        <li><strong>نظام إدارة الموظفين (HR) في Filament Panel منفصل</strong> — Models: <code>Employee</code>, <code>Attendance</code>, <code>Leave</code>.</li>
+        <li><strong>تكامل أجهزة البصمة (ZKTeco)</strong> عبر <code>rats/zkteco</code> + <code>Http</code> Polling Service.</li>
+        <li><strong>WebAuthn للموبايل</strong> (بصمة الجوال) عبر <code>laragear/webauthn</code> للموظفين الميدانيين.</li>
+        <li>سجل الدوام اليومي (Punch In/Out + إجمالي الساعات) — Filament Resource + Widgets.</li>
+        <li>تكامل بصمة المعلم مع جدول الحصص — Eloquent Relations + Cross-Reference Job.</li>
+        <li>إدارة الإجازات (سنوية / مرضية / اضطرارية / عارضة) عبر <strong>Spatie ModelStates</strong>.</li>
+        <li>تقديم طلب إجازة + اعتماد المدير + رصيد الإجازات — Filament Form + Approval Action.</li>
+        <li>تقارير الدوام (تأخير، غياب، ساعات إضافية) — Filament Widgets + Export.</li>
+        <li>الأرشيف الوظيفي (عقود، تقييمات، إنذارات) — <strong>Spatie Media Library</strong>.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">العمليات الأكاديمية اليومية مكتملة + الأرشفة الكاملة.</div>
+        <div class="text">نظام HR كامل + بصمة الموظفين والمعلمين + الإجازات + الأرشيف الوظيفي.</div>
+      </div>
+    </div>
+
+    <div class="hr-module">
+      <h4>👥 وحدة HR + نظام البصمة — الميزات الرئيسية</h4>
+      <p>
+        نظام إدارة الموظفين يخدم <strong>الموظفين الإداريين والمعلمين معاً</strong>،
+        مع تكامل عميق مع أجهزة البصمة الفيزيائية وبصمة الجوال (WebAuthn).
+      </p>
+      <div class="features">
+        <div>تكامل ZKTeco SDK</div>
+        <div>WebAuthn للموبايل</div>
+        <div>Punch In/Out مباشر</div>
+        <div>ربط البصمة بالجدول</div>
+        <div>4 أنواع إجازات</div>
+        <div>رصيد الإجازات التلقائي</div>
+        <div>الإذونات والاستئذان</div>
+        <div>الأرشيف الوظيفي</div>
       </div>
     </div>
 
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">11</div>
-        <div class="week-title">الأسبوع 11 — تكامل TVTC + إدارة الموظفين (HR) 👥</div>
+        <div class="week-title">الأسبوع 11 — قنوات التواصل + TVTC الكامل + الواجبات والمكتبة</div>
       </div>
       <ul class="week-tasks">
-        <li><strong>تكامل TVTC الكامل</strong> + Adapter للوزارة (Mock + Real).</li>
-        <li>تسجيل المتدربين في TVTC + إرسال الدرجات تلقائياً.</li>
-        <li>تقارير الحضور الدورية للوزارة + الاعتماد الرسمي للشهادات.</li>
-        <li>لوحة الامتثال الحكومي.</li>
-        <li><strong>نظام إدارة الموظفين (HR) — كامل:</strong></li>
-        <li>&nbsp;&nbsp;◆ <strong>نظام البصمة (للموظفين + المعلمين)</strong> — تكامل مع أجهزة البصمة أو بصمة الجوال.</li>
-        <li>&nbsp;&nbsp;◆ سجل الدوام اليومي (وقت الحضور والانصراف + ساعات العمل).</li>
-        <li>&nbsp;&nbsp;◆ تكامل بصمة المعلم مع جدول الحصص (مَن حضر حصصه فعلياً).</li>
-        <li>&nbsp;&nbsp;◆ إدارة الإجازات (سنوية / مرضية / اضطرارية / عارضة).</li>
-        <li>&nbsp;&nbsp;◆ تقديم طلب إجازة + اعتماد المدير + رصيد الإجازات.</li>
-        <li>&nbsp;&nbsp;◆ الإذونات والاستئذان والانصراف المبكر.</li>
-        <li>&nbsp;&nbsp;◆ تقارير الدوام (تأخير، غياب، ساعات إضافية).</li>
-        <li>&nbsp;&nbsp;◆ الأرشيف الوظيفي (عقود، تقييمات، إنذارات).</li>
+        <li><strong>إكمال تكامل TVTC</strong> — تسجيل المتدربين + إرسال الدرجات + تقارير الحضور الدورية + الاعتماد الرسمي.</li>
+        <li>لوحة الامتثال الحكومي في Filament — Widgets + Charts + Export.</li>
+        <li><strong>Unifonic WhatsApp Business API</strong> عبر Laravel HTTP Client + قوالب معتمدة + <code>WhatsAppChannel</code> مخصّص لـNotifications.</li>
+        <li><strong>Unifonic SMS</strong> للتنبيهات الحرجة عبر <code>SmsChannel</code>.</li>
+        <li><strong>Resend Email</strong> عبر <code>resend/resend-laravel</code> + Laravel Mailable + قوالب Blade RTL.</li>
+        <li><strong>الواجبات</strong> (رفع + توزيع + تسليم + تقييم) — Filament Resources + Spatie Media Library.</li>
+        <li><strong>الاختبار الشامل النهائي</strong> + Eligibility Engine — Service Class + Filament Action.</li>
+        <li><strong>التقويم الموحّد</strong> + <strong>مكتبة الموارد التعليمية</strong> (ملفات/فيديو/روابط) عبر Filament + Media Library.</li>
+        <li>أرشيف المعلم (KPIs + الإسهامات + التقييمات) + نظام تقييم الطلاب للمعلمين (مجهول الهوية).</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 المسلَّم نهاية الأسبوع</div>
-        <div class="text">TVTC مُكامَل + نظام HR كامل للموظفين.</div>
+        <div class="text">TVTC مُكامَل بالكامل + 3 قنوات تواصل (WhatsApp/SMS/Email) + الأكاديمي اليومي مكتمل.</div>
       </div>
     </div>
 
     <div class="week-section">
       <div class="week-header">
         <div class="week-num">12</div>
-        <div class="week-title">الأسبوع 12 — التواصل الذكي + التقارير + التسليم النهائي 🏆</div>
+        <div class="week-title">الأسبوع 12 — AI Chatbot + التقارير + التسليم النهائي 🏆</div>
       </div>
       <ul class="week-tasks">
-        <li>20+ تقرير جاهز + Dashboards لكل دور.</li>
-        <li>اكتشاف الطلاب المتعثرين مبكراً (Risk Detection).</li>
-        <li><strong>WhatsApp Business API</strong> + قوالب معتمدة.</li>
-        <li><strong>SMS Gateway</strong> (Unifonic) للتنبيهات الحرجة.</li>
-        <li><strong>Email Service</strong> (Resend) للخطابات الرسمية.</li>
-        <li><strong>المساعد الذكي للطلاب</strong> 24/7 (Claude API).</li>
-        <li>بوابة الخريجين + الدورات التطويرية.</li>
-        <li><strong>اختبارات قبول نهائية</strong> + <strong>Codex 100/100</strong> + التسليم.</li>
+        <li>20+ تقرير جاهز + Dashboards لكل دور عبر <strong>Filament Widgets + ChartWidget</strong>.</li>
+        <li>اكتشاف الطلاب المتعثرين مبكراً (Risk Detection) — Service + Scheduled Job + Notifications.</li>
+        <li><strong>المساعد الذكي للطلاب 24/7 (AI Chatbot)</strong> — Laravel HTTP Client → Claude API.</li>
+        <li><strong>pgvector embeddings</strong> لقاعدة المعرفة + <code>VectorSearchService</code> + RAG Pipeline.</li>
+        <li>صفحة الدردشة في Filament — <strong>Custom Filament Page</strong> + Livewire Streaming.</li>
+        <li>بوابة الخريجين + الدورات التطويرية — Filament Resource + Public Routes.</li>
+        <li><strong>اختبارات نهائية</strong>: Pest Feature Tests + Dusk E2E + Coverage ≥ 80%.</li>
+        <li><strong>النشر النهائي على VPS سعودي</strong> عبر <code>php deployer.phar deploy production</code> + <strong>Codex 100/100</strong>.</li>
       </ul>
       <div class="deliverable-box">
         <div class="label">📦 التسليم النهائي للمشروع</div>
-        <div class="text">المراحل الأربع + نظام HR + التكاملات الذكية = نظام IIMS كامل.</div>
+        <div class="text">المراحل الأربع + نظام HR + التكاملات الذكية + AI Chatbot = نظام IIMS كامل على Laravel 11 + Filament 3.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============= PAGE 6: FINAL NOTES ============= -->
+<!-- ============= PAGE 7: FINAL NOTES ============= -->
 <section class="page">
   <div class="content-page">
     <div class="page-header">
       <h2 class="page-title">الملاحظات النهائية ومعايير القبول</h2>
-      <div class="page-num">06</div>
+      <div class="page-num">07</div>
     </div>
 
     <h3 class="section-h">⚠️ ملاحظات صارمة</h3>
@@ -1053,6 +1227,7 @@
       <h4>1. اعتماد Codex إلزامي</h4>
       <p>
         <strong>لا يُكتب سطر كود واحد</strong> قبل اعتماد Codex 100/100 لخطة المرحلة.
+        كل Pull Request يمر بـ Codex Review قبل الدمج إلى <code>main</code>.
         الحضور البشري للطرف الأول لا يُغني عن اعتماد Codex.
       </p>
     </div>
@@ -1069,7 +1244,16 @@
       <h4>3. التطبيق المتزامن مع الطرف الأول</h4>
       <p>
         الطرفان يعملان <strong>بالتوازي طوال الـ3 شهور</strong>. التوزيع الأسبوعي للمهام
-        يتم في اجتماع بداية كل أسبوع، مع تقسيم واضح للمسؤوليات.
+        يتم في اجتماع بداية كل أسبوع، مع تقسيم واضح للمسؤوليات والـPull Requests.
+      </p>
+    </div>
+
+    <div class="important-box">
+      <h4>4. الالتزام بالحزمة التقنية</h4>
+      <p>
+        <strong>Laravel 11 + Filament 3 + Livewire 3 + PostgreSQL</strong> — لا استبدال
+        ولا إضافة حزم خارج المعتمد دون موافقة Codex + الطرف الأول. أي حزمة جديدة
+        تمر عبر <code>composer require</code> + مبرر فني مكتوب.
       </p>
     </div>
 
@@ -1077,29 +1261,33 @@
 
     <ul class="simple-list">
       <li><strong>Codex Approval 100/100</strong> قبل البدء + بعد الانتهاء.</li>
-      <li><strong>اختبارات Unit ≥ 80٪</strong> تغطية للمنطق التجاري.</li>
-      <li><strong>اختبارات E2E</strong> للسيناريوهات الرئيسية.</li>
-      <li><strong>Code Reviews</strong> يومية مع Codex.</li>
-      <li><strong>RLS Policies</strong> لكل جدول جديد.</li>
-      <li><strong>Audit Log</strong> للعمليات الحساسة.</li>
-      <li><strong>RTL اختُبر</strong> بصرياً وعربياً.</li>
-      <li><strong>Performance</strong> ضمن المعايير المتّفق عليها.</li>
-      <li><strong>التوثيق</strong> محدّث (README + API docs).</li>
+      <li><strong>اختبارات Pest/PHPUnit ≥ 80٪</strong> تغطية للمنطق التجاري.</li>
+      <li><strong>اختبارات Laravel Dusk</strong> للسيناريوهات الرئيسية (Browser E2E).</li>
+      <li><strong>Code Reviews</strong> يومية مع Codex عبر Pull Requests.</li>
+      <li><strong>Laravel Policies</strong> لكل Model جديد + Filament Shield Permissions.</li>
+      <li><strong>Activity Log</strong> للعمليات الحساسة (Spatie ActivityLog).</li>
+      <li><strong>RTL اختُبر</strong> بصرياً وعربياً على Filament Panel.</li>
+      <li><strong>Larastan Level 8</strong> + <strong>Pint</strong> بدون أخطاء.</li>
+      <li><strong>Performance</strong> ضمن المعايير + <code>EXPLAIN ANALYZE</code> للاستعلامات الثقيلة.</li>
+      <li><strong>التوثيق</strong> محدّث (README + Filament Resources docs).</li>
     </ul>
 
     <div class="protocol" style="margin-top: 14px;">
       <h4>🤝 إقرار المبرمج المشارك</h4>
       <p style="color: #78350F; font-size: 0.92rem; line-height: 1.85;">
         بقراءة هذه الوثيقة، يُقرّ المبرمج المشارك بفهمه:
-        <br>• <strong>أدوات العمل المعتمدة</strong> (Claude Opus + Codex).
-        <br>• <strong>بروتوكول الاعتماد الصارم</strong> (Codex 100/100).
+        <br>• <strong>أدوات العمل المعتمدة</strong> (Claude Opus + Codex + GitHub + VPS سعودي).
+        <br>• <strong>الحزمة التقنية</strong> (Laravel 11 + Filament 3 + Livewire 3 + PostgreSQL 15).
+        <br>• <strong>بروتوكول الاعتماد الصارم</strong> (Codex 100/100 لكل مرحلة).
         <br>• <strong>المراحل الأربع + نظام HR</strong> موزّعة على 12 أسبوع.
         <br>• <strong>التطبيق المتزامن مع الطرف الأول</strong> طوال الـ3 شهور.
+        <br>• <strong>الميزانية 13,500 ريال</strong> (4,500 × 3 شهور) تُصرف نهاية كل شهر.
       </p>
     </div>
 
     <p style="text-align: center; margin-top: 12px; font-size: 0.85rem; color: var(--text-muted);">
-      هذه الوثيقة ملحق فني لعقد المبرمج المشارك — تُقرأ معه كوحدة واحدة.
+      هذه الوثيقة ملحق فني لعقد المبرمج المشارك — تُقرأ معه كوحدة واحدة.<br>
+      التفاصيل الأعمق لكل مرحلة موجودة في وثائق Phase-1 / Phase-2 / Phase-3 المنفصلة.
     </p>
   </div>
 </section>

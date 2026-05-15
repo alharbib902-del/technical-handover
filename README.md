@@ -25,14 +25,20 @@ npx serve .
 
 ## 🛠 Tech Stack
 
-- **Frontend:** Next.js 14 (App Router) + TypeScript + TailwindCSS + shadcn/ui
-- **Backend:** Supabase (PostgreSQL + Auth + Storage + Realtime + Edge Functions)
-- **State:** Zustand + TanStack Query
-- **Forms:** React Hook Form + Zod
-- **State Machines:** XState
-- **PDF:** Puppeteer + HTML templates
-- **Testing:** Vitest + Playwright
-- **Hosting:** Vercel + Supabase Cloud
+- **Backend:** Laravel 11 (PHP 8.3) + Eloquent ORM
+- **Admin Panel:** Filament 3 (Resources, Forms, Tables, Actions, Widgets)
+- **UI Reactivity:** Livewire 3 + Blade + Alpine.js + TailwindCSS
+- **Database:** PostgreSQL 15 + Redis (cache + queues)
+- **Auth & RBAC:** Laravel Auth + Sanctum + Spatie Permission + Filament Shield + spatie/laravel-google2fa
+- **Storage:** Spatie Media Library
+- **Realtime:** Laravel Reverb (WebSockets)
+- **State Machines:** Spatie Laravel Model States
+- **Queues & Schedules:** Laravel Horizon + Laravel Scheduler
+- **PDF:** Browsershot (spatie/browsershot) + Blade RTL templates
+- **Forms & Validation:** Filament Forms + Form Requests
+- **Testing:** Pest + Laravel Dusk
+- **Quality:** Laravel Pint + PHPStan/Larastan
+- **Hosting:** Saudi VPS (Hostinger KSA / Contabo KSA / Aramco Cloud) via Laravel Forge
 - **CDN/Security:** Cloudflare
 
 ## 📂 Structure
@@ -56,7 +62,7 @@ npx serve .
 - **Live search** (Ctrl+K) within the document
 - **Sidebar TOC** auto-generated per tab
 - **Mermaid diagrams** (ERD, sequence, flowchart, state machine, git graph)
-- **Syntax highlighting** (TypeScript, SQL, JSON, YAML, Bash)
+- **Syntax highlighting** (PHP, Blade, SQL, JSON, YAML, Bash)
 - **Print-friendly** — export to PDF via Ctrl+P
 - **Full RTL** Arabic support
 - **Self-contained** — no internet required after first load (CDN-cached)

@@ -5,6 +5,50 @@
 
 ---
 
+## 🛠 الحزمة التقنية (Tech Stack)
+
+| الطبقة | التقنية |
+|--------|---------|
+| **Backend Framework** | Laravel 11 + PHP 8.3 |
+| **Admin Panel** | Filament 3 (Forms, Tables, Resources, Actions, Shield) |
+| **UI Reactivity** | Livewire 3 + Alpine.js |
+| **Templating** | Blade Components |
+| **Database** | PostgreSQL 15 |
+| **ORM** | Eloquent ORM |
+| **Authentication & RBAC** | Laravel Auth + Spatie Permission + Filament Shield |
+| **Authorization** | Laravel Policies + Spatie Permission + Multi-Tenancy |
+| **File Storage** | Spatie Media Library |
+| **Realtime (WebSockets)** | Laravel Reverb |
+| **Background Jobs** | Laravel Horizon (Redis) |
+| **Scheduled Tasks** | Laravel Scheduler |
+| **State Machines** | Spatie Laravel Model States |
+| **PDF Generation** | Browsershot (spatie/browsershot) |
+| **Mail** | Laravel Mail + resend/resend-laravel |
+| **SMS/WhatsApp** | Unifonic عبر Laravel HTTP Client |
+| **AI** | Claude API عبر Laravel HTTP Client |
+| **Audit Trail** | Spatie Activity Log |
+| **Backup** | Spatie Laravel Backup |
+| **2FA** | Spatie Google2FA + bacon/bacon-qr-code |
+| **Excel** | maatwebsite/excel |
+| **Biometric** | rats/zkteco |
+| **XML Signing** | phpseclib/phpseclib |
+| **Search** | Laravel Scout |
+| **Performance** | Laravel Octane (اختياري) |
+| **Testing (Unit/Feature)** | Pest / PHPUnit |
+| **Testing (E2E)** | Laravel Dusk |
+| **Code Style** | Laravel Pint |
+| **Static Analysis** | PHPStan / Larastan (Level 8) |
+| **Containerization** | Laravel Sail (Docker) |
+| **Hosting** | VPS سعودي (Hostinger KSA / Contabo KSA) |
+| **Deployment** | Laravel Forge / Envoyer |
+| **Error Tracking** | Sentry (sentry/sentry-laravel) |
+| **Build Tool (Assets)** | Vite + Tailwind CSS + tailwindcss-rtl |
+
+> **ملاحظة:** ZATCA (الفوترة الإلكترونية) خارج النطاق — يُعالج عبر برنامج محاسبي خارجي بـAPI.
+> **خارج النطاق أيضاً:** تطبيق جوّال.
+
+---
+
 ## 🗺 خارطة المراحل
 
 | # | المرحلة | الأهمية | المدة | الحجم |
@@ -38,7 +82,7 @@ graph TB
     P6 --> P7[7. الأكاديمي اليومي<br/>جداول حضور واجبات]
     P7 --> P8[8. تكامل TVTC<br/>⭐ امتثال حكومي]
     P8 --> P9[9. التقارير والأرشيف<br/>تحليلات وقرارات]
-    P9 --> P10[10. التكاملات والذكاء<br/>WhatsApp AI Nafath Alumni]
+    P9 --> P10[10. التكاملات والذكاء<br/>WhatsApp AI OTP/SMS Alumni]
 
     style P1 fill:#10b981,color:#fff
     style P2 fill:#0891b2,color:#fff
