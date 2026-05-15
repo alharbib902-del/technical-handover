@@ -1,0 +1,3391 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المرحلة 1 — الأساس + الاختبارات + الطلاب | IIMS</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary: #065F46;
+    --primary-light: #047857;
+    --primary-dark: #064E3B;
+    --accent: #D4A574;
+    --accent-dark: #B58853;
+    --cream: #FAFAF7;
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+    --success: #10B981;
+    --gold: #C9A961;
+    --danger: #DC2626;
+    --warning: #F59E0B;
+    --info: #0891B2;
+    --purple: #7C3AED;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body {
+    font-family: 'Cairo', system-ui, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.8;
+    font-size: 14px;
+  }
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    page-break-after: always;
+    min-height: 297mm;
+    position: relative;
+  }
+  .page:last-child { page-break-after: avoid; }
+
+  /* COVER */
+  .cover {
+    min-height: 297mm;
+    background: linear-gradient(135deg, #064E3B 0%, #065F46 40%, #047857 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -30%; left: -20%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,165,116,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -25%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(212,165,116,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-top, .cover-bottom, .cover-center { z-index: 2; position: relative; }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover-emblem {
+    width: 90px; height: 90px;
+    background: rgba(212,165,116,0.15);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+  }
+  .cover-meta { text-align: end; font-size: 0.88rem; opacity: 0.9; line-height: 1.7; }
+  .cover-center { text-align: center; }
+  .cover-pretitle {
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+  .cover h1 {
+    font-size: 2.6rem;
+    font-weight: 900;
+    line-height: 1.4;
+    margin-bottom: 18px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .cover-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.75;
+  }
+  .cover-weeks {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 700px;
+    margin: 0 auto 28px;
+  }
+  .cover-week {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(212,165,116,0.4);
+    padding: 12px 10px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cover-week .w-num {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .cover-week .w-name {
+    color: white;
+    font-size: 0.78rem;
+    opacity: 0.95;
+    line-height: 1.4;
+  }
+  .cover-deliv {
+    background: rgba(212,165,116,0.12);
+    border: 1px solid rgba(212,165,116,0.5);
+    padding: 14px 22px;
+    border-radius: 12px;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .cover-bottom {
+    text-align: center;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .cover-tagline {
+    font-family: 'Amiri', serif;
+    font-size: 1.02rem;
+    font-style: italic;
+    opacity: 0.9;
+  }
+
+  /* CONTENT */
+  .content-page {
+    padding: 36px 46px 48px;
+    background: white;
+  }
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    margin-bottom: 22px;
+    border-bottom: 3px solid var(--primary);
+    position: relative;
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; right: 0;
+    width: 90px; height: 3px;
+    background: var(--accent);
+  }
+  .page-num {
+    background: var(--primary);
+    color: white;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem;
+  }
+  .page-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .section-h {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 14px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
+  }
+  .subsection-h {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin: 14px 0 8px;
+    padding-right: 12px;
+    border-right: 4px solid var(--accent);
+  }
+
+  p { margin-bottom: 10px; font-size: 0.92rem; line-height: 1.85; color: var(--text); }
+
+  /* CODE */
+  pre {
+    background: #1F2937;
+    color: #F3F4F6;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    direction: ltr;
+    overflow-x: auto;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    margin: 10px 0;
+    text-align: left;
+  }
+  pre.sql { background: #0F172A; }
+  pre.ts { background: #1E1B4B; }
+  pre.bash { background: #18181B; }
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    background: #FEF3C7;
+    color: #78350F;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    direction: ltr;
+    display: inline-block;
+  }
+  .code-label {
+    background: var(--primary-dark);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 6px 6px 0 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: -2px;
+  }
+
+  /* MERMAID */
+  .mermaid {
+    background: white;
+    padding: 14px;
+    border-radius: 10px;
+    margin: 14px 0;
+    text-align: center;
+    border: 1px solid var(--border);
+    direction: ltr;
+    overflow-x: auto;
+  }
+
+  /* TOOLS GRID */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .tool-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--accent);
+    border-radius: 12px;
+    padding: 12px 16px;
+  }
+  .tool-card.primary {
+    border-right-color: var(--primary);
+    background: linear-gradient(135deg, #ECFDF5 0%, white 100%);
+  }
+  .tool-card.alert {
+    border-right-color: var(--danger);
+    background: linear-gradient(135deg, #FEF2F2 0%, white 100%);
+  }
+  .tool-card.info {
+    border-right-color: var(--info);
+    background: linear-gradient(135deg, #ECFEFF 0%, white 100%);
+  }
+  .tool-card .header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .tool-card .icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.15rem;
+    background: var(--primary);
+    color: var(--accent);
+  }
+  .tool-card.alert .icon { background: var(--danger); color: white; }
+  .tool-card.info .icon { background: var(--info); color: white; }
+  .tool-card h4 {
+    color: var(--primary);
+    font-size: 0.95rem;
+    font-weight: 800;
+  }
+  .tool-card.alert h4 { color: #991B1B; }
+  .tool-card .desc {
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ACCOUNTS BOX */
+  .accounts-box {
+    background: linear-gradient(135deg, #EFF6FF 0%, white 100%);
+    border: 2px solid var(--info);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .accounts-box h4 {
+    color: #1E40AF;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .accounts-box ul {
+    list-style: none;
+  }
+  .accounts-box li {
+    padding: 4px 22px 4px 0;
+    font-size: 0.88rem;
+    color: var(--text);
+    position: relative;
+    line-height: 1.7;
+  }
+  .accounts-box li::before {
+    content: '🔑';
+    position: absolute;
+    right: 0;
+    top: 4px;
+  }
+
+  /* PROTOCOL */
+  .protocol {
+    background: #FEF3C7;
+    border-right: 5px solid var(--gold);
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .protocol h4 {
+    color: #92400E;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .protocol ol {
+    list-style: none;
+    counter-reset: protocol-counter;
+  }
+  .protocol li {
+    counter-increment: protocol-counter;
+    position: relative;
+    padding: 5px 36px 5px 0;
+    color: #78350F;
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+  .protocol li::before {
+    content: counter(protocol-counter);
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 24px; height: 24px;
+    background: var(--gold);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 0.75rem;
+  }
+
+  /* WEEK BANNER */
+  .week-banner {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: 18px 22px;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .week-banner::before {
+    content: '';
+    position: absolute;
+    left: -30px; top: -30px;
+    width: 140px; height: 140px;
+    background: rgba(212,165,116,0.15);
+    border-radius: 50%;
+  }
+  .week-banner-content { position: relative; z-index: 2; }
+  .week-label {
+    background: var(--accent);
+    color: var(--primary-dark);
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.78rem;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+  .week-title-main {
+    font-size: 1.35rem;
+    font-weight: 900;
+    margin-bottom: 4px;
+  }
+  .week-tagline {
+    font-size: 0.92rem;
+    opacity: 0.95;
+    line-height: 1.6;
+  }
+
+  /* DAILY GRID */
+  .daily-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin: 10px 0 12px;
+  }
+  .day-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+  .day-card .day-label {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 0.82rem;
+    margin-bottom: 4px;
+  }
+  .day-card ul { list-style: none; }
+  .day-card li {
+    color: var(--text);
+    line-height: 1.55;
+    padding: 2px 0;
+    font-size: 0.72rem;
+  }
+  .day-card li::before {
+    content: '•';
+    color: var(--accent-dark);
+    margin-left: 4px;
+    font-weight: 900;
+  }
+
+  /* OBJECTIVES BOX */
+  .objectives-box {
+    background: linear-gradient(135deg, #ECFDF5 0%, white 100%);
+    border: 1px solid var(--primary-light);
+    border-right: 5px solid var(--primary);
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+  .objectives-box h4 {
+    color: var(--primary);
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .objectives-box ul { list-style: none; }
+  .objectives-box li {
+    padding: 4px 24px 4px 0;
+    position: relative;
+    font-size: 0.86rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .objectives-box li::before {
+    content: '🎯';
+    position: absolute;
+    right: 0;
+    top: 4px;
+    font-size: 0.85rem;
+  }
+
+  /* DELIVERABLE BOX */
+  .deliverable-box {
+    background: #ECFDF5;
+    border: 1px solid var(--primary-light);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+  .deliverable-box .label {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+  }
+  .deliverable-box .text {
+    color: var(--text);
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+  /* IMPORTANT BOX */
+  .important-box {
+    background: #FEF2F2;
+    border-right: 5px solid var(--danger);
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin: 12px 0;
+  }
+  .important-box h4 {
+    color: #991B1B;
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .important-box p {
+    color: #7F1D1D;
+    font-size: 0.88rem;
+    line-height: 1.75;
+  }
+  .important-box strong { color: #7F1D1D; }
+
+  /* INFO BOX */
+  .info-box {
+    background: #ECFEFF;
+    border-right: 5px solid var(--info);
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin: 12px 0;
+  }
+  .info-box h4 {
+    color: #155E75;
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .info-box p {
+    color: #164E63;
+    font-size: 0.88rem;
+    line-height: 1.75;
+  }
+
+  /* SIMPLE LIST */
+  .simple-list { list-style: none; margin: 6px 0; }
+  .simple-list li {
+    position: relative;
+    padding: 4px 24px 4px 0;
+    line-height: 1.7;
+    font-size: 0.88rem;
+  }
+  .simple-list li::before {
+    content: '✓';
+    color: var(--success);
+    font-weight: 900;
+    font-size: 1rem;
+    position: absolute;
+    right: 0;
+    top: 4px;
+  }
+  .simple-list li strong { color: var(--primary); }
+
+  /* CHECKLIST BOX */
+  .checklist-box {
+    background: #FFFBEB;
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 12px 0;
+  }
+  .checklist-box h4 {
+    color: #92400E;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .checklist-box ul { list-style: none; }
+  .checklist-box li {
+    padding: 4px 28px 4px 0;
+    position: relative;
+    font-size: 0.86rem;
+    color: #78350F;
+    line-height: 1.7;
+  }
+  .checklist-box li::before {
+    content: '☐';
+    position: absolute;
+    right: 0;
+    top: 3px;
+    color: var(--gold);
+    font-size: 1.1rem;
+    font-weight: 900;
+  }
+
+  /* SCREEN CARD */
+  .screen-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--purple);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin: 8px 0;
+  }
+  .screen-card h5 {
+    color: var(--purple);
+    font-size: 0.92rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .screen-card h5 .route {
+    font-family: 'JetBrains Mono', monospace;
+    background: #F3E8FF;
+    color: #6B21A8;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+  .screen-card .desc {
+    font-size: 0.84rem;
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.85rem;
+  }
+  table th {
+    background: var(--primary);
+    color: white;
+    padding: 8px 10px;
+    text-align: right;
+    font-weight: 700;
+    font-size: 0.83rem;
+  }
+  table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  table tr:nth-child(even) td { background: #FAFAF7; }
+  table tr:hover td { background: #FEF3C7; }
+  table td code { font-size: 0.78rem; }
+
+  /* TEST SCENARIO */
+  .test-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--info);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin: 8px 0;
+  }
+  .test-card .tc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .test-card .tc-id {
+    background: var(--info);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .test-card .tc-title {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+  .test-card .tc-body {
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.65;
+  }
+  .test-card .tc-body strong { color: var(--primary-dark); }
+
+  /* RISKS */
+  .risk-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--warning);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin: 8px 0;
+  }
+  .risk-card h5 {
+    color: #92400E;
+    font-size: 0.92rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .risk-card .severity {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .risk-card .severity.high { background: #FEE2E2; color: #991B1B; }
+  .risk-card .severity.medium { background: #FEF3C7; color: #92400E; }
+  .risk-card .severity.low { background: #DBEAFE; color: #1E40AF; }
+  .risk-card .desc, .risk-card .mitigation {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: var(--text);
+    margin-top: 4px;
+  }
+  .risk-card .mitigation { color: var(--primary); }
+  .risk-card .mitigation strong { color: var(--primary-dark); }
+
+  /* SUMMARY GRID */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .summary-stat {
+    background: linear-gradient(135deg, #ECFDF5 0%, white 100%);
+    border: 1px solid var(--primary-light);
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .summary-stat .num {
+    color: var(--primary);
+    font-size: 1.6rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .summary-stat .lbl {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  /* PRINT */
+  @media print {
+    @page { size: A4; margin: 0; }
+    html, body { width: 210mm; background: white; font-size: 10.5px; }
+    .page {
+      box-shadow: none;
+      width: 210mm !important;
+      max-width: 210mm !important;
+      min-height: 297mm !important;
+      page-break-after: always !important;
+    }
+    .page:last-child { page-break-after: avoid !important; }
+    .cover { height: 297mm !important; padding: 22mm 18mm !important; }
+    .content-page { padding: 14mm 14mm 12mm !important; }
+    .week-banner, .week-section, .objectives-box, .deliverable-box,
+    .checklist-box, .test-card, .risk-card, .screen-card, .important-box, .info-box {
+      page-break-inside: avoid;
+    }
+    pre, table { page-break-inside: avoid; }
+    .mermaid { page-break-inside: avoid; }
+    .cover h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============= 1. COVER ============= -->
+<section class="page cover">
+  <div class="cover-top">
+    <div class="cover-emblem">🏗</div>
+    <div class="cover-meta">
+      <div>📄 وثيقة المرحلة 1</div>
+      <div>👤 للمبرمج المشارك</div>
+      <div>🗓 الأسابيع 1 — 4</div>
+      <div>📍 ملحق فني تنفيذي</div>
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-pretitle">باسم الله الرحمن الرحيم</div>
+    <h1>المرحلة الأولى<br>الأساس + الاختبارات + الطلاب</h1>
+    <p class="cover-subtitle">
+      Foundation Stack + Question Bank + Exam Engine + Student Lifecycle<br>
+      أربعة أسابيع تُؤسّس النواة المعمارية لنظام <strong>IIMS</strong> كاملاً.
+    </p>
+
+    <div class="cover-weeks">
+      <div class="cover-week">
+        <div class="w-num">الأسبوع 1</div>
+        <div class="w-name">التأسيس + Auth + الفروع</div>
+      </div>
+      <div class="cover-week">
+        <div class="w-num">الأسبوع 2</div>
+        <div class="w-name">بنك الأسئلة (14 نوع)</div>
+      </div>
+      <div class="cover-week">
+        <div class="w-num">الأسبوع 3</div>
+        <div class="w-name">محرك الاختبارات + الشهادات + PWA</div>
+      </div>
+      <div class="cover-week">
+        <div class="w-num">الأسبوع 4</div>
+        <div class="w-name">الطلاب + State Machine</div>
+      </div>
+    </div>
+
+    <div class="cover-deliv">
+      <strong>المخرجات الرئيسية:</strong> Next.js 14 + Supabase + RLS متعدد الفروع + 14 نوع سؤال + محرك اختبارات + شهادات QR + PWA + 8 حالات للطالب + Multi-Branch Transfer.
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <p class="cover-tagline">"الأساس المتين هو الفرق بين منتج يصمد سنوات ومنتج يُعاد كتابته بعد ستة أشهر"</p>
+  </div>
+</section>
+
+<!-- ============= 2. EXECUTIVE SUMMARY ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الملخّص التنفيذي</h2>
+      <div class="page-num">02</div>
+    </div>
+
+    <h3 class="section-h">لماذا هذه المرحلة قبل غيرها؟</h3>
+    <p>
+      <strong>المرحلة الأولى هي اللبنة الحجرية للمشروع كاملاً.</strong> كل مرحلة لاحقة (المالية، الحجب، الطلبات، الخطابات، الأكاديمي اليومي، TVTC، HR، التواصل الذكي) تستند إلى الأربعة أسابيع هذه. أيّ تنازل هنا يُكلّف 5—10 أضعاف لاحقاً. لهذا تُنفَّذ المرحلة باعتماد <strong>Codex 100/100</strong> الصارم على كل قطعة قبل البدء وبعد الانتهاء.
+    </p>
+
+    <p>
+      المرحلة تجمع ثلاث طبقات متراكبة:
+      <strong>(1) الأساس التقني والمعماري</strong> — Next.js 14 + Supabase + TailwindCSS + shadcn/ui + Auth + RBAC + RLS متعدد الفروع + Audit Log + CI/CD.
+      <strong>(2) منصة الاختبارات الكاملة</strong> — بنك أسئلة بـ14 نوع + محرك توليد + كود الاختبار (Remote/Onsite) + التصحيح الآلي + الشهادات بـQR + PWA.
+      <strong>(3) دورة حياة الطالب</strong> — جدول موسّع + State Machine بـ8 حالات + نقل بين الفروع + بطاقة الطالب الموحّدة + دور مدير الفرع + موظف التسجيل.
+    </p>
+
+    <h3 class="section-h">القيمة المضافة بعد 4 أسابيع</h3>
+
+    <div class="summary-grid">
+      <div class="summary-stat"><div class="num">17</div><div class="lbl">جدول قاعدة بيانات</div></div>
+      <div class="summary-stat"><div class="num">14</div><div class="lbl">نوع سؤال</div></div>
+      <div class="summary-stat"><div class="num">8</div><div class="lbl">حالات للطالب</div></div>
+      <div class="summary-stat"><div class="num">4</div><div class="lbl">أدوار قاعدية</div></div>
+    </div>
+
+    <div class="objectives-box">
+      <h4>الأهداف الكبرى</h4>
+      <ul>
+        <li><strong>O1.</strong> إنتاج نواة معمارية مستقرة تخدم 1,000 طالب موزّعين على 4 فروع، مع جاهزية للتوسّع إلى 10,000 طالب و8 فروع بدون إعادة كتابة.</li>
+        <li><strong>O2.</strong> فرض عزل الفروع تقنياً عبر <code>RLS</code> صارم — مدير الفرع الأول لن يستطيع <em>تقنياً</em> رؤية بيانات الفرع الثاني (لا فلتر واجهة فقط).</li>
+        <li><strong>O3.</strong> بناء بنك أسئلة <em>كأصل معرفي مستقل</em> يبقى عابراً للمعلمين والدورات والسنوات، مع 14 نوع سؤال + 3 قنوات إدخال.</li>
+        <li><strong>O4.</strong> منصة اختبارات تتحمّل 100 طالب متزامن مع تصحيح آلي بدقة 100% وشهادات قابلة للتحقق العام بـQR.</li>
+        <li><strong>O5.</strong> State Machine حقيقي للطالب (XState) — كل انتقال له <code>trigger</code>, <code>guard</code>, <code>action</code> + سجل تاريخي كامل.</li>
+        <li><strong>O6.</strong> Audit Log غير قابل للحذف لكل عملية حساسة + Triggers تلقائية + امتثال PDPL مبنيٌّ في الـSchema لا مُضافٌ لاحقاً.</li>
+      </ul>
+    </div>
+
+    <h3 class="section-h">القرارات المعمارية المُعتمدة</h3>
+
+    <ul class="simple-list">
+      <li><strong>Multi-Branch by Design:</strong> كل جدول يحوي <code>branch_id</code> + كل سياسة RLS تتحقق من انتماء المستخدم.</li>
+      <li><strong>App Router</strong> في Next.js 14 (لا Pages Router) + <strong>Server Components</strong> أساسياً.</li>
+      <li><strong>TypeScript Strict</strong> إلزامي — لا <code>any</code>، لا <code>enum</code>، استخدم <code>as const</code> أو <code>type union</code>.</li>
+      <li><strong>Supabase Cloud</strong> الآن، Self-Hosted KSA مؤجَّل لمرحلة لاحقة.</li>
+      <li><strong>Conventional Commits</strong> + Husky pre-commit + lint-staged + Commitlint.</li>
+      <li><strong>PWA</strong> فقط — لا تطبيق جوال Native، لا متاجر تطبيقات.</li>
+    </ul>
+
+    <div class="info-box">
+      <h4>📐 الفلسفة التصميمية</h4>
+      <p>
+        <strong>"بناء نواة لا تُعاد كتابتها."</strong>
+        كل خيار تقني نتخذه هنا يُسأل أمام السؤال التالي: هل سيبقى صحيحاً عند 10,000 طالب و8 فروع؟ إن كانت الإجابة لا، لا نتخذه. الـ Multi-Tenant readiness (<code>tenants → branches → users</code>) قرار مُلزِم من اليوم الأول لتجنّب إعادة الكتابة عند تحويل النظام لـSaaS لاحقاً.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============= 3. PREREQUISITES ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المتطلبات السابقة</h2>
+      <div class="page-num">03</div>
+    </div>
+
+    <h3 class="section-h">الحسابات والاشتراكات</h3>
+
+    <div class="accounts-box">
+      <h4>🔐 الحسابات التي يستلمها المبرمج المشارك من الطرف الأول</h4>
+      <ul>
+        <li><strong>دعوة GitHub Organization</strong> + الوصول للمستودع <code>iims</code> (Private Repo) + Branch Protection على <code>main</code> و<code>develop</code>.</li>
+        <li><strong>دعوة Supabase Project</strong> كـ Developer على <code>iims-staging</code> + <code>iims-production</code>.</li>
+        <li><strong>دعوة Vercel Team</strong> مع صلاحية النشر على Staging و Preview.</li>
+        <li><strong>حساب Anthropic Claude API</strong> + مفتاح API مخصّص للبيئة (للاقتراح الذكي للأسئلة).</li>
+        <li><strong>حساب Sentry</strong> (Free Tier) لرصد الأخطاء + Vercel Analytics مفعّل.</li>
+        <li><strong>إعدادات البيئة <code>.env</code></strong> مُرسلة بقناة آمنة (1Password / Bitwarden).</li>
+        <li><strong>وصول لقناة التواصل</strong> (WhatsApp + قناة العمل) للاجتماعات اليومية.</li>
+      </ul>
+    </div>
+
+    <h3 class="section-h">الأدوات على جهاز المبرمج</h3>
+
+    <table>
+      <thead>
+        <tr><th>الأداة</th><th>الإصدار الأدنى</th><th>الغرض</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Node.js</strong></td><td>20.10 LTS</td><td>تشغيل Next.js (محدد في <code>.nvmrc</code>)</td></tr>
+        <tr><td><strong>pnpm</strong></td><td>9.x</td><td>مدير الحزم (كفاءة المساحة + سرعة)</td></tr>
+        <tr><td><strong>Git</strong></td><td>2.40+</td><td>التحكم بالإصدارات</td></tr>
+        <tr><td><strong>Docker Desktop</strong></td><td>4.30+</td><td>تشغيل Supabase Local</td></tr>
+        <tr><td><strong>Supabase CLI</strong></td><td>1.190+</td><td>Migrations + Local Dev</td></tr>
+        <tr><td><strong>VS Code</strong></td><td>latest</td><td>+ ESLint + Prettier + Tailwind + Cursor إن أمكن</td></tr>
+        <tr><td><strong>Claude Opus 4.7</strong></td><td>أحدث</td><td>أداة التطوير الرئيسية</td></tr>
+        <tr><td><strong>Codex</strong></td><td>أحدث</td><td>مستشار الاعتماد 100/100</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="section-h">قالب <code>.env.example</code></h3>
+
+    <div class="code-label">.env.example</div>
+    <pre class="bash">
+# ============================================================
+# Supabase
+# ============================================================
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
+SUPABASE_SERVICE_ROLE_KEY=eyJ...      # Server only — NEVER expose
+
+# ============================================================
+# Application
+# ============================================================
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_APP_NAME="IIMS"
+NEXT_PUBLIC_DEFAULT_LOCALE=ar
+NEXT_PUBLIC_DEFAULT_TIMEZONE=Asia/Riyadh
+
+# ============================================================
+# Sentry
+# ============================================================
+NEXT_PUBLIC_SENTRY_DSN=
+SENTRY_AUTH_TOKEN=
+SENTRY_ORG=iims
+SENTRY_PROJECT=iims-web
+
+# ============================================================
+# Anthropic (Claude AI — Question Suggestion)
+# ============================================================
+ANTHROPIC_API_KEY=sk-ant-...
+ANTHROPIC_MODEL=claude-opus-4-7
+
+# ============================================================
+# Security
+# ============================================================
+NEXTAUTH_SECRET=         # openssl rand -base64 32
+ENCRYPTION_KEY=          # AES-256 key
+RATE_LIMIT_WINDOW=60     # seconds
+RATE_LIMIT_MAX=100
+    </pre>
+
+    <h3 class="section-h">الموارد المطلوبة من الطرف الأول</h3>
+
+    <table>
+      <thead>
+        <tr><th>البند</th><th>الأولوية</th><th>الموعد المطلوب</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>أسماء الفروع الأربعة (عربي + إنجليزي + رمز)</td><td><span style="color:#DC2626;font-weight:700">حرجة</span></td><td>اليوم 1</td></tr>
+        <tr><td>شعار النظام (SVG)</td><td><span style="color:#F59E0B;font-weight:700">عالية</span></td><td>اليوم 3 (placeholder مقبول مؤقتاً)</td></tr>
+        <tr><td>عناوين الفروع + هواتفها</td><td><span style="color:#F59E0B;font-weight:700">عالية</span></td><td>اليوم 5</td></tr>
+        <tr><td>بريد إلكتروني رسمي <code>noreply@...</code></td><td><span style="color:#F59E0B;font-weight:700">عالية</span></td><td>اليوم 4</td></tr>
+        <tr><td>أسماء 4 مستخدمين تجريبيين لكل دور</td><td><span style="color:#0891B2;font-weight:700">متوسطة</span></td><td>اليوم 7</td></tr>
+        <tr><td>اعتماد قالب الشهادة (HTML + CSS)</td><td><span style="color:#0891B2;font-weight:700">متوسطة</span></td><td>الأسبوع 3</td></tr>
+        <tr><td>قائمة الدبلومات الأولية + Prerequisites</td><td><span style="color:#0891B2;font-weight:700">متوسطة</span></td><td>الأسبوع 3</td></tr>
+        <tr><td>اعتماد سياسة الخصوصية الأولية</td><td><span style="color:#F59E0B;font-weight:700">عالية</span></td><td>الأسبوع 1</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============= 4. CODEX PROTOCOL ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">بروتوكول البدء مع Codex</h2>
+      <div class="page-num">04</div>
+    </div>
+
+    <h3 class="section-h">⚠️ صرامة لا تنازل عنها</h3>
+
+    <p>
+      هذه المرحلة <strong>لا تبدأ ولا تُسلَّم</strong> إلا باجتياز بروتوكول Codex الصارم. الحضور البشري للطرف الأول لا يُغني. كل أسبوع له <strong>اعتمادان</strong>: قبل البدء (خطة الأسبوع) وبعد الانتهاء (مراجعة الكود + الاختبارات). أيّ تقييم <strong>أقل من 100/100</strong> يُعيد العمل من نقطة المراجعة.
+    </p>
+
+    <div class="protocol">
+      <h4>📋 خطوات الحصول على 100/100 لكل أسبوع</h4>
+      <ol>
+        <li>المبرمج المشارك يستخدم <strong>Claude Opus 4.7</strong> لتحضير خطة الأسبوع (مهام + Schema + Server Actions + UI + سيناريوهات اختبار).</li>
+        <li>الخطة تُعرض على <strong>Codex</strong> بصيغة مُلخَّصة + ملفات Schema و Spec.</li>
+        <li>Codex يُقيّم الخطة على 7 محاور: المعمارية، الأمان، الأداء، RLS، اختبارية الكود، الالتزام بـPDPL، وضوح المخرجات.</li>
+        <li>إذا التقييم <strong>أقل من 100/100</strong> — يجب التعديل وفق ملاحظات Codex وإعادة العرض. لا قفز فوق هذه الخطوة.</li>
+        <li>عند بلوغ <strong>100/100</strong> — يُؤذَن ببدء التطوير الفعلي.</li>
+        <li>أثناء التطوير: <strong>Daily Review</strong> صباحاً مع Codex (الكود الجديد + الاختبارات).</li>
+        <li>نهاية الأسبوع: <strong>Pull Request</strong> + Codex Approval 100/100 + Merge على <code>develop</code> + Deploy على Staging.</li>
+      </ol>
+    </div>
+
+    <h3 class="section-h">📐 محاور تقييم Codex السبعة</h3>
+
+    <table>
+      <thead>
+        <tr><th>المحور</th><th>الوزن</th><th>أمثلة على ما يُفحص</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>المعمارية</strong></td><td>20</td><td>Feature-based folders + Separation of concerns + Single Source of Truth</td></tr>
+        <tr><td><strong>الأمان</strong></td><td>20</td><td>RLS على كل جدول + Auth checks في Server Actions + لا أسرار في Client</td></tr>
+        <tr><td><strong>RLS Multi-Branch</strong></td><td>15</td><td>كل سياسة تتحقق من <code>auth.jwt() -> branch_id</code> + اختبارات Cross-Branch Denied</td></tr>
+        <tr><td><strong>الأداء</strong></td><td>15</td><td>Indexes صحيحة + N+1 محسومة + Caching سليم + Cold-start < 800ms</td></tr>
+        <tr><td><strong>اختبارية الكود</strong></td><td>10</td><td>Unit Tests ≥ 80% للمنطق التجاري + E2E للسيناريوهات الحرجة</td></tr>
+        <tr><td><strong>PDPL</strong></td><td>10</td><td>Audit Log + تشفير + حقوق المحو والتصدير مبنية في الـSchema</td></tr>
+        <tr><td><strong>وضوح المخرجات</strong></td><td>10</td><td>README + JSDoc + Storybook لكل Component + Runbook لكل سيناريو تشغيلي</td></tr>
+      </tbody>
+    </table>
+
+    <div class="important-box">
+      <h4>🚫 ما لا يُكتب سطر كود قبله</h4>
+      <p>
+        لا يُكتب سطر كود واحد للمرحلة قبل: <strong>(أ)</strong> اعتماد <code>.env</code> + الحسابات،
+        <strong>(ب)</strong> اعتماد Codex 100/100 لخطة الأسبوع الأول،
+        <strong>(ج)</strong> اعتماد Branch Protection على المستودع،
+        <strong>(د)</strong> اعتماد نموذج الـSchema المعماري الأولي (ERD).
+      </p>
+    </div>
+
+    <h3 class="section-h">🔄 تدفّق الأسبوع النموذجي</h3>
+
+    <div class="mermaid">
+flowchart LR
+    A[خطة الأسبوع<br/>Claude Opus] --> B{Codex Review<br/>100/100?}
+    B -- لا --> C[تعديل + إعادة]
+    C --> B
+    B -- نعم --> D[Sprint Kickoff]
+    D --> E[Daily Dev<br/>+ Daily Codex Review]
+    E --> F[PR + Tests<br/>+ Coverage Report]
+    F --> G{Codex Final<br/>100/100?}
+    G -- لا --> H[إصلاحات]
+    H --> G
+    G -- نعم --> I[Merge develop]
+    I --> J[Deploy Staging]
+    J --> K[Demo للطرف الأول]
+
+    style B fill:#FEE2E2,stroke:#DC2626
+    style G fill:#FEE2E2,stroke:#DC2626
+    style I fill:#D1FAE5,stroke:#10B981
+    style K fill:#D1FAE5,stroke:#10B981
+    </div>
+  </div>
+</section>
+
+<!-- ============= 5. WEEK 1 — FOUNDATION ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الأسبوع 1 — التأسيس + المصادقة + الفروع</h2>
+      <div class="page-num">05</div>
+    </div>
+
+    <div class="week-banner">
+      <div class="week-banner-content">
+        <span class="week-label">الأسبوع 1 · Foundation</span>
+        <div class="week-title-main">Next.js 14 + Supabase + Auth + RLS + Audit + CI/CD</div>
+        <div class="week-tagline">
+          البنية التحتية الكاملة — كل سطر كود لاحق سيستند عليها.
+        </div>
+      </div>
+    </div>
+
+    <div class="objectives-box">
+      <h4>🎯 أهداف الأسبوع</h4>
+      <ul>
+        <li>إنشاء مشروع <strong>Next.js 14</strong> + TypeScript Strict + TailwindCSS + shadcn/ui (RTL).</li>
+        <li>تهيئة <strong>Supabase Project</strong> + الـ Migrations الأولية + Storage Buckets.</li>
+        <li>بناء طبقة <strong>Auth + 2FA</strong> + Middleware حماية المسارات + Lockout policy.</li>
+        <li>إنشاء جداول <strong>branches, users, roles, permissions</strong> + سياسات <strong>RLS</strong> صارمة.</li>
+        <li>تفعيل <strong>Audit Log</strong> + Triggers تلقائية + <strong>CI/CD pipeline</strong> على GitHub Actions.</li>
+      </ul>
+    </div>
+
+    <h3 class="section-h">📋 المهام اليومية</h3>
+
+    <div class="daily-grid">
+      <div class="day-card">
+        <div class="day-label">اليوم 1 — Bootstrap</div>
+        <ul>
+          <li>Next.js 14 + TS Strict</li>
+          <li>pnpm + ESLint + Prettier</li>
+          <li>Husky + Commitlint</li>
+          <li>بنية Feature-based</li>
+          <li>خطوط Cairo محلية</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">اليوم 2 — Supabase</div>
+        <ul>
+          <li>إنشاء Project</li>
+          <li>Migrations 0001-0005</li>
+          <li>Seed الفروع الأربعة</li>
+          <li>Storage Buckets</li>
+          <li>RLS تفعيل عام</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">اليوم 3 — Auth</div>
+        <ul>
+          <li>Supabase Auth setup</li>
+          <li>صفحة /login عربية RTL</li>
+          <li>2FA TOTP للأدوار الحساسة</li>
+          <li>Lockout بعد 5 محاولات</li>
+          <li>صفحة Reset Password</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">اليوم 4 — RBAC + RLS</div>
+        <ul>
+          <li>جداول roles + permissions</li>
+          <li>4 أدوار قاعدية</li>
+          <li>سياسات RLS لكل جدول</li>
+          <li>Middleware حماية</li>
+          <li>اختبار Cross-Branch</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">اليوم 5 — Audit + CI</div>
+        <ul>
+          <li>جدول audit_log</li>
+          <li>Triggers تلقائية</li>
+          <li>GitHub Actions × 3</li>
+          <li>Sentry + Analytics</li>
+          <li>Deploy Staging</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="section-h">🗄 جداول قاعدة البيانات (SQL DDL كامل)</h3>
+
+    <div class="code-label">supabase/migrations/0001_tenants_branches.sql</div>
+    <pre class="sql">
+-- ============================================================
+-- جدول tenants (للجاهزية المستقبلية متعدد المؤسسات SaaS)
+-- ============================================================
+CREATE TABLE tenants (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  code          TEXT UNIQUE NOT NULL,
+  name_ar       TEXT NOT NULL,
+  name_en       TEXT,
+  settings      JSONB DEFAULT '{}'::jsonb,
+  is_active     BOOLEAN DEFAULT TRUE,
+  created_at    TIMESTAMPTZ DEFAULT NOW(),
+  updated_at    TIMESTAMPTZ DEFAULT NOW(),
+  deleted_at    TIMESTAMPTZ
+);
+
+-- البذرة الافتراضية لمستأجر IIMS الحالي
+INSERT INTO tenants (code, name_ar, name_en) VALUES ('IIMS', 'IIMS', 'IIMS');
+
+-- ============================================================
+-- جدول branches (الفروع الأربعة)
+-- ============================================================
+CREATE TABLE branches (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  tenant_id       UUID NOT NULL REFERENCES tenants(id) ON DELETE RESTRICT,
+  code            TEXT UNIQUE NOT NULL,        -- BRANCH_A / BRANCH_B …
+  name_ar         TEXT NOT NULL,
+  name_en         TEXT,
+  address_full    TEXT,
+  phone           TEXT,
+  manager_user_id UUID,                         -- سيُربط لاحقاً بـ users
+  working_hours   JSONB DEFAULT '{"sat":"08:00-20:00"}'::jsonb,
+  geo_lat         NUMERIC(9,6),
+  geo_lng         NUMERIC(9,6),
+  timezone        TEXT DEFAULT 'Asia/Riyadh',
+  settings        JSONB DEFAULT '{}'::jsonb,
+  is_active       BOOLEAN DEFAULT TRUE,
+  created_at      TIMESTAMPTZ DEFAULT NOW(),
+  updated_at      TIMESTAMPTZ DEFAULT NOW(),
+  deleted_at      TIMESTAMPTZ
+);
+
+CREATE INDEX idx_branches_tenant ON branches(tenant_id);
+CREATE INDEX idx_branches_active ON branches(is_active) WHERE deleted_at IS NULL;
+
+ALTER TABLE branches ENABLE ROW LEVEL SECURITY;
+
+-- البذرة: الفروع الأربعة
+INSERT INTO branches (tenant_id, code, name_ar) VALUES
+  ((SELECT id FROM tenants WHERE code='IIMS'), 'BRANCH_A', 'الفرع الأول'),
+  ((SELECT id FROM tenants WHERE code='IIMS'), 'BRANCH_B', 'الفرع الثاني'),
+  ((SELECT id FROM tenants WHERE code='IIMS'), 'BRANCH_C', 'الفرع الثالث'),
+  ((SELECT id FROM tenants WHERE code='IIMS'), 'BRANCH_D', 'الفرع الرابع');
+    </pre>
+
+    <div class="code-label">supabase/migrations/0002_users_roles.sql</div>
+    <pre class="sql">
+-- ============================================================
+-- جدول users (الموظفون والأدوار الإدارية)
+-- ============================================================
+CREATE TABLE users (
+  id              UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  tenant_id       UUID NOT NULL REFERENCES tenants(id),
+  branch_id       UUID REFERENCES branches(id),   -- NULL = super_admin عابر للفروع
+  email           TEXT UNIQUE NOT NULL,
+  full_name_ar    TEXT NOT NULL,
+  full_name_en    TEXT,
+  phone           TEXT,
+  national_id     TEXT,
+  role            TEXT NOT NULL CHECK (role IN (
+    'super_admin', 'branch_manager', 'finance_officer',
+    'student_affairs', 'registration_officer', 'instructor', 'student'
+  )),
+  is_active       BOOLEAN DEFAULT TRUE,
+  mfa_enabled     BOOLEAN DEFAULT FALSE,
+  last_login_at   TIMESTAMPTZ,
+  failed_login_count SMALLINT DEFAULT 0,
+  locked_until    TIMESTAMPTZ,
+  metadata        JSONB DEFAULT '{}'::jsonb,
+  created_at      TIMESTAMPTZ DEFAULT NOW(),
+  updated_at      TIMESTAMPTZ DEFAULT NOW(),
+  deleted_at      TIMESTAMPTZ
+);
+
+CREATE INDEX idx_users_branch ON users(branch_id);
+CREATE INDEX idx_users_role ON users(role);
+CREATE INDEX idx_users_active ON users(is_active) WHERE deleted_at IS NULL;
+
+ALTER TABLE users ENABLE ROW LEVEL SECURITY;
+
+-- جدول user_branches (Many-to-Many لموظف يعمل في أكثر من فرع)
+CREATE TABLE user_branches (
+  user_id     UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  branch_id   UUID NOT NULL REFERENCES branches(id) ON DELETE CASCADE,
+  is_primary  BOOLEAN DEFAULT FALSE,
+  granted_at  TIMESTAMPTZ DEFAULT NOW(),
+  granted_by  UUID REFERENCES users(id),
+  PRIMARY KEY (user_id, branch_id)
+);
+
+CREATE INDEX idx_user_branches_user ON user_branches(user_id);
+CREATE INDEX idx_user_branches_branch ON user_branches(branch_id);
+
+ALTER TABLE user_branches ENABLE ROW LEVEL SECURITY;
+
+-- ============================================================
+-- جداول roles + permissions (RBAC)
+-- ============================================================
+CREATE TABLE roles (
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  code        TEXT UNIQUE NOT NULL,
+  name_ar     TEXT NOT NULL,
+  description TEXT,
+  is_system   BOOLEAN DEFAULT FALSE,
+  created_at  TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE permissions (
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  code        TEXT UNIQUE NOT NULL,             -- e.g. 'students:read'
+  resource    TEXT NOT NULL,                    -- e.g. 'students'
+  action      TEXT NOT NULL,                    -- e.g. 'read','write','delete'
+  description TEXT
+);
+
+CREATE TABLE role_permissions (
+  role_id       UUID NOT NULL REFERENCES roles(id) ON DELETE CASCADE,
+  permission_id UUID NOT NULL REFERENCES permissions(id) ON DELETE CASCADE,
+  PRIMARY KEY (role_id, permission_id)
+);
+
+-- البذرة: الأدوار السبعة + الصلاحيات الأساسية
+INSERT INTO roles (code, name_ar, is_system) VALUES
+  ('super_admin', 'الإدارة العامة', TRUE),
+  ('branch_manager', 'مدير الفرع', TRUE),
+  ('finance_officer', 'موظف المالية', TRUE),
+  ('student_affairs', 'موظف شؤون المتدربين', TRUE),
+  ('registration_officer', 'موظف التسجيل والقبول', TRUE),
+  ('instructor', 'المدرب', TRUE),
+  ('student', 'الطالب', TRUE);
+    </pre>
+  </div>
+</section>
+
+<!-- ============= 6. WEEK 1 — CONT (Audit Log + RLS + Server Code) ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الأسبوع 1 — Audit Log + RLS + Server Actions</h2>
+      <div class="page-num">06</div>
+    </div>
+
+    <h3 class="section-h">🗄 Audit Log + Triggers</h3>
+
+    <div class="code-label">supabase/migrations/0003_audit_log.sql</div>
+    <pre class="sql">
+-- ============================================================
+-- جدول audit_log (غير قابل للحذف — PDPL)
+-- ============================================================
+CREATE TABLE audit_log (
+  id           BIGSERIAL PRIMARY KEY,
+  tenant_id    UUID REFERENCES tenants(id),
+  branch_id    UUID REFERENCES branches(id),
+  actor_id     UUID REFERENCES users(id),
+  actor_role   TEXT,
+  action       TEXT NOT NULL,                   -- INSERT / UPDATE / DELETE / LOGIN / UNLOCK
+  table_name   TEXT NOT NULL,
+  record_id    UUID,
+  old_data     JSONB,
+  new_data     JSONB,
+  changed_fields TEXT[],
+  reason       TEXT,
+  ip_address   INET,
+  user_agent   TEXT,
+  occurred_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX idx_audit_actor ON audit_log(actor_id);
+CREATE INDEX idx_audit_table_record ON audit_log(table_name, record_id);
+CREATE INDEX idx_audit_occurred ON audit_log(occurred_at DESC);
+CREATE INDEX idx_audit_branch ON audit_log(branch_id);
+
+-- Audit Log غير قابل للحذف — PDPL إلزامي
+REVOKE DELETE, UPDATE ON audit_log FROM PUBLIC, authenticated;
+
+-- ============================================================
+-- دالة Trigger عامة لتسجيل التغييرات
+-- ============================================================
+CREATE OR REPLACE FUNCTION audit_trigger_fn() RETURNS TRIGGER AS $$
+DECLARE
+  v_actor    UUID := auth.uid();
+  v_role     TEXT := (SELECT role FROM users WHERE id = v_actor);
+  v_branch   UUID := COALESCE(NEW.branch_id, OLD.branch_id);
+  v_changed  TEXT[];
+BEGIN
+  IF TG_OP = 'UPDATE' THEN
+    SELECT array_agg(key) INTO v_changed
+    FROM jsonb_each(to_jsonb(NEW)) n
+    WHERE n.value IS DISTINCT FROM (to_jsonb(OLD) -> n.key);
+  END IF;
+
+  INSERT INTO audit_log(
+    actor_id, actor_role, branch_id, action,
+    table_name, record_id, old_data, new_data, changed_fields
+  ) VALUES (
+    v_actor, v_role, v_branch, TG_OP,
+    TG_TABLE_NAME, COALESCE(NEW.id, OLD.id),
+    CASE WHEN TG_OP IN ('UPDATE','DELETE') THEN to_jsonb(OLD) END,
+    CASE WHEN TG_OP IN ('INSERT','UPDATE') THEN to_jsonb(NEW) END,
+    v_changed
+  );
+
+  RETURN COALESCE(NEW, OLD);
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- تطبيق الـ Trigger على الجداول الحساسة
+CREATE TRIGGER trg_audit_users
+  AFTER INSERT OR UPDATE OR DELETE ON users
+  FOR EACH ROW EXECUTE FUNCTION audit_trigger_fn();
+
+CREATE TRIGGER trg_audit_branches
+  AFTER INSERT OR UPDATE OR DELETE ON branches
+  FOR EACH ROW EXECUTE FUNCTION audit_trigger_fn();
+    </pre>
+
+    <h3 class="section-h">🛡 سياسات RLS متعددة الفروع</h3>
+
+    <div class="code-label">supabase/migrations/0004_rls_policies.sql</div>
+    <pre class="sql">
+-- ============================================================
+-- دالة مساعدة: استخراج الـbranch_id والـrole من JWT
+-- ============================================================
+CREATE OR REPLACE FUNCTION auth.user_branch() RETURNS UUID AS $$
+  SELECT (current_setting('request.jwt.claims', true)::jsonb ->> 'branch_id')::UUID;
+$$ LANGUAGE SQL STABLE;
+
+CREATE OR REPLACE FUNCTION auth.user_role() RETURNS TEXT AS $$
+  SELECT current_setting('request.jwt.claims', true)::jsonb ->> 'role';
+$$ LANGUAGE SQL STABLE;
+
+CREATE OR REPLACE FUNCTION auth.is_super_admin() RETURNS BOOLEAN AS $$
+  SELECT auth.user_role() = 'super_admin';
+$$ LANGUAGE SQL STABLE;
+
+-- ============================================================
+-- سياسات branches
+-- ============================================================
+CREATE POLICY branches_select ON branches FOR SELECT
+  USING (
+    auth.is_super_admin()
+    OR id = auth.user_branch()
+    OR id IN (SELECT branch_id FROM user_branches WHERE user_id = auth.uid())
+  );
+
+CREATE POLICY branches_modify ON branches FOR ALL
+  USING (auth.is_super_admin());
+
+-- ============================================================
+-- سياسات users
+-- ============================================================
+CREATE POLICY users_select ON users FOR SELECT
+  USING (
+    auth.is_super_admin()
+    OR id = auth.uid()
+    OR branch_id = auth.user_branch()
+  );
+
+CREATE POLICY users_self_update ON users FOR UPDATE
+  USING (id = auth.uid())
+  WITH CHECK (id = auth.uid() AND role = (SELECT role FROM users WHERE id = auth.uid()));
+
+CREATE POLICY users_admin_all ON users FOR ALL
+  USING (auth.is_super_admin());
+    </pre>
+
+    <h3 class="section-h">🔌 Supabase Server Client</h3>
+
+    <div class="code-label">src/shared/lib/supabase/server.ts</div>
+    <pre class="ts">
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
+import { env } from '@/shared/lib/env';
+
+export async function getSupabaseServer() {
+  const cookieStore = cookies();
+
+  return createServerClient(
+    env.NEXT_PUBLIC_SUPABASE_URL,
+    env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    {
+      cookies: {
+        get(name: string) {
+          return cookieStore.get(name)?.value;
+        },
+        set(name: string, value: string, options) {
+          cookieStore.set({ name, value, ...options });
+        },
+        remove(name: string, options) {
+          cookieStore.set({ name, value: '', ...options });
+        },
+      },
+    }
+  );
+}
+
+export async function getCurrentUser() {
+  const supabase = await getSupabaseServer();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return null;
+
+  const { data: profile } = await supabase
+    .from('users')
+    .select('id, full_name_ar, role, branch_id, mfa_enabled')
+    .eq('id', user.id)
+    .single();
+
+  return profile;
+}
+
+export async function requireRole(roles: readonly string[]) {
+  const user = await getCurrentUser();
+  if (!user || !roles.includes(user.role)) {
+    throw new Error('FORBIDDEN');
+  }
+  return user;
+}
+    </pre>
+  </div>
+</section>
+
+<!-- ============= 7. WEEK 1 — Screens + Tests + Deliverables ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الأسبوع 1 — الشاشات + الاختبارات + المخرجات</h2>
+      <div class="page-num">07</div>
+    </div>
+
+    <h3 class="section-h">🎨 الشاشات المطلوبة</h3>
+
+    <div class="screen-card">
+      <h5>صفحة تسجيل الدخول <span class="route">/login</span></h5>
+      <div class="desc">
+        نموذج بسيط: بريد + كلمة مرور. RTL كامل + خط Cairo + لون <code>#065F46</code>.
+        عند تسجيل دخول لدور حسّاس → طلب 2FA TOTP. عرض رسائل خطأ بالعربية.
+        بعد 5 محاولات فاشلة → قفل 15 دقيقة. شريط حالة سفلي يعرض إصدار النظام.
+      </div>
+    </div>
+
+    <div class="screen-card">
+      <h5>صفحة 2FA <span class="route">/login/2fa</span></h5>
+      <div class="desc">
+        إدخال 6 أرقام TOTP + نص مساعد "افتح Google Authenticator". خيار "تذكر هذا الجهاز 30 يوماً".
+        رمز احتياطي للأدوار الحسّاسة (One-time backup code).
+      </div>
+    </div>
+
+    <div class="screen-card">
+      <h5>لوحات تحكم فارغة لكل دور <span class="route">/admin · /branch · /teacher · /student</span></h5>
+      <div class="desc">
+        عرض اسم المستخدم + الدور + الفرع فقط. Header + Sidebar شفافان + Logout.
+        الهدف: إثبات أن المصادقة + Middleware يعملان، وأن المستخدم يُوجَّه للوحة الصحيحة وفق دوره.
+      </div>
+    </div>
+
+    <div class="screen-card">
+      <h5>صفحة الخطأ 403 <span class="route">/403</span></h5>
+      <div class="desc">
+        رسالة "ليست لديك صلاحية للوصول إلى هذه الصفحة" + زر العودة. يُسجَّل الحدث في <code>audit_log</code>.
+      </div>
+    </div>
+
+    <div class="screen-card">
+      <h5>سياسة الخصوصية <span class="route">/privacy-policy</span></h5>
+      <div class="desc">
+        نص PDPL متوافق + حقوق الطالب (المحو، الوصول، التصدير، التصحيح). صفحة عامة بدون تسجيل دخول.
+      </div>
+    </div>
+
+    <h3 class="section-h">🧪 سيناريوهات الاختبار</h3>
+
+    <div class="test-card">
+      <div class="tc-header">
+        <span class="tc-id">TC-W1-01</span>
+        <span class="tc-title">تسجيل دخول ناجح + توجيه صحيح</span>
+      </div>
+      <div class="tc-body">
+        <strong>المُعطى:</strong> مستخدم بدور <code>super_admin</code> + كلمة مرور صحيحة.
+        <strong>الفعل:</strong> /login → إدخال + تأكيد 2FA.
+        <strong>النتيجة:</strong> توجيه إلى /admin خلال &lt; 2 ثانية + إنشاء سجل في <code>audit_log</code> بـ <code>action='LOGIN'</code>.
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header">
+        <span class="tc-id">TC-W1-02</span>
+        <span class="tc-title">قفل الحساب بعد 5 محاولات فاشلة</span>
+      </div>
+      <div class="tc-body">
+        <strong>المُعطى:</strong> مستخدم موجود + كلمة مرور خاطئة.
+        <strong>الفعل:</strong> 5 محاولات متتالية.
+        <strong>النتيجة:</strong> <code>locked_until = NOW() + 15 minutes</code> + رفض المحاولة السادسة + رسالة "تم قفل الحساب".
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header">
+        <span class="tc-id">TC-W1-03</span>
+        <span class="tc-title">عزل الفروع — مدير الفرع A لا يرى بيانات الفرع B</span>
+      </div>
+      <div class="tc-body">
+        <strong>المُعطى:</strong> مستخدمان كلاهما <code>branch_manager</code> لكن في فرعين مختلفين.
+        <strong>الفعل:</strong> المستخدم A يستعلم <code>SELECT * FROM users WHERE branch_id = B.id</code>.
+        <strong>النتيجة:</strong> صفر صفوف (RLS يرفض). محاولة الوصول تُسجَّل في <code>audit_log</code>.
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header">
+        <span class="tc-id">TC-W1-04</span>
+        <span class="tc-title">Audit Trigger يلتقط UPDATE تلقائياً</span>
+      </div>
+      <div class="tc-body">
+        <strong>المُعطى:</strong> صف users قائم.
+        <strong>الفعل:</strong> <code>UPDATE users SET full_name_ar='...' WHERE id=...</code>.
+        <strong>النتيجة:</strong> صف جديد في <code>audit_log</code> يحوي <code>old_data</code>, <code>new_data</code>, <code>changed_fields</code>.
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header">
+        <span class="tc-id">TC-W1-05</span>
+        <span class="tc-title">CI Pipeline ينجح على Push</span>
+      </div>
+      <div class="tc-body">
+        <strong>المُعطى:</strong> فرع جديد + Push.
+        <strong>الفعل:</strong> Pull Request مفتوح.
+        <strong>النتيجة:</strong> 4 Checks خضراء (lint, typecheck, unit, e2e) + Codex review رابطه ظاهر.
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header">
+        <span class="tc-id">TC-W1-06</span>
+        <span class="tc-title">Audit Log غير قابل للحذف</span>
+      </div>
+      <div class="tc-body">
+        <strong>المُعطى:</strong> مستخدم super_admin + سطر audit_log.
+        <strong>الفعل:</strong> <code>DELETE FROM audit_log WHERE id=1</code>.
+        <strong>النتيجة:</strong> خطأ صريح (REVOKE فعّال) + رفض الطلب.
+      </div>
+    </div>
+
+    <h3 class="section-h">✅ Codex Approval Checklist</h3>
+
+    <div class="checklist-box">
+      <h4>📋 يجب اجتيازها قبل Merge إلى develop</h4>
+      <ul>
+        <li><code>pnpm build</code> ينجح بدون تحذيرات + <code>pnpm typecheck</code> نظيف.</li>
+        <li>كل جدول جديد له <code>RLS ENABLED</code> + سياسات صريحة (لا اعتماد على الإفتراضي).</li>
+        <li>كل Server Action يتحقق من المصادقة + الدور قبل أي استعلام.</li>
+        <li>Migrations تعمل بـ<code>supabase db reset</code> من الصفر بدون أخطاء.</li>
+        <li>4 فروع + 4 مستخدمين تجريبيين موجودون في Seed.</li>
+        <li>3 GitHub Actions workflows تعمل (CI, Staging, Production).</li>
+        <li>Sentry يلتقط خطأ تجريبي مزروع + Source maps مرفوعة.</li>
+        <li>Lighthouse PWA Score &gt; 80 على صفحة /login.</li>
+        <li>Coverage &gt; 80% للوحدات الجوهرية (auth, rls, audit).</li>
+        <li>README + Runbook + architecture.md مُحدَّثة.</li>
+      </ul>
+    </div>
+
+    <div class="deliverable-box">
+      <div class="label">📦 المسلَّم نهاية الأسبوع 1</div>
+      <div class="text">
+        مستودع Git + Supabase staging + 4 مستخدمين × 4 أدوار + عزل فروع مُختبَر + Audit Log فعّال + CI/CD يعمل + Staging URL يستقبل تسجيل دخول.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= 8. WEEK 2 — Question Bank ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الأسبوع 2 — بنك الأسئلة (14 نوع)</h2>
+      <div class="page-num">08</div>
+    </div>
+
+    <div class="week-banner">
+      <div class="week-banner-content">
+        <span class="week-label">الأسبوع 2 · Question Bank</span>
+        <div class="week-title-main">14 نوع سؤال + 3 قنوات إدخال + التصنيف الهرمي</div>
+        <div class="week-tagline">
+          بنك الأسئلة أصلٌ معرفي مملوك للمعهد، يبقى عابراً للمعلمين والدورات.
+        </div>
+      </div>
+    </div>
+
+    <div class="objectives-box">
+      <h4>🎯 أهداف الأسبوع</h4>
+      <ul>
+        <li>إنشاء جداول <code>questions, question_categories, question_options</code> + Validation Schema لكل نوع.</li>
+        <li>تنفيذ <strong>14 نوع سؤال</strong> (MCQ Single/Multi، صح/خطأ، ملء فراغ، ترتيب، توصيل، سحب، Hotspot، إجابة قصيرة، مقالي، معادلة، كود، وسائط، حالة).</li>
+        <li>3 قنوات إدخال: <strong>يدوي + استيراد Excel + اقتراح Claude AI</strong> (موافقة المعلم إلزامية).</li>
+        <li>تصنيف هرمي بـ4 مستويات (قسم → مادة → موضوع → موضوع فرعي) + بحث متقدم.</li>
+        <li>إحصاءات لكل سؤال (usage_count + avg_correct_rate + discrimination_index).</li>
+      </ul>
+    </div>
+
+    <h3 class="section-h">📋 المهام اليومية</h3>
+
+    <div class="daily-grid">
+      <div class="day-card">
+        <div class="day-label">اليوم 1 — Schema</div>
+        <ul>
+          <li>جدول categories هرمي</li>
+          <li>جدول questions الأساسي</li>
+          <li>question_data JSONB</li>
+          <li>Indexes + GIN tags</li>
+          <li>RLS لكل معلم</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">اليوم 2 — 7 أنواع</div>
+        <ul>
+          <li>MCQ Single/Multi</li>
+          <li>صح/خطأ + فراغ</li>
+          <li>ترتيب + توصيل</li>
+          <li>سحب وإفلات</li>
+          <li>UI + Validation</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">اليوم 3 — 7 أنواع</div>
+        <ul>
+          <li>Hotspot</li>
+          <li>إجابة قصيرة + مقالي</li>
+          <li>معادلة LaTeX</li>
+          <li>كود + وسائط</li>
+          <li>دراسة حالة</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">اليوم 4 — Import</div>
+        <ul>
+          <li>قالب Excel</li>
+          <li>Parser + Validation</li>
+          <li>تقرير الأخطاء</li>
+          <li>Bulk Insert atomic</li>
+          <li>Test 100 سؤال</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">اليوم 5 — Claude AI</div>
+        <ul>
+          <li>Server Action للاقتراح</li>
+          <li>Prompt Engineering</li>
+          <li>UI Review + Approve</li>
+          <li>بحث متقدم</li>
+          <li>تصدير Excel</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="section-h">🗄 SQL DDL — جداول بنك الأسئلة</h3>
+
+    <div class="code-label">supabase/migrations/0005_questions.sql</div>
+    <pre class="sql">
+-- ============================================================
+-- التصنيفات الهرمية (4 مستويات)
+-- ============================================================
+CREATE TABLE question_categories (
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  parent_id   UUID REFERENCES question_categories(id) ON DELETE CASCADE,
+  branch_id   UUID REFERENCES branches(id),       -- NULL = شامل
+  level       SMALLINT NOT NULL CHECK (level BETWEEN 1 AND 4),
+  name_ar     TEXT NOT NULL,
+  name_en     TEXT,
+  slug        TEXT NOT NULL,
+  description TEXT,
+  is_active   BOOLEAN DEFAULT TRUE,
+  created_at  TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_qcat_parent ON question_categories(parent_id);
+CREATE INDEX idx_qcat_level ON question_categories(level);
+
+ALTER TABLE question_categories ENABLE ROW LEVEL SECURITY;
+
+-- ============================================================
+-- الجدول المركزي للأسئلة
+-- ============================================================
+CREATE TABLE questions (
+  id                    UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  tenant_id             UUID NOT NULL REFERENCES tenants(id),
+  branch_id             UUID REFERENCES branches(id),
+  category_id           UUID REFERENCES question_categories(id),
+  type                  TEXT NOT NULL CHECK (type IN (
+    'mcq_single', 'mcq_multi', 'true_false', 'fill_blank',
+    'ordering', 'matching', 'drag_drop', 'hotspot',
+    'short_answer', 'essay', 'math_latex', 'code_editor',
+    'media_question', 'case_study'
+  )),
+  difficulty            TEXT CHECK (difficulty IN ('easy','medium','hard')),
+  weight                NUMERIC(5,2) DEFAULT 1.0 CHECK (weight > 0),
+  question_data         JSONB NOT NULL,            -- يختلف حسب النوع
+  answer_data           JSONB NOT NULL,            -- الإجابة الصحيحة
+  tags                  TEXT[] DEFAULT '{}',
+  learning_outcome      TEXT,
+  status                TEXT DEFAULT 'draft' CHECK (status IN (
+    'draft','pending_review','active','archived','rejected'
+  )),
+  source                TEXT CHECK (source IN ('manual','excel','ai_claude')),
+  ai_suggestion_id      UUID,
+  approved_by           UUID REFERENCES users(id),
+  approved_at           TIMESTAMPTZ,
+  usage_count           INTEGER DEFAULT 0,
+  avg_correct_rate      NUMERIC(5,2),
+  discrimination_index  NUMERIC(5,2),
+  created_by            UUID REFERENCES users(id),
+  created_at            TIMESTAMPTZ DEFAULT NOW(),
+  updated_at            TIMESTAMPTZ DEFAULT NOW(),
+  deleted_at            TIMESTAMPTZ
+);
+
+CREATE INDEX idx_q_category ON questions(category_id);
+CREATE INDEX idx_q_type ON questions(type);
+CREATE INDEX idx_q_tags ON questions USING GIN(tags);
+CREATE INDEX idx_q_difficulty ON questions(difficulty);
+CREATE INDEX idx_q_status ON questions(status);
+CREATE INDEX idx_q_data ON questions USING GIN(question_data);
+
+ALTER TABLE questions ENABLE ROW LEVEL SECURITY;
+
+-- RLS: المعلم يرى أسئلته فقط، مدير الفرع يرى أسئلة فرعه
+CREATE POLICY q_select ON questions FOR SELECT
+  USING (
+    auth.is_super_admin()
+    OR created_by = auth.uid()
+    OR branch_id = auth.user_branch()
+  );
+
+CREATE POLICY q_insert ON questions FOR INSERT
+  WITH CHECK (
+    auth.user_role() IN ('instructor','super_admin','branch_manager')
+    AND created_by = auth.uid()
+  );
+
+-- ============================================================
+-- جدول اقتراحات Claude AI (قبل الاعتماد)
+-- ============================================================
+CREATE TABLE ai_question_suggestions (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  requested_by    UUID NOT NULL REFERENCES users(id),
+  category_id     UUID REFERENCES question_categories(id),
+  prompt          TEXT NOT NULL,
+  raw_response    JSONB NOT NULL,
+  parsed_questions JSONB,
+  status          TEXT DEFAULT 'pending' CHECK (status IN (
+    'pending','approved','rejected'
+  )),
+  approved_question_ids UUID[],
+  tokens_used     INTEGER,
+  created_at      TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE ai_question_suggestions ENABLE ROW LEVEL SECURITY;
+    </pre>
+  </div>
+</section>
+
+<!-- ============= 9. WEEK 2 — Types + Server Actions + Import ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الأسبوع 2 — TypeScript Types + Server Actions</h2>
+      <div class="page-num">09</div>
+    </div>
+
+    <h3 class="section-h">📦 أنواع TypeScript للأسئلة</h3>
+
+    <div class="code-label">src/features/questions/types.ts</div>
+    <pre class="ts">
+export type QuestionType =
+  | 'mcq_single' | 'mcq_multi' | 'true_false' | 'fill_blank'
+  | 'ordering'   | 'matching' | 'drag_drop'   | 'hotspot'
+  | 'short_answer' | 'essay' | 'math_latex' | 'code_editor'
+  | 'media_question' | 'case_study';
+
+export type Difficulty = 'easy' | 'medium' | 'hard';
+
+export type QuestionStatus =
+  | 'draft' | 'pending_review' | 'active' | 'archived' | 'rejected';
+
+// ============ النوع 1: MCQ Single ============
+export type MCQSingleQuestion = {
+  type: 'mcq_single';
+  question_data: {
+    stem: string;
+    options: Array<{ id: string; text: string; image_url?: string }>;
+  };
+  answer_data: {
+    correct_option_id: string;
+    explanation?: string;
+  };
+};
+
+// ============ النوع 2: MCQ Multi ============
+export type MCQMultiQuestion = {
+  type: 'mcq_multi';
+  question_data: {
+    stem: string;
+    options: Array<{ id: string; text: string }>;
+  };
+  answer_data: {
+    correct_option_ids: string[];
+    scoring_method: 'all_or_nothing' | 'partial' | 'penalty';
+  };
+};
+
+// ============ النوع 3: True/False ============
+export type TrueFalseQuestion = {
+  type: 'true_false';
+  question_data: { statement: string };
+  answer_data: { is_true: boolean; explanation?: string };
+};
+
+// ============ النوع 4: Fill Blank ============
+export type FillBlankQuestion = {
+  type: 'fill_blank';
+  question_data: {
+    template: string;     // "عاصمة المملكة {{blank_1}} عدد سكانها {{blank_2}}"
+    blanks: Array<{
+      id: string;
+      accepted_answers: string[];
+      case_sensitive: boolean;
+      normalize_arabic: boolean;
+    }>;
+  };
+};
+
+// ... (بقية الأنواع 5—14 على نفس النمط)
+
+export type AnyQuestion =
+  | MCQSingleQuestion | MCQMultiQuestion
+  | TrueFalseQuestion | FillBlankQuestion
+  // ... etc
+  ;
+    </pre>
+
+    <h3 class="section-h">🔌 Server Action — اقتراح Claude AI</h3>
+
+    <div class="code-label">src/features/questions/server/suggest-questions.ts</div>
+    <pre class="ts">
+'use server';
+
+import Anthropic from '@anthropic-ai/sdk';
+import { z } from 'zod';
+import { getSupabaseServer, requireRole } from '@/shared/lib/supabase/server';
+import { env } from '@/shared/lib/env';
+
+const InputSchema = z.object({
+  category_id: z.string().uuid(),
+  topic: z.string().min(3).max(200),
+  difficulty: z.enum(['easy','medium','hard']),
+  question_type: z.enum(['mcq_single','mcq_multi','true_false','short_answer']),
+  count: z.number().int().min(1).max(10),
+});
+
+export async function suggestQuestions(input: z.infer<typeof InputSchema>) {
+  const user = await requireRole(['instructor','super_admin','branch_manager']);
+  const data = InputSchema.parse(input);
+
+  const anthropic = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
+
+  const prompt = `أنت معلم خبير في إنتاج أسئلة تعليمية بالعربية.
+اكتب ${data.count} سؤال من نوع "${data.question_type}" بمستوى "${data.difficulty}"
+حول الموضوع: "${data.topic}".
+
+أعد الرد بصيغة JSON صالحة فقط (بدون أي نص آخر):
+{ "questions": [ { "stem": "...", "options": [...], "correct": "..." } ] }`;
+
+  const response = await anthropic.messages.create({
+    model: env.ANTHROPIC_MODEL,
+    max_tokens: 4096,
+    messages: [{ role: 'user', content: prompt }],
+  });
+
+  const textBlock = response.content.find(b => b.type === 'text');
+  const rawText = textBlock?.type === 'text' ? textBlock.text : '';
+  const parsed = JSON.parse(rawText);
+
+  const supabase = await getSupabaseServer();
+  const { data: suggestion, error } = await supabase
+    .from('ai_question_suggestions')
+    .insert({
+      requested_by: user.id,
+      category_id: data.category_id,
+      prompt,
+      raw_response: response,
+      parsed_questions: parsed.questions,
+      tokens_used: response.usage.input_tokens + response.usage.output_tokens,
+    })
+    .select()
+    .single();
+
+  if (error) throw new Error(`AI_SUGGESTION_SAVE_FAILED: ${error.message}`);
+
+  return { suggestionId: suggestion.id, questions: parsed.questions };
+}
+    </pre>
+
+    <h3 class="section-h">🎨 الشاشات المطلوبة</h3>
+
+    <div class="screen-card">
+      <h5>قائمة الأسئلة <span class="route">/admin/questions</span></h5>
+      <div class="desc">
+        جدول مع Filter (نوع، صعوبة، مادة، تاج، حالة). كل صف يعرض stem مختصر + معامل التمييز + usage_count.
+        أزرار: إضافة يدوي / استيراد Excel / اقتراح Claude.
+      </div>
+    </div>
+
+    <div class="screen-card">
+      <h5>إضافة سؤال يدوي <span class="route">/admin/questions/new</span></h5>
+      <div class="desc">
+        Selector لاختيار النوع → تحميل النموذج المناسب ديناميكياً. كل نوع له Validator خاص (Zod).
+        معاينة لحظية + حفظ كمسودة.
+      </div>
+    </div>
+
+    <div class="screen-card">
+      <h5>استيراد Excel <span class="route">/admin/questions/import</span></h5>
+      <div class="desc">
+        رفع ملف .xlsx → Parsing على الخادم → عرض جدول معاينة مع علامات الصحة (سطر صحيح، سطر بخطأ، تفاصيل الخطأ).
+        زر "استيراد الصحيح فقط" + تنزيل تقرير الأخطاء.
+      </div>
+    </div>
+
+    <div class="screen-card">
+      <h5>اقتراح Claude AI <span class="route">/admin/questions/ai-suggest</span></h5>
+      <div class="desc">
+        نموذج: موضوع + صعوبة + نوع + عدد. بعد الضغط، عرض الأسئلة المُقترحة في كروت قابلة للتحرير.
+        كل سؤال له زر "اعتماد" / "رفض" / "تعديل ثم اعتماد".
+      </div>
+    </div>
+
+    <h3 class="section-h">🧪 سيناريوهات الاختبار</h3>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W2-01</span><span class="tc-title">إضافة MCQ Single يدوياً</span></div>
+      <div class="tc-body">معلم → /new → MCQ Single → 4 خيارات + اختيار الصحيح → حفظ → ظهور السؤال في القائمة بحالة <code>draft</code>.</div>
+    </div>
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W2-02</span><span class="tc-title">استيراد 100 سؤال من Excel</span></div>
+      <div class="tc-body">رفع ملف بـ100 صف (90 صحيح + 10 خطأ) → معاينة تظهر الـ10 أخطاء بسبب واضح → استيراد الـ90 → تأكيد العدد.</div>
+    </div>
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W2-03</span><span class="tc-title">اقتراح Claude AI ثم اعتماد</span></div>
+      <div class="tc-body">طلب 5 أسئلة → استلام → تعديل 2 → اعتماد 4 → حفظ في <code>questions</code> + اعتماد <code>approved_by = teacher</code>.</div>
+    </div>
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W2-04</span><span class="tc-title">RLS — معلم لا يرى أسئلة معلم آخر</span></div>
+      <div class="tc-body">معلم A ينشئ سؤال → معلم B يستعلم → صفر صفوف. مدير الفرع يرى أسئلة المعلمين في فرعه فقط.</div>
+    </div>
+
+    <div class="deliverable-box">
+      <div class="label">📦 المسلَّم نهاية الأسبوع 2</div>
+      <div class="text">بنك أسئلة كامل بـ14 نوع + 3 قنوات إدخال + بحث متقدم + 200 سؤال تجريبي مُدخَل + UI لكل نوع مختبَر.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= 10. WEEK 3 — Exam Engine + Certificates + PWA ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الأسبوع 3 — محرك الاختبارات + الشهادات + PWA</h2>
+      <div class="page-num">10</div>
+    </div>
+
+    <div class="week-banner">
+      <div class="week-banner-content">
+        <span class="week-label">الأسبوع 3 · Exams + Certificates</span>
+        <div class="week-title-main">Exam Engine + Code System + Auto-Grading + Certificates + PWA</div>
+        <div class="week-tagline">
+          نقطة التحول: من بنية تحتية إلى منتج يستخدمه طلاب فعليون.
+        </div>
+      </div>
+    </div>
+
+    <div class="objectives-box">
+      <h4>🎯 أهداف الأسبوع</h4>
+      <ul>
+        <li><strong>محرك توليد الاختبارات</strong> (تلقائي بمواصفات / يدوي بانتقاء يدوي).</li>
+        <li><strong>آلية كود الاختبار الذكية</strong> — Remote (يُنشر للجميع) / Onsite (يُكشف في القاعة).</li>
+        <li><strong>التصحيح الآلي</strong> لـ13 نوع + Rubric يدوي للمقالي + Workflow اعتماد قبل النشر.</li>
+        <li><strong>3 طبقات حماية</strong> — Basic (دائم)، Standard (اختياري)، Advanced (Realtime).</li>
+        <li><strong>الشهادات بـQR</strong> + صفحة <code>/verify/:serial</code> عامة + توليد PDF عربي RTL.</li>
+        <li><strong>PWA</strong> — Manifest + Service Worker + Offline cache للأسئلة + Lighthouse PWA ≥ 90.</li>
+      </ul>
+    </div>
+
+    <h3 class="section-h">📋 المهام اليومية</h3>
+
+    <div class="daily-grid">
+      <div class="day-card">
+        <div class="day-label">اليوم 1 — Exams Schema</div>
+        <ul>
+          <li>exams + exam_questions</li>
+          <li>exam_attempts</li>
+          <li>exam_codes</li>
+          <li>محرك التوليد</li>
+          <li>Auto / Manual</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">اليوم 2 — Taking</div>
+        <ul>
+          <li>UI أداء الاختبار</li>
+          <li>Timer + AutoSave</li>
+          <li>Submit + Lock</li>
+          <li>تتبع الجلسة</li>
+          <li>RLS صارم</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">اليوم 3 — Grading</div>
+        <ul>
+          <li>13 grader function</li>
+          <li>Rubric للمقالي</li>
+          <li>Workflow اعتماد</li>
+          <li>Item Analysis</li>
+          <li>Background Job</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">اليوم 4 — Security</div>
+        <ul>
+          <li>3 طبقات حماية</li>
+          <li>Fullscreen API</li>
+          <li>Tab visibility</li>
+          <li>Browser fingerprint</li>
+          <li>Realtime alerts</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-label">اليوم 5 — Certs + PWA</div>
+        <ul>
+          <li>certificates + serial</li>
+          <li>QR + Verify Page</li>
+          <li>PDF Puppeteer</li>
+          <li>PWA Manifest + SW</li>
+          <li>Lighthouse ≥ 90</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="section-h">🗄 جداول الاختبارات والشهادات</h3>
+
+    <div class="code-label">supabase/migrations/0006_exams.sql</div>
+    <pre class="sql">
+-- ============================================================
+-- جدول exams (الاختبارات)
+-- ============================================================
+CREATE TABLE exams (
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  tenant_id         UUID NOT NULL REFERENCES tenants(id),
+  branch_id         UUID REFERENCES branches(id),
+  course_id         UUID,
+  title             TEXT NOT NULL,
+  description       TEXT,
+  exam_type         TEXT NOT NULL CHECK (exam_type IN ('quiz','midterm','final','comprehensive')),
+  delivery_mode     TEXT NOT NULL CHECK (delivery_mode IN ('remote','onsite','hybrid')),
+  duration_minutes  INTEGER NOT NULL CHECK (duration_minutes > 0),
+  total_marks       NUMERIC(6,2) NOT NULL,
+  passing_marks     NUMERIC(6,2) NOT NULL,
+  attempts_allowed  SMALLINT DEFAULT 1,
+  attempt_policy    TEXT DEFAULT 'highest' CHECK (attempt_policy IN ('highest','last','average')),
+  scheduled_start   TIMESTAMPTZ,
+  scheduled_end     TIMESTAMPTZ,
+  show_results      TEXT DEFAULT 'after_grade' CHECK (show_results IN (
+    'immediate','after_submit','after_grade','after_publish','never'
+  )),
+  protection_level  TEXT DEFAULT 'standard' CHECK (protection_level IN ('basic','standard','advanced')),
+  status            TEXT DEFAULT 'draft' CHECK (status IN (
+    'draft','scheduled','active','closed','archived'
+  )),
+  created_by        UUID REFERENCES users(id),
+  created_at        TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ============================================================
+-- ربط أسئلة الاختبار
+-- ============================================================
+CREATE TABLE exam_questions (
+  exam_id      UUID NOT NULL REFERENCES exams(id) ON DELETE CASCADE,
+  question_id  UUID NOT NULL REFERENCES questions(id),
+  order_idx    SMALLINT NOT NULL,
+  marks        NUMERIC(5,2) NOT NULL,
+  PRIMARY KEY (exam_id, question_id)
+);
+
+-- ============================================================
+-- جدول exam_codes (كود الاختبار للطلاب)
+-- ============================================================
+CREATE TABLE exam_codes (
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  exam_id     UUID NOT NULL REFERENCES exams(id) ON DELETE CASCADE,
+  code        TEXT UNIQUE NOT NULL,                -- 6 خانات alphanumeric
+  delivery    TEXT NOT NULL CHECK (delivery IN ('remote','onsite')),
+  valid_from  TIMESTAMPTZ NOT NULL,
+  valid_until TIMESTAMPTZ NOT NULL,
+  is_revealed BOOLEAN DEFAULT FALSE,                -- onsite: متى كُشف
+  revealed_at TIMESTAMPTZ,
+  revealed_by UUID REFERENCES users(id),
+  max_uses    INTEGER,
+  uses_count  INTEGER DEFAULT 0,
+  created_at  TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ============================================================
+-- جدول exam_attempts (محاولات الطلاب)
+-- ============================================================
+CREATE TABLE exam_attempts (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  exam_id       UUID NOT NULL REFERENCES exams(id),
+  student_id    UUID NOT NULL,
+  attempt_no    SMALLINT NOT NULL DEFAULT 1,
+  state         TEXT NOT NULL DEFAULT 'in_progress' CHECK (state IN (
+    'in_progress','submitted','auto_graded','pending_manual',
+    'graded','approved','published','cancelled'
+  )),
+  started_at    TIMESTAMPTZ DEFAULT NOW(),
+  submitted_at  TIMESTAMPTZ,
+  responses     JSONB NOT NULL DEFAULT '{}'::jsonb,
+  auto_score    NUMERIC(6,2),
+  manual_score  NUMERIC(6,2),
+  final_score   NUMERIC(6,2),
+  passed        BOOLEAN,
+  security_events JSONB DEFAULT '[]'::jsonb,        -- tab_switch, fullscreen_exit, …
+  browser_fingerprint TEXT,
+  ip_address    INET,
+  graded_by     UUID REFERENCES users(id),
+  approved_by   UUID REFERENCES users(id),
+  published_at  TIMESTAMPTZ
+);
+
+CREATE INDEX idx_attempts_student ON exam_attempts(student_id);
+CREATE INDEX idx_attempts_exam ON exam_attempts(exam_id);
+CREATE INDEX idx_attempts_state ON exam_attempts(state);
+
+-- ============================================================
+-- جدول certificates (الشهادات)
+-- ============================================================
+CREATE TABLE certificates (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  tenant_id       UUID NOT NULL REFERENCES tenants(id),
+  branch_id       UUID REFERENCES branches(id),
+  student_id      UUID NOT NULL,
+  diploma_id      UUID,
+  serial          TEXT UNIQUE NOT NULL,             -- IIMS-2026-00001
+  issue_date      DATE NOT NULL,
+  gpa             NUMERIC(4,2),
+  grade_label     TEXT,                              -- ممتاز / جيد جداً …
+  pdf_url         TEXT,
+  qr_token        TEXT NOT NULL,                     -- مكوّن من hash + secret
+  qr_url          TEXT,
+  hash_sha256     TEXT NOT NULL,
+  state           TEXT DEFAULT 'issued' CHECK (state IN (
+    'issued','revoked','pending_tvtc_approval'
+  )),
+  issued_by       UUID REFERENCES users(id),
+  revoked_at      TIMESTAMPTZ,
+  revoked_reason  TEXT,
+  metadata        JSONB DEFAULT '{}'::jsonb,
+  created_at      TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_cert_student ON certificates(student_id);
+CREATE INDEX idx_cert_serial ON certificates(serial);
+    </pre>
+  </div>
+</section>
+
+<!-- ============= 11. WEEK 3 — Grading + Verify + PWA ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الأسبوع 3 — Grading + Verify + PWA</h2>
+      <div class="page-num">11</div>
+    </div>
+
+    <h3 class="section-h">🧮 محرك التصحيح الآلي</h3>
+
+    <div class="code-label">src/features/exams/server/grading.ts</div>
+    <pre class="ts">
+import type { AnyQuestion } from '@/features/questions/types';
+
+type GradingResult = { score: number; max: number; details: unknown };
+
+export function gradeQuestion(
+  q: AnyQuestion & { weight: number },
+  response: unknown
+): GradingResult {
+  switch (q.type) {
+    case 'mcq_single':
+      return gradeMCQSingle(q, response as { selected_option_id: string });
+    case 'mcq_multi':
+      return gradeMCQMulti(q, response as { selected_ids: string[] });
+    case 'true_false':
+      return gradeTrueFalse(q, response as { answer: boolean });
+    case 'fill_blank':
+      return gradeFillBlank(q, response as Record<string, string>);
+    case 'ordering':
+      return gradeOrdering(q, response as { order: string[] });
+    case 'matching':
+      return gradeMatching(q, response as { pairs: Array<{l: string; r: string}> });
+    case 'essay':
+      return { score: 0, max: q.weight, details: { needs_manual: true } };
+    // ... bocí grading functions
+    default:
+      return { score: 0, max: q.weight, details: { error: 'unknown_type' } };
+  }
+}
+
+function gradeMCQSingle(q, r) {
+  const correct = r.selected_option_id === q.answer_data.correct_option_id;
+  return { score: correct ? q.weight : 0, max: q.weight, details: { correct } };
+}
+
+function gradeMCQMulti(q, r) {
+  const correct = new Set(q.answer_data.correct_option_ids);
+  const selected = new Set(r.selected_ids);
+  const totalCorrect = correct.size;
+  const correctSelected = [...selected].filter(id => correct.has(id)).length;
+  const wrongSelected = [...selected].filter(id => !correct.has(id)).length;
+
+  let score = 0;
+  switch (q.answer_data.scoring_method) {
+    case 'all_or_nothing':
+      score = (correctSelected === totalCorrect && wrongSelected === 0) ? q.weight : 0;
+      break;
+    case 'partial':
+      score = Math.max(0, (correctSelected / totalCorrect) * q.weight);
+      break;
+    case 'penalty':
+      const ratio = (correctSelected - wrongSelected) / totalCorrect;
+      score = Math.max(0, ratio * q.weight);
+      break;
+  }
+  return { score, max: q.weight, details: { correctSelected, wrongSelected } };
+}
+
+// ... (بقية الدوال على نفس النمط)
+    </pre>
+
+    <h3 class="section-h">🔐 توليد كود الاختبار</h3>
+
+    <div class="code-label">src/features/exams/server/generate-code.ts</div>
+    <pre class="ts">
+'use server';
+
+import { randomBytes } from 'crypto';
+import { getSupabaseServer, requireRole } from '@/shared/lib/supabase/server';
+
+const CODE_ALPHABET = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // بدون الأحرف المشتبهة
+
+function generateCode(length = 6): string {
+  const bytes = randomBytes(length);
+  return Array.from(bytes)
+    .map(b => CODE_ALPHABET[b % CODE_ALPHABET.length])
+    .join('');
+}
+
+export async function generateExamCode(args: {
+  exam_id: string;
+  delivery: 'remote' | 'onsite';
+  valid_from: string;
+  valid_until: string;
+  max_uses?: number;
+}) {
+  const user = await requireRole(['instructor','branch_manager','super_admin']);
+  const supabase = await getSupabaseServer();
+
+  // محاولة 5 مرات لتجنّب التصادم
+  for (let i = 0; i < 5; i++) {
+    const code = generateCode();
+    const { data, error } = await supabase
+      .from('exam_codes')
+      .insert({ ...args, code, is_revealed: args.delivery === 'remote' })
+      .select()
+      .single();
+
+    if (!error) return data;
+    if (!error.message.includes('duplicate')) throw error;
+  }
+  throw new Error('CODE_GENERATION_FAILED');
+}
+    </pre>
+
+    <h3 class="section-h">🌐 صفحة التحقق العامة <code>/verify/[serial]</code></h3>
+
+    <div class="code-label">src/app/(public)/verify/[serial]/page.tsx</div>
+    <pre class="ts">
+import { createClient } from '@supabase/supabase-js';
+import { notFound } from 'next/navigation';
+
+// Service Role client (للقراءة فقط، Rate-limited)
+const sb = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!,
+  { auth: { persistSession: false } }
+);
+
+export default async function VerifyCertificatePage({
+  params,
+}: { params: { serial: string } }) {
+  const { data: cert } = await sb
+    .from('certificates')
+    .select(`
+      serial, issue_date, gpa, grade_label, hash_sha256, state,
+      students:student_id ( full_name_ar, national_id ),
+      diplomas:diploma_id ( name_ar, tvtc_approval_no )
+    `)
+    .eq('serial', params.serial)
+    .maybeSingle();
+
+  if (!cert) notFound();
+
+  return (
+    &lt;main className="rtl mx-auto max-w-2xl p-8"&gt;
+      &lt;h1 className="text-2xl font-bold text-emerald-800"&gt;
+        التحقق من شهادة IIMS
+      &lt;/h1&gt;
+      &lt;dl className="mt-6 grid grid-cols-2 gap-4"&gt;
+        &lt;dt&gt;الرقم التسلسلي:&lt;/dt&gt;&lt;dd&gt;{cert.serial}&lt;/dd&gt;
+        &lt;dt&gt;الاسم:&lt;/dt&gt;&lt;dd&gt;{cert.students.full_name_ar}&lt;/dd&gt;
+        &lt;dt&gt;الدبلوم:&lt;/dt&gt;&lt;dd&gt;{cert.diplomas.name_ar}&lt;/dd&gt;
+        &lt;dt&gt;التاريخ:&lt;/dt&gt;&lt;dd&gt;{cert.issue_date}&lt;/dd&gt;
+        &lt;dt&gt;المعدّل:&lt;/dt&gt;&lt;dd&gt;{cert.gpa} ({cert.grade_label})&lt;/dd&gt;
+        &lt;dt&gt;الحالة:&lt;/dt&gt;&lt;dd&gt;{cert.state === 'issued' ? 'سارية' : 'ملغاة'}&lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/main&gt;
+  );
+}
+    </pre>
+
+    <h3 class="section-h">📱 PWA — Manifest و Service Worker</h3>
+
+    <div class="code-label">public/manifest.json</div>
+    <pre class="ts">
+{
+  "name": "IIMS — نظام إدارة المعهد",
+  "short_name": "IIMS",
+  "description": "نظام إدارة معاهد التدريب",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF7",
+  "theme_color": "#065F46",
+  "lang": "ar",
+  "dir": "rtl",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
+    </pre>
+
+    <h3 class="section-h">🧪 سيناريوهات الاختبار الحرجة</h3>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W3-01</span><span class="tc-title">100 طالب متزامن — Submit بنجاح</span></div>
+      <div class="tc-body">Load Test بـk6: 100 طالب يبدؤون اختباراً بـ20 سؤالاً، يُسلّمون معاً. النتيجة: P95 &lt; 60s + 0 فشل.</div>
+    </div>
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W3-02</span><span class="tc-title">Tab Switch → تسجيل + إنذار</span></div>
+      <div class="tc-body">Protection Level = Advanced. الطالب يفتح تاب آخر → <code>security_events.append({type:'tab_switch'})</code> + إنذار حُكمي بعد 3.</div>
+    </div>
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W3-03</span><span class="tc-title">شهادة + QR → التحقق العام يعمل</span></div>
+      <div class="tc-body">إصدار شهادة + Print PDF + مسح QR بهاتف → فتح <code>/verify/IIMS-2026-00001</code> بدون تسجيل دخول → عرض البيانات.</div>
+    </div>
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W3-04</span><span class="tc-title">PWA — Offline يعمل</span></div>
+      <div class="tc-body">فتح /student على Chrome → "Install app" → فصل الإنترنت → فتح التطبيق → يعرض آخر صفحة محفوظة.</div>
+    </div>
+
+    <div class="deliverable-box">
+      <div class="label">📦 المسلَّم نهاية الأسبوع 3</div>
+      <div class="text">منصة اختبارات حية + كود اختبار + تصحيح آلي + شهادات بـQR + صفحة تحقق عامة + PWA Lighthouse ≥ 90.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= 12. WEEK 4 — Students + State Machine ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الأسبوع 4 — الطلاب + State Machine + 8 حالات</h2>
+      <div class="page-num">12</div>
+    </div>
+
+    <div class="week-banner">
+      <div class="week-banner-content">
+        <span class="week-label">الأسبوع 4 · Students Lifecycle</span>
+        <div class="week-title-main">Student Profile + State Machine + Transfer + Branch Manager</div>
+        <div class="week-tagline">
+          القلب التشغيلي — يربط كل ما سبق ببعضه.
+        </div>
+      </div>
+    </div>
+
+    <div class="objectives-box">
+      <h4>🎯 أهداف الأسبوع</h4>
+      <ul>
+        <li>جدول <strong>students</strong> الموسّع + المرفقات + جهة الاتصال الطارئة + حقول التوظيف الاختيارية.</li>
+        <li><strong>State Machine بـXState v5</strong> — 8 حالات + 14 transition + 12 guard + 8 action + سجل تاريخي.</li>
+        <li>Workflow <strong>نقل الطلاب بين الفروع</strong> + اعتماد + احتفاظ بالتاريخ.</li>
+        <li>بطاقة الطالب الموحّدة بـ<strong>7 tabs</strong> (شخصي، أكاديمي، مالي مرئي، طلبات، رحلة، مرفقات، تدقيق).</li>
+        <li>دور <strong>Branch Manager</strong> + <strong>Registration Officer</strong> مع صلاحيات تفصيلية + RLS صارم.</li>
+      </ul>
+    </div>
+
+    <h3 class="section-h">🔄 مخطط State Machine للطالب</h3>
+
+    <div class="mermaid">
+stateDiagram-v2
+    [*] --> registered: تسجيل أوّلي
+    registered --> active: دفع أوّل + بيانات كاملة
+    active --> late_financial: تأخر 15 يوم
+    late_financial --> active: سداد
+    late_financial --> suspended_financial: تأخر 30 يوم
+    suspended_financial --> active: سداد + موافقة
+    suspended_financial --> deprived_fees: تأخر 60 يوم
+    deprived_fees --> active: سداد + موافقة الإدارة
+    active --> deprived_attendance: غياب ≥ 25%
+    deprived_attendance --> active: استكمال + موافقة
+    active --> deferred: طلب تأجيل
+    deferred --> active: عودة + استكمال
+    active --> withdrawn: طلب انسحاب
+    withdrawn --> [*]
+    active --> graduated: استيفاء الدبلوم
+    graduated --> [*]
+    </div>
+
+    <h3 class="section-h">🗄 جداول الطلاب</h3>
+
+    <div class="code-label">supabase/migrations/0007_students.sql</div>
+    <pre class="sql">
+CREATE TABLE students (
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  tenant_id         UUID NOT NULL REFERENCES tenants(id),
+  branch_id         UUID NOT NULL REFERENCES branches(id),
+  user_id           UUID REFERENCES users(id),       -- إن فُعِّلت بوابة الطالب
+  student_number    TEXT UNIQUE NOT NULL,             -- IIMS-2026-S-00001
+  full_name_ar      TEXT NOT NULL,
+  full_name_en      TEXT,
+  national_id       TEXT NOT NULL,
+  nationality       TEXT DEFAULT 'SA',
+  birth_date        DATE,
+  gender            TEXT CHECK (gender IN ('male','female')),
+  phone             TEXT NOT NULL,
+  phone_alt         TEXT,
+  email             TEXT,
+  address_full      TEXT,
+  city              TEXT,
+  district          TEXT,
+  postal_code       TEXT,
+  diploma_id        UUID,
+  cohort            TEXT,
+  enrollment_date   DATE,
+  expected_grad_date DATE,
+  status            TEXT NOT NULL DEFAULT 'registered' CHECK (status IN (
+    'registered','active','late_financial','suspended_financial',
+    'deprived_fees','deprived_attendance','deferred','withdrawn','graduated'
+  )),
+  employment_info   JSONB DEFAULT '{}'::jsonb,        -- التطوير #5
+  metadata          JSONB DEFAULT '{}'::jsonb,
+  created_by        UUID REFERENCES users(id),
+  created_at        TIMESTAMPTZ DEFAULT NOW(),
+  updated_at        TIMESTAMPTZ DEFAULT NOW(),
+  deleted_at        TIMESTAMPTZ
+);
+
+CREATE INDEX idx_students_branch ON students(branch_id);
+CREATE INDEX idx_students_status ON students(status);
+CREATE INDEX idx_students_diploma ON students(diploma_id);
+CREATE UNIQUE INDEX idx_students_national ON students(national_id) WHERE deleted_at IS NULL;
+
+ALTER TABLE students ENABLE ROW LEVEL SECURITY;
+
+-- ============================================================
+-- سجل تاريخي للحالات
+-- ============================================================
+CREATE TABLE student_status_history (
+  id            BIGSERIAL PRIMARY KEY,
+  student_id    UUID NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+  from_status   TEXT,
+  to_status     TEXT NOT NULL,
+  changed_by    UUID REFERENCES users(id),
+  reason        TEXT,
+  trigger_source TEXT,                                 -- manual / cron / event
+  metadata      JSONB,
+  occurred_at   TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_status_hist_student ON student_status_history(student_id);
+
+-- Trigger تلقائي
+CREATE OR REPLACE FUNCTION track_student_status() RETURNS TRIGGER AS $$
+BEGIN
+  IF OLD.status IS DISTINCT FROM NEW.status THEN
+    INSERT INTO student_status_history(
+      student_id, from_status, to_status, changed_by, trigger_source
+    ) VALUES (NEW.id, OLD.status, NEW.status, auth.uid(), 'system');
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_track_status
+  AFTER UPDATE ON students
+  FOR EACH ROW EXECUTE FUNCTION track_student_status();
+
+-- ============================================================
+-- نقل بين الفروع
+-- ============================================================
+CREATE TABLE student_transfers (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  student_id      UUID NOT NULL REFERENCES students(id),
+  from_branch_id  UUID NOT NULL REFERENCES branches(id),
+  to_branch_id    UUID NOT NULL REFERENCES branches(id),
+  reason          TEXT NOT NULL,
+  state           TEXT DEFAULT 'pending' CHECK (state IN ('pending','approved','rejected','completed')),
+  requested_by    UUID REFERENCES users(id),
+  approved_by     UUID REFERENCES users(id),
+  approved_at     TIMESTAMPTZ,
+  completed_at    TIMESTAMPTZ,
+  created_at      TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ============================================================
+-- المرفقات
+-- ============================================================
+CREATE TABLE student_attachments (
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  student_id  UUID NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+  type        TEXT NOT NULL CHECK (type IN (
+    'id_front','id_back','prev_certificate','contract','photo','other'
+  )),
+  storage_path TEXT NOT NULL,                          -- Supabase Storage path
+  file_size   INTEGER,
+  mime_type   TEXT,
+  uploaded_by UUID REFERENCES users(id),
+  uploaded_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ============================================================
+-- جهة اتصال طارئة (1—3)
+-- ============================================================
+CREATE TABLE student_emergency_contacts (
+  id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  student_id  UUID NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+  full_name   TEXT NOT NULL,
+  relation    TEXT NOT NULL,
+  phone       TEXT NOT NULL,
+  email       TEXT,
+  is_primary  BOOLEAN DEFAULT FALSE,
+  created_at  TIMESTAMPTZ DEFAULT NOW()
+);
+    </pre>
+  </div>
+</section>
+
+<!-- ============= 13. WEEK 4 — XState + Server Actions + UI ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الأسبوع 4 — XState + Server Actions + UI</h2>
+      <div class="page-num">13</div>
+    </div>
+
+    <h3 class="section-h">🎰 State Machine في XState v5</h3>
+
+    <div class="code-label">src/features/students/machine.ts</div>
+    <pre class="ts">
+import { setup, assign } from 'xstate';
+
+type StudentEvent =
+  | { type: 'PAY_FIRST_INSTALLMENT' }
+  | { type: 'MISS_PAYMENT'; days: number }
+  | { type: 'PAY_OVERDUE' }
+  | { type: 'EXCEED_ABSENCE_THRESHOLD' }
+  | { type: 'COMPLETE_ATTENDANCE_PROGRAM' }
+  | { type: 'REQUEST_DEFER' }
+  | { type: 'RESUME_FROM_DEFER' }
+  | { type: 'REQUEST_WITHDRAW'; reason: string }
+  | { type: 'GRADUATE'; gpa: number };
+
+export const studentMachine = setup({
+  types: {
+    context: {} as {
+      studentId: string;
+      branchId: string;
+      latePaymentDays: number;
+      absencePercentage: number;
+    },
+    events: {} as StudentEvent,
+  },
+  guards: {
+    hasFirstPayment: ({ event }) => event.type === 'PAY_FIRST_INSTALLMENT',
+    isLate15: ({ event }) => event.type === 'MISS_PAYMENT' && event.days >= 15 && event.days < 30,
+    isLate30: ({ event }) => event.type === 'MISS_PAYMENT' && event.days >= 30 && event.days < 60,
+    isLate60: ({ event }) => event.type === 'MISS_PAYMENT' && event.days >= 60,
+    absenceExceeded: ({ context }) => context.absencePercentage >= 25,
+  },
+  actions: {
+    logStatusChange: ({ context, event }) => {
+      console.log(`[Student ${context.studentId}] event=${event.type}`);
+    },
+  },
+}).createMachine({
+  id: 'student',
+  initial: 'registered',
+  context: {
+    studentId: '',
+    branchId: '',
+    latePaymentDays: 0,
+    absencePercentage: 0,
+  },
+  states: {
+    registered: {
+      on: {
+        PAY_FIRST_INSTALLMENT: {
+          target: 'active',
+          guard: 'hasFirstPayment',
+          actions: 'logStatusChange',
+        },
+      },
+    },
+    active: {
+      on: {
+        MISS_PAYMENT: [
+          { target: 'late_financial', guard: 'isLate15' },
+          { target: 'suspended_financial', guard: 'isLate30' },
+          { target: 'deprived_fees', guard: 'isLate60' },
+        ],
+        EXCEED_ABSENCE_THRESHOLD: {
+          target: 'deprived_attendance',
+          guard: 'absenceExceeded',
+        },
+        REQUEST_DEFER: 'deferred',
+        REQUEST_WITHDRAW: 'withdrawn',
+        GRADUATE: 'graduated',
+      },
+    },
+    late_financial: {
+      on: {
+        PAY_OVERDUE: 'active',
+        MISS_PAYMENT: [
+          { target: 'suspended_financial', guard: 'isLate30' },
+          { target: 'deprived_fees', guard: 'isLate60' },
+        ],
+      },
+    },
+    suspended_financial: {
+      on: {
+        PAY_OVERDUE: 'active',
+        MISS_PAYMENT: { target: 'deprived_fees', guard: 'isLate60' },
+      },
+    },
+    deprived_fees: { on: { PAY_OVERDUE: 'active' } },
+    deprived_attendance: { on: { COMPLETE_ATTENDANCE_PROGRAM: 'active' } },
+    deferred: { on: { RESUME_FROM_DEFER: 'active' } },
+    withdrawn: { type: 'final' },
+    graduated: { type: 'final' },
+  },
+});
+    </pre>
+
+    <h3 class="section-h">🔌 Server Action — نقل بين الفروع</h3>
+
+    <div class="code-label">src/features/students/server/transfer.ts</div>
+    <pre class="ts">
+'use server';
+
+import { z } from 'zod';
+import { getSupabaseServer, requireRole } from '@/shared/lib/supabase/server';
+import { revalidatePath } from 'next/cache';
+
+const TransferSchema = z.object({
+  student_id: z.string().uuid(),
+  to_branch_id: z.string().uuid(),
+  reason: z.string().min(20).max(500),
+});
+
+export async function requestTransfer(input: z.infer<typeof TransferSchema>) {
+  const user = await requireRole(['branch_manager','super_admin']);
+  const data = TransferSchema.parse(input);
+  const supabase = await getSupabaseServer();
+
+  // 1) اقرأ الطالب + الفرع الحالي
+  const { data: student, error: e1 } = await supabase
+    .from('students')
+    .select('id, branch_id, status')
+    .eq('id', data.student_id)
+    .single();
+
+  if (e1 || !student) throw new Error('STUDENT_NOT_FOUND');
+  if (student.branch_id === data.to_branch_id) throw new Error('SAME_BRANCH');
+
+  // 2) امنع النقل إذا كان الطالب موقوفاً مالياً
+  if (['suspended_financial','deprived_fees'].includes(student.status)) {
+    throw new Error('TRANSFER_BLOCKED_BY_FINANCE');
+  }
+
+  // 3) أنشئ طلب نقل بحالة pending
+  const { data: transfer, error: e2 } = await supabase
+    .from('student_transfers')
+    .insert({
+      student_id: student.id,
+      from_branch_id: student.branch_id,
+      to_branch_id: data.to_branch_id,
+      reason: data.reason,
+      state: user.role === 'super_admin' ? 'approved' : 'pending',
+      requested_by: user.id,
+      approved_by: user.role === 'super_admin' ? user.id : null,
+      approved_at: user.role === 'super_admin' ? new Date().toISOString() : null,
+    })
+    .select()
+    .single();
+
+  if (e2) throw new Error(`TRANSFER_CREATE_FAILED: ${e2.message}`);
+
+  // 4) إذا super_admin اعتمد مباشرة، نفّذ النقل
+  if (transfer.state === 'approved') {
+    await supabase
+      .from('students')
+      .update({ branch_id: data.to_branch_id })
+      .eq('id', student.id);
+
+    await supabase
+      .from('student_transfers')
+      .update({ state: 'completed', completed_at: new Date().toISOString() })
+      .eq('id', transfer.id);
+  }
+
+  revalidatePath(`/admin/students/${student.id}`);
+  return transfer;
+}
+    </pre>
+
+    <h3 class="section-h">🎨 الشاشات (بطاقة الطالب الموحّدة — 7 tabs)</h3>
+
+    <div class="screen-card">
+      <h5>قائمة الطلاب <span class="route">/admin/students</span></h5>
+      <div class="desc">جدول مع Filter (الفرع، الدبلوم، الحالة، الدفعة) + Search + Export Excel + زر Bulk Import.</div>
+    </div>
+
+    <div class="screen-card">
+      <h5>بطاقة الطالب الموحّدة <span class="route">/admin/students/[id]</span></h5>
+      <div class="desc">
+        <strong>7 tabs:</strong> (1) شخصي + ولي أمر + توظيف، (2) أكاديمي (مواد + درجات — مرتبط بالأسبوع 3)،
+        (3) مالي (عرض فقط من المحاسبي)، (4) طلبات (تأتي في الأسبوع 7)، (5) رحلة (Timeline من status_history)،
+        (6) مرفقات، (7) تدقيق (Audit Log للطالب).
+      </div>
+    </div>
+
+    <div class="screen-card">
+      <h5>إضافة / تعديل طالب <span class="route">/admin/students/new · /[id]/edit</span></h5>
+      <div class="desc">نموذج بـValidation كامل (Zod) + التحقق من الهوية السعودية (checksum) + رفع المرفقات إلى Supabase Storage.</div>
+    </div>
+
+    <div class="screen-card">
+      <h5>نقل بين الفروع <span class="route">/admin/students/[id]/transfer</span></h5>
+      <div class="desc">اختيار الفرع المستهدف + سبب إلزامي (≥ 20 حرف) + معاينة قبل التأكيد. إذا الطالب موقوف مالياً → رفض مع رسالة.</div>
+    </div>
+
+    <div class="screen-card">
+      <h5>تغيير الحالة يدوياً <span class="route">/admin/students/[id]/change-status</span></h5>
+      <div class="desc">قائمة الحالات المسموحة وفق guards الـState Machine + حقل سبب + توقيع super_admin إن لزم.</div>
+    </div>
+
+    <div class="screen-card">
+      <h5>استيراد جماعي <span class="route">/admin/students/import</span></h5>
+      <div class="desc">قالب Excel + رفع + معاينة + تقرير الأخطاء + استيراد atomic (إما الكل أو لا شيء).</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= 14. WEEK 4 — Tests + Deliverables ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">الأسبوع 4 — الاختبارات + المخرجات</h2>
+      <div class="page-num">14</div>
+    </div>
+
+    <h3 class="section-h">🧪 سيناريوهات الاختبار</h3>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W4-01</span><span class="tc-title">إضافة طالب جديد + رقم تلقائي فريد</span></div>
+      <div class="tc-body">
+        <strong>المُعطى:</strong> Registration Officer + بيانات صالحة.
+        <strong>الفعل:</strong> /new → ملء + رفع مرفقات.
+        <strong>النتيجة:</strong> <code>student_number = IIMS-2026-S-00007</code> فريد + status = <code>registered</code> + ظهور في القائمة فوراً.
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W4-02</span><span class="tc-title">حماية الازدواجية بـnational_id</span></div>
+      <div class="tc-body">إدخال طالب بهوية موجودة → رفض الإدراج برسالة عربية واضحة + إيقاف التحويل من Registration إلى الفرع.</div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W4-03</span><span class="tc-title">انتقال State — active → late_financial</span></div>
+      <div class="tc-body">حدث MISS_PAYMENT(days=20) → State Machine يقبل + UPDATE students.status + سجل تلقائي في student_status_history.</div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W4-04</span><span class="tc-title">منع نقل طالب موقوف مالياً</span></div>
+      <div class="tc-body">طالب بحالة <code>suspended_financial</code> → محاولة نقل → رفض الـServer Action بـ<code>TRANSFER_BLOCKED_BY_FINANCE</code>.</div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W4-05</span><span class="tc-title">مدير الفرع لا يرى طلاب فرع آخر</span></div>
+      <div class="tc-body">Branch Manager في BRANCH_A يستعلم <code>SELECT * FROM students WHERE branch_id = BRANCH_B.id</code> → صفر صفوف (RLS).</div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W4-06</span><span class="tc-title">Bulk Import — 1,000 طالب في &lt;5 دقائق</span></div>
+      <div class="tc-body">قالب Excel بـ1,000 صف (950 صحيح + 50 خطأ) → معاينة → استيراد الـ950 → تأكيد + تقرير الأخطاء للتنزيل.</div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W4-07</span><span class="tc-title">Audit Log كامل لتغيير الحالة</span></div>
+      <div class="tc-body">UPDATE students.status → سطر في student_status_history + سطر آخر في audit_log + كلاهما يحوي الـ before/after.</div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">TC-W4-08</span><span class="tc-title">Timeline يعرض الرحلة كاملة</span></div>
+      <div class="tc-body">طالب بـ4 انتقالات حالة → /timeline يعرض كل سطر مع الوقت والمصدر والسبب وتسجيل دخول من غيّر.</div>
+    </div>
+
+    <h3 class="section-h">✅ Codex Approval Checklist</h3>
+
+    <div class="checklist-box">
+      <h4>📋 يجب اجتيازها قبل Merge</h4>
+      <ul>
+        <li>كل انتقال state له <code>guard</code> + <code>action</code> موثَّقَين + اختبار وحدة.</li>
+        <li>محرك XState مفصول عن DB — قابل للاختبار بدون Supabase.</li>
+        <li>Server Action للنقل يرفض الطلاب الموقوفين مالياً مع رسالة واضحة.</li>
+        <li>Triggers تكتب في status_history تلقائياً (لا يعتمد على Server Action).</li>
+        <li>RLS اختُبر بـ4 سيناريوهات Cross-Branch (Negative Tests).</li>
+        <li>Bulk Import يستخدم Transaction واحد (atomic).</li>
+        <li>Validation الهوية السعودية يعمل (checksum صحيح).</li>
+        <li>7 tabs في ملف الطالب تعمل + كل tab له Skeleton أثناء التحميل.</li>
+        <li>Storybook لكل Component من 7 tabs.</li>
+        <li>Coverage &gt; 85% للـState Machine + Transfer + Validation.</li>
+      </ul>
+    </div>
+
+    <div class="deliverable-box">
+      <div class="label">📦 المسلَّم نهاية الأسبوع 4 — والمرحلة 1 كاملة</div>
+      <div class="text">
+        نظام إدارة طلاب كامل + State Machine بـ8 حالات + نقل بين الفروع + بطاقة موحّدة بـ7 tabs + دور Branch Manager + Registration Officer + Bulk Import + Timeline + كل ذلك مدمج فوق منصة اختبارات حية وأسس تقنية صلبة.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= 15. ERD ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">مخططات قاعدة البيانات (ERD)</h2>
+      <div class="page-num">15</div>
+    </div>
+
+    <h3 class="section-h">📊 ERD — جداول المرحلة 1 الكاملة</h3>
+
+    <p>
+      يلخّص المخطط أدناه العلاقات بين الـ17 جدولاً المُنشأة في المرحلة 1. اللون الأخضر للجداول الأساسية،
+      الذهبي للجداول الوظيفية، والرمادي لجداول التتبّع.
+    </p>
+
+    <div class="mermaid">
+erDiagram
+    tenants ||--o{ branches : "owns"
+    tenants ||--o{ users : "owns"
+    branches ||--o{ users : "employs"
+    branches ||--o{ students : "hosts"
+    users ||--o{ user_branches : "linked"
+    branches ||--o{ user_branches : "linked"
+
+    roles ||--o{ role_permissions : "has"
+    permissions ||--o{ role_permissions : "has"
+
+    users ||--o{ audit_log : "actor"
+    branches ||--o{ audit_log : "scope"
+
+    question_categories ||--o{ questions : "groups"
+    questions ||--o{ exam_questions : "used_in"
+    questions }o--|| users : "created_by"
+
+    exams ||--o{ exam_questions : "contains"
+    exams ||--o{ exam_codes : "delivered_via"
+    exams ||--o{ exam_attempts : "attempted_in"
+
+    students ||--o{ exam_attempts : "takes"
+    students ||--o{ student_status_history : "transitions"
+    students ||--o{ student_transfers : "moved"
+    students ||--o{ student_attachments : "owns"
+    students ||--o{ student_emergency_contacts : "has"
+    students ||--o{ certificates : "earns"
+
+    ai_question_suggestions }o--|| users : "requested_by"
+    </div>
+
+    <h3 class="section-h">📦 قائمة الجداول الـ17 في المرحلة 1</h3>
+
+    <table>
+      <thead><tr><th>#</th><th>الجدول</th><th>الغرض</th><th>الأسبوع</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><code>tenants</code></td><td>جاهزية Multi-Tenant SaaS</td><td>1</td></tr>
+        <tr><td>2</td><td><code>branches</code></td><td>الفروع الأربعة</td><td>1</td></tr>
+        <tr><td>3</td><td><code>users</code></td><td>الموظفون والأدوار</td><td>1</td></tr>
+        <tr><td>4</td><td><code>user_branches</code></td><td>M2M موظف-فرع</td><td>1</td></tr>
+        <tr><td>5</td><td><code>roles</code></td><td>الأدوار السبعة</td><td>1</td></tr>
+        <tr><td>6</td><td><code>permissions</code></td><td>صلاحيات RBAC</td><td>1</td></tr>
+        <tr><td>7</td><td><code>role_permissions</code></td><td>ربط الأدوار بالصلاحيات</td><td>1</td></tr>
+        <tr><td>8</td><td><code>audit_log</code></td><td>سجل غير قابل للحذف</td><td>1</td></tr>
+        <tr><td>9</td><td><code>question_categories</code></td><td>تصنيف هرمي 4 مستويات</td><td>2</td></tr>
+        <tr><td>10</td><td><code>questions</code></td><td>بنك الأسئلة المركزي</td><td>2</td></tr>
+        <tr><td>11</td><td><code>ai_question_suggestions</code></td><td>اقتراحات Claude AI</td><td>2</td></tr>
+        <tr><td>12</td><td><code>exams</code></td><td>الاختبارات</td><td>3</td></tr>
+        <tr><td>13</td><td><code>exam_questions</code></td><td>ربط أسئلة الاختبار</td><td>3</td></tr>
+        <tr><td>14</td><td><code>exam_codes</code></td><td>أكواد الاختبار</td><td>3</td></tr>
+        <tr><td>15</td><td><code>exam_attempts</code></td><td>محاولات الطلاب</td><td>3</td></tr>
+        <tr><td>16</td><td><code>certificates</code></td><td>الشهادات بـQR</td><td>3</td></tr>
+        <tr><td>17</td><td><code>students</code></td><td>الطلاب</td><td>4</td></tr>
+        <tr><td>+</td><td><code>student_status_history</code></td><td>سجل حالات الطالب</td><td>4</td></tr>
+        <tr><td>+</td><td><code>student_transfers</code></td><td>نقل بين الفروع</td><td>4</td></tr>
+        <tr><td>+</td><td><code>student_attachments</code></td><td>المرفقات</td><td>4</td></tr>
+        <tr><td>+</td><td><code>student_emergency_contacts</code></td><td>جهات الاتصال الطارئة</td><td>4</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="section-h">🔄 تدفّق العلاقات الحرج</h3>
+
+    <div class="mermaid">
+flowchart TD
+    A[User Login] --> B{JWT يحوي<br/>role + branch_id}
+    B --> C[Server Action<br/>requireRole]
+    C --> D[Supabase Query]
+    D --> E{RLS Policy<br/>تفحص branch_id}
+    E -- pass --> F[Return Data]
+    E -- deny --> G[Empty Result]
+    F --> H[Audit Trigger<br/>auto-log]
+    style E fill:#FEE2E2,stroke:#DC2626
+    style H fill:#FEF3C7,stroke:#D4A574
+    </div>
+  </div>
+</section>
+
+<!-- ============= 16. ACCEPTANCE CRITERIA ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">معايير القبول النهائية للمرحلة</h2>
+      <div class="page-num">16</div>
+    </div>
+
+    <h3 class="section-h">✅ Acceptance Criteria — كل البنود إلزامية</h3>
+
+    <p>
+      تُعتبر المرحلة 1 مُسلَّمة <strong>فقط</strong> عند تحقق كل البنود التالية مجتمعةً. أيّ بند ناقص يمنع الانتقال إلى المرحلة 2 (المالية + الحجب).
+    </p>
+
+    <div class="subsection-h">A — معمارية وبنية</div>
+    <ul class="simple-list">
+      <li>مستودع GitHub مع Branch Protection على <code>main</code> + <code>develop</code> + 4 reviewers required.</li>
+      <li>Next.js 14 App Router + TypeScript Strict + 0 <code>any</code> + 0 <code>enum</code> + 0 تحذيرات بناء.</li>
+      <li>بنية Feature-based معتمدة (<code>src/features/{auth,students,questions,exams,certificates,audit}</code>).</li>
+      <li>3 GitHub Actions workflows خضراء (CI, Deploy Staging, Deploy Production).</li>
+    </ul>
+
+    <div class="subsection-h">B — قاعدة بيانات وأمان</div>
+    <ul class="simple-list">
+      <li>الـ17 جدولاً مُنشأة + Migrations تعمل بـ<code>supabase db reset</code> من الصفر بدون أخطاء.</li>
+      <li>RLS مُفعّل على <strong>كل</strong> جدول + سياسات صريحة (لا اعتماد على افتراضي).</li>
+      <li>Audit Triggers تعمل على الجداول الحساسة (users, branches, students, questions, exams).</li>
+      <li>Audit Log <strong>غير قابل للحذف أو التعديل</strong> (REVOKE فعّال + اختبار يثبت).</li>
+      <li>4 سيناريوهات Cross-Branch Negative Tests تمر (مدير فرع A لا يرى بيانات فرع B).</li>
+    </ul>
+
+    <div class="subsection-h">C — مصادقة وصلاحيات</div>
+    <ul class="simple-list">
+      <li>تسجيل دخول + Logout + Reset Password + 2FA TOTP للأدوار الحساسة.</li>
+      <li>Lockout policy بعد 5 محاولات فاشلة (15 دقيقة قفل).</li>
+      <li>Middleware حماية المسارات + إعادة توجيه لـ/403 عند نقص الصلاحية.</li>
+      <li>7 أدوار في الـSchema (4 مفعّلة بالكامل: super_admin, branch_manager, instructor, student).</li>
+    </ul>
+
+    <div class="subsection-h">D — بنك الأسئلة</div>
+    <ul class="simple-list">
+      <li>14 نوع سؤال مُنفّذ + Validation Schema لكل نوع (Zod).</li>
+      <li>3 قنوات إدخال تعمل: يدوي + استيراد Excel + اقتراح Claude AI.</li>
+      <li>200 سؤال تجريبي مُدخَل (بحد أدنى) موزَّعون على 14 نوع و5 معلمين.</li>
+      <li>بحث متقدم بـ(نوع + صعوبة + مادة + تاج + حالة) يعمل خلال &lt; 500ms.</li>
+    </ul>
+
+    <div class="subsection-h">E — منصة الاختبارات</div>
+    <ul class="simple-list">
+      <li>محرك توليد (تلقائي + يدوي) + 3 أنماط دخول + Timer + AutoSave.</li>
+      <li>كود اختبار 6 خانات + Remote/Onsite + Projector Mode.</li>
+      <li>تصحيح آلي لـ13 نوع + Rubric يدوي للمقالي + Workflow اعتماد.</li>
+      <li>3 طبقات حماية مُختبَرة + تسجيل security_events.</li>
+      <li>Load Test: 100 طالب متزامن + P95 &lt; 60s.</li>
+    </ul>
+
+    <div class="subsection-h">F — الشهادات و PWA</div>
+    <ul class="simple-list">
+      <li>توليد شهادة PDF عربي RTL احترافي + QR + SHA-256 hash.</li>
+      <li>صفحة <code>/verify/[serial]</code> عامة (بدون تسجيل دخول) + Rate-limited (30/دقيقة لكل IP).</li>
+      <li>PWA Manifest + Service Worker + Offline cache + Lighthouse PWA ≥ 90.</li>
+    </ul>
+
+    <div class="subsection-h">G — الطلاب و State Machine</div>
+    <ul class="simple-list">
+      <li>State Machine XState v5 بـ8 حالات + 14 transitions + كل انتقال له اختبار.</li>
+      <li>سجل تاريخي تلقائي في student_status_history عبر Trigger.</li>
+      <li>نقل بين الفروع + Workflow اعتماد + رفض الموقوفين مالياً.</li>
+      <li>Bulk Import: 1,000 طالب في &lt; 5 دقائق + تقرير أخطاء.</li>
+      <li>بطاقة الطالب الموحّدة بـ7 tabs تعمل + Storybook لكل tab.</li>
+    </ul>
+
+    <div class="subsection-h">H — جودة الكود والاختبارات</div>
+    <ul class="simple-list">
+      <li>Coverage ≥ 80% للوحدات الجوهرية (auth, rls, grading, state machine, transfer).</li>
+      <li>≥ 30 E2E test في Playwright (تشمل all critical paths).</li>
+      <li>0 مشاكل أمنية Critical/High في Snyk + Dependabot.</li>
+      <li>Sentry يلتقط 100% من الأخطاء + Source Maps مرفوعة.</li>
+    </ul>
+
+    <div class="subsection-h">I — توثيق وتسليم</div>
+    <ul class="simple-list">
+      <li>README + architecture.md + 5 Runbooks (Deploy, Rollback, DB Reset, User Unlock, Certificate Re-issue).</li>
+      <li>Storybook منشور بكل المكوّنات الرئيسية.</li>
+      <li>API Reference (Server Actions موثَّقة بـJSDoc).</li>
+      <li>Demo حيّ على Staging يعمل بسلاسة + UAT موقَّع من الطرف الأول.</li>
+    </ul>
+
+    <div class="protocol" style="margin-top: 14px;">
+      <h4>🏁 الاعتماد النهائي</h4>
+      <ol>
+        <li>Codex 100/100 على كل المرحلة (يشمل المعمارية + الأمان + الأداء).</li>
+        <li>0 Critical/High issues في تقرير Security Review.</li>
+        <li>Demo على Staging مع الطرف الأول — اعتماد شفهي + خطي.</li>
+        <li>توقيع UAT على بنود A–I أعلاه.</li>
+        <li>Merge النهائي إلى <code>main</code> + Deploy على Production + Tag <code>v1.0.0-phase1</code>.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============= 17. E2E TESTS ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">سيناريوهات الاختبار الكاملة (E2E)</h2>
+      <div class="page-num">17</div>
+    </div>
+
+    <h3 class="section-h">🧪 السيناريوهات الكبرى End-to-End</h3>
+
+    <p>
+      هذه السيناريوهات تُغطّي المسارات الحرجة عبر الأسابيع الأربعة. كل سيناريو يُكتب في Playwright + يُشغَّل في CI + يُعتمد قبل Merge.
+    </p>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">E2E-01</span><span class="tc-title">رحلة كاملة: تسجيل → اختبار → شهادة</span></div>
+      <div class="tc-body">
+        Registration Officer ينشئ طالباً → super_admin يفعّل حالة active → Instructor ينشئ اختباراً + كود → الطالب يأخذ الاختبار → التصحيح الآلي + Manual → اعتماد + نشر → استحقاق شهادة → /verify/[serial] يعرض البيانات. <strong>الزمن المتوقع: &lt; 15 دقيقة.</strong>
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">E2E-02</span><span class="tc-title">اقتراح Claude → اعتماد → استخدام في اختبار</span></div>
+      <div class="tc-body">
+        Instructor → /ai-suggest → 5 أسئلة MCQ → تعديل 2 → اعتماد 4 → ظهور في القائمة → إنشاء اختبار جديد → اختيار 3 منها → نشر → طالب يجيب → تصحيح آلي صحيح.
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">E2E-03</span><span class="tc-title">نقل بين الفروع + احتفاظ بالتاريخ</span></div>
+      <div class="tc-body">
+        Branch Manager A يطلب نقل طالب → super_admin يعتمد → الطالب ينتقل إلى Branch B → سجل في student_transfers + status_history + audit_log. ملف الطالب يحتفظ بكل الاختبارات والشهادات السابقة.
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">E2E-04</span><span class="tc-title">تأخر دفع → تغيير حالة تلقائي (محاكاة Cron)</span></div>
+      <div class="tc-body">
+        محاكاة Background Job: طالب لديه قسط متأخر 20 يوم → النظام يُطلق MISS_PAYMENT → State Machine ينقل إلى late_financial → audit_log يلتقط + Notification داخل النظام.
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">E2E-05</span><span class="tc-title">عزل الفروع — اختبار اختراق</span></div>
+      <div class="tc-body">
+        Branch Manager A يحاول عبر API endpoint وصول مباشر لبيانات Branch B (cURL مع JWT الخاص به) → الرد 403 + تسجيل في audit_log + تنبيه Sentry.
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">E2E-06</span><span class="tc-title">PWA Offline → Online sync</span></div>
+      <div class="tc-body">
+        Instructor يفتح /instructor على Chrome Mobile → Install app → فصل الإنترنت → فتح التطبيق → عرض cached data → استئناف الإنترنت → sync background.
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">E2E-07</span><span class="tc-title">Bulk Import — Migration من Excel قديم</span></div>
+      <div class="tc-body">
+        super_admin يفتح /students/import → رفع ملف بـ1,000 صف (محاكاة بيانات قديمة) → معاينة + تقرير الأخطاء (50 خطأ) → استيراد الـ950 → Verification في القائمة + Bulk Audit Log entries.
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">E2E-08</span><span class="tc-title">Load Test — 100 طالب متزامن في اختبار</span></div>
+      <div class="tc-body">
+        k6 script: 100 طالب يفتحون اختباراً (20 سؤال) في نفس الوقت → كل واحد يجيب على 20 سؤال → Submit جماعي → النتيجة: 0 timeout + P95 latency &lt; 800ms للطلب الواحد.
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">E2E-09</span><span class="tc-title">Audit Log Immutability — محاولة الحذف</span></div>
+      <div class="tc-body">
+        super_admin يحاول DELETE من audit_log → خطأ صريح + تسجيل المحاولة في audit_log ذاته بسطر جديد (محاولة الحذف نفسها مُسجَّلة).
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="tc-header"><span class="tc-id">E2E-10</span><span class="tc-title">Certificate Verify — QR من هاتف</span></div>
+      <div class="tc-body">
+        إصدار شهادة → طباعة PDF بـQR → مسح QR من هاتف خارجي → فتح /verify/IIMS-2026-00001 → عرض اسم الطالب + الدبلوم + التاريخ + الحالة "سارية".
+      </div>
+    </div>
+
+    <h3 class="section-h">⚙️ خطة الـCI</h3>
+
+    <div class="code-label">.github/workflows/ci.yml</div>
+    <pre class="bash">
+name: CI
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with: { version: 9 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test --coverage
+      - uses: supabase/setup-cli@v1
+      - run: supabase db reset --debug
+      - run: pnpm test:e2e
+      - uses: codecov/codecov-action@v4
+    </pre>
+  </div>
+</section>
+
+<!-- ============= 18. RISKS + Phase 2 Preparation ============= -->
+<section class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <h2 class="page-title">المخاطر والتحضير للمرحلة 2</h2>
+      <div class="page-num">18</div>
+    </div>
+
+    <h3 class="section-h">⚠️ المخاطر الرئيسية وخطط التخفيف</h3>
+
+    <div class="risk-card">
+      <h5><span class="severity high">عالية</span>R-01 — RLS Policies غير محكمة قد تكشف بيانات</h5>
+      <div class="desc">
+        <strong>الأثر:</strong> تسرّب بيانات الفرع B لمستخدم الفرع A عبر استعلام غير متوقع. مشكلة Compliance خطيرة.
+      </div>
+      <div class="mitigation">
+        <strong>التخفيف:</strong> كتابة Negative Tests لكل سياسة + اختبار يدوي بـcURL مع JWT خاطئ + اعتماد Codex المُلزِم + Database Linter في CI.
+      </div>
+    </div>
+
+    <div class="risk-card">
+      <h5><span class="severity high">عالية</span>R-02 — أداء الاختبارات تحت 100+ طالب متزامن</h5>
+      <div class="desc">
+        <strong>الأثر:</strong> Timeouts أو ضياع إجابات أثناء الاختبار الفعلي. خسارة ثقة الطلاب والمعلمين.
+      </div>
+      <div class="mitigation">
+        <strong>التخفيف:</strong> Load Test مبكر بـk6 + Caching للأسئلة + AutoSave كل 30 ثانية + Background Jobs للتصحيح بدلاً من Sync + Vercel Edge Functions.
+      </div>
+    </div>
+
+    <div class="risk-card">
+      <h5><span class="severity medium">متوسطة</span>R-03 — Claude AI يُنتج أسئلة بصياغة غير صحيحة</h5>
+      <div class="desc">
+        <strong>الأثر:</strong> معلم يعتمد سؤالاً به خطأ → ظهور في اختبار حقيقي → جدل.
+      </div>
+      <div class="mitigation">
+        <strong>التخفيف:</strong> موافقة المعلم إلزامية قبل الحفظ + UI يُجبر على المراجعة + Validation Schema صارم على المخرجات + ميزة "تعديل قبل الاعتماد".
+      </div>
+    </div>
+
+    <div class="risk-card">
+      <h5><span class="severity medium">متوسطة</span>R-04 — PWA Offline لا يعمل على iOS Safari</h5>
+      <div class="desc">
+        <strong>الأثر:</strong> Instructor يحاول تسجيل حضور بلا إنترنت من iPhone → فشل.
+      </div>
+      <div class="mitigation">
+        <strong>التخفيف:</strong> اختبار مبكر على Safari + iOS + استخدام Workbox + IndexedDB + Fallback إلى online-only mode مع رسالة واضحة.
+      </div>
+    </div>
+
+    <div class="risk-card">
+      <h5><span class="severity medium">متوسطة</span>R-05 — State Machine يتشابك مع Database state</h5>
+      <div class="desc">
+        <strong>الأثر:</strong> طالب في DB بحالة active لكن XState يعتقد late_financial → سلوك متناقض.
+      </div>
+      <div class="mitigation">
+        <strong>التخفيف:</strong> Single Source of Truth = DB. XState يُحمَّل من DB في كل عملية. لا cache. + اختبارات Sync.
+      </div>
+    </div>
+
+    <div class="risk-card">
+      <h5><span class="severity low">منخفضة</span>R-06 — Bulk Import يفشل في منتصف العملية</h5>
+      <div class="desc">
+        <strong>الأثر:</strong> 500 طالب أُدرجوا + 500 فشلوا → بيانات غير متسقة.
+      </div>
+      <div class="mitigation">
+        <strong>التخفيف:</strong> Transaction واحد (atomic). إما الكل أو لا شيء. + تقرير أخطاء قبل البدء + معاينة.
+      </div>
+    </div>
+
+    <h3 class="section-h">🔗 التحضير للمرحلة 2</h3>
+
+    <p>
+      المرحلة 2 (<strong>المالية + الحجب + الطلبات + الخطابات</strong>) ستبني فوق ما أُنجز هنا. التحضير الذي يجب أن يكون جاهزاً بنهاية المرحلة 1:
+    </p>
+
+    <div class="info-box">
+      <h4>📐 نقاط الاتصال للمرحلة 2</h4>
+      <p>
+        <strong>(1) Adapter Pattern للمالية:</strong> Interface <code>IAccountingService</code> مُعرَّفة لكن غير مُنفَّذة بعد — جاهزة للتطبيق.
+        <strong>(2) Service Blocking Engine:</strong> جدول <code>blocking_rules</code> مُعدّ في الـSchema لكن فارغ — جاهز للملء.
+        <strong>(3) Workflow Engine:</strong> XState المستخدم في State Machine هنا سيُعاد استخدامه للـRequests.
+        <strong>(4) Letters Generator:</strong> Puppeteer مُضاف للـ dependencies + قوالب جاهزة في <code>templates/letters/</code>.
+        <strong>(5) accounting_snapshot:</strong> جدول مُعدّ في الـSchema مع Indexes — جاهز للـPull و Webhook.
+      </p>
+    </div>
+
+    <h3 class="section-h">📋 قائمة Handoff للمرحلة 2</h3>
+
+    <ul class="simple-list">
+      <li><strong>أسئلة للعميل قبل بدء المرحلة 2:</strong> ما البرنامج المحاسبي المستخدم؟ هل يدعم API؟ متى تتاح بيانات الاختبار؟</li>
+      <li><strong>الوثائق المنقولة:</strong> ERD محدّث + Runbooks + API Reference + Storybook.</li>
+      <li><strong>الاجتماع المُلزم:</strong> Sprint Planning مشترك بين المبرمج المشارك والطرف الأول قبل اليوم 1 من المرحلة 2.</li>
+      <li><strong>اعتماد Codex النهائي:</strong> 100/100 على المرحلة 1 كاملة قبل أي عمل في المرحلة 2.</li>
+      <li><strong>Tag النسخة:</strong> <code>v1.0.0-phase1</code> على main + Production deployment.</li>
+    </ul>
+
+    <h3 class="section-h">🏆 الإنجاز المُحقَّق</h3>
+
+    <div class="objectives-box">
+      <h4>ما يستلمه الطرف الأول والعميل بعد 4 أسابيع</h4>
+      <ul>
+        <li>منصة اختبارات إلكترونية كاملة قابلة للاستخدام بـ100 طالب متزامن.</li>
+        <li>بنك أسئلة عربي بـ200 سؤال × 14 نوع — أصل معرفي يبقى للمعهد.</li>
+        <li>إدارة طلاب كاملة لـ4 فروع + 1,000 طالب (قابل للتوسع).</li>
+        <li>شهادات معتمدة بـQR + صفحة تحقق عامة.</li>
+        <li>أساس متين لا يحتاج إعادة كتابة في باقي المراحل.</li>
+        <li>توثيق كامل + اختبارات + Codex Approval 100/100.</li>
+      </ul>
+    </div>
+
+    <p style="text-align: center; margin-top: 18px; font-size: 0.9rem; color: var(--text-muted); padding-top: 12px; border-top: 1px solid var(--border);">
+      <strong>نهاية وثيقة المرحلة 1.</strong><br>
+      المرحلة 2 — المالية والحجب والطلبات والخطابات — تبدأ بمجرد اعتماد Codex 100/100 على هذه المرحلة.
+    </p>
+  </div>
+</section>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#065F46',
+      primaryTextColor: '#FFFFFF',
+      primaryBorderColor: '#047857',
+      lineColor: '#065F46',
+      secondaryColor: '#D4A574',
+      tertiaryColor: '#FAFAF7',
+      fontFamily: 'Cairo, sans-serif',
+    },
+  });
+</script>
+
+</body>
+</html>
